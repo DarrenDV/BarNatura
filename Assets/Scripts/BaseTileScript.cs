@@ -11,9 +11,14 @@ public class BaseTileScript : MonoBehaviour
     [Header("Tile pollution state variables")]
     protected float maxPollutedPercentage = 100f;
     [SerializeField] protected float pollutedPercentage;  
+
+    [Header("Tile nature state variables")]
+    protected float maxNaturePercentage = 100f;
+    [SerializeField] protected float naturePercentage;      
     
     [Header("Checks if the tile is occupied")]
     [SerializeField] protected bool occupied;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -26,6 +31,11 @@ public class BaseTileScript : MonoBehaviour
         //This could be in another function or method
         if(pollutedPercentage >= maxPollutedPercentage){
             //Make tile uninhabitable or toxic.
+        }
+
+        //This could be in another function or method
+        if(naturePercentage >= maxNaturePercentage){
+            //Make tile nature.
         }
     }
 }
