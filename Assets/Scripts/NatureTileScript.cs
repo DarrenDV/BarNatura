@@ -4,15 +4,21 @@ using UnityEngine;
 
 public class NatureTileScript : BaseTileScript
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    float Timer;
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (Timer >= 60 * Time.deltaTime) {
+            if (!PolutionLevelCheck())
+            {
+                if (NatureLevelCheck())
+                {
+                    oxygenProduction += 5;
+                }
+            }
+            Timer = 0;
+        }
+        Timer += 1 * Time.deltaTime;
     }
 }
