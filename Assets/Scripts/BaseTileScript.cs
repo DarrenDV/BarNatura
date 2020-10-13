@@ -16,8 +16,10 @@ public class BaseTileScript : MonoBehaviour
     protected float maxNaturePercentage = 100f;
     [SerializeField] protected float naturePercentage;      
     
-    [Header("Checks if the tile is occupied")]
-    public bool occupied;
+    [HideInInspector]public bool occupied;
+    private GameManager gameManager;
+
+
     
     // Start is called before the first frame update
     void Start()
@@ -36,6 +38,21 @@ public class BaseTileScript : MonoBehaviour
         //This could be in another function or method
         if(naturePercentage >= maxNaturePercentage){
             //Make tile nature.
+        }
+    }
+
+    private void OnMouseOver()
+    {
+        if (gameManager == null) gameManager = FindObjectOfType<GameManager>();
+
+        if (gameManager.objectToBuild != null)
+        {
+            if (Input.GetMouseButtonDown(0) && !occupied)
+            {
+                Instantiate(gameManager.objectToBuild.gameObject, transform.position, transform.rotation);
+                occupied = true;
+                gameManager.StopBuilding();
+            }
         }
     }
 }
