@@ -17,7 +17,7 @@ public class BaseTileScript : MonoBehaviour
     [SerializeField] protected float naturePercentage;      
     
     [Header("Checks if the tile is occupied")]
-    [SerializeField] protected bool occupied;
+    public bool occupied;
     
     // Start is called before the first frame update
     void Start()
