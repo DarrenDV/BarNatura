@@ -4,22 +4,44 @@ using UnityEngine;
 
 public class NatureTileScript : BaseTileScript
 {
-    float Timer;
+    private float timerOxygen, timerSpread;
+    public float production = 10;
 
     // Update is called once per frame
     void Update()
     {
         // This add's oxygen every second if the tile is 100% nature and is not polluted.
-        if (Timer >= 60 * Time.deltaTime) {
+        if (timerOxygen >= 60 * Time.deltaTime)
+        {
             if (!PolutionLevelCheck())
             {
                 if (NatureLevelCheck())
                 {
-                    oxygenProduction += 5;
+                    oxygenProduction += production / 2;
                 }
             }
-            Timer = 0;
+            timerOxygen = 0;
         }
-        Timer += 1 * Time.deltaTime;
+    }
+
+    void SpreadNature()
+    {
+        if (timerSpread >= 240 * Time.deltaTime)
+        {
+            for (int i = 0; i < neighborTiles.Count; i++)
+            {
+                if (!PolutionLevelCheck())
+                {
+                    naturePercentage += production;
+                }
+            }
+            timerSpread = 0;
+        }
+
+        //  worldTile.neighborTiles[i]
+
+        timerOxygen += 1 * Time.deltaTime;
+        timerSpread += 1 * Time.deltaTime;
     }
 }
+
