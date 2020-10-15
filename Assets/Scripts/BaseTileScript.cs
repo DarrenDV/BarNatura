@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BaseTileScript : MonoBehaviour
+public class BaseTileScript : Tile
 {
     [Header("Default tile production variables")]
     [SerializeField] protected float oxygenProduction; 

@@ -329,7 +329,7 @@ public class Hexsphere : MonoBehaviour {
 
         // Setup tile
         tileObj.GetComponent<MeshFilter>().sharedMesh = submesh;
-        Tile tile = tileObj.AddComponent<Tile>();
+        BaseTileScript tile = tileObj.AddComponent<BaseTileScript>();
         tile.isHexagon = verts.Count == 6;
         //tile.GetComponent<Renderer>().sharedMaterial = verts.Count == 6 ? hexMat : pentMat;
 
