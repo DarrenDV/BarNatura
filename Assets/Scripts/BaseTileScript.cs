@@ -18,7 +18,11 @@ public class BaseTileScript : Tile
 
     [Header("Checks if the tile is occupied")]
     public bool occupied;
-    public bool polluted; 
+    public bool polluted;
+
+    [Tooltip("The degree to which a tile is either polluted or nature")]
+    [Range(-10, 10)]
+    public int naturePollutedDegree = 0;
 
     public bool PolutionLevelCheck()
     {

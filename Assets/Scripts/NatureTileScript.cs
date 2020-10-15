@@ -22,23 +22,21 @@ public class NatureTileScript : BaseTileScript
             }
             timerOxygen = 0;
         }
-    }
 
-    void SpreadNature()
-    {
         if (timerSpread >= 240 * Time.deltaTime)
         {
             for (int i = 0; i < neighborTiles.Count; i++)
             {
-                if (!PolutionLevelCheck())
+                if (neighborTiles[i] is BaseTileScript baseTile)
                 {
-                    naturePercentage += production;
+                    if (baseTile.naturePollutedDegree > -7 && baseTile.naturePollutedDegree <= 10  && naturePollutedDegree == 10)
+                    {
+                        baseTile.naturePollutedDegree++;
+                    }
+                    timerSpread = 0;
                 }
             }
-            timerSpread = 0;
         }
-
-        //  worldTile.neighborTiles[i]
 
         timerOxygen += 1 * Time.deltaTime;
         timerSpread += 1 * Time.deltaTime;
