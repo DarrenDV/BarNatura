@@ -18,18 +18,7 @@ public class BaseTileScript : MonoBehaviour
 
     [Header("Checks if the tile is occupied")]
     public bool occupied;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
+    public bool polluted; 
 
     public bool PolutionLevelCheck()
     {
