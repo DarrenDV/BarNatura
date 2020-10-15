@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-
-    [HideInInspector]public GameObject objectToBuild;
+    [Header("Building")]
+    public GameObject previewObjectParent;
+    [HideInInspector] public GameObject buildObject;
+    [HideInInspector] public GameObject buildObjectPreview;
 
     // Start is called before the first frame update
     void Start()
@@ -20,10 +22,20 @@ public class GameManager : MonoBehaviour
     }
 
     #region Building 
+
+    public void ChangeBuildObject(GameObject newObject, GameObject previewObject)
+    {
+        buildObject = newObject;
+        Destroy(previewObjectParent.transform.GetChild(0).gameObject);
+        buildObjectPreview = previewObject;
+        Instantiate(buildObjectPreview.gameObject, transform.position, transform.rotation, previewObjectParent.transform);
+    }
         
     public void StopBuilding()
     {
-        objectToBuild = null;
+        buildObject = null;
+        previewObjectParent.transform.position = Vector3.zero;
+        previewObjectParent.transform.rotation = Quaternion.identity;
     }
 
     #endregion

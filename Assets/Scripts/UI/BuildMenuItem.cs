@@ -6,5 +6,6 @@ using UnityEngine;
 public class BuildMenuItem : ScriptableObject
 {
     public Sprite sprite;
-    public GameObject itemToBuild;
+    public BuildingScript buildItem;
+    public BuildingModeObject buildItemPreview;
 }

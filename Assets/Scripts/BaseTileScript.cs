@@ -16,7 +16,7 @@ public class BaseTileScript : Tile
     protected float maxNaturePercentage = 100f;
     [SerializeField] protected float naturePercentage;      
     
-    [HideInInspector]public bool occupied;
+    [HideInInspector]public bool isOccupied;
     private GameManager gameManager;
 
 
@@ -41,16 +41,27 @@ public class BaseTileScript : Tile
         }
     }
 
-    private void OnMouseOver()
+    private void OnMouseEnter()
     {
         if (gameManager == null) gameManager = FindObjectOfType<GameManager>();
-
-        if (gameManager.objectToBuild != null)
+        if (gameManager.buildObject != null)
         {
-            if (Input.GetMouseButtonDown(0) && !occupied)
+            //gameManager.buildObjectPreview.GetComponent<BuildingModeObject>().ChangeMaterial(isOccupied);
+            gameManager.previewObjectParent.transform.position = transform.position;
+            gameManager.previewObjectParent.transform.rotation = transform.rotation;
+        }
+    }
+
+    private void OnMouseOver()
+    {
+        if (gameManager.buildObject != null)
+        {
+            if (Input.GetMouseButtonDown(0) && !isOccupied)
             {
-                Instantiate(gameManager.objectToBuild.gameObject, transform.position, transform.rotation);
-                occupied = true;
+                //Place the new building
+                placeObject(Instantiate(gameManager.buildObject.gameObject, transform.position, transform.rotation));
+
+                isOccupied = true;
                 gameManager.StopBuilding();
             }
         }
