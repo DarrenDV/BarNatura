@@ -9,6 +9,7 @@ public class NatureTileScript : BaseTileScript
     // Update is called once per frame
     void Update()
     {
+        // This add's oxygen every second if the tile is 100% nature and is not polluted.
         if (Timer >= 60 * Time.deltaTime) {
             if (!PolutionLevelCheck())
             {
