@@ -13,5 +13,7 @@ MonoBehaviour:
   m_Name: OxygenGenirator
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300000, guid: ddf62127a57f7a54e81b823a4f4b9957, type: 3}
-  itemToBuild: {fileID: 5337331286338864886, guid: 491ec674f21d313448a94490682fd0cd,
+  buildItem: {fileID: 8276226287125413556, guid: 491ec674f21d313448a94490682fd0cd,
+    type: 3}
+  buildItemPreview: {fileID: 8416163245698247848, guid: d35baea08ad17684396c2b33c70e2888,
     type: 3}

@@ -46,6 +46,7 @@ public class BaseTileScript : Tile
         if (gameManager == null) gameManager = FindObjectOfType<GameManager>();
         if (gameManager.buildObject != null)
         {
+            //FIX: Change the colors of the material based whether or not this tile is occupied
             //gameManager.buildObjectPreview.GetComponent<BuildingModeObject>().ChangeMaterial(isOccupied);
             gameManager.previewObjectParent.transform.position = transform.position;
             gameManager.previewObjectParent.transform.rotation = transform.rotation;

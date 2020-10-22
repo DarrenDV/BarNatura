@@ -153,7 +153,8 @@ public class Tile : MonoBehaviour {
     {
 		obj.transform.position = FaceCenter;
 		obj.transform.up = transform.up;
-        obj.transform.SetParent(transform);
+		obj.transform.rotation = transform.rotation;
+		obj.transform.SetParent(transform);
         PlacedObjects.Add(obj);
 	}
 
