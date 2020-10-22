@@ -183,6 +183,8 @@ MonoBehaviour:
   pollutedPercentage: 0
   naturePercentage: 0
   isOccupied: 0
+  polluted: 0
+  naturePollutedDegree: 0
 --- !u!23 &3022832
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -320,6 +322,8 @@ MonoBehaviour:
   pollutedPercentage: 0
   naturePercentage: 0
   isOccupied: 0
+  polluted: 0
+  naturePollutedDegree: 0
 --- !u!23 &9286568
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -457,6 +461,8 @@ MonoBehaviour:
   pollutedPercentage: 0
   naturePercentage: 0
   isOccupied: 0
+  polluted: 0
+  naturePollutedDegree: 0
 --- !u!23 &17856356
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -594,6 +600,8 @@ MonoBehaviour:
   pollutedPercentage: 0
   naturePercentage: 0
   isOccupied: 0
+  polluted: 0
+  naturePollutedDegree: 0
 --- !u!23 &34589358
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1057,6 +1065,8 @@ MonoBehaviour:
   pollutedPercentage: 0
   naturePercentage: 0
   isOccupied: 0
+  polluted: 0
+  naturePollutedDegree: 0
 --- !u!23 &43701558
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1357,6 +1367,8 @@ MonoBehaviour:
   pollutedPercentage: 0
   naturePercentage: 0
   isOccupied: 0
+  polluted: 0
+  naturePollutedDegree: 0
 --- !u!23 &61843175
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1493,6 +1505,8 @@ MonoBehaviour:
   pollutedPercentage: 0
   naturePercentage: 0
   isOccupied: 0
+  polluted: 0
+  naturePollutedDegree: 0
 --- !u!23 &68969948
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1630,6 +1644,8 @@ MonoBehaviour:
   pollutedPercentage: 0
   naturePercentage: 0
   isOccupied: 0
+  polluted: 0
+  naturePollutedDegree: 0
 --- !u!23 &70973305
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1767,6 +1783,8 @@ MonoBehaviour:
   pollutedPercentage: 0
   naturePercentage: 0
   isOccupied: 0
+  polluted: 0
+  naturePollutedDegree: 0
 --- !u!23 &72854369
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1904,6 +1922,8 @@ MonoBehaviour:
   pollutedPercentage: 0
   naturePercentage: 0
   isOccupied: 0
+  polluted: 0
+  naturePollutedDegree: 0
 --- !u!23 &79086567
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2041,6 +2061,8 @@ MonoBehaviour:
   pollutedPercentage: 0
   naturePercentage: 0
   isOccupied: 0
+  polluted: 0
+  naturePollutedDegree: 0
 --- !u!23 &88235781
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2341,6 +2363,8 @@ MonoBehaviour:
   pollutedPercentage: 0
   naturePercentage: 0
   isOccupied: 0
+  polluted: 0
+  naturePollutedDegree: 0
 --- !u!23 &90274159
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2478,6 +2502,8 @@ MonoBehaviour:
   pollutedPercentage: 0
   naturePercentage: 0
   isOccupied: 0
+  polluted: 0
+  naturePollutedDegree: 0
 --- !u!23 &98972264
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2777,6 +2803,8 @@ MonoBehaviour:
   pollutedPercentage: 0
   naturePercentage: 0
   isOccupied: 0
+  polluted: 0
+  naturePollutedDegree: 0
 --- !u!23 &124143685
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2914,6 +2942,8 @@ MonoBehaviour:
   pollutedPercentage: 0
   naturePercentage: 0
   isOccupied: 0
+  polluted: 0
+  naturePollutedDegree: 0
 --- !u!23 &125207511
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -3377,6 +3407,8 @@ MonoBehaviour:
   pollutedPercentage: 0
   naturePercentage: 0
   isOccupied: 0
+  polluted: 0
+  naturePollutedDegree: 0
 --- !u!23 &141600248
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -3514,6 +3546,8 @@ MonoBehaviour:
   pollutedPercentage: 0
   naturePercentage: 0
   isOccupied: 0
+  polluted: 0
+  naturePollutedDegree: 0
 --- !u!23 &145889707
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -3651,6 +3685,8 @@ MonoBehaviour:
   pollutedPercentage: 0
   naturePercentage: 0
   isOccupied: 0
+  polluted: 0
+  naturePollutedDegree: 0
 --- !u!23 &178148266
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -3951,6 +3987,8 @@ MonoBehaviour:
   pollutedPercentage: 0
   naturePercentage: 0
   isOccupied: 0
+  polluted: 0
+  naturePollutedDegree: 0
 --- !u!23 &188716216
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -4414,6 +4452,8 @@ MonoBehaviour:
   pollutedPercentage: 0
   naturePercentage: 0
   isOccupied: 0
+  polluted: 0
+  naturePollutedDegree: 0
 --- !u!23 &198092752
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -4877,6 +4917,8 @@ MonoBehaviour:
   pollutedPercentage: 0
   naturePercentage: 0
   isOccupied: 0
+  polluted: 0
+  naturePollutedDegree: 0
 --- !u!23 &209362016
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -5177,6 +5219,8 @@ MonoBehaviour:
   pollutedPercentage: 0
   naturePercentage: 0
   isOccupied: 0
+  polluted: 0
+  naturePollutedDegree: 0
 --- !u!23 &229784233
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -5477,6 +5521,8 @@ MonoBehaviour:
   pollutedPercentage: 0
   naturePercentage: 0
   isOccupied: 0
+  polluted: 0
+  naturePollutedDegree: 0
 --- !u!23 &236413199
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -6103,6 +6149,8 @@ MonoBehaviour:
   pollutedPercentage: 0
   naturePercentage: 0
   isOccupied: 0
+  polluted: 0
+  naturePollutedDegree: 0
 --- !u!23 &248893286
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -7218,6 +7266,8 @@ MonoBehaviour:
   pollutedPercentage: 0
   naturePercentage: 0
   isOccupied: 0
+  polluted: 0
+  naturePollutedDegree: 0
 --- !u!23 &305024854
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -7518,6 +7568,8 @@ MonoBehaviour:
   pollutedPercentage: 0
   naturePercentage: 0
   isOccupied: 0
+  polluted: 0
+  naturePollutedDegree: 0
 --- !u!23 &308280119
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -7818,6 +7870,8 @@ MonoBehaviour:
   pollutedPercentage: 0
   naturePercentage: 0
   isOccupied: 0
+  polluted: 0
+  naturePollutedDegree: 0
 --- !u!23 &312769517
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -8444,6 +8498,8 @@ MonoBehaviour:
   pollutedPercentage: 0
   naturePercentage: 0
   isOccupied: 0
+  polluted: 0
+  naturePollutedDegree: 0
 --- !u!23 &339495596
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -8907,6 +8963,8 @@ MonoBehaviour:
   pollutedPercentage: 0
   naturePercentage: 0
   isOccupied: 0
+  polluted: 0
+  naturePollutedDegree: 0
 --- !u!23 &358437265
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -9044,6 +9102,8 @@ MonoBehaviour:
   pollutedPercentage: 0
   naturePercentage: 0
   isOccupied: 0
+  polluted: 0
+  naturePollutedDegree: 0
 --- !u!23 &369663313
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -9181,6 +9241,8 @@ MonoBehaviour:
   pollutedPercentage: 0
   naturePercentage: 0
   isOccupied: 0
+  polluted: 0
+  naturePollutedDegree: 0
 --- !u!23 &371459583
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -9481,6 +9543,8 @@ MonoBehaviour:
   pollutedPercentage: 0
   naturePercentage: 0
   isOccupied: 0
+  polluted: 0
+  naturePollutedDegree: 0
 --- !u!23 &374773665
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -9618,6 +9682,8 @@ MonoBehaviour:
   pollutedPercentage: 0
   naturePercentage: 0
   isOccupied: 0
+  polluted: 0
+  naturePollutedDegree: 0
 --- !u!23 &384679404
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -9755,6 +9821,8 @@ MonoBehaviour:
   pollutedPercentage: 0
   naturePercentage: 0
   isOccupied: 0
+  polluted: 0
+  naturePollutedDegree: 0
 --- !u!23 &394202437
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -9892,6 +9960,8 @@ MonoBehaviour:
   pollutedPercentage: 0
   naturePercentage: 0
   isOccupied: 0
+  polluted: 0
+  naturePollutedDegree: 0
 --- !u!23 &407066751
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -10355,6 +10425,8 @@ MonoBehaviour:
   pollutedPercentage: 0
   naturePercentage: 0
   isOccupied: 0
+  polluted: 0
+  naturePollutedDegree: 0
 --- !u!23 &433170333
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -10655,6 +10727,8 @@ MonoBehaviour:
   pollutedPercentage: 0
   naturePercentage: 0
   isOccupied: 0
+  polluted: 0
+  naturePollutedDegree: 0
 --- !u!23 &444799962
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -10792,6 +10866,8 @@ MonoBehaviour:
   pollutedPercentage: 0
   naturePercentage: 0
   isOccupied: 0
+  polluted: 0
+  naturePollutedDegree: 0
 --- !u!23 &452627379
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -10929,6 +11005,8 @@ MonoBehaviour:
   pollutedPercentage: 0
   naturePercentage: 0
   isOccupied: 0
+  polluted: 0
+  naturePollutedDegree: 0
 --- !u!23 &462344980
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -11229,6 +11307,8 @@ MonoBehaviour:
   pollutedPercentage: 0
   naturePercentage: 0
   isOccupied: 0
+  polluted: 0
+  naturePollutedDegree: 0
 --- !u!23 &467234757
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -12018,6 +12098,8 @@ MonoBehaviour:
   pollutedPercentage: 0
   naturePercentage: 0
   isOccupied: 0
+  polluted: 0
+  naturePollutedDegree: 0
 --- !u!23 &506363406
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -12318,6 +12400,8 @@ MonoBehaviour:
   pollutedPercentage: 0
   naturePercentage: 0
   isOccupied: 0
+  polluted: 0
+  naturePollutedDegree: 0
 --- !u!23 &522654229
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -12455,6 +12539,8 @@ MonoBehaviour:
   pollutedPercentage: 0
   naturePercentage: 0
   isOccupied: 0
+  polluted: 0
+  naturePollutedDegree: 0
 --- !u!23 &528893582
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -12917,6 +13003,8 @@ MonoBehaviour:
   pollutedPercentage: 0
   naturePercentage: 0
   isOccupied: 0
+  polluted: 0
+  naturePollutedDegree: 0
 --- !u!23 &557660426
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -13706,6 +13794,8 @@ MonoBehaviour:
   pollutedPercentage: 0
   naturePercentage: 0
   isOccupied: 0
+  polluted: 0
+  naturePollutedDegree: 0
 --- !u!23 &591536679
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -13843,6 +13933,8 @@ MonoBehaviour:
   pollutedPercentage: 0
   naturePercentage: 0
   isOccupied: 0
+  polluted: 0
+  naturePollutedDegree: 0
 --- !u!23 &592553949
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -14143,6 +14235,8 @@ MonoBehaviour:
   pollutedPercentage: 0
   naturePercentage: 0
   isOccupied: 0
+  polluted: 0
+  naturePollutedDegree: 0
 --- !u!23 &596409893
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -14443,6 +14537,8 @@ MonoBehaviour:
   pollutedPercentage: 0
   naturePercentage: 0
   isOccupied: 0
+  polluted: 0
+  naturePollutedDegree: 0
 --- !u!23 &600339854
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -14580,6 +14676,8 @@ MonoBehaviour:
   pollutedPercentage: 0
   naturePercentage: 0
   isOccupied: 0
+  polluted: 0
+  naturePollutedDegree: 0
 --- !u!23 &611894032
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -14717,6 +14815,8 @@ MonoBehaviour:
   pollutedPercentage: 0
   naturePercentage: 0
   isOccupied: 0
+  polluted: 0
+  naturePollutedDegree: 0
 --- !u!23 &622124753
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -15669,6 +15769,8 @@ MonoBehaviour:
   pollutedPercentage: 0
   naturePercentage: 0
   isOccupied: 0
+  polluted: 0
+  naturePollutedDegree: 0
 --- !u!23 &702595823
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -15806,6 +15908,8 @@ MonoBehaviour:
   pollutedPercentage: 0
   naturePercentage: 0
   isOccupied: 0
+  polluted: 0
+  naturePollutedDegree: 0
 --- !u!23 &705500777
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -15943,6 +16047,8 @@ MonoBehaviour:
   pollutedPercentage: 0
   naturePercentage: 0
   isOccupied: 0
+  polluted: 0
+  naturePollutedDegree: 0
 --- !u!23 &707728463
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -16080,6 +16186,8 @@ MonoBehaviour:
   pollutedPercentage: 0
   naturePercentage: 0
   isOccupied: 0
+  polluted: 0
+  naturePollutedDegree: 0
 --- !u!23 &711674176
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -16216,6 +16324,8 @@ MonoBehaviour:
   pollutedPercentage: 0
   naturePercentage: 0
   isOccupied: 0
+  polluted: 0
+  naturePollutedDegree: 0
 --- !u!23 &718448279
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -16352,6 +16462,8 @@ MonoBehaviour:
   pollutedPercentage: 0
   naturePercentage: 0
   isOccupied: 0
+  polluted: 0
+  naturePollutedDegree: 0
 --- !u!23 &720082089
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -16815,6 +16927,8 @@ MonoBehaviour:
   pollutedPercentage: 0
   naturePercentage: 0
   isOccupied: 0
+  polluted: 0
+  naturePollutedDegree: 0
 --- !u!23 &723657997
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -17278,6 +17392,8 @@ MonoBehaviour:
   pollutedPercentage: 0
   naturePercentage: 0
   isOccupied: 0
+  polluted: 0
+  naturePollutedDegree: 0
 --- !u!23 &750731609
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -17741,6 +17857,8 @@ MonoBehaviour:
   pollutedPercentage: 0
   naturePercentage: 0
   isOccupied: 0
+  polluted: 0
+  naturePollutedDegree: 0
 --- !u!23 &760689111
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -18530,6 +18648,8 @@ MonoBehaviour:
   pollutedPercentage: 0
   naturePercentage: 0
   isOccupied: 0
+  polluted: 0
+  naturePollutedDegree: 0
 --- !u!23 &784448493
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -18667,6 +18787,8 @@ MonoBehaviour:
   pollutedPercentage: 0
   naturePercentage: 0
   isOccupied: 0
+  polluted: 0
+  naturePollutedDegree: 0
 --- !u!23 &784685431
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -19023,6 +19145,8 @@ MonoBehaviour:
   pollutedPercentage: 0
   naturePercentage: 0
   isOccupied: 0
+  polluted: 0
+  naturePollutedDegree: 0
 --- !u!23 &808368833
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -19160,6 +19284,8 @@ MonoBehaviour:
   pollutedPercentage: 0
   naturePercentage: 0
   isOccupied: 0
+  polluted: 0
+  naturePollutedDegree: 0
 --- !u!23 &809292160
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -19296,6 +19422,8 @@ MonoBehaviour:
   pollutedPercentage: 0
   naturePercentage: 0
   isOccupied: 0
+  polluted: 0
+  naturePollutedDegree: 0
 --- !u!23 &834631279
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -19596,6 +19724,8 @@ MonoBehaviour:
   pollutedPercentage: 0
   naturePercentage: 0
   isOccupied: 0
+  polluted: 0
+  naturePollutedDegree: 0
 --- !u!23 &847657633
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -19896,6 +20026,8 @@ MonoBehaviour:
   pollutedPercentage: 0
   naturePercentage: 0
   isOccupied: 0
+  polluted: 0
+  naturePollutedDegree: 0
 --- !u!23 &867112901
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -20033,6 +20165,8 @@ MonoBehaviour:
   pollutedPercentage: 0
   naturePercentage: 0
   isOccupied: 0
+  polluted: 0
+  naturePollutedDegree: 0
 --- !u!23 &867577175
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -20170,6 +20304,8 @@ MonoBehaviour:
   pollutedPercentage: 0
   naturePercentage: 0
   isOccupied: 0
+  polluted: 0
+  naturePollutedDegree: 0
 --- !u!23 &878443058
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -20470,6 +20606,8 @@ MonoBehaviour:
   pollutedPercentage: 0
   naturePercentage: 0
   isOccupied: 0
+  polluted: 0
+  naturePollutedDegree: 0
 --- !u!23 &895190617
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -20607,6 +20745,8 @@ MonoBehaviour:
   pollutedPercentage: 0
   naturePercentage: 0
   isOccupied: 0
+  polluted: 0
+  naturePollutedDegree: 0
 --- !u!23 &896118833
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -20931,11 +21071,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 984612173946196058, guid: 0c561852c7c0b1e4f98a0dba1fdbe9e4,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 27.599976
       objectReference: {fileID: 0}
     - target: {fileID: 1172443876503194852, guid: 0c561852c7c0b1e4f98a0dba1fdbe9e4,
         type: 3}
@@ -21295,6 +21430,8 @@ MonoBehaviour:
   pollutedPercentage: 0
   naturePercentage: 0
   isOccupied: 0
+  polluted: 0
+  naturePollutedDegree: 0
 --- !u!23 &936499434
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -21758,6 +21895,8 @@ MonoBehaviour:
   pollutedPercentage: 0
   naturePercentage: 0
   isOccupied: 0
+  polluted: 0
+  naturePollutedDegree: 0
 --- !u!23 &955515374
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -21895,6 +22034,8 @@ MonoBehaviour:
   pollutedPercentage: 0
   naturePercentage: 0
   isOccupied: 0
+  polluted: 0
+  naturePollutedDegree: 0
 --- !u!23 &964034746
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -22195,6 +22336,8 @@ MonoBehaviour:
   pollutedPercentage: 0
   naturePercentage: 0
   isOccupied: 0
+  polluted: 0
+  naturePollutedDegree: 0
 --- !u!23 &974789689
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -22821,6 +22964,8 @@ MonoBehaviour:
   pollutedPercentage: 0
   naturePercentage: 0
   isOccupied: 0
+  polluted: 0
+  naturePollutedDegree: 0
 --- !u!23 &988716834
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -23121,6 +23266,8 @@ MonoBehaviour:
   pollutedPercentage: 0
   naturePercentage: 0
   isOccupied: 0
+  polluted: 0
+  naturePollutedDegree: 0
 --- !u!23 &1006343524
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -23258,6 +23405,8 @@ MonoBehaviour:
   pollutedPercentage: 0
   naturePercentage: 0
   isOccupied: 0
+  polluted: 0
+  naturePollutedDegree: 0
 --- !u!23 &1017217332
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -23395,6 +23544,8 @@ MonoBehaviour:
   pollutedPercentage: 0
   naturePercentage: 0
   isOccupied: 0
+  polluted: 0
+  naturePollutedDegree: 0
 --- !u!23 &1018543792
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -23532,6 +23683,8 @@ MonoBehaviour:
   pollutedPercentage: 0
   naturePercentage: 0
   isOccupied: 0
+  polluted: 0
+  naturePollutedDegree: 0
 --- !u!23 &1023321369
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -23669,6 +23822,8 @@ MonoBehaviour:
   pollutedPercentage: 0
   naturePercentage: 0
   isOccupied: 0
+  polluted: 0
+  naturePollutedDegree: 0
 --- !u!23 &1035230858
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -25051,6 +25206,8 @@ MonoBehaviour:
   pollutedPercentage: 0
   naturePercentage: 0
   isOccupied: 0
+  polluted: 0
+  naturePollutedDegree: 0
 --- !u!23 &1085518608
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -25351,6 +25508,8 @@ MonoBehaviour:
   pollutedPercentage: 0
   naturePercentage: 0
   isOccupied: 0
+  polluted: 0
+  naturePollutedDegree: 0
 --- !u!23 &1089021793
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -25488,6 +25647,8 @@ MonoBehaviour:
   pollutedPercentage: 0
   naturePercentage: 0
   isOccupied: 0
+  polluted: 0
+  naturePollutedDegree: 0
 --- !u!23 &1107707483
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -25625,6 +25786,8 @@ MonoBehaviour:
   pollutedPercentage: 0
   naturePercentage: 0
   isOccupied: 0
+  polluted: 0
+  naturePollutedDegree: 0
 --- !u!23 &1112958039
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -25762,6 +25925,8 @@ MonoBehaviour:
   pollutedPercentage: 0
   naturePercentage: 0
   isOccupied: 0
+  polluted: 0
+  naturePollutedDegree: 0
 --- !u!23 &1121303506
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -25899,6 +26064,8 @@ MonoBehaviour:
   pollutedPercentage: 0
   naturePercentage: 0
   isOccupied: 0
+  polluted: 0
+  naturePollutedDegree: 0
 --- !u!23 &1170806043
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -26199,6 +26366,8 @@ MonoBehaviour:
   pollutedPercentage: 0
   naturePercentage: 0
   isOccupied: 0
+  polluted: 0
+  naturePollutedDegree: 0
 --- !u!23 &1202482980
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -26499,6 +26668,8 @@ MonoBehaviour:
   pollutedPercentage: 0
   naturePercentage: 0
   isOccupied: 0
+  polluted: 0
+  naturePollutedDegree: 0
 --- !u!23 &1207887492
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -26636,6 +26807,8 @@ MonoBehaviour:
   pollutedPercentage: 0
   naturePercentage: 0
   isOccupied: 0
+  polluted: 0
+  naturePollutedDegree: 0
 --- !u!23 &1208325949
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -27099,6 +27272,8 @@ MonoBehaviour:
   pollutedPercentage: 0
   naturePercentage: 0
   isOccupied: 0
+  polluted: 0
+  naturePollutedDegree: 0
 --- !u!23 &1227774427
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -27399,6 +27574,8 @@ MonoBehaviour:
   pollutedPercentage: 0
   naturePercentage: 0
   isOccupied: 0
+  polluted: 0
+  naturePollutedDegree: 0
 --- !u!23 &1239630789
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -27699,6 +27876,8 @@ MonoBehaviour:
   pollutedPercentage: 0
   naturePercentage: 0
   isOccupied: 0
+  polluted: 0
+  naturePollutedDegree: 0
 --- !u!23 &1253916293
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -27835,6 +28014,8 @@ MonoBehaviour:
   pollutedPercentage: 0
   naturePercentage: 0
   isOccupied: 0
+  polluted: 0
+  naturePollutedDegree: 0
 --- !u!23 &1269575850
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -27972,6 +28153,8 @@ MonoBehaviour:
   pollutedPercentage: 0
   naturePercentage: 0
   isOccupied: 0
+  polluted: 0
+  naturePollutedDegree: 0
 --- !u!23 &1271875604
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -28109,6 +28292,8 @@ MonoBehaviour:
   pollutedPercentage: 0
   naturePercentage: 0
   isOccupied: 0
+  polluted: 0
+  naturePollutedDegree: 0
 --- !u!23 &1272425976
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -28246,6 +28431,8 @@ MonoBehaviour:
   pollutedPercentage: 0
   naturePercentage: 0
   isOccupied: 0
+  polluted: 0
+  naturePollutedDegree: 0
 --- !u!23 &1288539078
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -28383,6 +28570,8 @@ MonoBehaviour:
   pollutedPercentage: 0
   naturePercentage: 0
   isOccupied: 0
+  polluted: 0
+  naturePollutedDegree: 0
 --- !u!23 &1311842644
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -28586,6 +28775,8 @@ MonoBehaviour:
   pollutedPercentage: 0
   naturePercentage: 0
   isOccupied: 0
+  polluted: 0
+  naturePollutedDegree: 0
 --- !u!23 &1326619653
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -28886,6 +29077,8 @@ MonoBehaviour:
   pollutedPercentage: 0
   naturePercentage: 0
   isOccupied: 0
+  polluted: 0
+  naturePollutedDegree: 0
 --- !u!23 &1332424783
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -29023,6 +29216,8 @@ MonoBehaviour:
   pollutedPercentage: 0
   naturePercentage: 0
   isOccupied: 0
+  polluted: 0
+  naturePollutedDegree: 0
 --- !u!23 &1333190069
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -29160,6 +29355,8 @@ MonoBehaviour:
   pollutedPercentage: 0
   naturePercentage: 0
   isOccupied: 0
+  polluted: 0
+  naturePollutedDegree: 0
 --- !u!23 &1345632576
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -29460,6 +29657,8 @@ MonoBehaviour:
   pollutedPercentage: 0
   naturePercentage: 0
   isOccupied: 0
+  polluted: 0
+  naturePollutedDegree: 0
 --- !u!23 &1357391321
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -29597,6 +29796,8 @@ MonoBehaviour:
   pollutedPercentage: 0
   naturePercentage: 0
   isOccupied: 0
+  polluted: 0
+  naturePollutedDegree: 0
 --- !u!23 &1361995029
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -29734,6 +29935,8 @@ MonoBehaviour:
   pollutedPercentage: 0
   naturePercentage: 0
   isOccupied: 0
+  polluted: 0
+  naturePollutedDegree: 0
 --- !u!23 &1366090022
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -30360,6 +30563,8 @@ MonoBehaviour:
   pollutedPercentage: 0
   naturePercentage: 0
   isOccupied: 0
+  polluted: 0
+  naturePollutedDegree: 0
 --- !u!23 &1396496932
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -30823,6 +31028,8 @@ MonoBehaviour:
   pollutedPercentage: 0
   naturePercentage: 0
   isOccupied: 0
+  polluted: 0
+  naturePollutedDegree: 0
 --- !u!23 &1406891771
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -31286,6 +31493,8 @@ MonoBehaviour:
   pollutedPercentage: 0
   naturePercentage: 0
   isOccupied: 0
+  polluted: 0
+  naturePollutedDegree: 0
 --- !u!23 &1417173915
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -31586,6 +31795,8 @@ MonoBehaviour:
   pollutedPercentage: 0
   naturePercentage: 0
   isOccupied: 0
+  polluted: 0
+  naturePollutedDegree: 0
 --- !u!23 &1428272310
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -31723,6 +31934,8 @@ MonoBehaviour:
   pollutedPercentage: 0
   naturePercentage: 0
   isOccupied: 0
+  polluted: 0
+  naturePollutedDegree: 0
 --- !u!23 &1431760634
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -32023,6 +32236,8 @@ MonoBehaviour:
   pollutedPercentage: 0
   naturePercentage: 0
   isOccupied: 0
+  polluted: 0
+  naturePollutedDegree: 0
 --- !u!23 &1435555363
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -32160,6 +32375,8 @@ MonoBehaviour:
   pollutedPercentage: 0
   naturePercentage: 0
   isOccupied: 0
+  polluted: 0
+  naturePollutedDegree: 0
 --- !u!23 &1449010560
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -32623,6 +32840,8 @@ MonoBehaviour:
   pollutedPercentage: 0
   naturePercentage: 0
   isOccupied: 0
+  polluted: 0
+  naturePollutedDegree: 0
 --- !u!23 &1455556970
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -32760,6 +32979,8 @@ MonoBehaviour:
   pollutedPercentage: 0
   naturePercentage: 0
   isOccupied: 0
+  polluted: 0
+  naturePollutedDegree: 0
 --- !u!23 &1465655904
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -32897,6 +33118,8 @@ MonoBehaviour:
   pollutedPercentage: 0
   naturePercentage: 0
   isOccupied: 0
+  polluted: 0
+  naturePollutedDegree: 0
 --- !u!23 &1471698944
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -33360,6 +33583,8 @@ MonoBehaviour:
   pollutedPercentage: 0
   naturePercentage: 0
   isOccupied: 0
+  polluted: 0
+  naturePollutedDegree: 0
 --- !u!23 &1491576783
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -34312,6 +34537,8 @@ MonoBehaviour:
   pollutedPercentage: 0
   naturePercentage: 0
   isOccupied: 0
+  polluted: 0
+  naturePollutedDegree: 0
 --- !u!23 &1536766651
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -34612,6 +34839,8 @@ MonoBehaviour:
   pollutedPercentage: 0
   naturePercentage: 0
   isOccupied: 0
+  polluted: 0
+  naturePollutedDegree: 0
 --- !u!23 &1542092675
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -34912,6 +35141,8 @@ MonoBehaviour:
   pollutedPercentage: 0
   naturePercentage: 0
   isOccupied: 0
+  polluted: 0
+  naturePollutedDegree: 0
 --- !u!23 &1548120046
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -35049,6 +35280,8 @@ MonoBehaviour:
   pollutedPercentage: 0
   naturePercentage: 0
   isOccupied: 0
+  polluted: 0
+  naturePollutedDegree: 0
 --- !u!23 &1566361152
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -35349,6 +35582,8 @@ MonoBehaviour:
   pollutedPercentage: 0
   naturePercentage: 0
   isOccupied: 0
+  polluted: 0
+  naturePollutedDegree: 0
 --- !u!23 &1574700423
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -35486,6 +35721,8 @@ MonoBehaviour:
   pollutedPercentage: 0
   naturePercentage: 0
   isOccupied: 0
+  polluted: 0
+  naturePollutedDegree: 0
 --- !u!23 &1584217494
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -35623,6 +35860,8 @@ MonoBehaviour:
   pollutedPercentage: 0
   naturePercentage: 0
   isOccupied: 0
+  polluted: 0
+  naturePollutedDegree: 0
 --- !u!23 &1585727538
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -35760,6 +35999,8 @@ MonoBehaviour:
   pollutedPercentage: 0
   naturePercentage: 0
   isOccupied: 0
+  polluted: 0
+  naturePollutedDegree: 0
 --- !u!23 &1590150808
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -35897,6 +36138,8 @@ MonoBehaviour:
   pollutedPercentage: 0
   naturePercentage: 0
   isOccupied: 0
+  polluted: 0
+  naturePollutedDegree: 0
 --- !u!23 &1599378306
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -37850,6 +38093,8 @@ MonoBehaviour:
   pollutedPercentage: 0
   naturePercentage: 0
   isOccupied: 0
+  polluted: 0
+  naturePollutedDegree: 0
 --- !u!23 &1726305074
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -38476,6 +38721,8 @@ MonoBehaviour:
   pollutedPercentage: 0
   naturePercentage: 0
   isOccupied: 0
+  polluted: 0
+  naturePollutedDegree: 0
 --- !u!23 &1759715499
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -38613,6 +38860,8 @@ MonoBehaviour:
   pollutedPercentage: 0
   naturePercentage: 0
   isOccupied: 0
+  polluted: 0
+  naturePollutedDegree: 0
 --- !u!23 &1777411089
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -38750,6 +38999,8 @@ MonoBehaviour:
   pollutedPercentage: 0
   naturePercentage: 0
   isOccupied: 0
+  polluted: 0
+  naturePollutedDegree: 0
 --- !u!23 &1779263019
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -39049,6 +39300,8 @@ MonoBehaviour:
   pollutedPercentage: 0
   naturePercentage: 0
   isOccupied: 0
+  polluted: 0
+  naturePollutedDegree: 0
 --- !u!23 &1781668078
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -39349,6 +39602,8 @@ MonoBehaviour:
   pollutedPercentage: 0
   naturePercentage: 0
   isOccupied: 0
+  polluted: 0
+  naturePollutedDegree: 0
 --- !u!23 &1795688903
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -39486,6 +39741,8 @@ MonoBehaviour:
   pollutedPercentage: 0
   naturePercentage: 0
   isOccupied: 0
+  polluted: 0
+  naturePollutedDegree: 0
 --- !u!23 &1803837631
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -39623,6 +39880,8 @@ MonoBehaviour:
   pollutedPercentage: 0
   naturePercentage: 0
   isOccupied: 0
+  polluted: 0
+  naturePollutedDegree: 0
 --- !u!23 &1803894660
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -39760,6 +40019,8 @@ MonoBehaviour:
   pollutedPercentage: 0
   naturePercentage: 0
   isOccupied: 0
+  polluted: 0
+  naturePollutedDegree: 0
 --- !u!23 &1804608899
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -40386,6 +40647,8 @@ MonoBehaviour:
   pollutedPercentage: 0
   naturePercentage: 0
   isOccupied: 0
+  polluted: 0
+  naturePollutedDegree: 0
 --- !u!23 &1827938869
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -40686,6 +40949,8 @@ MonoBehaviour:
   pollutedPercentage: 0
   naturePercentage: 0
   isOccupied: 0
+  polluted: 0
+  naturePollutedDegree: 0
 --- !u!23 &1830925930
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -41149,6 +41414,8 @@ MonoBehaviour:
   pollutedPercentage: 0
   naturePercentage: 0
   isOccupied: 0
+  polluted: 0
+  naturePollutedDegree: 0
 --- !u!23 &1843158213
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -41286,6 +41553,8 @@ MonoBehaviour:
   pollutedPercentage: 0
   naturePercentage: 0
   isOccupied: 0
+  polluted: 0
+  naturePollutedDegree: 0
 --- !u!23 &1852728599
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -41586,6 +41855,8 @@ MonoBehaviour:
   pollutedPercentage: 0
   naturePercentage: 0
   isOccupied: 0
+  polluted: 0
+  naturePollutedDegree: 0
 --- !u!23 &1859631041
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -41723,6 +41994,8 @@ MonoBehaviour:
   pollutedPercentage: 0
   naturePercentage: 0
   isOccupied: 0
+  polluted: 0
+  naturePollutedDegree: 0
 --- !u!23 &1865922521
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -41860,6 +42133,8 @@ MonoBehaviour:
   pollutedPercentage: 0
   naturePercentage: 0
   isOccupied: 0
+  polluted: 0
+  naturePollutedDegree: 0
 --- !u!23 &1868720225
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -42160,6 +42435,8 @@ MonoBehaviour:
   pollutedPercentage: 0
   naturePercentage: 0
   isOccupied: 0
+  polluted: 0
+  naturePollutedDegree: 0
 --- !u!23 &1874119804
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -42297,6 +42574,8 @@ MonoBehaviour:
   pollutedPercentage: 0
   naturePercentage: 0
   isOccupied: 0
+  polluted: 0
+  naturePollutedDegree: 0
 --- !u!23 &1879910145
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -42597,6 +42876,8 @@ MonoBehaviour:
   pollutedPercentage: 0
   naturePercentage: 0
   isOccupied: 0
+  polluted: 0
+  naturePollutedDegree: 0
 --- !u!23 &1897218097
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -42897,6 +43178,8 @@ MonoBehaviour:
   pollutedPercentage: 0
   naturePercentage: 0
   isOccupied: 0
+  polluted: 0
+  naturePollutedDegree: 0
 --- !u!23 &1900203927
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -43034,6 +43317,8 @@ MonoBehaviour:
   pollutedPercentage: 0
   naturePercentage: 0
   isOccupied: 0
+  polluted: 0
+  naturePollutedDegree: 0
 --- !u!23 &1904573144
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -43497,6 +43782,8 @@ MonoBehaviour:
   pollutedPercentage: 0
   naturePercentage: 0
   isOccupied: 0
+  polluted: 0
+  naturePollutedDegree: 0
 --- !u!23 &1923476844
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -44059,6 +44346,8 @@ MonoBehaviour:
   pollutedPercentage: 0
   naturePercentage: 0
   isOccupied: 0
+  polluted: 0
+  naturePollutedDegree: 0
 --- !u!23 &1953216976
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -44196,6 +44485,8 @@ MonoBehaviour:
   pollutedPercentage: 0
   naturePercentage: 0
   isOccupied: 0
+  polluted: 0
+  naturePollutedDegree: 0
 --- !u!23 &1959340881
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -44822,6 +45113,8 @@ MonoBehaviour:
   pollutedPercentage: 0
   naturePercentage: 0
   isOccupied: 0
+  polluted: 0
+  naturePollutedDegree: 0
 --- !u!23 &1990582576
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -44959,6 +45252,8 @@ MonoBehaviour:
   pollutedPercentage: 0
   naturePercentage: 0
   isOccupied: 0
+  polluted: 0
+  naturePollutedDegree: 0
 --- !u!23 &1992862790
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -45259,6 +45554,8 @@ MonoBehaviour:
   pollutedPercentage: 0
   naturePercentage: 0
   isOccupied: 0
+  polluted: 0
+  naturePollutedDegree: 0
 --- !u!23 &2000040169
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -46048,6 +46345,8 @@ MonoBehaviour:
   pollutedPercentage: 0
   naturePercentage: 0
   isOccupied: 0
+  polluted: 0
+  naturePollutedDegree: 0
 --- !u!23 &2016048836
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -46185,6 +46484,8 @@ MonoBehaviour:
   pollutedPercentage: 0
   naturePercentage: 0
   isOccupied: 0
+  polluted: 0
+  naturePollutedDegree: 0
 --- !u!23 &2018444120
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -46485,6 +46786,8 @@ MonoBehaviour:
   pollutedPercentage: 0
   naturePercentage: 0
   isOccupied: 0
+  polluted: 0
+  naturePollutedDegree: 0
 --- !u!23 &2033830523
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -46622,6 +46925,8 @@ MonoBehaviour:
   pollutedPercentage: 0
   naturePercentage: 0
   isOccupied: 0
+  polluted: 0
+  naturePollutedDegree: 0
 --- !u!23 &2034850372
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -46851,6 +47156,8 @@ MonoBehaviour:
   pollutedPercentage: 0
   naturePercentage: 0
   isOccupied: 0
+  polluted: 0
+  naturePollutedDegree: 0
 --- !u!23 &2042263984
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -47150,6 +47457,8 @@ MonoBehaviour:
   pollutedPercentage: 0
   naturePercentage: 0
   isOccupied: 0
+  polluted: 0
+  naturePollutedDegree: 0
 --- !u!23 &2051969725
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -47613,6 +47922,8 @@ MonoBehaviour:
   pollutedPercentage: 0
   naturePercentage: 0
   isOccupied: 0
+  polluted: 0
+  naturePollutedDegree: 0
 --- !u!23 &2077384974
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -48402,6 +48713,8 @@ MonoBehaviour:
   pollutedPercentage: 0
   naturePercentage: 0
   isOccupied: 0
+  polluted: 0
+  naturePollutedDegree: 0
 --- !u!23 &2089643939
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -55149,6 +55462,8 @@ MonoBehaviour:
   pollutedPercentage: 0
   naturePercentage: 0
   isOccupied: 0
+  polluted: 0
+  naturePollutedDegree: 0
 --- !u!23 &2127704974
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -55286,6 +55601,8 @@ MonoBehaviour:
   pollutedPercentage: 0
   naturePercentage: 0
   isOccupied: 0
+  polluted: 0
+  naturePollutedDegree: 0
 --- !u!23 &2128055074
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -55586,6 +55903,8 @@ MonoBehaviour:
   pollutedPercentage: 0
   naturePercentage: 0
   isOccupied: 0
+  polluted: 0
+  naturePollutedDegree: 0
 --- !u!23 &2138518239
 MeshRenderer:
   m_ObjectHideFlags: 0

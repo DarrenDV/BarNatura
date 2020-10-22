@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   meshRenderer: {fileID: 676393984376965661}
-  materials:
+  buildMaterials:
   - {fileID: 2100000, guid: d85e1d5511ab74043b28e5ee9e8c4f7f, type: 2}
   - {fileID: 2100000, guid: 8584c32d7b3f4c94d9b41cbac28d2ff5, type: 2}
 --- !u!1001 &5456148746630740491
