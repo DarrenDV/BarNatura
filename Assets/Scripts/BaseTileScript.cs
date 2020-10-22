@@ -5,39 +5,46 @@ using UnityEngine;
 public class BaseTileScript : Tile
 {
     [Header("Default tile production variables")]
-    [SerializeField] protected float oxygenProduction; 
+    [SerializeField] protected float oxygenProduction;
     [SerializeField] protected float pollutionProduction;
 
     [Header("Tile pollution state variables")]
     protected float maxPollutedPercentage = 100f;
-    [SerializeField] protected float pollutedPercentage;  
+    [SerializeField] protected float pollutedPercentage;
 
     [Header("Tile nature state variables")]
     protected float maxNaturePercentage = 100f;
-    [SerializeField] protected float naturePercentage;      
-    
+    [SerializeField] protected float naturePercentage;
+
     [HideInInspector]public bool isOccupied;
+    [HideInInspector]public bool polluted;
+
     private GameManager gameManager;
 
+    [Tooltip("The degree to which a tile is either polluted or nature")]
+    [Range(-10, 10)]
+    public int naturePollutedDegree = 0;
 
-    
-    // Start is called before the first frame update
-    void Start()
+    public bool PolutionLevelCheck()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        //This could be in another function or method
-        if(pollutedPercentage >= maxPollutedPercentage){
-            //Make tile uninhabitable or toxic.
+        if (pollutedPercentage >= maxPollutedPercentage)
+        {
+            return true;
         }
-
-        //This could be in another function or method
-        if(naturePercentage >= maxNaturePercentage){
-            //Make tile nature.
+        else
+        {
+            return false;
+        }
+    }
+    public bool NatureLevelCheck()
+    {
+        if (naturePercentage >= maxNaturePercentage)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
         }
     }
 
