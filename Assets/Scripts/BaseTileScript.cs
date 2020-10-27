@@ -24,7 +24,56 @@ public class BaseTileScript : Tile
     [Tooltip("The degree to which a tile is either polluted or nature")]
     [Range(-10, 10)]
     public int naturePollutedDegree = 0;
-    public int pollutedDegree = 0;
+
+    float timerSpread;
+    public Gradient gradient;
+    bool canBecomeNature = true;
+
+    void Start(){
+        if(Random.Range(0, 100) == 0){
+            naturePollutedDegree = -10;
+        }
+    }
+
+    void Update(){
+        Spread();
+    }
+    void Spread(){
+        if(timerSpread >= 2){
+
+            foreach(BaseTileScript neighbour in neighborTiles){
+
+                ToxicSpreading(neighbour);
+                NatureSpreading(neighbour);
+            }
+            
+            timerSpread = 0;
+        }
+        timerSpread += Time.deltaTime;
+
+        MeshRenderer mesh = GetComponent<MeshRenderer>();
+        mesh.material.SetColor("_Color", gradient.Evaluate(Map(naturePollutedDegree, -10, 10, 0, 1)));
+    }
+
+    void ToxicSpreading(BaseTileScript neighbour){
+            
+        if(neighbour.naturePollutedDegree == -10 && this.naturePollutedDegree > -10){
+            this.naturePollutedDegree--;
+
+        }
+        if(naturePollutedDegree == -10) canBecomeNature = false;
+    }
+
+    void NatureSpreading(BaseTileScript neighbour){
+
+        if(neighbour.naturePollutedDegree == 10 && this.naturePollutedDegree < 10 && canBecomeNature){
+            this.naturePollutedDegree++;
+        }
+    }
+    public float Map (float value, float fromSource, float toSource, float fromTarget, float toTarget)
+    {
+        return (value - fromSource) / (toSource - fromSource) * (toTarget - fromTarget) + fromTarget;
+    }
 
     public bool PolutionLevelCheck()
     {
@@ -69,6 +118,9 @@ public class BaseTileScript : Tile
             {
                 //Place the new building
                 placeObject(Instantiate(gameManager.buildObject.gameObject, transform.position, transform.rotation));
+                if(gameManager.buildObject.gameObject.CompareTag("Tree")){
+                    naturePollutedDegree = 10;
+                }
 
                 isOccupied = true;
                 gameManager.StopBuilding();
