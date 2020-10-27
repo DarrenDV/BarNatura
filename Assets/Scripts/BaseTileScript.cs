@@ -24,6 +24,7 @@ public class BaseTileScript : Tile
     [Tooltip("The degree to which a tile is either polluted or nature")]
     [Range(-10, 10)]
     public int naturePollutedDegree = 0;
+    public int pollutedDegree = 0;
 
     public bool PolutionLevelCheck()
     {

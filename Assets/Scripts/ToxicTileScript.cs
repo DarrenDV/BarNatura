@@ -5,7 +5,7 @@ using UnityEngine;
 public class ToxicTileScript : BaseTileScript
 {
 
-    float Timer;
+    float Timer, timerSpread;
     List<Tile> surroundingTiles = new List<Tile>();
 
     void Start()
@@ -30,7 +30,24 @@ public class ToxicTileScript : BaseTileScript
                 }
                 Timer = 0;
             }
+
+        if (timerSpread >= 240 * Time.deltaTime)
+        {
+            for (int i = 0; i < neighborTiles.Count; i++)
+            {
+                if (neighborTiles[i] is BaseTileScript baseTile)
+                {
+                    if (baseTile.pollutedDegree > -7 && baseTile.pollutedDegree <= 10)
+                    {
+                        baseTile.pollutedDegree++;
+                    }
+                    timerSpread = 0;
+                }
+            }
+        }
+
             Timer += 1 * Time.deltaTime;
+            timerSpread += 1 * Time.deltaTime;
         }
     }
 }
