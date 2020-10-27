@@ -1,17 +1,18 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class BuildingModeObject : MonoBehaviour
 {
 
-    [SerializeField] private Renderer meshRenderer;
-    [SerializeField] private Material[] buildMaterials;
-
+    [SerializeField] private MeshRenderer[] meshRenderers;
+    [SerializeField] private Color[] colors;
 
     // Start is called before the first frame update
     void Start()
     {
+
     }
 
     // Update is called once per frame
@@ -20,11 +21,13 @@ public class BuildingModeObject : MonoBehaviour
         
     }
 
-    public void ChangeMaterial(bool canBuild)
+    public void ChangeMaterial(bool isOccupied)
     {
-        for (int i = 0; i < meshRenderer.sharedMaterials.Length; i++) {
-            if (canBuild == false) meshRenderer.sharedMaterials[i] = buildMaterials[0];
-            else meshRenderer.sharedMaterials[i] = buildMaterials[1];
+
+        for (int i = 0; i < meshRenderers.Length; ++i)
+        {
+            if (isOccupied == false) meshRenderers[i].sharedMaterial.SetColor("_Color", colors[0]);
+            else meshRenderers[i].sharedMaterial.SetColor("_Color", colors[1]);
         }
 
     }
