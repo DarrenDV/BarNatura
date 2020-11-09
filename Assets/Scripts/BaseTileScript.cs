@@ -8,6 +8,7 @@ public class BaseTileScript : Tile
     [SerializeField] protected float oxygenProduction;
     [SerializeField] protected float pollutionProduction;
 
+    #region Spreading Variables
     [Header("Tile pollution state variables")]
     protected float maxPollutedPercentage = 100f;
     [SerializeField] protected float pollutedPercentage;
@@ -16,18 +17,21 @@ public class BaseTileScript : Tile
     protected float maxNaturePercentage = 100f;
     [SerializeField] protected float naturePercentage;
 
-    [HideInInspector]public bool isOccupied;
     [HideInInspector]public bool polluted;
-
-    private GameManager gameManager;
 
     [Tooltip("The degree to which a tile is either polluted or nature")]
     [Range(-10, 10)]
     public int naturePollutedDegree = 0;
 
     float timerSpread;
+    [SerializeField] float secondsToUpdate;
     public Gradient gradient;
     bool canBecomeNature = true;
+
+    #endregion
+
+    private GameManager gameManager;
+    [HideInInspector]public bool isOccupied;
 
     void Start(){
         if(Random.Range(0, 100) == 0){
@@ -38,13 +42,17 @@ public class BaseTileScript : Tile
     void Update(){
         Spread();
     }
+
     void Spread(){
-        if(timerSpread >= 2){
+
+        if(timerSpread >= secondsToUpdate){
 
             foreach(BaseTileScript neighbour in neighborTiles){
-
-                ToxicSpreading(neighbour);
-                NatureSpreading(neighbour);
+                //Only applies the spreading if the random is met.
+                if(Random.Range(0,4) == 3){
+                    ToxicSpreading(neighbour);
+                    NatureSpreading(neighbour);
+                }
             }
             
             timerSpread = 0;
