@@ -12,7 +12,7 @@ public enum TileDisplayOptions
 }
 
 [Serializable]
-public class Tile : MonoBehaviour {
+public class Tile : OxygenUser {
 
     public static float planetScale;
 	private static int ID = 0;

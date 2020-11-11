@@ -4,10 +4,6 @@ using UnityEngine;
 
 public class BaseTileScript : Tile
 {
-    [Header("Default tile production variables")]
-    [SerializeField] protected float oxygenProduction;
-    [SerializeField] protected float pollutionProduction;
-
     [Header("Tile pollution state variables")]
     protected float maxPollutedPercentage = 100f;
     [SerializeField] protected float pollutedPercentage;
@@ -57,8 +53,8 @@ public class BaseTileScript : Tile
 
     void ToxicSpreading(BaseTileScript neighbour){
             
-        if(neighbour.naturePollutedDegree == -10 && this.naturePollutedDegree > -10){
-            this.naturePollutedDegree--;
+        if(neighbour.naturePollutedDegree == -10 && naturePollutedDegree > -10){
+            naturePollutedDegree--;
 
         }
         if(naturePollutedDegree == -10) canBecomeNature = false;
@@ -66,8 +62,8 @@ public class BaseTileScript : Tile
 
     void NatureSpreading(BaseTileScript neighbour){
 
-        if(neighbour.naturePollutedDegree == 10 && this.naturePollutedDegree < 10 && canBecomeNature){
-            this.naturePollutedDegree++;
+        if(neighbour.naturePollutedDegree == 10 && naturePollutedDegree < 10 && canBecomeNature){
+            naturePollutedDegree++;
         }
     }
     public float Map (float value, float fromSource, float toSource, float fromTarget, float toTarget)
