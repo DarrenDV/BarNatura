@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class BaseTileScript : Tile
 {
-    [Header("Default tile production variables")]
-    [SerializeField] protected float oxygenProduction;
-    [SerializeField] protected float pollutionProduction;
 
     #region Spreading Variables
     [Header("Tile pollution state variables")]
