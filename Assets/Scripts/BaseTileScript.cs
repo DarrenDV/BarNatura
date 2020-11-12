@@ -29,16 +29,15 @@ public class BaseTileScript : Tile
 
     public GameObject RubbleTile;
 
-    private GameManager gameManager;
-    [HideInInspector]public bool isOccupied;
-
     void Start()
     {
+        int rubbleSpawnChange = 20;
+
         if (Random.Range(0, 100) == 0)
         {
             naturePollutedDegree = -10;
         }
-        if (Random.Range(0, 100) < 80)
+        if (Random.Range(0, 100) < rubbleSpawnChange)
         {
             placeObject(Instantiate(RubbleTile, Vector3.zero, Quaternion.identity) );
         }
@@ -140,7 +139,6 @@ public class BaseTileScript : Tile
                     naturePollutedDegree = 10;
                 }
 
-                isOccupied = true;
                 gameManager.StopBuilding();
             }
         }
