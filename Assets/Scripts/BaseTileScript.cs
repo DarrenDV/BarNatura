@@ -65,8 +65,8 @@ public class BaseTileScript : Tile
 
     void ToxicSpreading(BaseTileScript neighbour){
             
-        if(neighbour.naturePollutedDegree == -10 && this.naturePollutedDegree > -10){
-            this.naturePollutedDegree--;
+        if(neighbour.naturePollutedDegree == -10 && naturePollutedDegree > -10){
+            naturePollutedDegree--;
 
         }
         if(naturePollutedDegree == -10) canBecomeNature = false;
@@ -74,8 +74,8 @@ public class BaseTileScript : Tile
 
     void NatureSpreading(BaseTileScript neighbour){
 
-        if(neighbour.naturePollutedDegree == 10 && this.naturePollutedDegree < 10 && canBecomeNature){
-            this.naturePollutedDegree++;
+        if(neighbour.naturePollutedDegree == 10 && naturePollutedDegree < 10 && canBecomeNature){
+            naturePollutedDegree++;
         }
     }
     public float Map (float value, float fromSource, float toSource, float fromTarget, float toTarget)
@@ -94,6 +94,7 @@ public class BaseTileScript : Tile
             return false;
         }
     }
+
     public bool NatureLevelCheck()
     {
         if (naturePercentage >= maxNaturePercentage)
@@ -108,9 +109,11 @@ public class BaseTileScript : Tile
 
     private void OnMouseEnter()
     {
+        //Get the game manager
         if (gameManager == null) gameManager = FindObjectOfType<GameManager>();
         if (gameManager.buildObject != null)
         {
+            //Set the position of the preview building to this tile
             gameManager.buildObjectPreview.gameObject.GetComponent<BuildingModeObject>().ChangeMaterial(isOccupied);
             gameManager.previewObjectParent.transform.position = transform.position;
             gameManager.previewObjectParent.transform.rotation = transform.rotation;
@@ -119,10 +122,10 @@ public class BaseTileScript : Tile
 
     private void OnMouseOver()
     {
-
+        //On build when the game is in the build state
         if (gameManager.buildObject != null)
         {
-            if (Input.GetMouseButtonDown(0) && !isOccupied)
+            if (Input.GetMouseButtonDown(0) && !isOccupied && naturePollutedDegree >= 0 && gameManager.IsPointerOverUIElement() == false)
             {
                 //Place the new building
                 placeObject(Instantiate(gameManager.buildObject.gameObject, transform.position, transform.rotation));
@@ -135,4 +138,5 @@ public class BaseTileScript : Tile
             }
         }
     }
+
 }
