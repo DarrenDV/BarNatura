@@ -30,15 +30,20 @@ public class BaseTileScript : Tile
     private GameManager gameManager;
     [HideInInspector]public bool isOccupied;
 
+    public GameObject lavaTile;
+
+
     void Start(){
         if(Random.Range(0, 100) == 0){
             naturePollutedDegree = -10;
+            placeObject(Instantiate(lavaTile, Vector3.zero, Quaternion.identity));
         }
     }
 
     void Update(){
         Spread();
     }
+
 
     void Spread(){
 
