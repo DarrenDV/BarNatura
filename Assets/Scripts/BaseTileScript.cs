@@ -19,8 +19,6 @@ public class BaseTileScript : Tile
     [HideInInspector]public bool isOccupied;
     [HideInInspector]public bool polluted;
 
-    private GameManager gameManager;
-
     [Tooltip("The degree to which a tile is either polluted or nature")]
     [Range(-10, 10)]
     public int naturePollutedDegree = 0;
@@ -100,7 +98,8 @@ public class BaseTileScript : Tile
 
     private void OnMouseEnter()
     {
-        if (gameManager == null) gameManager = FindObjectOfType<GameManager>();
+        var gameManager = GameManager.Instance;
+
         if (gameManager.buildObject != null)
         {
             gameManager.buildObjectPreview.gameObject.GetComponent<BuildingModeObject>().ChangeMaterial(isOccupied);
@@ -111,6 +110,7 @@ public class BaseTileScript : Tile
 
     private void OnMouseOver()
     {
+        var gameManager = GameManager.Instance;
 
         if (gameManager.buildObject != null)
         {
@@ -118,7 +118,9 @@ public class BaseTileScript : Tile
             {
                 //Place the new building
                 placeObject(Instantiate(gameManager.buildObject.gameObject, transform.position, transform.rotation));
-                if(gameManager.buildObject.gameObject.CompareTag("Tree")){
+
+                if(gameManager.buildObject.gameObject.CompareTag("Tree"))
+                {
                     naturePollutedDegree = 10;
                 }
 
