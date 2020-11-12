@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class GameManager : MonoBehaviour
 {
@@ -39,6 +40,18 @@ public class GameManager : MonoBehaviour
         if (previewObjectParent.transform.childCount != 0) Destroy(previewObjectParent.transform.GetChild(0).gameObject);
         previewObjectParent.transform.position = Vector3.zero;
         previewObjectParent.transform.rotation = Quaternion.identity;
+    }
+
+    #endregion
+
+    #region UI
+    public bool IsPointerOverUIElement()
+    {
+        var eventData = new PointerEventData(EventSystem.current);
+        eventData.position = Input.mousePosition;
+        var results = new List<RaycastResult>();
+        EventSystem.current.RaycastAll(eventData, results);
+        return results.Count > 0;
     }
 
     #endregion
