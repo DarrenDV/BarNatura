@@ -30,7 +30,9 @@ public class Tile : OxygenUser {
 	[Tooltip("The cost of moving across this tile in terms of pathfinding weight.  Pathfinding will prioritize the lowest cost path.")]
 	[Range(1, 100)]
 	public int pathCost = 1;
-    
+
+	[HideInInspector] public bool isOccupied;
+
 	// The center of this tile when initially generated.  Does not account for extrusion.
 	public Vector3 center
     {
@@ -156,9 +158,10 @@ public class Tile : OxygenUser {
 		obj.transform.rotation = transform.rotation;
 		obj.transform.SetParent(transform);
         PlacedObjects.Add(obj);
+		isOccupied = true;
 	}
 
-    public void DeleteLastPlacedObject()
+	public void DeleteLastPlacedObject()
     {
         if(PlacedObjects.Count > 0)
         {
@@ -178,9 +181,9 @@ public class Tile : OxygenUser {
         }
 
         PlacedObjects.Clear();
-    }
+	}
 
-    public void SetExtrusionHeight(float height)
+	public void SetExtrusionHeight(float height)
     {
         float delta = height - ExtrudedHeight;
         Extrude(delta);
