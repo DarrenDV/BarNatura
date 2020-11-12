@@ -106,8 +106,8 @@ public class BaseTileScript : Tile
 
     private void OnMouseEnter()
     {
-        //Get the game manager
-        if (gameManager == null) gameManager = FindObjectOfType<GameManager>();
+        var gameManager = GameManager.Instance;
+
         if (gameManager.buildObject != null)
         {
             //Set the position of the preview building to this tile
@@ -119,14 +119,16 @@ public class BaseTileScript : Tile
 
     private void OnMouseOver()
     {
-        //On build when the game is in the build state
+        var gameManager = GameManager.Instance;
         if (gameManager.buildObject != null)
         {
             if (Input.GetMouseButtonDown(0) && !isOccupied && naturePollutedDegree >= 0 && gameManager.IsPointerOverUIElement() == false)
             {
                 //Place the new building
                 placeObject(Instantiate(gameManager.buildObject.gameObject, transform.position, transform.rotation));
-                if(gameManager.buildObject.gameObject.CompareTag("Tree")){
+
+                if(gameManager.buildObject.gameObject.CompareTag("Tree"))
+                {
                     naturePollutedDegree = 10;
                 }
 
