@@ -116,7 +116,7 @@ public class GameManager : MonoBehaviour
     /// <param name="pollutionToAdd"></param>
     public void AddPollution(int pollutionToAdd)
     {
-        oxygenGeneration += pollutionToAdd;
+        pollution += pollutionToAdd;
     }
 
     /// <summary>
@@ -125,7 +125,7 @@ public class GameManager : MonoBehaviour
     /// <param name="pollutionToRemove"></param>
     public void RemovePollution(int pollutionToRemove)
     {
-        oxygenGeneration -= pollutionToRemove;
+        pollution -= pollutionToRemove;
     }
 
     /// <summary>
