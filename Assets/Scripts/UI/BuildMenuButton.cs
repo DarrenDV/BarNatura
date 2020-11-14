@@ -13,6 +13,7 @@ public class BuildMenuButton : MonoBehaviour
 
     public void OnClick()
     {
-        GameManager.Instance.ChangeBuildObject(buildMenuItem.buildItem.gameObject, buildMenuItem.buildItemPreview.gameObject);
+        if (buildMenuItem.buildItem.buildCost <= GameManager.Instance.GetBuildingMaterials())
+            GameManager.Instance.ChangeBuildObject(buildMenuItem.buildItem.gameObject, buildMenuItem.buildItemPreview.gameObject);
     }
 }

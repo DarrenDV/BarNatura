@@ -5,7 +5,7 @@ using UnityEngine;
 public class BuildObject : MonoBehaviour
 {
 
-    [SerializeField] protected int buildCost;
+    public int buildCost = 1;
 
     // Start is called before the first frame update
     void Start()
@@ -18,4 +18,5 @@ public class BuildObject : MonoBehaviour
     {
         
     }
+
 }

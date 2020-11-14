@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5337331286338509526}
   - component: {fileID: 8276226287125413556}
   m_Layer: 0
-  m_Name: Oxygen Generator
+  m_Name: House
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -44,9 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48c68ee648e473349990193edb60051c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  oxygenProduction: 1
-  oxygenUsage: 1
-  polution: 1
+  buildCost: 10
   maxCapacity: 0
 --- !u!1001 &4791517181569727434
 PrefabInstance:

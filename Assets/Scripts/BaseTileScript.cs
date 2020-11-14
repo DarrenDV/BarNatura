@@ -14,8 +14,6 @@ public class BaseTileScript : Tile
     protected float maxNaturePercentage = 100f;
     [SerializeField] protected float naturePercentage;
 
-    [HideInInspector]public bool polluted;
-
     [Tooltip("The degree to which a tile is either polluted or nature")]
     [Range(-10, 10)]
     public int naturePollutedDegree = 0;
@@ -133,6 +131,7 @@ public class BaseTileScript : Tile
             {
                 //Place the new building
                 placeObject(Instantiate(gameManager.buildObject.gameObject, transform.position, transform.rotation));
+                gameManager.RemoveBuildMaterial(gameManager.buildObject.gameObject.GetComponent<BuildObject>().buildCost);
 
                 if(gameManager.buildObject.gameObject.CompareTag("Tree"))
                 {

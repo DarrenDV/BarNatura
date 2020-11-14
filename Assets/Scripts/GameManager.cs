@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.EventSystems;
 
 public class GameManager : MonoBehaviour
@@ -10,7 +11,7 @@ public class GameManager : MonoBehaviour
     private int oxygenUsage;
     private int pollution;
     private int rawMaterial;
-    private int buildingMaterial;
+    [SerializeField]private int buildingMaterial = 100;
 
     [Header("Building")]
     public GameObject previewObjectParent;
@@ -31,7 +32,7 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        
+
     }
 
     void Update()
@@ -171,10 +172,10 @@ public class GameManager : MonoBehaviour
     /// <summary>
     /// Use this when the player uses building material, like when the player builds a building.
     /// </summary>
-    /// <param name="buildingMaterialToRemove"></param>
-    public void RemoveBuildingMaterial(int buildingMaterialToRemove)
+    /// <param name="buildMaterialToRemove"></param>
+    public void RemoveBuildMaterial(int buildMaterialToRemove)
     {
-        buildingMaterial -= buildingMaterialToRemove;
+        buildingMaterial -= buildMaterialToRemove;
     }
 
     /// <summary>
