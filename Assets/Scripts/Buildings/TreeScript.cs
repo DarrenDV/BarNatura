@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TreeTileScript : MonoBehaviour
+public class TreeScript : BuildObject
 {
     int treeOxygenProduction = 8;
     void Start()

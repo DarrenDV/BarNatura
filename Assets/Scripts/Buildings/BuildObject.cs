@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BuildObject : MonoBehaviour
+public class BuildObject : OxygenUser
 {
 
     public int buildCost = 1;
