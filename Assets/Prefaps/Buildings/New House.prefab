@@ -44,7 +44,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48c68ee648e473349990193edb60051c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buildCost: 1
+  oxygenProduction: 0
+  oxygenUsage: 1
+  pollutionProduction: 1
+  buildCost: 10
   maxCapacity: 0
 --- !u!1001 &767609729734898429
 PrefabInstance:

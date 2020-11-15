@@ -5,9 +5,9 @@ using UnityEngine;
 public class TreeScript : BuildObject
 {
     int treeOxygenProduction = 8;
-    void Start()
-    {
-        // This adds the base production value of 1 tree to the Oxygen Production
-        GameManager.Instance.AddOxygenGeneration(treeOxygenProduction);
-    }
+    //void Start()
+    //{
+    //    // This adds the base production value of 1 tree to the Oxygen Production
+    //    //GameManager.Instance.AddOxygenGeneration(treeOxygenProduction);
+    //}
 }

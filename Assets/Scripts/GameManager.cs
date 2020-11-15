@@ -2,21 +2,27 @@
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
 
-    private int oxygenGeneration;
-    private int oxygenUsage;
-    private int pollution;
-    private int rawMaterial;
-    [SerializeField]private int buildingMaterial = 100;
+    [SerializeField] private int oxygenGeneration;
+    [SerializeField] private int oxygenUsage;
+    [SerializeField] private int pollution;
+    [SerializeField] private int rawMaterial;
+    [SerializeField] private int buildingMaterial = 100;
 
     [Header("Building")]
     public GameObject previewObjectParent;
     [HideInInspector] public GameObject buildObject;
     [HideInInspector] public GameObject buildObjectPreview;
+
+    [Header("UI")]
+    private Text oxygenCounter, drainCounter, pollutionCounter, surplusCounter;
+    private Text buildMaterialCounter, rawMaterialCounter;
+    private Text humanCounter, foodCounter;
 
     private void Awake()
     {
@@ -28,11 +34,24 @@ public class GameManager : MonoBehaviour
         {
             Debug.LogError("Game Manager instance already set!");
         }
+
+
     }
 
     void Start()
     {
+        oxygenCounter = GameObject.Find("OxygenCounter").GetComponent<Text>();
+        drainCounter = GameObject.Find("DrainCounter").GetComponent<Text>();
+        pollutionCounter = GameObject.Find("PollutionCounter").GetComponent<Text>();
+        surplusCounter = GameObject.Find("SurplusCounter").GetComponent<Text>();
 
+        buildMaterialCounter = GameObject.Find("BuildMaterialCounter").GetComponent<Text>();
+        rawMaterialCounter = GameObject.Find("RawMaterialCounter").GetComponent<Text>();
+
+        humanCounter = GameObject.Find("HumanCounter").GetComponent<Text>();
+        foodCounter = GameObject.Find("FoodCounter").GetComponent<Text>();
+
+        ChangeBuildMaterialCounter();
     }
 
     void Update()
@@ -52,6 +71,7 @@ public class GameManager : MonoBehaviour
     public void AddOxygenGeneration(int oxygenGenerationToAdd)
     {
         oxygenGeneration += oxygenGenerationToAdd;
+        ChangeOxygenCounter();
     }
 
     /// <summary>
@@ -61,6 +81,7 @@ public class GameManager : MonoBehaviour
     public void RemoveOxygenGeneration(int oxygenGenerationToRemove)
     {
         oxygenGeneration -= oxygenGenerationToRemove;
+        ChangeDrainCounter();
     }
 
     /// <summary>
@@ -70,6 +91,7 @@ public class GameManager : MonoBehaviour
     public void AddOxygenUsage(int oxygenUsageToAdd)
     {
         oxygenUsage += oxygenUsageToAdd;
+        ChangeDrainCounter();
     }
 
     /// <summary>
@@ -79,6 +101,7 @@ public class GameManager : MonoBehaviour
     public void RemoveOxygenUsage(int oxygenUsageToRemove)
     {
         oxygenUsage -= oxygenUsageToRemove;
+        ChangeDrainCounter();
     }
 
     /// <summary>
@@ -86,7 +109,7 @@ public class GameManager : MonoBehaviour
     /// </summary>
     public int GetOxygenSurplus()
     {
-        return oxygenGeneration - oxygenUsage;
+        return oxygenGeneration - (oxygenUsage + pollution);
     }
 
     /// <summary>
@@ -118,6 +141,7 @@ public class GameManager : MonoBehaviour
     public void AddPollution(int pollutionToAdd)
     {
         pollution += pollutionToAdd;
+        ChangePollutionCounter();
     }
 
     /// <summary>
@@ -127,6 +151,7 @@ public class GameManager : MonoBehaviour
     public void RemovePollution(int pollutionToRemove)
     {
         pollution -= pollutionToRemove;
+        ChangePollutionCounter();
     }
 
     /// <summary>
@@ -167,15 +192,17 @@ public class GameManager : MonoBehaviour
     public void AddBuildingMaterial(int buildingMaterialToAdd)
     {
         buildingMaterial += buildingMaterialToAdd;
+        ChangeBuildMaterialCounter();
     }
 
     /// <summary>
     /// Use this when the player uses building material, like when the player builds a building.
     /// </summary>
     /// <param name="buildMaterialToRemove"></param>
-    public void RemoveBuildMaterial(int buildMaterialToRemove)
+    public void ChangeBuildingMaterial(int buildMaterialToRemove)
     {
         buildingMaterial -= buildMaterialToRemove;
+        ChangeBuildMaterialCounter();
     }
 
     /// <summary>
@@ -206,7 +233,7 @@ public class GameManager : MonoBehaviour
         buildObjectPreview = previewObject;
         Instantiate(buildObjectPreview.gameObject, transform.position, transform.rotation, previewObjectParent.transform);
     }
-        
+
     public void StopBuilding()
     {
         buildObject = null;
@@ -223,7 +250,7 @@ public class GameManager : MonoBehaviour
     #endregion
 
     #region UI
-    
+
     public bool IsPointerOverUIElement()
     {
         var eventData = new PointerEventData(EventSystem.current);
@@ -232,6 +259,51 @@ public class GameManager : MonoBehaviour
         EventSystem.current.RaycastAll(eventData, results);
         return results.Count > 0;
     }
+
+    private void ChangeOxygenCounter()
+    {
+        oxygenCounter.text = GetOxygenGeneration().ToString();
+        ChangeSurplusCounter();
+    }
+    private void ChangeDrainCounter()
+    {
+        drainCounter.text = GetOxygenUsage().ToString();
+        ChangeSurplusCounter();
+    }
+
+    private void ChangePollutionCounter()
+    {
+        pollutionCounter.text = GetPollution().ToString();
+        ChangeSurplusCounter();
+    }
+
+    private void ChangeBuildMaterialCounter()
+    {
+        buildMaterialCounter.text = GetBuildingMaterials().ToString();
+    }
+
+    private void ChangeRawMaterialCounter()
+    {
+        rawMaterialCounter.text = GetRawMaterials().ToString();
+    }
+
+    private void ChangeHumanCounter()
+    {
+        //humanCounter.text = GetHumans().ToString();
+    }
+
+    private void ChangeFoodCounter()
+    {
+        //foodCounter.text = GetFood().ToString();
+    }
+
+    private void ChangeSurplusCounter()
+    {
+        surplusCounter.text = GetOxygenSurplus().ToString();
+    }
+
+
+
 
     #endregion
 }

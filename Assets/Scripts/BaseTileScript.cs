@@ -27,8 +27,10 @@ public class BaseTileScript : Tile
 
     public GameObject RubbleTile;
 
-    void Start()
+    protected override void Start()
     {
+        base.Start();
+
         int rubbleSpawnChange = 20;
 
         if (Random.Range(0, 100) == 0)
@@ -131,7 +133,7 @@ public class BaseTileScript : Tile
             {
                 //Place the new building
                 placeObject(Instantiate(gameManager.buildObject.gameObject, transform.position, transform.rotation));
-                gameManager.RemoveBuildMaterial(gameManager.buildObject.gameObject.GetComponent<BuildObject>().buildCost);
+                gameManager.ChangeBuildingMaterial(gameManager.buildObject.gameObject.GetComponent<BuildObject>().buildCost);
 
                 if(gameManager.buildObject.gameObject.CompareTag("Tree"))
                 {

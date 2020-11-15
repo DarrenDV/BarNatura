@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2516686881607441655}
   - component: {fileID: 6326959658954421846}
   m_Layer: 5
-  m_Name: Amount
+  m_Name: BuildMaterialText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -170,7 +170,7 @@ GameObject:
   - component: {fileID: 4845973212583383790}
   - component: {fileID: 2660212269694506833}
   m_Layer: 5
-  m_Name: Slurpus
+  m_Name: SurplusCounter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -235,7 +235,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: +10000
+  m_Text: 
 --- !u!114 &2660212269694506833
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -487,7 +487,7 @@ MonoBehaviour:
     m_Right: -50
     m_Top: 0
     m_Bottom: 0
-  m_ChildAlignment: 3
+  m_ChildAlignment: 4
   m_Spacing: 0
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
@@ -1265,7 +1265,7 @@ GameObject:
   - component: {fileID: 7130762526561312375}
   - component: {fileID: 129296267993600160}
   m_Layer: 5
-  m_Name: Text
+  m_Name: OxygenCounter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1330,7 +1330,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 999
+  m_Text: 0
 --- !u!114 &129296267993600160
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2144,7 +2144,7 @@ GameObject:
   - component: {fileID: 7817613460741248964}
   - component: {fileID: 6173704843994481009}
   m_Layer: 5
-  m_Name: Text
+  m_Name: DrainCounter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2209,7 +2209,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 999
+  m_Text: 0
 --- !u!114 &6173704843994481009
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2442,7 +2442,7 @@ GameObject:
   - component: {fileID: 8372125964963950724}
   - component: {fileID: 72014225806236086}
   m_Layer: 5
-  m_Name: Text
+  m_Name: PollutionCounter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2507,7 +2507,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 999
+  m_Text: 0
 --- !u!114 &72014225806236086
 MonoBehaviour:
   m_ObjectHideFlags: 0

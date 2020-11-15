@@ -10,18 +10,6 @@ public class BuildingModeObject : MonoBehaviour
     [SerializeField] private MeshRenderer meshRenderer;
     [SerializeField] private Color[] colors;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void ChangeMaterial(bool isOccupied)
     {
 

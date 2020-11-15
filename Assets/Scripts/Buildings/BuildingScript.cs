@@ -10,13 +10,13 @@ public class BuildingScript : BuildObject
 
     private List<Human> occupants = new List<Human>();
 
-    protected virtual void Start()
-    {
+    //protected virtual void Start()
+    //{
         
-    }
+    //}
 
-    protected virtual void Update()
-    {
+    //protected virtual void Update()
+    //{
         
-    }
+    //}
 }
