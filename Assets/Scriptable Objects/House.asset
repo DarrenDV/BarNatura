@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: House
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300000, guid: 5244a0a8903fe714f82f3df2d3792cbb, type: 3}
-  buildItem: {fileID: 8276226287125413556, guid: 491ec674f21d313448a94490682fd0cd,
+  buildItem: {fileID: 1714467411616956748, guid: 4a4ddcd93388c6e448618190bd6aabee,
     type: 3}
-  buildItemPreview: {fileID: 8416163245698247848, guid: d35baea08ad17684396c2b33c70e2888,
+  buildItemPreview: {fileID: 562162249561503279, guid: f6ce9c91063b76b4e8491cd943ea7aa4,
     type: 3}

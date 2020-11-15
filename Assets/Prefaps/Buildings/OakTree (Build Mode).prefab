@@ -12,8 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5786b1187a41f04428c3d7a00a437e5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  meshRenderers:
-  - {fileID: 6153537866572573407}
+  meshRenderer: {fileID: 6153537866572573407}
   colors:
   - {r: 0, g: 1, b: 0, a: 0.5019608}
   - {r: 1, g: 0, b: 0, a: 0.5019608}
