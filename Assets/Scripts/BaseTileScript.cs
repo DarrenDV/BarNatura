@@ -31,11 +31,16 @@ public class BaseTileScript : Tile
     [HideInInspector]public bool isOccupied;
 
     public GameObject lavaTile;
+    [SerializeField] int lavaChance;
 
 
     void Start(){
         if(Random.Range(0, 100) == 0){
             naturePollutedDegree = -10;
+        }
+
+        //Places lava on 1 in every 100 tiles.
+        if(Random.Range(0, lavaChance) == 0){
             placeObject(Instantiate(lavaTile, Vector3.zero, Quaternion.identity));
         }
     }
@@ -44,6 +49,7 @@ public class BaseTileScript : Tile
         Spread();
     }
 
+    #region Tile Spreading
 
     void Spread(){
 
@@ -80,10 +86,15 @@ public class BaseTileScript : Tile
             naturePollutedDegree++;
         }
     }
+
+    #endregion
+
     public float Map (float value, float fromSource, float toSource, float fromTarget, float toTarget)
     {
         return (value - fromSource) / (toSource - fromSource) * (toTarget - fromTarget) + fromTarget;
     }
+
+    #region PollutionChecks
 
     public bool PolutionLevelCheck()
     {
@@ -108,6 +119,8 @@ public class BaseTileScript : Tile
             return false;
         }
     }
+
+    #endregion
 
     private void OnMouseEnter()
     {
