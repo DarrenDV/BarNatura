@@ -42,6 +42,7 @@ public class BaseTileScript : Tile
         //Places lava on 1 in every 100 tiles.
         if(Random.Range(0, lavaChance) == 0){
             placeObject(Instantiate(lavaTile, Vector3.zero, Quaternion.identity));
+            isOccupied = true;
         }
     }
 
