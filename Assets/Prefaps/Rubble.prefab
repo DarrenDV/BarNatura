@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 7720872769000906695}
   - component: {fileID: 1052631552907526994}
   - component: {fileID: 4934528838176023535}
-  - component: {fileID: 4637232526671349496}
-  - component: {fileID: 3516044799881025586}
+  - component: {fileID: 928873941955141384}
+  - component: {fileID: 7197921901826357243}
   m_Layer: 0
   m_Name: Rubble mesh
   m_TagString: Untagged
@@ -81,8 +81,8 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &4637232526671349496
-MeshCollider:
+--- !u!135 &928873941955141384
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -91,11 +91,10 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -5327138321037097585, guid: 1df472f5a00fd7440a37a66b34bb5329, type: 3}
---- !u!114 &3516044799881025586
+  serializedVersion: 2
+  m_Radius: 0.022469925
+  m_Center: {x: 0.0040894705, y: -0.0026640834, z: -0.016697017}
+--- !u!114 &7197921901826357243
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

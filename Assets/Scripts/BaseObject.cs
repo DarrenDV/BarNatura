@@ -16,7 +16,7 @@ public class BaseObject : MonoBehaviour
 
     public virtual string GetName()
     {
-        return "No name set up for this object!";
+        return gameObject.name;
     }
 
     public virtual string GetDescription()
@@ -31,7 +31,6 @@ public class BaseObject : MonoBehaviour
 
     protected virtual void OnMouseDown()
     {
-        //print(name);
         Popup.Instance.Show(this);
     }
 }

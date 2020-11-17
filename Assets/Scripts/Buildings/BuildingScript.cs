@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class BuildingScript : BuildObject
@@ -9,6 +8,4 @@ public class BuildingScript : BuildObject
     [SerializeField] protected int maxCapacity;
 
     private List<Human> occupants = new List<Human>();
-
-
 }

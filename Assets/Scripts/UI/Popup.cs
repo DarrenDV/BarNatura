@@ -26,6 +26,19 @@ public class Popup : MonoBehaviour
         Hide();
     }
 
+    void Update()
+    {
+        if (selectedObject != null)
+        {
+            SetPosition();
+
+            if (!CheckPathFree(Camera.main.transform.position, selectedObject.transform.position))
+            {
+                Hide();
+            }
+        }
+    }
+
     public void Show(BaseObject objectToDisplay)
     {
         // don't show when already open
@@ -39,9 +52,14 @@ public class Popup : MonoBehaviour
         titleText.text = selectedObject.GetName();
         descriptionText.text = selectedObject.GetDescription();
 
-        transform.position = Camera.main.WorldToScreenPoint(selectedObject.transform.position) + DisplayOffset;
+        SetPosition();
 
         gameObject.SetActive(true);
+    }
+
+    private void SetPosition()
+    {
+        transform.position = Camera.main.WorldToScreenPoint(selectedObject.transform.position) + DisplayOffset;
     }
 
     public void Hide()
@@ -53,5 +71,28 @@ public class Popup : MonoBehaviour
     {
         selectedObject.Remove();
         Hide();
+    }
+
+    private bool CheckPathFree(Vector3 position, Vector3 target)
+    {
+        var direction = target - position;
+        var distance = Vector3.Distance(position, target);
+
+        var rhit = Physics.RaycastAll(position, direction, distance);
+
+        // sometimes the ray also finds the tile the building is on
+        if (rhit.Length == 2)
+        {
+            var tile = rhit[0].transform.GetComponent<BaseTileScript>() != null ? rhit[0].transform.GetComponent<BaseTileScript>() : rhit[1].transform.GetComponent<BaseTileScript>();
+
+            if(tile.PlacedObjects.Contains(selectedObject.gameObject))
+            {
+                return true;
+            }
+        }
+
+        //Debug.Log("rhit: " + string.Join(", ", rhit.Select(x => x.transform.name)));
+
+        return rhit.Length == 1;
     }
 }
