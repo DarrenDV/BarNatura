@@ -26,12 +26,14 @@ public class BaseTileScript : Tile
     #endregion
 
     public GameObject RubbleTile;
+    public GameObject lavaTile;
+    [SerializeField] int lavaChance;
 
     protected override void Start()
     {
         base.Start();
 
-<<<<<<< HEAD
+
         int rubbleSpawnChange = 20;
 
         if (Random.Range(0, 100) == 0)
@@ -40,22 +42,13 @@ public class BaseTileScript : Tile
         }
         if (Random.Range(0, 100) < rubbleSpawnChange)
         {
-            placeObject(Instantiate(RubbleTile, Vector3.zero, Quaternion.identity) );
-=======
-    public GameObject lavaTile;
-    [SerializeField] int lavaChance;
-
-
-    void Start(){
-        if(Random.Range(0, 100) == 0){
-            naturePollutedDegree = -10;
+            placeObject(Instantiate(RubbleTile, Vector3.zero, Quaternion.identity));
         }
 
         //Places lava on 1 in every 100 tiles.
-        if(Random.Range(0, lavaChance) == 0){
+        if (Random.Range(0, lavaChance) == 0 && !isOccupied)
+        {
             placeObject(Instantiate(lavaTile, Vector3.zero, Quaternion.identity));
-            isOccupied = true;
->>>>>>> LavaBranch
         }
     }
 
