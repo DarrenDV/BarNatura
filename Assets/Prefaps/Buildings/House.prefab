@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5337331286338509526}
   - component: {fileID: 8276226287125413556}
+  - component: {fileID: -1083430511064462186}
   m_Layer: 0
   m_Name: House
   m_TagString: Untagged
@@ -44,8 +45,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48c68ee648e473349990193edb60051c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  oxygenProduction: 0
+  oxygenUsage: 0
+  pollutionProduction: 0
   buildCost: 10
   maxCapacity: 0
+--- !u!64 &-1083430511064462186
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5337331286338864886}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 0}
 --- !u!1001 &4791517181569727434
 PrefabInstance:
   m_ObjectHideFlags: 0

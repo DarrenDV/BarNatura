@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9021093312160118099}
   - component: {fileID: 1714467411616956748}
+  - component: {fileID: -6802595619636022835}
   m_Layer: 0
   m_Name: New House
   m_TagString: Untagged
@@ -49,6 +50,20 @@ MonoBehaviour:
   pollutionProduction: 1
   buildCost: 10
   maxCapacity: 0
+--- !u!64 &-6802595619636022835
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6251984966266381637}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 0}
 --- !u!1001 &767609729734898429
 PrefabInstance:
   m_ObjectHideFlags: 0
