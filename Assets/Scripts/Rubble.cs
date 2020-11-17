@@ -18,7 +18,7 @@ public class Rubble : BaseObject
     public override void Remove()
     {
         GameManager.Instance.AddRawMaterial(Random.Range(RawMaterialMin, RawMaterialMax));
-        transform.parent.parent.GetComponent<BaseTileScript>().DeletePlacedObjects();
+        transform.parent.GetComponent<BaseTileScript>().DeletePlacedObjects();
 
         //base.Remove();
     }
