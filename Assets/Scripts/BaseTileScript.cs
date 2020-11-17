@@ -43,7 +43,8 @@ public class BaseTileScript : Tile
         }
     }
 
-    void Update(){
+    protected override void Update(){
+        base.Update();
         Spread();
     }
 

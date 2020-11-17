@@ -2,32 +2,25 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FactoryScript : MonoBehaviour
+public class FactoryScript : BuildingScript
 {
-    protected int factoryPollutionProduction = 20;
-    protected int factoryOxygenUsage = 10;
-    protected int rawResourceToMaterialsTimer = 0;
-    void Start()
-    {
-        // This adds the base pollution exhaust and oxygen up keep for 1 factory.
-        GameManager.Instance.AddPollution(factoryPollutionProduction);
-        GameManager.Instance.AddOxygenUsage(factoryOxygenUsage);
-    }
+    [Header("Factory Script")]
+    [SerializeField] private float maxFactoryConvertTimer;
+    [SerializeField]private float factoryConvertTimer;
 
     // Update is called once per frame
-    void Update()
+    protected override void Update()
     {
-        rawResourceToMaterialsTimer++;
-        if (rawResourceToMaterialsTimer >= 45 * Time.deltaTime) {
+        base.Update();
+
+        factoryConvertTimer += Time.deltaTime;
+
+        if (factoryConvertTimer >= maxFactoryConvertTimer) {
             if (GameManager.Instance.GetRawMaterials() >= 2) {
                 GameManager.Instance.RemoveRawMaterial(2);
-                GameManager.Instance.AddBuildingMaterial(1);
-                rawResourceToMaterialsTimer = 0;
+                GameManager.Instance.AddBuildingMaterial(1);  
             }
-        }
-        else
-        {
-            rawResourceToMaterialsTimer = 0;
+            factoryConvertTimer = 0;
         }
     }
 }

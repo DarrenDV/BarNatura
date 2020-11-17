@@ -52,6 +52,7 @@ public class GameManager : MonoBehaviour
         foodCounter = GameObject.Find("FoodCounter").GetComponent<Text>();
 
         ChangeBuildMaterialCounter();
+        ChangeRawMaterialCounter();
     }
 
     void Update()
@@ -174,6 +175,7 @@ public class GameManager : MonoBehaviour
     public void AddRawMaterial(int rawMaterialToAdd)
     {
         rawMaterial += rawMaterialToAdd;
+        ChangeRawMaterialCounter();
     }
 
     /// <summary>
@@ -183,6 +185,7 @@ public class GameManager : MonoBehaviour
     public void RemoveRawMaterial(int rawMaterialToRemove)
     {
         rawMaterial -= rawMaterialToRemove;
+        ChangeRawMaterialCounter();
     }
 
     /// <summary>
