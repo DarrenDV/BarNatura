@@ -16,6 +16,20 @@ MonoBehaviour:
   oxygenUsage: 0
   pollutionProduction: 0
   buildCost: 10
+--- !u!64 &-6521760573381994705
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7929985801407894482}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300000, guid: 6d58037af810b4021ac921a71033e575, type: 3}
 --- !u!1001 &7929985801407822064
 PrefabInstance:
   m_ObjectHideFlags: 0

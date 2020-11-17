@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class BaseObject : MonoBehaviour
 {
@@ -16,8 +14,23 @@ public class BaseObject : MonoBehaviour
         
     }
 
-    public void GeneratePopUpMenu()
+    public virtual string GetName()
     {
+        return gameObject.name;
+    }
 
+    public virtual string GetDescription()
+    {
+        return "No description set up for this object!";
+    }
+
+    public virtual void Remove()
+    {
+        Destroy(gameObject);
+    }
+
+    protected virtual void OnMouseDown()
+    {
+        Popup.Instance.Show(this);
     }
 }

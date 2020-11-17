@@ -163,7 +163,9 @@ public class Tile : OxygenUser {
 
 	public void DeleteLastPlacedObject()
     {
-        if(PlacedObjects.Count > 0)
+        isOccupied = false;
+
+		if (PlacedObjects.Count > 0)
         {
             DestroyImmediate(PlacedObjects[PlacedObjects.Count - 1]);
             PlacedObjects.RemoveAt(PlacedObjects.Count - 1);
@@ -172,7 +174,9 @@ public class Tile : OxygenUser {
 
     public void DeletePlacedObjects()
     {
-        for(int i = 0; i < PlacedObjects.Count; i++)
+        isOccupied = false;
+
+		for (int i = 0; i < PlacedObjects.Count; i++)
         {
             if(PlacedObjects[i] != null)
             {

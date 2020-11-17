@@ -1,13 +1,12 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class TreeScript : BuildObject
+﻿public class TreeScript : BuildObject
 {
-    int treeOxygenProduction = 8;
-    //void Start()
-    //{
-    //    // This adds the base production value of 1 tree to the Oxygen Production
-    //    //GameManager.Instance.AddOxygenGeneration(treeOxygenProduction);
-    //}
+    public override string GetName()
+    {
+        return "Tree";
+    }
+
+    public override string GetDescription()
+    {
+        return $"This tree produces {oxygenProduction} oxygen.";
+    }
 }
