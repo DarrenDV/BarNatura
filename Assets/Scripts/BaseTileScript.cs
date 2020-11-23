@@ -21,15 +21,16 @@ public class BaseTileScript : Tile
     public int naturePollutedDegree; // make property so it updates the materials automatic
 
     float timerSpread;
-    [SerializeField] float secondsToUpdate;
-    public Gradient gradient;
+    float secondsToUpdate;
+    Gradient gradient;
     bool canBecomeNature = true;
 
     #endregion
 
-    public GameObject RubbleTile;
-    public GameObject lavaTile;
-    [SerializeField] int lavaChance;
+    GameObject RubbleTile;
+    int rubbleSpawnChance;
+    GameObject lavaTile;
+    int lavaChance;
 
     private MeshRenderer meshRenderer;
     private bool doMaterialUpdate;
@@ -38,17 +39,31 @@ public class BaseTileScript : Tile
     {
         base.Start();
 
+        Assigning();
+
         meshRenderer = GetComponent<MeshRenderer>();
+        
+        Spawning();
+    }
 
-        int rubbleSpawnChange = 20;
+    protected override void Update()
+    {
+        base.Update();
+        Spread();
+    }
 
+    //Toxic tile and natural tile spawning
+    void Spawning()
+    {
+        //Toxic tile spawning
         if (Random.Range(0, 100) == 0)
         {
             naturePollutedDegree = -10;
             doMaterialUpdate = true;
         }
 
-        if (Random.Range(0, 100) < rubbleSpawnChange)
+        //Rubble tile spawning
+        if (Random.Range(0, 100) < rubbleSpawnChance)
         {
             placeObject(Instantiate(RubbleTile, Vector3.zero, Quaternion.identity));
         }
@@ -60,10 +75,20 @@ public class BaseTileScript : Tile
         }
     }
 
-    protected override void Update()
+    //Assigns variables from a singular variable script
+    void Assigning()
     {
-        base.Update();
-        Spread();
+        //Get tileVariables.cs
+        TileVariables tileVariables = GameObject.Find("TileVariables").GetComponent<TileVariables>();
+
+        //Follow what is done here for every static variable
+        gradient = tileVariables.gradient;
+        RubbleTile = tileVariables.rubbleTile;
+        rubbleSpawnChance = tileVariables.rubbleSpawnChance;
+        lavaTile = tileVariables.lavaTile;
+        lavaChance = tileVariables.lavaSpawnChance;
+        secondsToUpdate = tileVariables.secondsToUpdate;
+
     }
 
     #region Tile Spreading
@@ -122,13 +147,11 @@ public class BaseTileScript : Tile
             doMaterialUpdate = true;
         }
     }
-
-    #endregion
-
     public float Map(float value, float fromSource, float toSource, float fromTarget, float toTarget)
     {
         return (value - fromSource) / (toSource - fromSource) * (toTarget - fromTarget) + fromTarget;
     }
+    #endregion
 
     #region PollutionChecks
 
@@ -158,6 +181,7 @@ public class BaseTileScript : Tile
 
     #endregion
 
+    #region BuildingPlacement
     private void OnMouseEnter()
     {
         var gameManager = GameManager.Instance;
@@ -193,4 +217,5 @@ public class BaseTileScript : Tile
             }
         }
     }
+    #endregion
 }
