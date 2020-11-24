@@ -8,4 +8,20 @@ public class BuildingScript : BuildObject
     [SerializeField] protected int maxCapacity;
 
     private List<Human> occupants = new List<Human>();
+
+    protected override void Start()
+    {
+        base.Start();
+
+        // testing
+        GameManager.Instance.BuildingCount++;
+    }
+
+    public override void Remove()
+    {
+        base.Remove();
+
+        // testing
+        GameManager.Instance.BuildingCount--;
+    }
 }

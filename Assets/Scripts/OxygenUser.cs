@@ -21,9 +21,4 @@ public class OxygenUser : BaseObject
         GameManager.Instance.AddOxygenUsage(oxygenUsage);
         GameManager.Instance.AddPollution(pollutionProduction);
     }
-
-    void Update()
-    {
-        
-    }
 }

@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
+using UnityEngine.Analytics;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
@@ -8,11 +8,15 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
 
-    [SerializeField] private int oxygenGeneration;
-    [SerializeField] private int oxygenUsage;
-    [SerializeField] private int pollution;
-    [SerializeField] private int rawMaterial;
-    [SerializeField] private int buildingMaterial = 100;
+    private int oxygenGeneration;
+    private int oxygenUsage;
+    private int pollution;
+    private int rawMaterial;
+    private int buildingMaterial = 100;
+    private int population;
+
+    // for testing purposes
+    public int BuildingCount;
 
     [Header("Building")]
     public GameObject previewObjectParent;
@@ -22,7 +26,9 @@ public class GameManager : MonoBehaviour
     [Header("UI")]
     private Text oxygenCounter, drainCounter, pollutionCounter, surplusCounter;
     private Text buildMaterialCounter, rawMaterialCounter;
-    private Text humanCounter, foodCounter;
+    private Text humanCounter;
+
+    private float analyticsTimer;
 
     private void Awake()
     {
@@ -34,8 +40,6 @@ public class GameManager : MonoBehaviour
         {
             Debug.LogError("Game Manager instance already set!");
         }
-
-
     }
 
     void Start()
@@ -49,7 +53,7 @@ public class GameManager : MonoBehaviour
         rawMaterialCounter = GameObject.Find("RawMaterialCounter").GetComponent<Text>();
 
         humanCounter = GameObject.Find("HumanCounter").GetComponent<Text>();
-        foodCounter = GameObject.Find("FoodCounter").GetComponent<Text>();
+        //foodCounter = GameObject.Find("FoodCounter").GetComponent<Text>();
 
         ChangeBuildMaterialCounter();
         ChangeRawMaterialCounter();
@@ -61,6 +65,33 @@ public class GameManager : MonoBehaviour
         {
             StopBuilding();
         }
+
+        HandleAnalytics();
+    }
+
+    private void HandleAnalytics()
+    {
+        analyticsTimer += Time.deltaTime;
+
+        // send analytics every minute
+        if (analyticsTimer > 60)
+        {
+            analyticsTimer = 0;
+
+            SendAnalytics();
+        }
+    }
+
+    private void SendAnalytics()
+    {
+        Analytics.CustomEvent("timed_stats", new Dictionary<string, object>
+        {
+            {"time", Time.time},
+            {"buildings", BuildingCount},
+            {"population", population},
+            {"raw_materials", rawMaterial},
+            {"building_materials", buildingMaterial}
+        });
     }
 
     #region Oxygen
@@ -129,6 +160,39 @@ public class GameManager : MonoBehaviour
     public int GetOxygenUsage()
     {
         return oxygenUsage;
+    }
+
+    #endregion
+
+    #region Population
+
+    /// <summary>
+    /// Use this when a new human is born
+    /// </summary>
+    /// <param name="populationToAdd">The amount of humans born.</param>
+    public void AddPopulation(int populationToAdd)
+    {
+        population += populationToAdd;
+        ChangeHumanCounter();
+    }
+
+    /// <summary>
+    /// Use this when a human dies.
+    /// </summary>
+    /// <param name="populationToRemove">The amount of humans that died.</param>
+    public void RemovePopulation(int populationToRemove)
+    {
+        population -= populationToRemove;
+        ChangeHumanCounter();
+    }
+
+    /// <summary>
+    /// Get the current amount of humans.
+    /// </summary>
+    /// <returns></returns>
+    public int GetPopulationAmount()
+    {
+        return population;
     }
 
     #endregion
@@ -292,7 +356,7 @@ public class GameManager : MonoBehaviour
 
     private void ChangeHumanCounter()
     {
-        //humanCounter.text = GetHumans().ToString();
+        humanCounter.text = GetPopulationAmount().ToString();
     }
 
     private void ChangeFoodCounter()
