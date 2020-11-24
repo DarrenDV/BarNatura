@@ -7,5 +7,8 @@ public class BuildMenuItem : ScriptableObject
 {
     public Sprite sprite;
     public BuildObject buildItem;
-    public BuildingModeObject buildItemPreview;
+    public Mesh buildingItemMesh;
+    public int numberOfMeshes = 1;
+    public float meshScale = 1;
+    public Vector3 offset;
 }

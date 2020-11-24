@@ -162,12 +162,11 @@ public class BaseTileScript : Tile
     {
         var gameManager = GameManager.Instance;
 
-        if (gameManager.buildObject != null)
+        if (gameManager.inBuildMode)
         {
             //Set the position of the preview building to this tile
             gameManager.buildObjectPreview.gameObject.GetComponent<BuildingModeObject>().ChangeMaterial(isOccupied);
-            gameManager.previewObjectParent.transform.position = transform.position;
-            gameManager.previewObjectParent.transform.rotation = transform.rotation;
+            gameManager.MovePreview(transform.position, transform.rotation);
         }
     }
 
@@ -175,7 +174,7 @@ public class BaseTileScript : Tile
     {
         var gameManager = GameManager.Instance;
 
-        if (gameManager.buildObject != null)
+        if (gameManager.inBuildMode)
         {
             if (Input.GetMouseButtonDown(0) && !isOccupied && naturePollutedDegree >= 0 && gameManager.IsPointerOverUIElement() == false)
             {

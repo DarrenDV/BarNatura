@@ -6,28 +6,28 @@ using UnityEngine;
 public class BuildingModeObject : MonoBehaviour
 {
 
-    //[SerializeField] private MeshRenderer[] meshRenderers;
     [SerializeField] private MeshRenderer meshRenderer;
+    [SerializeField] private Material transparentMaterial;
     [SerializeField] private Color[] colors;
 
     public void ChangeMaterial(bool isOccupied)
     {
-
-        //for (int i = 0; i < meshRenderers.Length; ++i)
-        //{
-        //    if (isOccupied == false) meshRenderers[i].sharedMaterial.SetColor("_Color", colors[0]);
-        //    else meshRenderers[i].sharedMaterial.SetColor("_Color", colors[1]);
-        //}
-
         if (isOccupied == false) meshRenderer.sharedMaterial.SetColor("_Color", colors[0]);
         else meshRenderer.sharedMaterial.SetColor("_Color", colors[1]);
+    }
 
-        //for (int i = 0; i < meshRenderer.materials.Length; ++i)
-        //{
-        //    if (isOccupied == false) meshRenderer.sharedMaterial[0].SetColor("_Color", colors[0]);
-        //    else meshRenderer.sharedMaterial[i].SetColor("_Color", colors[1]);
-        //}
+    public void NewMaterialsArray(int numberOfMeshes)
+    {
+        //Create a new array based on how many materials the object has
+        meshRenderer.materials = new Material[numberOfMeshes];
 
-
+        //Create a copy of the materials array, change it's materials and then past if back into the main array
+        //No I can't just change the original array because Unity is a bitch
+        var mats = meshRenderer.materials;
+        for (int i = 0; i < mats.Length; i++)
+        {
+            mats[i] = transparentMaterial;
+        }
+        meshRenderer.materials = mats;
     }
 }
