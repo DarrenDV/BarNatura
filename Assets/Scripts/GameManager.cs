@@ -15,9 +15,11 @@ public class GameManager : MonoBehaviour
     [SerializeField] private int buildingMaterial = 100;
 
     [Header("Building")]
-    public GameObject previewObjectParent;
+    public GameObject buildObjectPreview;
     [HideInInspector] public GameObject buildObject;
-    [HideInInspector] public GameObject buildObjectPreview;
+    [HideInInspector] public bool inBuildMode;
+
+    private Vector3 offset;
 
     [Header("UI")]
     private Text oxygenCounter, drainCounter, pollutionCounter, surplusCounter;
@@ -228,26 +230,32 @@ public class GameManager : MonoBehaviour
 
     #endregion
 
-    #region Building 
+    #region Building
 
-    public void ChangeBuildObject(GameObject newObject, GameObject previewObject)
+    public void ChangeBuildObject(GameObject newObject, Mesh previewMesh,
+        int numberOfMeshes, float size, Vector3 offset)
     {
+        inBuildMode = true;
         buildObject = newObject;
-        buildObjectPreview = previewObject;
-        Instantiate(buildObjectPreview.gameObject, transform.position, transform.rotation, previewObjectParent.transform);
+        buildObjectPreview.GetComponent<MeshFilter>().sharedMesh = previewMesh;
+        buildObjectPreview.GetComponent<BuildingModeObject>().NewMaterialsArray(numberOfMeshes);
+        buildObjectPreview.transform.localScale = new Vector3(size, size, size);
+        this.offset = offset;
+
+        //Instantiate(buildObjectPreview.gameObject, transform.position, transform.rotation, previewObjectParent.transform);
+    }
+
+    public void MovePreview(Vector3 position, Quaternion rotation)
+    {
+        print(offset);
+        buildObjectPreview.transform.position = position + offset;
+        buildObjectPreview.transform.rotation = rotation;
     }
 
     public void StopBuilding()
     {
-        buildObject = null;
-
-        if (previewObjectParent.transform.childCount != 0)
-        {
-            Destroy(previewObjectParent.transform.GetChild(0).gameObject);
-        }
-
-        previewObjectParent.transform.position = Vector3.zero;
-        previewObjectParent.transform.rotation = Quaternion.identity;
+        inBuildMode = false;
+        buildObjectPreview.transform.position = Vector3.zero;
     }
 
     #endregion

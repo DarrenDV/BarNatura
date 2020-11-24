@@ -85,6 +85,7 @@ public class Popup : MonoBehaviour
         {
             var tile = rhit[0].transform.GetComponent<BaseTileScript>() != null ? rhit[0].transform.GetComponent<BaseTileScript>() : rhit[1].transform.GetComponent<BaseTileScript>();
 
+            //This causes a bug for some reason
             if(tile.PlacedObjects.Contains(selectedObject.gameObject))
             {
                 return true;

@@ -15,5 +15,6 @@ MonoBehaviour:
   sprite: {fileID: 21300000, guid: 5244a0a8903fe714f82f3df2d3792cbb, type: 3}
   buildItem: {fileID: 3215519612940163885, guid: 4a4ddcd93388c6e448618190bd6aabee,
     type: 3}
-  buildItemPreview: {fileID: 562162249561503279, guid: f6ce9c91063b76b4e8491cd943ea7aa4,
-    type: 3}
+  buildingItemMesh: {fileID: 4300000, guid: 90b3007ed7074dd4ea1220f4352dbdec, type: 3}
+  numberOfMeshes: 6
+  meshScale: 0.7
