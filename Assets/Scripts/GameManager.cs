@@ -42,10 +42,7 @@ public class GameManager : MonoBehaviour
         {
             Debug.LogError("Game Manager instance already set!");
         }
-    }
 
-    void Start()
-    {
         oxygenCounter = GameObject.Find("OxygenCounter").GetComponent<Text>();
         drainCounter = GameObject.Find("DrainCounter").GetComponent<Text>();
         pollutionCounter = GameObject.Find("PollutionCounter").GetComponent<Text>();
@@ -56,7 +53,10 @@ public class GameManager : MonoBehaviour
 
         humanCounter = GameObject.Find("HumanCounter").GetComponent<Text>();
         //foodCounter = GameObject.Find("FoodCounter").GetComponent<Text>();
+    }
 
+    void Start()
+    {
         ChangeBuildMaterialCounter();
         ChangeRawMaterialCounter();
     }
@@ -104,6 +104,11 @@ public class GameManager : MonoBehaviour
     /// <param name="oxygenGenerationToAdd">The amount of oxygen the object generates.</param>
     public void AddOxygenGeneration(int oxygenGenerationToAdd)
     {
+        if (oxygenGenerationToAdd == 0)
+        {
+            return;
+        }
+
         oxygenGeneration += oxygenGenerationToAdd;
         ChangeOxygenCounter();
     }
@@ -114,6 +119,11 @@ public class GameManager : MonoBehaviour
     /// <param name="oxygenGenerationToRemove">The amount of oxygen generation to remove</param>
     public void RemoveOxygenGeneration(int oxygenGenerationToRemove)
     {
+        if (oxygenGenerationToRemove == 0)
+        {
+            return;
+        }
+
         oxygenGeneration -= oxygenGenerationToRemove;
         ChangeDrainCounter();
     }
@@ -124,6 +134,11 @@ public class GameManager : MonoBehaviour
     /// <param name="oxygenUsageToAdd">The amount of oxygen the object uses.</param>
     public void AddOxygenUsage(int oxygenUsageToAdd)
     {
+        if (oxygenUsageToAdd == 0)
+        {
+            return;
+        }
+
         oxygenUsage += oxygenUsageToAdd;
         ChangeDrainCounter();
     }
@@ -134,6 +149,11 @@ public class GameManager : MonoBehaviour
     /// <param name="oxygenUsageToRemove"></param>
     public void RemoveOxygenUsage(int oxygenUsageToRemove)
     {
+        if (oxygenUsageToRemove == 0)
+        {
+            return;
+        }
+
         oxygenUsage -= oxygenUsageToRemove;
         ChangeDrainCounter();
     }
@@ -340,6 +360,7 @@ public class GameManager : MonoBehaviour
         oxygenCounter.text = GetOxygenGeneration().ToString();
         ChangeSurplusCounter();
     }
+
     private void ChangeDrainCounter()
     {
         drainCounter.text = GetOxygenUsage().ToString();

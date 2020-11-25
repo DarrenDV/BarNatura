@@ -63,9 +63,7 @@ public class Hexsphere : MonoBehaviour {
     // When loading a planet from a prefab, this bool tracks if we should restore the meshes of the tiles
     public bool TileMeshesRestored;
 
-    private PlanetVertexData[] VertexData;
-
-	void Start()
+    void Start()
     {
 		planetID = Planet_ID;
 		Planet_ID++;
