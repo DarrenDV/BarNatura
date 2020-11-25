@@ -16,7 +16,7 @@ public class GameManager : MonoBehaviour
     private int population;
 
     // for testing purposes
-    public int BuildingCount;
+    [HideInInspector] public int BuildingCount;
 
     [Header("Building")]
     public GameObject buildObjectPreview;
