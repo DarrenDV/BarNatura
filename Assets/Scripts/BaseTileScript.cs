@@ -66,13 +66,17 @@ public class BaseTileScript : Tile
         if (Random.Range(0, 100) < rubbleSpawnChance)
         {
             placeObject(Instantiate(RubbleTile, Vector3.zero, Quaternion.identity));
+        } 
+        else
+        {
+            //Places lava on 1 in every 100 tiles.
+            if (Random.Range(0, 100) < lavaSpawnChance && !isOccupied)
+            {
+                placeObject(Instantiate(lavaTile, Vector3.zero, Quaternion.identity));
+            }
         }
 
-        //Places lava on 1 in every 100 tiles.
-        if (Random.Range(0, 100) < lavaSpawnChance && !isOccupied)
-        {
-            placeObject(Instantiate(lavaTile, Vector3.zero, Quaternion.identity));
-        }
+
     }
 
     //Assigns variables from a singular variable script
