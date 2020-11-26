@@ -331,7 +331,6 @@ public class GameManager : MonoBehaviour
 
     public void MovePreview(Vector3 position, Quaternion rotation)
     {
-        print(offset);
         buildObjectPreview.transform.position = position + offset;
         buildObjectPreview.transform.rotation = rotation;
     }
