@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class NavigationDemo : MonoBehaviour
 {
@@ -13,14 +11,12 @@ public class NavigationDemo : MonoBehaviour
     {
         Tile.OnTileClickedAction += OnTileClicked;
 	}
-	
 
-    public void OnTileClicked(Tile tile)
+    private void OnTileClicked(Tile tile)
     {
         if(!Unit.moving && selected)
         {
-            Stack<Tile> path;
-            if(Hexsphere.planetInstances[0].navManager.findPath(Unit.currentTile, tile, out path))
+            if(Hexsphere.planetInstances[0].navManager.findPath(Unit.currentTile, tile, out var path))
             {
                 Unit.moveOnPath(path);
             }

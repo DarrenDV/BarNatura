@@ -112,30 +112,30 @@ public class HexplanetEditor : Editor {
         planet.setWorldScale(planet.planetScale);
         EditorGUI.EndDisabledGroup ();
 
-        EditorGUILayout.Space();
-        // Save prefab
-        EditorGUILayout.BeginHorizontal();
-        PrefabPath = EditorGUILayout.TextField("Path to prefab", PrefabPath);
-        if(GUILayout.Button("Save to Prefab"))
-        {
-            string path = PrefabPath + planet.gameObject.name + ".prefab";
+        //EditorGUILayout.Space();
+        //// Save prefab
+        //EditorGUILayout.BeginHorizontal();
+        //PrefabPath = EditorGUILayout.TextField("Path to prefab", PrefabPath);
+        //if(GUILayout.Button("Save to Prefab"))
+        //{
+        //    string path = PrefabPath + planet.gameObject.name + ".prefab";
 
-            // Check if prefab already exists
-            if(AssetDatabase.LoadAssetAtPath(path, typeof(GameObject)))
-            {
-                //Create dialog to ask if User is sure they want to overwrite existing prefab
-                if (EditorUtility.DisplayDialog("Are you sure?", "The prefab already exists. Do you want to overwrite it?", "Yes", "No"))
-                {
-                    SavePlanetAsPrefab(path);
-                }
-            }
-            else
-            {
-                SavePlanetAsPrefab(path);
-            }
+        //    // Check if prefab already exists
+        //    if(AssetDatabase.LoadAssetAtPath(path, typeof(GameObject)))
+        //    {
+        //        //Create dialog to ask if User is sure they want to overwrite existing prefab
+        //        if (EditorUtility.DisplayDialog("Are you sure?", "The prefab already exists. Do you want to overwrite it?", "Yes", "No"))
+        //        {
+        //            SavePlanetAsPrefab(path);
+        //        }
+        //    }
+        //    else
+        //    {
+        //        SavePlanetAsPrefab(path);
+        //    }
             
-        }
-        EditorGUILayout.EndHorizontal();
+        //}
+        //EditorGUILayout.EndHorizontal();
 
         //Ensure that the hexplanet's lists arent destroyed when playmode is entered
         if (GUI.changed)
@@ -147,15 +147,15 @@ public class HexplanetEditor : Editor {
 
     private void SavePlanetAsPrefab(string path)
     {
-        foreach (Tile t in planet.tiles)
-        {
-            t.SaveMeshData();
-        }
-        planet.TileMeshesRestored = false;
-        GameObject prefab = PrefabUtility.CreatePrefab(path, planet.gameObject);
-        AssetDatabase.SaveAssets();
-        AssetDatabase.Refresh();
-        planet.TileMeshesRestored = false;
-        PrefabUtility.ReplacePrefab(planet.gameObject, prefab, ReplacePrefabOptions.ConnectToPrefab);
+        //foreach (Tile t in planet.tiles)
+        //{
+        //    t.SaveMeshData();
+        //}
+        //planet.TileMeshesRestored = false;
+        //GameObject prefab = PrefabUtility.SaveAsPrefabAsset(planet.gameObject, path);
+        //AssetDatabase.SaveAssets();
+        //AssetDatabase.Refresh();
+        //planet.TileMeshesRestored = false;
+        //PrefabUtility.ReplacePrefab(planet.gameObject, prefab, ReplacePrefabOptions.ConnectToPrefab);
     }
 }

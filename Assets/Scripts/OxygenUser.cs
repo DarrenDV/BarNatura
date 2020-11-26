@@ -1,11 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class OxygenUser : BaseObject
 {
-
-    [Header("Oxygen varibles")]
+    [Header("Oxygen User")]
     [Tooltip("How much oxygen does this object produce?")]
     [SerializeField] protected int oxygenProduction;
     [Tooltip("How much oxygen does this object drain?")]
@@ -17,13 +14,9 @@ public class OxygenUser : BaseObject
     protected override void Start()
     {
         base.Start();
+
         GameManager.Instance.AddOxygenGeneration(oxygenProduction);
         GameManager.Instance.AddOxygenUsage(oxygenUsage);
         GameManager.Instance.AddPollution(pollutionProduction);
-    }
-
-    void Update()
-    {
-        
     }
 }

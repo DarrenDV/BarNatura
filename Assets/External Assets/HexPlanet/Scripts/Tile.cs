@@ -14,11 +14,12 @@ public enum TileDisplayOptions
 [Serializable]
 public class Tile : OxygenUser {
 
-    public static float planetScale;
+	public static float planetScale;
 	private static int ID = 0;
 
     public static Action<Tile> OnTileClickedAction;
 
+    [Header("Hex Planet")]
 	[Tooltip("The instance of the hexsphere which constructed this tile")]
 	public Hexsphere parentPlanet;
 	
@@ -124,20 +125,17 @@ public class Tile : OxygenUser {
 		Pointer.instance.unsetPointer ();
 	}
 	
-	void OnMouseDown()
+	protected override void OnMouseDown()
     {
-		//Demo function
+        //Demo function
 		//pathfindingDrawDemo ();
-        if(OnTileClickedAction != null)
-        {
-            OnTileClickedAction.Invoke(this);
-        }
-	}
+        OnTileClickedAction?.Invoke(this);
+    }
 
 	/// <summary>
 	/// Just a simple demo function that allows you to click on two tiles and draw the shortest path between them.
 	/// </summary>
-	public void pathfindingDrawDemo()
+	public void PathfindingDrawDemo()
     {
 		if (selectedTile == null) {
 			selectedTile = this;
@@ -151,7 +149,7 @@ public class Tile : OxygenUser {
 		}
 	}
 
-	public void placeObject(GameObject obj)
+	public void PlaceObject(GameObject obj)
     {
 		obj.transform.position = FaceCenter;
 		obj.transform.up = transform.up;
@@ -305,7 +303,7 @@ public class Tile : OxygenUser {
 		mesh.triangles = tris.ToArray ();
 		mesh.RecalculateNormals ();
 		//Reassign UVs
-		mesh.uv = isHexagon ? generateHexUvs() : generatePentUvs();
+		mesh.uv = isHexagon ? GenerateHexUvs() : GeneratePentUvs();
 
 		//Assign meshes to Mesh Collider and Mesh Filter
         if(GetComponent<MeshCollider>() != null)
@@ -321,7 +319,7 @@ public class Tile : OxygenUser {
         //SetColor(color);
 	}
 
-	public Vector2[] generateHexUvs()
+	public Vector2[] GenerateHexUvs()
     {
 		Vector2[] uvs = new Vector2[30];
 		uvs [0] = new Vector2 (0.293f, 0.798f);
@@ -345,7 +343,7 @@ public class Tile : OxygenUser {
 		return uvs;
 	}
 
-	public Vector2[] generatePentUvs()
+	public Vector2[] GeneratePentUvs()
     {
 		Vector2[] uvs = new Vector2[25];
 		uvs [0] = new Vector2 (0.389f, 0.97f);
@@ -368,7 +366,7 @@ public class Tile : OxygenUser {
 		return uvs;
 	}
 
-	public void SetGroupID(int groupId)
+	public void SetGroupId(int groupId)
     {
 		GroupID = groupId;
 
@@ -377,19 +375,16 @@ public class Tile : OxygenUser {
             tileRenderer.sharedMaterial = parentPlanet.GroupMaterials[GroupID];
             TileMaterial = tileRenderer.sharedMaterial;
         }
-		
-	}
+    }
 
     public void SetInitID(int initId)
     {
         InitID = initId;
-
     }
 
     public void SetRange(int rangey)
     {
         range = rangey;
-
     }
 
     public void SetColor(Color col)
@@ -450,7 +445,7 @@ public class Tile : OxygenUser {
         return connectedRegion;
     }
 
-    public int getID()
+    public int GetId()
     {
 		return id;
 	}
@@ -466,6 +461,7 @@ public class Tile : OxygenUser {
     public void RestoreMesh()
     {
         MeshFilter mf = GetComponent<MeshFilter>();
+
         if(mf.sharedMesh == null)
         {
             Mesh mesh = new Mesh();
@@ -525,39 +521,46 @@ public class ClockwiseComparer : IComparer
 	}
 }
 
-public class ClockwiseComparer2D : IComparer{
-	private Vector2 mOrigin;
+public class ClockwiseComparer2D : IComparer
+{
+    private Vector2 mOrigin;
 
-	public ClockwiseComparer2D(Vector2 origin){
-		mOrigin = origin;
-	}
+    public ClockwiseComparer2D(Vector2 origin)
+    {
+        mOrigin = origin;
+    }
 
-	public int Compare(object first, object second){
-		Vector2 v1 = (Vector2)first;
-		Vector2 v2 = (Vector2)second;
+    public int Compare(object first, object second)
+    {
+        Vector2 v1 = (Vector2) first;
+        Vector2 v2 = (Vector2) second;
 
-		return IsClockwise (v2, v1, mOrigin);
-	}
+        return IsClockwise(v2, v1, mOrigin);
+    }
 
-	public static int IsClockwise(Vector2 first, Vector2 second, Vector2 origin){
-		if (first == second) {
-			return 0;
-		}
+    public static int IsClockwise(Vector2 first, Vector2 second, Vector2 origin)
+    {
+        if (first == second)
+        {
+            return 0;
+        }
 
-		Vector2 firstOffset = first - origin;
-		Vector2 secondOffset = second - origin;
+        Vector2 firstOffset = first - origin;
+        Vector2 secondOffset = second - origin;
 
-		float angle1 = Mathf.Atan2 (firstOffset.x, firstOffset.y);
-		float angle2 = Mathf.Atan2 (secondOffset.x, secondOffset.y);
+        float angle1 = Mathf.Atan2(firstOffset.x, firstOffset.y);
+        float angle2 = Mathf.Atan2(secondOffset.x, secondOffset.y);
 
-		if (angle1 < angle2) {
-			return 1;
-		}
+        if (angle1 < angle2)
+        {
+            return 1;
+        }
 
-		if (angle1 > angle2) {
-			return -1;
-		}
+        if (angle1 > angle2)
+        {
+            return -1;
+        }
 
-		return (firstOffset.sqrMagnitude < secondOffset.sqrMagnitude) ? 1 : -1;
-	}
+        return (firstOffset.sqrMagnitude < secondOffset.sqrMagnitude) ? 1 : -1;
+    }
 }

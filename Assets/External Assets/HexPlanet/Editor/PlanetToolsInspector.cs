@@ -492,7 +492,7 @@ public class PlanetToolsInspector : Editor
                 break;
 
             case ToolMode.PaintGroupID:
-                t.SetGroupID(PlanetEditor.SelectedGroup);
+                t.SetGroupId(PlanetEditor.SelectedGroup);
                 break;
 
             case ToolMode.PaintHeight:
@@ -516,7 +516,7 @@ public class PlanetToolsInspector : Editor
                     {
                         GameObject o = Instantiate(PlanetEditor.ObjectList[PlanetEditor.SelectedObjectIndex]) as GameObject;
                         o.transform.localScale *= PlanetEditor.ObjectScale;
-                        t.placeObject(o);
+                        t.PlaceObject(o);
                     }
                 }
                 else if(PlanetEditor.ObjectMode == ObjectPaintMode.Remove)

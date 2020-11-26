@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 public class CameraScript : MonoBehaviour
 {
-    [SerializeField] private GameObject target;
+    [SerializeField] private GameObject target = null;
 
     [SerializeField] private float cameraSlowDown = 0.35f;
     [SerializeField] private float cameraSlowDownMinimumSpeed = 0f;

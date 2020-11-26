@@ -1,11 +1,10 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class FactoryScript : BuildingScript
 {
-    [Header("Factory Script")]
-    [SerializeField] private float maxFactoryConvertTimer;
+    [Header("Factory Script")] [SerializeField]
+    private float maxFactoryConvertTimer = 0;
+
     [SerializeField] private int rawMaterialConsumption = 2;
     [SerializeField] private int buildingMaterialProduction = 1;
 
@@ -18,11 +17,14 @@ public class FactoryScript : BuildingScript
 
         factoryConvertTimer += Time.deltaTime;
 
-        if (factoryConvertTimer >= maxFactoryConvertTimer) {
-            if (GameManager.Instance.GetRawMaterials() >= rawMaterialConsumption) {
+        if (factoryConvertTimer >= maxFactoryConvertTimer)
+        {
+            if (GameManager.Instance.GetRawMaterials() >= rawMaterialConsumption)
+            {
                 GameManager.Instance.RemoveRawMaterial(rawMaterialConsumption);
-                GameManager.Instance.AddBuildingMaterial(buildingMaterialProduction);  
+                GameManager.Instance.AddBuildingMaterial(buildingMaterialProduction);
             }
+
             factoryConvertTimer = 0;
         }
     }

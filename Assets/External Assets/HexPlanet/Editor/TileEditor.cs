@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
 using UnityEditor;
 using System.Collections.Generic;
 
@@ -43,7 +42,7 @@ public class TileEditor : Editor {
 
                 if(t != null)
                 {
-                    t.SetGroupID(GroupID);
+                    t.SetGroupId(GroupID);
                 }
             }
         }
@@ -63,13 +62,13 @@ public class TileEditor : Editor {
                     {
                         GameObject o = Instantiate(objectToPlace) as GameObject;
                         Tile t = (Tile)targets [i];
-						t.placeObject (o);
+						t.PlaceObject (o);
 					}
 				} 
 				else
                 {
                     GameObject o = Instantiate(objectToPlace) as GameObject;
-                    tile.placeObject(o);
+                    tile.PlaceObject(o);
 				}
 
 			}
@@ -83,13 +82,13 @@ public class TileEditor : Editor {
                     {
                         GameObject o = Instantiate(objectToPlace) as GameObject;
                         Tile t = (Tile)targets [i];
-						t.placeObject (o);
+						t.PlaceObject (o);
 					}
 				} 
                 // If only a single tile is selected, move the original object to that tile
 				else
                 {
-					tile.placeObject(objectToPlace);
+					tile.PlaceObject(objectToPlace);
 				}
 			}
 			//Clear the object slot

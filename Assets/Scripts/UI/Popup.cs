@@ -5,12 +5,12 @@ public class Popup : MonoBehaviour
 {
     public static Popup Instance;
 
-    public Vector3 DisplayOffset;
+    public Vector3 DisplayOffset = Vector3.zero;
 
     private BaseObject selectedObject;
 
-    [SerializeField] private Text titleText;
-    [SerializeField] private Text descriptionText;
+    [SerializeField] private Text titleText = null;
+    [SerializeField] private Text descriptionText = null;
 
     public void Start()
     {
