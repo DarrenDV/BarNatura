@@ -3,8 +3,8 @@ using UnityEngine.UI;
 
 public class BuildMenuButton : MonoBehaviour
 {
-    [SerializeField] private BuildMenuItem buildMenuItem;
-    [SerializeField] private Image buttonImage;
+    [SerializeField] private BuildMenuItem buildMenuItem = null;
+    [SerializeField] private Image buttonImage = null;
 
     private void Start()
     {
@@ -16,5 +16,6 @@ public class BuildMenuButton : MonoBehaviour
         if (buildMenuItem.buildItem.buildCost <= GameManager.Instance.GetBuildingMaterials())
             GameManager.Instance.ChangeBuildObject(buildMenuItem.buildItem.gameObject, buildMenuItem.buildingItemMesh,
                 buildMenuItem.numberOfMeshes, buildMenuItem.meshScale, buildMenuItem.offset);
+        }
     }
 }

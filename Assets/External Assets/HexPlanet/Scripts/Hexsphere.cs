@@ -1,7 +1,5 @@
 ﻿using UnityEngine;
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using System;
 
 public enum TileColliderType
@@ -355,7 +353,7 @@ public class Hexsphere : MonoBehaviour {
         tile.IsInverted = Invert;
         tile.parentPlanet = this;
         tile.Initialize();
-        tile.SetGroupID(0);
+        tile.SetGroupId(0);
 
         return tile;
     }
@@ -446,7 +444,7 @@ public class Hexsphere : MonoBehaviour {
             for (int i = 0; i < tiles.Count; i++)
             {
                 int col = UnityEngine.Random.Range(0, GroupMaterials.Length * 5);
-                tiles[i].SetGroupID(col);
+                tiles[i].SetGroupId(col);
                 tiles[i].SetInitID(col);
                 tiles[i].SetRange(-1);
                 //Just an example in which group 2 tiles are non navigable 
@@ -462,19 +460,19 @@ public class Hexsphere : MonoBehaviour {
                     tiles[i].range--;
                     for (int j = 0; j < tiles[i].neighborTiles.Count; j++)
                     {
-                        tiles[i].neighborTiles[j].SetGroupID(1);
+                        tiles[i].neighborTiles[j].SetGroupId(1);
                         tiles[i].neighborTiles[j].SetRange(tiles[i].neighborTiles[j].range);
                         tiles[i].neighborTiles[j].navigable = true;
 
                         for (int k = 0; k < tiles[i].neighborTiles[j].neighborTiles.Count; k++)
                         {
-                            tiles[i].neighborTiles[j].neighborTiles[k].SetGroupID(1);
+                            tiles[i].neighborTiles[j].neighborTiles[k].SetGroupId(1);
                             tiles[i].neighborTiles[j].neighborTiles[k].SetRange(tiles[i].neighborTiles[j].neighborTiles[k].range);
                             tiles[i].neighborTiles[j].neighborTiles[k].navigable = true;
 
                             for (int l = 0; l < tiles[i].neighborTiles[j].neighborTiles[k].neighborTiles.Count; l++)
                             {
-                                tiles[i].neighborTiles[j].neighborTiles[k].neighborTiles[l].SetGroupID(1);
+                                tiles[i].neighborTiles[j].neighborTiles[k].neighborTiles[l].SetGroupId(1);
                                 tiles[i].neighborTiles[j].neighborTiles[k].neighborTiles[l].SetRange(tiles[i].neighborTiles[j].neighborTiles[k].neighborTiles[l].range);
                                 tiles[i].neighborTiles[j].neighborTiles[k].neighborTiles[l].navigable = true;
                             }
@@ -483,7 +481,7 @@ public class Hexsphere : MonoBehaviour {
                 }
                 else
                 {
-                    tiles[i].SetGroupID(0);
+                    tiles[i].SetGroupId(0);
                     tiles[i].navigable = false;
                 }
 
@@ -497,7 +495,7 @@ public class Hexsphere : MonoBehaviour {
                     {
                         if (tiles[i].GroupID == 1 || tiles[i].GroupID == 2)
                         {
-                            tiles[i].neighborTiles[j].SetGroupID(3);
+                            tiles[i].neighborTiles[j].SetGroupId(3);
                             tiles[i].neighborTiles[j].SetRange(tiles[i].neighborTiles[j].range);
                             tiles[i].neighborTiles[j].navigable = true;
 
@@ -506,7 +504,7 @@ public class Hexsphere : MonoBehaviour {
                                 int a = UnityEngine.Random.Range(0, 1);
                                 if(a == 0)
                                 {
-                                    tiles[i].neighborTiles[j].neighborTiles[k].SetGroupID(3);
+                                    tiles[i].neighborTiles[j].neighborTiles[k].SetGroupId(3);
                                     tiles[i].neighborTiles[j].neighborTiles[k].SetRange(tiles[i].neighborTiles[j].neighborTiles[k].range);
                                     tiles[i].neighborTiles[j].neighborTiles[k].navigable = true;
                                 }
@@ -522,7 +520,7 @@ public class Hexsphere : MonoBehaviour {
                         {
                             if(tiles[j].GroupID != 0)
                             {
-                                tiles[j].SetGroupID(5);
+                                tiles[j].SetGroupId(5);
                                 tiles[j].SetExtrusionHeight(0.03f);
                             }
                         }
@@ -543,7 +541,7 @@ public class Hexsphere : MonoBehaviour {
                     {
                         if(tiles[i].neighborTiles[j].GroupID == 0)
                         {
-                            tiles[i].SetGroupID(2);
+                            tiles[i].SetGroupId(2);
                         }
                     }
 
@@ -555,7 +553,7 @@ public class Hexsphere : MonoBehaviour {
                     {
                         if (tiles[i].neighborTiles[j].GroupID == 0)
                         {
-                            tiles[i].SetGroupID(4);
+                            tiles[i].SetGroupId(4);
                         }
                     }
 
@@ -563,7 +561,7 @@ public class Hexsphere : MonoBehaviour {
                 }
                 if(tiles[i].GroupID == 7)
                 {
-                    tiles[i].placeObject(forestPrefab);
+                    tiles[i].PlaceObject(forestPrefab);
                 }
             }
         }
@@ -572,7 +570,7 @@ public class Hexsphere : MonoBehaviour {
             for (int i = 0; i < tiles.Count; i++)
             {
                 int col = UnityEngine.Random.Range(0, GroupMaterials.Length * 48);
-                tiles[i].SetGroupID(col);
+                tiles[i].SetGroupId(col);
                 tiles[i].SetInitID(col);
                 tiles[i].SetRange(-1);
                 //Just an example in which group 2 tiles are non navigable 
@@ -587,7 +585,7 @@ public class Hexsphere : MonoBehaviour {
                 }
                 else
                 {
-                    tiles[i].SetGroupID(0);
+                    tiles[i].SetGroupId(0);
                     tiles[i].navigable = false;
                 }
             }

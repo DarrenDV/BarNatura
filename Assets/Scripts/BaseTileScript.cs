@@ -1,76 +1,71 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using Assets.Scripts;
 using UnityEngine;
 
 public class BaseTileScript : Tile
 {
-
     #region Spreading Variables
 
-    [Header("Tile pollution state variables")]
-    protected float maxPollutedPercentage = 100f;
+    [Header("Base Tile Script")]
+    [Tooltip("The degree to which a tile is either polluted or nature.")]
+    [Range(-10, 10)]
+    [SerializeField] private int naturePollutedDegree; // make property so it updates the materials automatic
 
-    [SerializeField] protected float pollutedPercentage;
-
-    [Header("Tile nature state variables")]
-    protected float maxNaturePercentage = 100f;
-
-    [SerializeField] protected float naturePercentage;
-
-    [Tooltip("The degree to which a tile is either polluted or nature")] [Range(-10, 10)]
-    public int naturePollutedDegree; // make property so it updates the materials automatic
-
-    float timerSpread;
-    [SerializeField] float secondsToUpdate;
-    public Gradient gradient;
-    bool canBecomeNature = true;
+    private float timerSpread;
+    private bool canBecomeNature = true;
 
     #endregion
 
-    public GameObject RubbleTile;
-    public GameObject lavaTile;
-    [SerializeField] int lavaChance;
-
     private MeshRenderer meshRenderer;
     private bool doMaterialUpdate;
+    private TileVariables tileVariables;
 
     protected override void Start()
     {
         base.Start();
 
+        tileVariables = FindObjectOfType<TileVariables>();
         meshRenderer = GetComponent<MeshRenderer>();
+        
+        Spawning();
+    }
 
-        int rubbleSpawnChange = 20;
+    protected override void Update()
+    {
+        base.Update();
 
+        Spread();
+    }
+
+    //Toxic tile and natural tile spawning
+    private void Spawning()
+    {
+        //Toxic tile spawning
         if (Random.Range(0, 100) == 0)
         {
             naturePollutedDegree = -10;
             doMaterialUpdate = true;
         }
 
-        if (Random.Range(0, 100) < rubbleSpawnChange)
+        //Rubble tile spawning
+        if (Random.Range(0, 100) < tileVariables.rubbleSpawnChance)
         {
-            placeObject(Instantiate(RubbleTile, Vector3.zero, Quaternion.identity));
-        }
-
-        //Places lava on 1 in every 100 tiles.
-        if (Random.Range(0, lavaChance) == 0 && !isOccupied)
+            PlaceObject(Instantiate(tileVariables.rubbleTile, Vector3.zero, Quaternion.identity));
+        } 
+        else
         {
-            placeObject(Instantiate(lavaTile, Vector3.zero, Quaternion.identity));
+            //Places lava on 1 in every 100 tiles.
+            if (Random.Range(0, 100) < tileVariables.lavaSpawnChance && !isOccupied)
+            {
+                PlaceObject(Instantiate(tileVariables.lavaTile, Vector3.zero, Quaternion.identity));
+            }
         }
-    }
-
-    protected override void Update()
-    {
-        base.Update();
-        Spread();
     }
 
     #region Tile Spreading
 
-    void Spread()
+    private void Spread()
     {
-        if (timerSpread >= secondsToUpdate)
+        if (timerSpread >= tileVariables.secondsToUpdate)
         {
             foreach (var tile in neighborTiles)
             {
@@ -87,21 +82,17 @@ public class BaseTileScript : Tile
             timerSpread = 0;
         }
 
-        //if (naturePollutedDegree != 0)
-        //{
         timerSpread += Time.deltaTime;
-        //}
 
         if (doMaterialUpdate)
         {
-            meshRenderer.material.SetColor("_Color", gradient.Evaluate(Map(naturePollutedDegree, -10, 10, 0, 1)));
+            meshRenderer.material.SetColor("_Color", tileVariables.gradient.Evaluate(Utils.Map(naturePollutedDegree, -10, 10, 0, 1)));
             doMaterialUpdate = false;
         }
     }
 
-    void ToxicSpreading(BaseTileScript neighbour)
+    private void ToxicSpreading(BaseTileScript neighbour)
     {
-
         if (neighbour.naturePollutedDegree == -10 && naturePollutedDegree > -10)
         {
             naturePollutedDegree--;
@@ -114,7 +105,7 @@ public class BaseTileScript : Tile
         }
     }
 
-    void NatureSpreading(BaseTileScript neighbour)
+    private void NatureSpreading(BaseTileScript neighbour)
     {
         if (neighbour.naturePollutedDegree == 10 && naturePollutedDegree < 10 && canBecomeNature)
         {
@@ -125,38 +116,7 @@ public class BaseTileScript : Tile
 
     #endregion
 
-    public float Map(float value, float fromSource, float toSource, float fromTarget, float toTarget)
-    {
-        return (value - fromSource) / (toSource - fromSource) * (toTarget - fromTarget) + fromTarget;
-    }
-
-    #region PollutionChecks
-
-    public bool PolutionLevelCheck()
-    {
-        if (pollutedPercentage >= maxPollutedPercentage)
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
-    }
-
-    public bool NatureLevelCheck()
-    {
-        if (naturePercentage >= maxNaturePercentage)
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
-    }
-
-    #endregion
+    #region BuildingPlacement
 
     private void OnMouseEnter()
     {
@@ -179,7 +139,7 @@ public class BaseTileScript : Tile
             if (Input.GetMouseButtonDown(0) && !isOccupied && naturePollutedDegree >= 0 && gameManager.IsPointerOverUIElement() == false)
             {
                 //Place the new building
-                placeObject(Instantiate(gameManager.buildObject.gameObject, transform.position, transform.rotation));
+                PlaceObject(Instantiate(gameManager.buildObject.gameObject, transform.position, transform.rotation));
                 gameManager.ChangeBuildingMaterial(gameManager.buildObject.gameObject.GetComponent<BuildObject>().buildCost);
 
                 if (gameManager.buildObject.gameObject.CompareTag("Tree"))
@@ -192,4 +152,6 @@ public class BaseTileScript : Tile
             }
         }
     }
+
+    #endregion
 }
