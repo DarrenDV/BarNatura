@@ -5,18 +5,21 @@ using UnityEngine;
 public class TileVariables : MonoBehaviour
 {
     //Create a variable here and assing it on TileVariables in the inspector
-    //TileVariables is a child under the GameManager
-    
 
     //Tile spreading variables
+    [Header("Colors")]
     public Gradient gradient;
 
     //Spawned tile variables
-    public GameObject rubbleTile;
-    public int rubbleSpawnChance;
+    [Header("Spawning objects")]
     public GameObject lavaTile;
+    public GameObject rubbleTile;
+    [Range(1, 100)]
+    public int rubbleSpawnChance;
+    [Range(1, 100)]
     public int lavaSpawnChance;
 
     //Uncategorized variables
+    [Header("Time")]
     public float secondsToUpdate;
 }

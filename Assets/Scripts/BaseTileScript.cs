@@ -30,7 +30,7 @@ public class BaseTileScript : Tile
     GameObject RubbleTile;
     int rubbleSpawnChance;
     GameObject lavaTile;
-    int lavaChance;
+    int lavaSpawnChance;
 
     private MeshRenderer meshRenderer;
     private bool doMaterialUpdate;
@@ -69,7 +69,7 @@ public class BaseTileScript : Tile
         }
 
         //Places lava on 1 in every 100 tiles.
-        if (Random.Range(0, lavaChance) == 0 && !isOccupied)
+        if (Random.Range(0, 100) < lavaSpawnChance && !isOccupied)
         {
             placeObject(Instantiate(lavaTile, Vector3.zero, Quaternion.identity));
         }
@@ -79,14 +79,14 @@ public class BaseTileScript : Tile
     void Assigning()
     {
         //Get tileVariables.cs
-        TileVariables tileVariables = GameObject.Find("TileVariables").GetComponent<TileVariables>();
+        TileVariables tileVariables = FindObjectOfType<TileVariables>();
 
         //Follow what is done here for every static variable
         gradient = tileVariables.gradient;
         RubbleTile = tileVariables.rubbleTile;
         rubbleSpawnChance = tileVariables.rubbleSpawnChance;
         lavaTile = tileVariables.lavaTile;
-        lavaChance = tileVariables.lavaSpawnChance;
+        lavaSpawnChance = tileVariables.lavaSpawnChance;
         secondsToUpdate = tileVariables.secondsToUpdate;
 
     }
