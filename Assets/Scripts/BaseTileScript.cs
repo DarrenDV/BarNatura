@@ -34,10 +34,14 @@ public class BaseTileScript : Tile
     private MeshRenderer meshRenderer;
     private bool doMaterialUpdate;
 
+    public WinLose wl;
+    public bool canAdd = true;
+
     protected override void Start()
     {
         base.Start();
 
+        wl = GameObject.Find("GameManager").GetComponent<WinLose>();
         meshRenderer = GetComponent<MeshRenderer>();
 
         int rubbleSpawnChange = 20;
@@ -64,6 +68,7 @@ public class BaseTileScript : Tile
     {
         base.Update();
         Spread();
+        CheckTile();
     }
 
     #region Tile Spreading
@@ -190,6 +195,26 @@ public class BaseTileScript : Tile
 
                 gameManager.StopBuilding();
             }
+        }
+    }
+
+    void CheckTile()
+    {
+        if (canAdd) {
+            if (naturePollutedDegree == 10)
+            {
+                wl.AddTile(true, false);
+                canAdd = false;
+            }
+            else if(naturePollutedDegree == -10)
+            {
+                wl.AddTile(false, true);
+                canAdd = false;
+            }
+        }
+        else
+        {
+            if (naturePollutedDegree != 10 && naturePollutedDegree != -10) canAdd = true;
         }
     }
 }
