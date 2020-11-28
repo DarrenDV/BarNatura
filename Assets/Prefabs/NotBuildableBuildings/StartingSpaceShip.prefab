@@ -51,7 +51,7 @@ MonoBehaviour:
   pollutionProduction: 0
   buildCost: 0
   maxCapacity: 5
-  oxygenSupplyTime: 60
+  oxygenSupplyTime: 300
 --- !u!65 &1875452393670931270
 BoxCollider:
   m_ObjectHideFlags: 0
