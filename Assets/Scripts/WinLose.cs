@@ -1,12 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class WinLose : MonoBehaviour
 {
-
     public int tileCount;
 
     bool canWin = true;
@@ -187,7 +184,7 @@ public class WinLose : MonoBehaviour
         float seconds = Mathf.FloorToInt(timeToDisplay % 60);
 
         //Displays the seconds and minuts on the Text UI
-        timeText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
+        timeText.text = $"{minutes:00}:{seconds:00}";
     }
     #endregion
 }

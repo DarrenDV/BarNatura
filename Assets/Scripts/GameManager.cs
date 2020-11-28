@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Analytics;
-using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
@@ -47,7 +46,7 @@ public class GameManager : MonoBehaviour
 
     private float analyticsTimer;
 
-    public WinLose wl;
+    private WinLose winLose;
 
     #region default
 
@@ -74,7 +73,7 @@ public class GameManager : MonoBehaviour
         capacityCounter = GameObject.Find("CapacityCounter").GetComponent<Text>();
         //foodCounter = GameObject.Find("FoodCounter").GetComponent<Text>();
 
-        wl = this.gameObject.GetComponent<WinLose>();
+        winLose = GetComponent<WinLose>();
     }
 
     void Start()
@@ -288,7 +287,7 @@ public class GameManager : MonoBehaviour
         population += populationToAdd;
         ChangeHumanCounter();
 
-        wl.CheckPopulation(population);
+        winLose.CheckPopulation(population);
     }
 
     /// <summary>
@@ -305,7 +304,7 @@ public class GameManager : MonoBehaviour
         population -= populationToRemove;
         ChangeHumanCounter();
 
-        wl.CheckPopulation(population);
+        winLose.CheckPopulation(population);
     }
 
     /// <summary>
@@ -457,8 +456,7 @@ public class GameManager : MonoBehaviour
 
     #region Building
 
-    public void ChangeBuildObject(GameObject newObject, Mesh previewMesh,
-        int numberOfMeshes, float size)
+    public void ChangeBuildObject(GameObject newObject, Mesh previewMesh, int numberOfMeshes, float size)
     {
         inBuildMode = true;
         buildObject = newObject;
@@ -523,18 +521,10 @@ public class GameManager : MonoBehaviour
         capacityCounter.text = GetCapacityAmount().ToString();
     }
 
-    private void ChangeFoodCounter()
-    {
-        //foodCounter.text = GetFood().ToString();
-    }
-
     private void ChangeSurplusCounter()
     {
         surplusCounter.text = GetOxygenSurplus().ToString();
     }
-
-
-
 
     #endregion
 }

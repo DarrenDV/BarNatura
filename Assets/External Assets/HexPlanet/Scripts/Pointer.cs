@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 public enum PointerStatus {TILE, SELECTED, BUSY, BUILD_OK, BUILD_INVALID, TARGETED};
 public enum PointerMode {NORMAL, TARGETING, BUILDING};
