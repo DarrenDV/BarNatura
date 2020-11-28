@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3215519612940163885}
   - component: {fileID: 6304328013930547756}
   m_Layer: 0
-  m_Name: New House
+  m_Name: House
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -49,7 +49,8 @@ MonoBehaviour:
   oxygenUsage: 1
   pollutionProduction: 1
   buildCost: 10
-  maxCapacity: 3
+  maxCapacity: 10
+  populationToAdd: 3
 --- !u!65 &6304328013930547756
 BoxCollider:
   m_ObjectHideFlags: 0

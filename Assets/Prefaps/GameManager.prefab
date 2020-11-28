@@ -177,3 +177,4 @@ MonoBehaviour:
   buildObject: {fileID: 0}
   inBuildMode: 0
   humanOxygenUseage: 1
+  humanDeathTimer: 10

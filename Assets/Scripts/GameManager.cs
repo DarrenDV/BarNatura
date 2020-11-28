@@ -34,8 +34,11 @@ public class GameManager : MonoBehaviour
 
     [Header("Humans")]
     [SerializeField] private int humanOxygenUseage;
-    [SerializeField] private float humanSpawnTimer;
-    [SerializeField] private float timeSinceLastHumanSpawn;
+    private float humanSpawnTimer;
+    private float timeSinceLastHumanSpawn;
+    [Tooltip("How long it take before the humans die when there isn't enough oxygen")]
+    [SerializeField] private float humanDeathTimer;
+    [SerializeField]private float timeLeftUntilHumansDie;
 
     [Header("UI")]
     private Text oxygenCounter, drainCounter, pollutionCounter, surplusCounter;
@@ -74,7 +77,7 @@ public class GameManager : MonoBehaviour
     {
         ChangeBuildMaterialCounter();
         ChangeRawMaterialCounter();
-        ResetHumanTimer();
+        ResetHumanTimer();   
     }
 
     void Update()
@@ -89,14 +92,32 @@ public class GameManager : MonoBehaviour
 
         HandleAnalytics();
 
-        //Start the human spawn timer when we have enough ocygen and living space to do so
-        if (oxygenSurplus > 0 && maxCapacity > population)
+        //Start the human spawn timer when we have enough oxygen and living space to do so
+        if (oxygenSurplus > 2 && maxCapacity > population)
         {
             timeSinceLastHumanSpawn += Time.deltaTime;
             if (timeSinceLastHumanSpawn >= humanSpawnTimer)
             {
                 int minHumanSpawn = 1;
-                int maxHumanSpawn = 5;
+                int possibleMax = 5;
+                int maxHumanSpawn = possibleMax;
+
+                //Spawn the max amount of humans possible
+                if (maxCapacity - population >= possibleMax && oxygenSurplus >= possibleMax)
+                {
+                    maxHumanSpawn = possibleMax;
+                }
+                //Checks if we have enough oxygen but not enough living space
+                else if (maxCapacity - population < possibleMax && oxygenSurplus >= possibleMax)
+                {
+                    maxHumanSpawn = maxCapacity - population;
+                }
+                //Checks if we have enough living space but not enough oxygen
+                else if (maxCapacity - population >= possibleMax && oxygenSurplus < possibleMax)
+                {
+                    maxHumanSpawn = oxygenSurplus - 1;
+                }
+
                 AddPopulation(Random.Range(minHumanSpawn, maxHumanSpawn + 1));
                 ResetHumanTimer();
             }
@@ -105,6 +126,22 @@ public class GameManager : MonoBehaviour
         {
             if (timeSinceLastHumanSpawn != 0)
                 ResetHumanTimer();
+        }
+
+
+        if (oxygenSurplus <= 0 && population > 0 || population > maxCapacity)
+        {
+            timeLeftUntilHumansDie += Time.deltaTime;
+            if (timeLeftUntilHumansDie > humanDeathTimer)
+            {
+                timeLeftUntilHumansDie = humanDeathTimer - Random.Range(1f, 2f);
+                RemovePopulation(1);
+            }
+        } 
+        else
+        {
+            if (timeLeftUntilHumansDie != 0)
+                    timeLeftUntilHumansDie = 0;
         }
 
     }
