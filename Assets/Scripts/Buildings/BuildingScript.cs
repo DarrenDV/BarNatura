@@ -15,6 +15,7 @@ public class BuildingScript : BuildObject
 
         // testing
         GameManager.Instance.BuildingCount++;
+        GameManager.Instance.AddCapacity(maxCapacity);
     }
 
     public override void Remove()
@@ -23,5 +24,6 @@ public class BuildingScript : BuildObject
 
         // testing
         GameManager.Instance.BuildingCount--;
+        GameManager.Instance.RemoveCapacity(maxCapacity);
     }
 }

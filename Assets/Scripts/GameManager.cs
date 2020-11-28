@@ -8,12 +8,19 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
 
+    //Oxygen
     private int oxygenGeneration;
     private int oxygenUsage;
     private int pollution;
+    private int oxygenSurplus;
+
+    //Materials
     private int rawMaterial;
     private int buildingMaterial = 100;
+
+    //Population
     private int population;
+    private int maxCapacity;
 
     // for testing purposes
     [HideInInspector] public int BuildingCount;
@@ -25,12 +32,22 @@ public class GameManager : MonoBehaviour
 
     private Vector3 offset;
 
+    [Header("Humans")]
+    [SerializeField] private int humanOxygenUseage;
+    private float humanSpawnTimer;
+    private float timeSinceLastHumanSpawn;
+    [Tooltip("How long it take before the humans die when there isn't enough oxygen")]
+    [SerializeField] private float humanDeathTimer;
+    [SerializeField]private float timeLeftUntilHumansDie;
+
     [Header("UI")]
     private Text oxygenCounter, drainCounter, pollutionCounter, surplusCounter;
     private Text buildMaterialCounter, rawMaterialCounter;
-    private Text humanCounter;
+    private Text humanCounter, capacityCounter;
 
     private float analyticsTimer;
+
+    #region default
 
     private void Awake()
     {
@@ -52,6 +69,7 @@ public class GameManager : MonoBehaviour
         rawMaterialCounter = GameObject.Find("RawMaterialCounter").GetComponent<Text>();
 
         humanCounter = GameObject.Find("HumanCounter").GetComponent<Text>();
+        capacityCounter = GameObject.Find("CapacityCounter").GetComponent<Text>();
         //foodCounter = GameObject.Find("FoodCounter").GetComponent<Text>();
     }
 
@@ -59,17 +77,78 @@ public class GameManager : MonoBehaviour
     {
         ChangeBuildMaterialCounter();
         ChangeRawMaterialCounter();
+        ResetHumanTimer();   
     }
 
     void Update()
     {
+
+        oxygenSurplus = oxygenGeneration - (oxygenUsage + pollution);
+
         if (Input.GetMouseButtonDown(1))
         {
             StopBuilding();
         }
 
         HandleAnalytics();
+
+        //Start the human spawn timer when we have enough oxygen and living space to do so
+        if (oxygenSurplus > 2 && maxCapacity > population)
+        {
+            timeSinceLastHumanSpawn += Time.deltaTime;
+            if (timeSinceLastHumanSpawn >= humanSpawnTimer)
+            {
+                int minHumanSpawn = 1;
+                int possibleMax = 5;
+                int maxHumanSpawn = possibleMax;
+
+                //Spawn the max amount of humans possible
+                if (maxCapacity - population >= possibleMax && oxygenSurplus >= possibleMax)
+                {
+                    maxHumanSpawn = possibleMax;
+                }
+                //Checks if we have enough oxygen but not enough living space
+                else if (maxCapacity - population < possibleMax && oxygenSurplus >= possibleMax)
+                {
+                    maxHumanSpawn = maxCapacity - population;
+                }
+                //Checks if we have enough living space but not enough oxygen
+                else if (maxCapacity - population >= possibleMax && oxygenSurplus < possibleMax)
+                {
+                    maxHumanSpawn = oxygenSurplus - 1;
+                }
+
+                AddPopulation(Random.Range(minHumanSpawn, maxHumanSpawn + 1));
+                ResetHumanTimer();
+            }
+        }
+        else
+        {
+            if (timeSinceLastHumanSpawn != 0)
+                ResetHumanTimer();
+        }
+
+
+        if (oxygenSurplus <= 0 && population > 0 || population > maxCapacity)
+        {
+            timeLeftUntilHumansDie += Time.deltaTime;
+            if (timeLeftUntilHumansDie > humanDeathTimer)
+            {
+                timeLeftUntilHumansDie = humanDeathTimer - Random.Range(1f, 2f);
+                RemovePopulation(1);
+            }
+        } 
+        else
+        {
+            if (timeLeftUntilHumansDie != 0)
+                    timeLeftUntilHumansDie = 0;
+        }
+
     }
+
+    #endregion
+
+    #region Analytics
 
     private void HandleAnalytics()
     {
@@ -95,6 +174,8 @@ public class GameManager : MonoBehaviour
             {"building_materials", buildingMaterial}
         });
     }
+
+    #endregion
 
     #region Oxygen
 
@@ -194,6 +275,12 @@ public class GameManager : MonoBehaviour
     /// <param name="populationToAdd">The amount of humans born.</param>
     public void AddPopulation(int populationToAdd)
     {
+        //if (population + populationToAdd > maxCapacity) populationToAdd = maxCapacity - population;
+        for (int i = 0; i < populationToAdd; i++)
+        {
+            AddOxygenUsage(humanOxygenUseage);
+        }
+            
         population += populationToAdd;
         ChangeHumanCounter();
     }
@@ -204,6 +291,11 @@ public class GameManager : MonoBehaviour
     /// <param name="populationToRemove">The amount of humans that died.</param>
     public void RemovePopulation(int populationToRemove)
     {
+        for (int i = 0; i < populationToRemove; i++)
+        {
+            RemoveOxygenUsage(humanOxygenUseage);
+        }
+
         population -= populationToRemove;
         ChangeHumanCounter();
     }
@@ -215,6 +307,47 @@ public class GameManager : MonoBehaviour
     public int GetPopulationAmount()
     {
         return population;
+    }
+
+    /// <summary>
+    /// Use this when a new human is born
+    /// </summary>
+    /// <param name="capacityToAdd">The amount of humans born.</param>
+    public void AddCapacity(int capacityToAdd)
+    {
+        maxCapacity += capacityToAdd;
+        ChangeCapacityCounter();
+    }
+
+    /// <summary>
+    /// Use this when a human dies.
+    /// </summary>
+    /// <param name="capacityToRemove">The amount of humans that died.</param>
+    public void RemoveCapacity(int capacityToRemove)
+    {
+        maxCapacity -= capacityToRemove;
+        ChangeCapacityCounter();
+    }
+
+    /// <summary>
+    /// Get the current amount of humans.
+    /// </summary>
+    /// <returns></returns>
+    public int GetCapacityAmount()
+    {
+        return maxCapacity;
+    }
+
+    /// <summary>
+    /// Resets the human Spawn Timer
+    /// </summary>
+    private void ResetHumanTimer()
+    {
+        float minHumanSpawnTimer = 10;
+        float maxHumanSpawnTimer = 15;
+        humanSpawnTimer = Random.Range(minHumanSpawnTimer, maxHumanSpawnTimer);
+
+        timeSinceLastHumanSpawn = 0;
     }
 
     #endregion
@@ -385,6 +518,11 @@ public class GameManager : MonoBehaviour
     private void ChangeHumanCounter()
     {
         humanCounter.text = GetPopulationAmount().ToString();
+    }
+
+    private void ChangeCapacityCounter()
+    {
+        capacityCounter.text = GetCapacityAmount().ToString();
     }
 
     private void ChangeFoodCounter()

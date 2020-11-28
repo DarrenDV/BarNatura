@@ -46,8 +46,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   oxygenProduction: 0
-  oxygenUsage: 10
-  pollutionProduction: 20
+  oxygenUsage: 5
+  pollutionProduction: 15
   buildCost: 25
   maxCapacity: 0
   maxFactoryConvertTimer: 5
