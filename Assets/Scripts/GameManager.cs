@@ -38,7 +38,7 @@ public class GameManager : MonoBehaviour
     private float timeSinceLastHumanSpawn;
     [Tooltip("How long it take before the humans die when there isn't enough oxygen")]
     [SerializeField] private float humanDeathTimer;
-    [SerializeField]private float timeLeftUntilHumansDie;
+    private float timeLeftUntilHumansDie;
 
     [Header("UI")]
     private Text oxygenCounter, drainCounter, pollutionCounter, surplusCounter;

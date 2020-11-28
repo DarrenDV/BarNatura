@@ -124,10 +124,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   meshRenderer: {fileID: 7330053739456512317}
-  transparentMaterial: {fileID: 2100000, guid: 6a1ea66321e13c148a966ede3bd46288, type: 2}
   colors:
   - {r: 0, g: 1, b: 0, a: 0.5019608}
   - {r: 1, g: 0, b: 0, a: 0.5019608}
+  transparentMaterial: {fileID: 2100000, guid: 6a1ea66321e13c148a966ede3bd46288, type: 2}
 --- !u!1 &7647788133465493295
 GameObject:
   m_ObjectHideFlags: 0
@@ -173,12 +173,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 972d0c1f93600984aaa3be79e5f730a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  oxygenGeneration: 0
-  oxygenUsage: 0
-  pollution: 0
-  rawMaterial: 0
-  buildingMaterial: 100
-  buildObjectPreview: {fileID: 0}
+  BuildingCount: 0
+  buildObjectPreview: {fileID: 3824843029921591926}
+  buildObject: {fileID: 0}
+  inBuildMode: 0
+  humanOxygenUseage: 1
+  humanDeathTimer: 10
+  timeLeftUntilHumansDie: 0
 --- !u!114 &4530827153166617944
 MonoBehaviour:
   m_ObjectHideFlags: 0
