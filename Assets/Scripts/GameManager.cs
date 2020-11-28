@@ -450,21 +450,20 @@ public class GameManager : MonoBehaviour
     #region Building
 
     public void ChangeBuildObject(GameObject newObject, Mesh previewMesh,
-        int numberOfMeshes, float size, Vector3 offset)
+        int numberOfMeshes, float size)
     {
         inBuildMode = true;
         buildObject = newObject;
         buildObjectPreview.GetComponent<MeshFilter>().sharedMesh = previewMesh;
         buildObjectPreview.GetComponent<BuildingModeObject>().NewMaterialsArray(numberOfMeshes);
         buildObjectPreview.transform.localScale = new Vector3(size, size, size);
-        this.offset = offset;
 
         //Instantiate(buildObjectPreview.gameObject, transform.position, transform.rotation, previewObjectParent.transform);
     }
 
     public void MovePreview(Vector3 position, Quaternion rotation)
     {
-        buildObjectPreview.transform.position = position + offset;
+        buildObjectPreview.transform.position = position ;
         buildObjectPreview.transform.rotation = rotation;
     }
 

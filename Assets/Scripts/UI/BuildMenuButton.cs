@@ -15,7 +15,7 @@ public class BuildMenuButton : MonoBehaviour
     {
         if (buildMenuItem.buildItem.buildCost <= GameManager.Instance.GetBuildingMaterials())
         {
-            GameManager.Instance.ChangeBuildObject(buildMenuItem.buildItem.gameObject, buildMenuItem.buildingItemMesh, buildMenuItem.numberOfMeshes, buildMenuItem.meshScale, buildMenuItem.offset);
+            GameManager.Instance.ChangeBuildObject(buildMenuItem.buildItem.gameObject, buildMenuItem.buildingItemMesh, buildMenuItem.numberOfMeshes, buildMenuItem.meshScale);
         }
     }
 }

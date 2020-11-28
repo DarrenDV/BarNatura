@@ -10,5 +10,4 @@ public class BuildMenuItem : ScriptableObject
     public Mesh buildingItemMesh;
     public int numberOfMeshes = 1;
     public float meshScale = 1;
-    public Vector3 offset;
 }
