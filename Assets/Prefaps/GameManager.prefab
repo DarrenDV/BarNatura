@@ -139,6 +139,7 @@ GameObject:
   - component: {fileID: 806161385225259579}
   - component: {fileID: 5480940546079918393}
   - component: {fileID: 4530827153166617944}
+  - component: {fileID: 6878360410142992464}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -179,7 +180,6 @@ MonoBehaviour:
   inBuildMode: 0
   humanOxygenUseage: 1
   humanDeathTimer: 10
-  timeLeftUntilHumansDie: 0
 --- !u!114 &4530827153166617944
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -228,3 +228,26 @@ MonoBehaviour:
   rubbleSpawnChance: 40
   lavaSpawnChance: 1
   secondsToUpdate: 2
+--- !u!114 &6878360410142992464
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7647788133465493295}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc9f80971587c754ca51fb8af83bdead, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tileCount: 0
+  requiredNatureTiles: 0
+  requiredNatureTilePercent: 0.05
+  currentNatureTiles: 0
+  requiredToxicTiles: 0
+  requiredToxicTilePercent: 0.3
+  currentToxicTiles: 0
+  WinPopUp: {fileID: 0}
+  LosePopUp: {fileID: 0}
+  timeRemaining: 120
+  timeText: {fileID: 0}

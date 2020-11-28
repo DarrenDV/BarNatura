@@ -19,11 +19,15 @@ public class BaseTileScript : Tile
     private bool doMaterialUpdate;
     private TileVariables tileVariables;
 
+    public WinLose wl;
+    public bool canAdd = true;
+
     protected override void Start()
     {
         base.Start();
 
         tileVariables = FindObjectOfType<TileVariables>();
+        wl = GameObject.Find("GameManager").GetComponent<WinLose>();
         meshRenderer = GetComponent<MeshRenderer>();
         
         Spawning();
@@ -34,6 +38,8 @@ public class BaseTileScript : Tile
         base.Update();
 
         Spread();
+
+        CheckTile();
     }
 
     //Toxic tile and natural tile spawning
@@ -154,4 +160,23 @@ public class BaseTileScript : Tile
     }
 
     #endregion
+    void CheckTile()
+    {
+        if (canAdd) {
+            if (naturePollutedDegree == 10)
+            {
+                wl.AddTile(true, false);
+                canAdd = false;
+            }
+            else if(naturePollutedDegree == -10)
+            {
+                wl.AddTile(false, true);
+                canAdd = false;
+            }
+        }
+        else
+        {
+            if (naturePollutedDegree != 10 && naturePollutedDegree != -10) canAdd = true;
+        }
+    }
 }
