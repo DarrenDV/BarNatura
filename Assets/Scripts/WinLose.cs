@@ -9,18 +9,21 @@ public class WinLose : MonoBehaviour
 
     public int tileCount;
 
+    bool canWin = true;
+    bool canLose = true;
+
     //Tile required variables
     //Nature
-    public int requiredNatureTiles;
+    public int requiredNatureTiles; //public can be removed, currently for testing purposes here
     [Range (0, 1)]
     [SerializeField] float requiredNatureTilePercent;
-    public int currentNatureTiles;
+    public int currentNatureTiles; //public can be removed, currently for testing purposes here
 
     //Toxic
-    public int requiredToxicTiles;
+    public int requiredToxicTiles; //public can be removed, currently for testing purposes here
     [Range(0, 1)]
     [SerializeField] float requiredToxicTilePercent;
-    public int currentToxicTiles;
+    public int currentToxicTiles; //public can be removed, currently for testing purposes here
 
     [SerializeField] GameObject WinPopUp;
     [SerializeField] GameObject LosePopUp;
@@ -31,20 +34,25 @@ public class WinLose : MonoBehaviour
     bool timerIsRunning = false;
     [SerializeField] Text timeText;
 
+    //Population related variables
+    [SerializeField] bool populationDeathCanTrigger = false;
+    [SerializeField] int popRequiredForTrigger;
+
+    #region Default
     void Start()
     {
         timerIsRunning = true;
-
         TileAmountCalculation();
-    
     }
 
     void Update()
     {
         CalcTime();
-        LoseChecks();
+        CheckTime();
     }
+    #endregion
 
+    #region Tiles
     void TileAmountCalculation()
     {
         //Gets the amount of tiles from the planet which generates them
@@ -73,43 +81,61 @@ public class WinLose : MonoBehaviour
         }
     }
 
-    #region TileChecks
     //Checks for both types of tiles if they are equal or greater than the required amount for the win or loss
     void CheckTileWin()
     {
-        if(currentNatureTiles >= requiredNatureTiles)
-        {
-            WinPopUp.SetActive(true);
-        }
+        if(currentNatureTiles >= requiredNatureTiles) Won();
     }
 
     void CheckTileLose()
     {
-        if (currentToxicTiles >= requiredToxicTiles)
-        {
-            LosePopUp.SetActive(true);
-        }
+        if (currentToxicTiles >= requiredToxicTiles) Lost();
     }
 
     #endregion
 
-    #region LoseChecks
+    #region Losing
 
-    void LoseChecks()
+    void Lost()
     {
-        CheckTime();
-        CheckPopulation();
+        if (canLose)
+        {
+            LosePopUp.SetActive(true);
+            canWin = false;
+        }
     }
 
     void CheckTime()
     {
-        if (!timerIsRunning) LosePopUp.SetActive(true);
+        if (!timerIsRunning) Lost();
     }
 
-    void CheckPopulation()
+    public void CheckPopulation(int pop)
     {
-        //Get population amount from GameManager
+
+        if (pop > popRequiredForTrigger) populationDeathCanTrigger = true;
+
+        if (populationDeathCanTrigger)
+        {
+            if(pop <= 0)
+            {
+                Lost();
+            }
+        }
     }
+    #endregion
+
+    #region Winning
+
+    void Won()
+    {
+        if (canWin)
+        {
+            WinPopUp.SetActive(true);
+            canLose = false;
+        }
+    }
+
     #endregion
 
     #region PopUpButtons

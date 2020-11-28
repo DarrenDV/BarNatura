@@ -180,6 +180,7 @@ MonoBehaviour:
   inBuildMode: 0
   humanOxygenUseage: 1
   humanDeathTimer: 10
+  wl: {fileID: 0}
 --- !u!114 &4530827153166617944
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -253,3 +254,5 @@ MonoBehaviour:
   LosePopUp: {fileID: 0}
   timeRemaining: 120
   timeText: {fileID: 0}
+  populationDeathCanTrigger: 0
+  popRequiredForTrigger: 10
