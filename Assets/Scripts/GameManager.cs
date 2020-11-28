@@ -47,6 +47,8 @@ public class GameManager : MonoBehaviour
 
     private float analyticsTimer;
 
+    public WinLose wl;
+
     #region default
 
     private void Awake()
@@ -71,6 +73,8 @@ public class GameManager : MonoBehaviour
         humanCounter = GameObject.Find("HumanCounter").GetComponent<Text>();
         capacityCounter = GameObject.Find("CapacityCounter").GetComponent<Text>();
         //foodCounter = GameObject.Find("FoodCounter").GetComponent<Text>();
+
+        wl = this.gameObject.GetComponent<WinLose>();
     }
 
     void Start()
@@ -283,6 +287,8 @@ public class GameManager : MonoBehaviour
             
         population += populationToAdd;
         ChangeHumanCounter();
+
+        wl.CheckPopulation(population);
     }
 
     /// <summary>
@@ -298,6 +304,8 @@ public class GameManager : MonoBehaviour
 
         population -= populationToRemove;
         ChangeHumanCounter();
+
+        wl.CheckPopulation(population);
     }
 
     /// <summary>
