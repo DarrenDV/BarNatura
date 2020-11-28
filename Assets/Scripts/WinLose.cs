@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class WinLose : MonoBehaviour
@@ -12,22 +13,36 @@ public class WinLose : MonoBehaviour
     //Nature
     public int requiredNatureTiles;
     [Range (0, 1)]
-    public float requiredNatureTilePercent;
+    [SerializeField] float requiredNatureTilePercent;
     public int currentNatureTiles;
 
     //Toxic
     public int requiredToxicTiles;
     [Range(0, 1)]
-    public float requiredToxicTilePercent;
+    [SerializeField] float requiredToxicTilePercent;
     public int currentToxicTiles;
 
-    public GameObject WinPopUp;
+    [SerializeField] GameObject WinPopUp;
+    [SerializeField] GameObject LosePopUp;
 
-    // Start is called before the first frame update
+    //Timer Variables
+    [Tooltip("The time in seconds")]
+    public float timeRemaining = 10;
+    bool timerIsRunning = false;
+    [SerializeField] Text timeText;
+
     void Start()
-    { 
+    {
+        timerIsRunning = true;
+
         TileAmountCalculation();
     
+    }
+
+    void Update()
+    {
+        CalcTime();
+        LoseChecks();
     }
 
     void TileAmountCalculation()
@@ -48,15 +63,19 @@ public class WinLose : MonoBehaviour
             currentNatureTiles++;
 
             //Checks the win when a tile is added, this way it doens't need to run every frame
-            CheckWin();
+            CheckTileWin();
         }
         if (toxicTile)
         {
             currentToxicTiles++;
+
+            CheckTileLose();
         }
     }
 
-    void CheckWin()
+    #region TileChecks
+    //Checks for both types of tiles if they are equal or greater than the required amount for the win or loss
+    void CheckTileWin()
     {
         if(currentNatureTiles >= requiredNatureTiles)
         {
@@ -64,7 +83,36 @@ public class WinLose : MonoBehaviour
         }
     }
 
-    #region WinPopUpButtons
+    void CheckTileLose()
+    {
+        if (currentToxicTiles >= requiredToxicTiles)
+        {
+            LosePopUp.SetActive(true);
+        }
+    }
+
+    #endregion
+
+    #region LoseChecks
+
+    void LoseChecks()
+    {
+        CheckTime();
+        CheckPopulation();
+    }
+
+    void CheckTime()
+    {
+        if (!timerIsRunning) LosePopUp.SetActive(true);
+    }
+
+    void CheckPopulation()
+    {
+        //Get population amount from GameManager
+    }
+    #endregion
+
+    #region PopUpButtons
 
     public void PlayAgain()
     {
@@ -74,11 +122,46 @@ public class WinLose : MonoBehaviour
 
     public void QuitGame()
     {
+        //Quits the game if it is an application
         Application.Quit();
+
+        //Quits the playing state of the editor if it is in-editor
          #if UNITY_EDITOR
             UnityEditor.EditorApplication.isPlaying = false;
          #endif
     }
 
+    #endregion
+
+    #region Time
+    void CalcTime()
+    {
+        //Checks if the timer is running and removes a second every second
+        if (timerIsRunning)
+        {
+            if (timeRemaining > 0)
+            {
+                timeRemaining -= Time.deltaTime;
+                DisplayTime(timeRemaining);
+            }
+            else
+            {
+                timeRemaining = 0;
+                timerIsRunning = false;
+            }
+        }
+    }
+
+    void DisplayTime(float timeToDisplay)
+    {
+        timeToDisplay += 1;
+
+        //Rounds and calculates the remaining time to minutes and seconds
+        float minutes = Mathf.FloorToInt(timeToDisplay / 60);
+        float seconds = Mathf.FloorToInt(timeToDisplay % 60);
+
+        //Displays the seconds and minuts on the Text UI
+        timeText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
+    }
     #endregion
 }
