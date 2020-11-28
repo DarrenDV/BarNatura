@@ -836,6 +836,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5ae72058adfda14c83cd1bcfad9fab7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DisplayOffset: {x: 0, y: 0, z: 0}
+  DisplayOffset: {x: 0, y: -120, z: 0}
+  removeButton: {fileID: 2184732263613857906}
+  removeButtonText: {fileID: 2392231955260975382}
   titleText: {fileID: 3372128611490415121}
   descriptionText: {fileID: 2515317086356260668}

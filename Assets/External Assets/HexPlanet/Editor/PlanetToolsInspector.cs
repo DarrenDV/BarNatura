@@ -245,7 +245,7 @@ public class PlanetToolsInspector : Editor
         {
             PlanetEditor.ObjectMode = ObjectPaintMode.Add;
         }
-        if (GUILayout.Button("Remove Object", PlanetEditor.ObjectMode == ObjectPaintMode.Remove ? ToggleButtonStyleToggled : ToggleButtonStyleNormal))
+        if (GUILayout.Button("OnRemove Object", PlanetEditor.ObjectMode == ObjectPaintMode.Remove ? ToggleButtonStyleToggled : ToggleButtonStyleNormal))
         {
             PlanetEditor.ObjectMode = ObjectPaintMode.Remove;
         }
@@ -273,7 +273,7 @@ public class PlanetToolsInspector : Editor
                 PlanetEditor.SelectedObjectIndex = i;
             }
 
-            // Remove slot button
+            // OnRemove slot button
             if(GUILayout.Button("X", GUILayout.Width(20), GUILayout.Height(20)))
             {
                 PlanetEditor.ObjectList.RemoveAt(i);

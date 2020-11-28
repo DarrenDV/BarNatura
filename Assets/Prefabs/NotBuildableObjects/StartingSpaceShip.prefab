@@ -45,11 +45,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38027617c4d5b154fbddf395909ba717, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canBeRemovedByPlayer: 0
+  CanBeRemovedByPlayer: 0
+  HumansRequiredToBuild: 0
+  HumansRequiredToRemove: 0
+  buildTime: 0
+  removeTime: 0
+  OnFinishedBuildingEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  OnFinishedRemovingEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  parentTile: {fileID: 0}
+  IsBeingBuild: 0
+  IsBeingRemoved: 0
   oxygenProduction: 25
   oxygenUsage: 0
   pollutionProduction: 0
-  buildCost: 0
+  BuildCost: 1
+  MinimumNaturePollutedDegree: 1
   maxCapacity: 5
   oxygenSupplyTime: 300
 --- !u!65 &1875452393670931270

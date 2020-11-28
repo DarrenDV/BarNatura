@@ -3,19 +3,31 @@ using UnityEngine.UI;
 
 public class BuildMenuButton : MonoBehaviour
 {
-    [SerializeField] private BuildMenuItem buildMenuItem = null;
+    public BuildMenuItem BuildMenuItem = null;
     [SerializeField] private Image buttonImage = null;
 
     private void Start()
     {
-        buttonImage.sprite = buildMenuItem.sprite;
+        buttonImage.sprite = BuildMenuItem.sprite;
+    }
+
+    public void MouseEnter()
+    {
+        ToolTip.Instance.Show(this);
+    }
+
+    public void MouseExit()
+    {
+        ToolTip.Instance.Hide();
     }
 
     public void OnClick()
     {
-        if (buildMenuItem.buildItem.buildCost <= GameManager.Instance.GetBuildingMaterials())
+        if (BuildMenuItem.buildItem.BuildCost <= GameManager.Instance.GetBuildingMaterials() && BuildMenuItem.buildItem.HumansRequiredToBuild <= GameManager.Instance.GetPopulationAmount())
         {
-            GameManager.Instance.ChangeBuildObject(buildMenuItem.buildItem.gameObject, buildMenuItem.buildingItemMesh, buildMenuItem.numberOfMeshes, buildMenuItem.meshScale);
+            GameManager.Instance.ChangeBuildObject(BuildMenuItem.buildItem.gameObject, BuildMenuItem.buildingItemMesh, BuildMenuItem.numberOfMeshes, BuildMenuItem.meshScale);
         }
+
+        ToolTip.Instance.Hide();
     }
 }

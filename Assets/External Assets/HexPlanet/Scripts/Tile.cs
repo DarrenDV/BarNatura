@@ -12,9 +12,9 @@ public enum TileDisplayOptions
 }
 
 [Serializable]
-public class Tile : OxygenUser {
-
-	public static float planetScale;
+public class Tile : OxygenUser
+{
+    public static float planetScale;
 	private static int ID = 0;
 
     public static Action<Tile> OnTileClickedAction;
@@ -105,8 +105,6 @@ public class Tile : OxygenUser {
 	void Awake()
     {
 		tileRenderer = GetComponent<Renderer> ();
-
-
     }
 
 	public void Initialize()
@@ -149,7 +147,7 @@ public class Tile : OxygenUser {
 		}
 	}
 
-	public void PlaceObject(GameObject obj)
+	public virtual void PlaceObject(GameObject obj)
     {
 		obj.transform.position = FaceCenter;
 		obj.transform.up = transform.up;
@@ -157,7 +155,7 @@ public class Tile : OxygenUser {
 		obj.transform.SetParent(transform);
         PlacedObjects.Add(obj);
 		isOccupied = true;
-	}
+    }
 
 	public void DeleteLastPlacedObject()
     {

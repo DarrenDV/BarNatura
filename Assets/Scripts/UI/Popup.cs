@@ -9,7 +9,8 @@ public class Popup : MonoBehaviour
 
     private BaseObject selectedObject;
 
-    [SerializeField] private GameObject removeButton = null;
+    [SerializeField] private Button removeButton = null;
+    [SerializeField] private Text removeButtonText = null;
     [SerializeField] private Text titleText = null;
     [SerializeField] private Text descriptionText = null;
 
@@ -33,7 +34,8 @@ public class Popup : MonoBehaviour
         {
             SetPosition();
 
-            descriptionText.text = selectedObject.GetDescription();
+            UpdateDescription();
+            DisplayRemoveButton();
 
             if (!CheckPathFree(Camera.main.transform.position, selectedObject.transform.position))
             {
@@ -51,14 +53,56 @@ public class Popup : MonoBehaviour
         }
 
         selectedObject = objectToDisplay;
+        selectedObject.OnFinishedRemovingEvent.AddListener(OnSelectedBuildingRemoved);
 
         titleText.text = selectedObject.GetName();
-        descriptionText.text = selectedObject.GetDescription();
+        UpdateDescription();
 
         SetPosition();
 
         gameObject.SetActive(true);
-        removeButton.SetActive(selectedObject.canBeRemovedByPlayer);
+
+        DisplayRemoveButton();
+    }
+
+    private void OnSelectedBuildingRemoved()
+    {
+        Hide();
+    }
+
+    private void UpdateDescription()
+    {
+        if (selectedObject.IsBeingBuild)
+        {
+            descriptionText.text = selectedObject.GetWhileBeingBuildDescription();
+        }
+        else if(selectedObject.IsBeingRemoved)
+        {
+            descriptionText.text = selectedObject.GetRemoveDescription();
+        }
+        else
+        {
+            descriptionText.text = selectedObject.GetDescription();
+        }
+    }
+
+    private void DisplayRemoveButton()
+    {
+        if (selectedObject.IsBeingBuild || selectedObject.IsBeingRemoved)
+        {
+            removeButton.gameObject.SetActive(false);
+        }
+        else
+        {
+            var showButton = selectedObject.CanBeRemovedByPlayer;
+
+            removeButton.gameObject.SetActive(showButton);
+
+            if (showButton)
+            {
+                removeButtonText.text = $"Remove ({selectedObject.HumansRequiredToRemove} H)";
+            }
+        }
     }
 
     private void SetPosition()
@@ -69,11 +113,22 @@ public class Popup : MonoBehaviour
     public void Hide()
     {
         gameObject.SetActive(false);
+
+        if (selectedObject != null)
+        {
+            selectedObject.OnFinishedRemovingEvent.RemoveListener(OnSelectedBuildingRemoved);
+        }
     }
 
     public void OnRemoveClicked()
     {
-        selectedObject.Remove();
+        if (GameManager.Instance.GetPopulationAmount() < selectedObject.HumansRequiredToRemove)
+        {
+            // todo: tell player he does not have enough humans
+            return;
+        }
+
+        selectedObject.OnRemove();
         Hide();
     }
 
@@ -82,12 +137,12 @@ public class Popup : MonoBehaviour
         var direction = target - position;
         var distance = Vector3.Distance(position, target);
 
-        var rhit = Physics.RaycastAll(position, direction, distance);
+        var raycastHits = Physics.RaycastAll(position, direction, distance);
 
         // sometimes the ray also finds the tile the building is on
-        if (rhit.Length == 2)
+        if (raycastHits.Length == 2)
         {
-            var tile = rhit[0].transform.GetComponent<BaseTileScript>() != null ? rhit[0].transform.GetComponent<BaseTileScript>() : rhit[1].transform.GetComponent<BaseTileScript>();
+            var tile = raycastHits[0].transform.GetComponent<BaseTileScript>() != null ? raycastHits[0].transform.GetComponent<BaseTileScript>() : raycastHits[1].transform.GetComponent<BaseTileScript>();
 
             //This causes a bug for some reason
             if(tile.PlacedObjects.Contains(selectedObject.gameObject))
@@ -96,8 +151,6 @@ public class Popup : MonoBehaviour
             }
         }
 
-        //Debug.Log("rhit: " + string.Join(", ", rhit.Select(x => x.transform.name)));
-
-        return rhit.Length == 1;
+        return raycastHits.Length == 1;
     }
 }

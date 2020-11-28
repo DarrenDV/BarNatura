@@ -1322,7 +1322,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7129caa16ef82d14a8d390557da64b3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canBeRemovedByPlayer: 0
+  CanBeRemovedByPlayer: 0
+  HumansRequiredToBuild: 0
+  HumansRequiredToRemove: 5
+  buildTime: 0
+  removeTime: 10
+  OnFinishedBuildingEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  OnFinishedRemovingEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  parentTile: {fileID: 0}
+  IsBeingBuild: 0
+  IsBeingRemoved: 0
 --- !u!135 &3938045097978861389
 SphereCollider:
   m_ObjectHideFlags: 0

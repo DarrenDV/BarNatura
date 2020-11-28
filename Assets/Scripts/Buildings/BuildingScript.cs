@@ -9,18 +9,17 @@ public class BuildingScript : BuildObject
 
     private List<Human> occupants = new List<Human>();
 
-    protected override void Start()
+    public override void OnFinishedBuilding()
     {
-        base.Start();
+        base.OnFinishedBuilding();
 
-        // testing
         GameManager.Instance.BuildingCount++;
         GameManager.Instance.AddCapacity(maxCapacity);
     }
 
-    public override void Remove()
+    public override void OnRemove()
     {
-        base.Remove();
+        base.OnRemove();
 
         // testing
         GameManager.Instance.BuildingCount--;

@@ -2,16 +2,8 @@
 
 public class HouseScript : BuildingScript
 {
-
     [Header("House Script")]
     [SerializeField] private int populationToAdd;
-
-    protected override void Start()
-    {
-        base.Start();
-
-        GameManager.Instance.AddPopulation(populationToAdd);
-    }
 
     public override string GetName()
     {
@@ -23,9 +15,24 @@ public class HouseScript : BuildingScript
         return $"This building houses a max of {maxCapacity} people.";
     }
 
-    public override void Remove()
+    public override void OnRemove()
     {
-        transform.parent.GetComponent<BaseTileScript>().DeletePlacedObjects();
+        base.OnRemove();
+
         GameManager.Instance.RemoveCapacity(maxCapacity);
+    }
+
+    public override void OnFinishedBuilding()
+    {
+        base.OnFinishedBuilding();
+
+        GameManager.Instance.AddPopulation(populationToAdd);
+    }
+
+    public override void OnFinishedRemoving()
+    {
+        base.OnFinishedRemoving();
+
+        transform.parent.GetComponent<BaseTileScript>().DeletePlacedObjects();
     }
 }

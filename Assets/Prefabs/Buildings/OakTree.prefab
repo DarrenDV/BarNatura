@@ -26,11 +26,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95907521e63d5f5449b1573aeafa564a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canBeRemovedByUser: 1
+  CanBeRemovedByPlayer: 1
+  HumansRequiredToBuild: 5
+  HumansRequiredToRemove: 5
+  buildTime: 5
+  removeTime: 5
+  OnFinishedBuildingEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  OnFinishedRemovingEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  IsBeingBuild: 0
+  IsBeingRemoved: 0
   oxygenProduction: 8
   oxygenUsage: 0
   pollutionProduction: 0
-  buildCost: 10
+  BuildCost: 10
+  MinimumNaturePollutedDegree: 0
 --- !u!1001 &7929985801407822064
 PrefabInstance:
   m_ObjectHideFlags: 0

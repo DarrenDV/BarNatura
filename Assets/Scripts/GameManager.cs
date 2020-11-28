@@ -20,7 +20,7 @@ public class GameManager : MonoBehaviour
 
     //Population
     private int population;
-    private int maxCapacity;
+    private int capacity;
 
     // for testing purposes
     [HideInInspector] public int BuildingCount;
@@ -87,13 +87,13 @@ public class GameManager : MonoBehaviour
 
         if (Input.GetMouseButtonDown(1))
         {
-            StopBuilding();
+            StopBuildingMode();
         }
 
         HandleAnalytics();
 
         //Start the human spawn timer when we have enough oxygen and living space to do so
-        if (oxygenSurplus > 2 && maxCapacity > population)
+        if (oxygenSurplus > 2 && capacity > population)
         {
             timeSinceLastHumanSpawn += Time.deltaTime;
             if (timeSinceLastHumanSpawn >= humanSpawnTimer)
@@ -103,17 +103,17 @@ public class GameManager : MonoBehaviour
                 int maxHumanSpawn = possibleMax;
 
                 //Spawn the max amount of humans possible
-                if (maxCapacity - population >= possibleMax && oxygenSurplus >= possibleMax)
+                if (capacity - population >= possibleMax && oxygenSurplus >= possibleMax)
                 {
                     maxHumanSpawn = possibleMax;
                 }
                 //Checks if we have enough oxygen but not enough living space
-                else if (maxCapacity - population < possibleMax && oxygenSurplus >= possibleMax)
+                else if (capacity - population < possibleMax && oxygenSurplus >= possibleMax)
                 {
-                    maxHumanSpawn = maxCapacity - population;
+                    maxHumanSpawn = capacity - population;
                 }
                 //Checks if we have enough living space but not enough oxygen
-                else if (maxCapacity - population >= possibleMax && oxygenSurplus < possibleMax)
+                else if (capacity - population >= possibleMax && oxygenSurplus < possibleMax)
                 {
                     maxHumanSpawn = oxygenSurplus - 1;
                 }
@@ -129,7 +129,7 @@ public class GameManager : MonoBehaviour
         }
 
 
-        if (oxygenSurplus <= 0 && population > 0 || population > maxCapacity)
+        if (oxygenSurplus <= 0 && population > 0 || population > capacity)
         {
             timeLeftUntilHumansDie += Time.deltaTime;
             if (timeLeftUntilHumansDie > humanDeathTimer)
@@ -275,7 +275,7 @@ public class GameManager : MonoBehaviour
     /// <param name="populationToAdd">The amount of humans born.</param>
     public void AddPopulation(int populationToAdd)
     {
-        //if (population + populationToAdd > maxCapacity) populationToAdd = maxCapacity - population;
+        //if (population + populationToAdd > capacity) populationToAdd = capacity - population;
         for (int i = 0; i < populationToAdd; i++)
         {
             AddOxygenUsage(humanOxygenUseage);
@@ -315,7 +315,7 @@ public class GameManager : MonoBehaviour
     /// <param name="capacityToAdd">The amount of humans born.</param>
     public void AddCapacity(int capacityToAdd)
     {
-        maxCapacity += capacityToAdd;
+        capacity += capacityToAdd;
         ChangeCapacityCounter();
     }
 
@@ -325,17 +325,17 @@ public class GameManager : MonoBehaviour
     /// <param name="capacityToRemove">The amount of humans that died.</param>
     public void RemoveCapacity(int capacityToRemove)
     {
-        maxCapacity -= capacityToRemove;
+        capacity -= capacityToRemove;
         ChangeCapacityCounter();
     }
 
     /// <summary>
-    /// Get the current amount of humans.
+    /// Get the current amount of idle humans.
     /// </summary>
     /// <returns></returns>
     public int GetCapacityAmount()
     {
-        return maxCapacity;
+        return capacity;
     }
 
     /// <summary>
@@ -421,7 +421,7 @@ public class GameManager : MonoBehaviour
     /// Use this when the player uses building material, like when the player builds a building.
     /// </summary>
     /// <param name="buildMaterialToRemove"></param>
-    public void ChangeBuildingMaterial(int buildMaterialToRemove)
+    public void RemoveBuildingMaterial(int buildMaterialToRemove)
     {
         buildingMaterial -= buildMaterialToRemove;
         ChangeBuildMaterialCounter();
@@ -467,7 +467,7 @@ public class GameManager : MonoBehaviour
         buildObjectPreview.transform.rotation = rotation;
     }
 
-    public void StopBuilding()
+    public void StopBuildingMode()
     {
         inBuildMode = false;
         buildObjectPreview.transform.position = Vector3.zero;
@@ -476,15 +476,6 @@ public class GameManager : MonoBehaviour
     #endregion
 
     #region UI
-
-    public bool IsPointerOverUIElement()
-    {
-        var eventData = new PointerEventData(EventSystem.current);
-        eventData.position = Input.mousePosition;
-        var results = new List<RaycastResult>();
-        EventSystem.current.RaycastAll(eventData, results);
-        return results.Count > 0;
-    }
 
     private void ChangeOxygenCounter()
     {

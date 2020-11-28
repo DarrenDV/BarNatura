@@ -8,7 +8,8 @@ public class BaseTileScript : Tile
     [Header("Base Tile Script")]
     [Tooltip("The degree to which a tile is either polluted or nature.")]
     [Range(-10, 10)]
-    [SerializeField] private int naturePollutedDegree; // make property so it updates the materials automatic
+    [SerializeField]
+    public int naturePollutedDegree;
 
     private float timerSpread;
     private bool canBecomeNature = true;
@@ -47,6 +48,19 @@ public class BaseTileScript : Tile
         CheckTile();
     }
 
+    public void SetNaturePollutedDegree(int newNaturePollutedDegree)
+    {
+        naturePollutedDegree = newNaturePollutedDegree;
+        doMaterialUpdate = true;
+    }
+
+    public override void PlaceObject(GameObject obj)
+    {
+        base.PlaceObject(obj);
+
+        obj.GetComponent<BaseObject>().parentTile = this;
+    }
+
     /// <summary>
     /// Toxic tile and natural tile spawning.
     /// </summary>
@@ -63,8 +77,7 @@ public class BaseTileScript : Tile
         //Toxic tile spawning
         if (Random.Range(0, 100) == 0)
         {
-            naturePollutedDegree = -10;
-            doMaterialUpdate = true;
+            SetNaturePollutedDegree(-10);
         }
 
         //Rubble tile spawning
@@ -157,19 +170,23 @@ public class BaseTileScript : Tile
 
         if (gameManager.inBuildMode)
         {
-            if (Input.GetMouseButtonDown(0) && !isOccupied && naturePollutedDegree >= 0 && gameManager.IsPointerOverUIElement() == false)
+            // check if we clicked on a tile
+            if (Input.GetMouseButtonDown(0) && !isOccupied && !Utils.IsPointerOverUIElement())
             {
-                //Place the new building
-                PlaceObject(Instantiate(gameManager.buildObject.gameObject, transform.position, transform.rotation));
-                gameManager.ChangeBuildingMaterial(gameManager.buildObject.gameObject.GetComponent<BuildObject>().buildCost);
+                var plannedBuildObject = gameManager.buildObject.gameObject.GetComponent<BuildObject>();
 
-                if (gameManager.buildObject.gameObject.CompareTag("Tree"))
+                // check if the tile is healthy enough
+                if (naturePollutedDegree >= plannedBuildObject.MinimumNaturePollutedDegree)
                 {
-                    naturePollutedDegree = 10;
-                    doMaterialUpdate = true;
-                }
+                    // place the new building
+                    var newBuilding = Instantiate(gameManager.buildObject.gameObject, transform.position, transform.rotation);
+                    var newBuildingObject = newBuilding.GetComponent<BuildObject>();
+                    newBuildingObject.OnBuild();
+                    PlaceObject(newBuilding);
 
-                gameManager.StopBuilding();
+                    gameManager.RemoveBuildingMaterial(newBuildingObject.BuildCost);
+                    gameManager.StopBuildingMode();
+                }
             }
         }
     }
