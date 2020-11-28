@@ -58,7 +58,7 @@ public class Popup : MonoBehaviour
         SetPosition();
 
         gameObject.SetActive(true);
-        removeButton.SetActive(selectedObject.canBeRemovedByUser);
+        removeButton.SetActive(selectedObject.canBeRemovedByPlayer);
     }
 
     private void SetPosition()

@@ -3,7 +3,7 @@
 public class BaseObject : MonoBehaviour
 {
     [Header("Base Object")]
-    public bool canBeRemovedByUser = true;
+    public bool canBeRemovedByPlayer = true;
 
     // Start is called before the first frame update
     protected virtual void Start()

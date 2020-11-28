@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38027617c4d5b154fbddf395909ba717, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canBeRemovedByUser: 0
+  canBeRemovedByPlayer: 0
   oxygenProduction: 25
   oxygenUsage: 0
   pollutionProduction: 0
