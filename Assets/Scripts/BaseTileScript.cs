@@ -15,19 +15,24 @@ public class BaseTileScript : Tile
 
     #endregion
 
+    [Tooltip("If true, the starting spaceship will be spawned on this tile.")]
+    [SerializeField] private bool isStartingLocation;
+
     private MeshRenderer meshRenderer;
     private bool doMaterialUpdate;
+
     private TileVariables tileVariables;
 
-    public WinLose wl;
-    public bool canAdd = true;
+    private WinLose winLose;
+    private bool canAdd = true;
 
     protected override void Start()
     {
         base.Start();
 
         tileVariables = FindObjectOfType<TileVariables>();
-        wl = GameObject.Find("GameManager").GetComponent<WinLose>();
+        winLose = FindObjectOfType<WinLose>();
+
         meshRenderer = GetComponent<MeshRenderer>();
         
         Spawning();
@@ -42,9 +47,19 @@ public class BaseTileScript : Tile
         CheckTile();
     }
 
-    //Toxic tile and natural tile spawning
+    /// <summary>
+    /// Toxic tile and natural tile spawning.
+    /// </summary>
     private void Spawning()
     {
+        if (isStartingLocation)
+        {
+            PlaceObject(Instantiate(tileVariables.startingSpaceShip, Vector3.zero, Quaternion.identity));
+            
+            // we don't want to spawn anything else on this tile, that is why we return out of this function here.
+            return;
+        }
+
         //Toxic tile spawning
         if (Random.Range(0, 100) == 0)
         {
@@ -160,17 +175,18 @@ public class BaseTileScript : Tile
     }
 
     #endregion
+
     void CheckTile()
     {
         if (canAdd) {
             if (naturePollutedDegree == 10)
             {
-                wl.AddTile(true, false);
+                winLose.AddTile(true, false);
                 canAdd = false;
             }
             else if(naturePollutedDegree == -10)
             {
-                wl.AddTile(false, true);
+                winLose.AddTile(false, true);
                 canAdd = false;
             }
         }

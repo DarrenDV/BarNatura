@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class TileVariables : MonoBehaviour
 {
@@ -12,6 +10,7 @@ public class TileVariables : MonoBehaviour
 
     //Spawned tile variables
     [Header("Spawning objects")]
+    public GameObject startingSpaceShip;
     public GameObject lavaTile;
     public GameObject rubbleTile;
     [Range(1, 100)]

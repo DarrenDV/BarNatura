@@ -206,7 +206,7 @@ public class GameManager : MonoBehaviour
         }
 
         oxygenGeneration -= oxygenGenerationToRemove;
-        ChangeDrainCounter();
+        ChangeOxygenCounter();
     }
 
     /// <summary>

@@ -12,6 +12,6 @@
 
     public override void Remove()
     {
-        
+        // can't be removed
     }
 }

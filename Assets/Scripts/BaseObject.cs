@@ -2,6 +2,9 @@
 
 public class BaseObject : MonoBehaviour
 {
+    [Header("Base Object")]
+    public bool canBeRemovedByUser = true;
+
     // Start is called before the first frame update
     protected virtual void Start()
     {
@@ -32,6 +35,8 @@ public class BaseObject : MonoBehaviour
     protected virtual void OnMouseDown()
     {
         if (GameManager.Instance.IsPointerOverUIElement() == false)
-        Popup.Instance.Show(this);
+        {
+            Popup.Instance.Show(this);
+        }
     }
 }

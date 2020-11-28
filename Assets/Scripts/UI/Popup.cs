@@ -9,6 +9,7 @@ public class Popup : MonoBehaviour
 
     private BaseObject selectedObject;
 
+    [SerializeField] private GameObject removeButton = null;
     [SerializeField] private Text titleText = null;
     [SerializeField] private Text descriptionText = null;
 
@@ -31,6 +32,8 @@ public class Popup : MonoBehaviour
         if (selectedObject != null)
         {
             SetPosition();
+
+            descriptionText.text = selectedObject.GetDescription();
 
             if (!CheckPathFree(Camera.main.transform.position, selectedObject.transform.position))
             {
@@ -55,6 +58,7 @@ public class Popup : MonoBehaviour
         SetPosition();
 
         gameObject.SetActive(true);
+        removeButton.SetActive(selectedObject.canBeRemovedByUser);
     }
 
     private void SetPosition()
