@@ -172,11 +172,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 972d0c1f93600984aaa3be79e5f730a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  oxygenGeneration: 0
-  oxygenUsage: 0
-  pollution: 0
-  rawMaterial: 0
-  buildingMaterial: 100
-  buildObjectPreview: {fileID: 0}
+  BuildingCount: 0
+  buildObjectPreview: {fileID: 3824843029921591926}
   buildObject: {fileID: 0}
   inBuildMode: 0
+  humanOxygenUseage: 1

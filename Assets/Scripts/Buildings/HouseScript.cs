@@ -1,10 +1,16 @@
-﻿public class HouseScript : BuildingScript
+﻿using UnityEngine;
+
+public class HouseScript : BuildingScript
 {
+
+    [Header("House Script")]
+    [SerializeField] private int populationToAdd;
+
     protected override void Start()
     {
         base.Start();
 
-        GameManager.Instance.AddPopulation(3);
+        GameManager.Instance.AddPopulation(populationToAdd);
     }
 
     public override string GetName()
@@ -20,6 +26,6 @@
     public override void Remove()
     {
         transform.parent.GetComponent<BaseTileScript>().DeletePlacedObjects();
-        GameManager.Instance.RemovePopulation(3);
+        GameManager.Instance.RemoveCapacity(maxCapacity);
     }
 }
