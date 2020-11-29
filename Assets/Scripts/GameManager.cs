@@ -30,8 +30,6 @@ public class GameManager : MonoBehaviour
     [HideInInspector] public GameObject buildObject;
     [HideInInspector] public bool inBuildMode;
 
-    private Vector3 offset;
-
     [Header("Humans")]
     [SerializeField] private int humanOxygenUseage;
     private float humanSpawnTimer;
@@ -117,7 +115,7 @@ public class GameManager : MonoBehaviour
                     maxHumanSpawn = maxCapacity - population;
                 }
                 //Checks if we have enough living space but not enough oxygen
-                else if (maxCapacity - population >= possibleMax && oxygenSurplus < possibleMax)
+                else if (maxCapacity - population >= possibleMax && oxygenSurplus <= possibleMax)
                 {
                     maxHumanSpawn = oxygenSurplus - 1;
                 }

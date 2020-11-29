@@ -162,6 +162,9 @@ public class BaseTileScript : Tile
                 //Place the new building
                 PlaceObject(Instantiate(gameManager.buildObject.gameObject, transform.position, transform.rotation));
                 gameManager.ChangeBuildingMaterial(gameManager.buildObject.gameObject.GetComponent<BuildObject>().buildCost);
+                print(AudioManager.Instance);
+
+                AudioManager.Instance.PlayBuildSound();
 
                 if (gameManager.buildObject.gameObject.CompareTag("Tree"))
                 {
