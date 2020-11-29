@@ -32,11 +32,11 @@ public class GameManager : MonoBehaviour
     private Vector3 offset;
 
     [Header("Humans")]
-    [SerializeField] private int humanOxygenUseage;
+    [SerializeField] private int humanOxygenUsage = 1;
     private float humanSpawnTimer;
     private float timeSinceLastHumanSpawn;
     [Tooltip("How long it take before the humans die when there isn't enough oxygen")]
-    [SerializeField] private float humanDeathTimer;
+    [SerializeField] private float humanDeathTimer = 10;
     private float timeLeftUntilHumansDie;
 
     [Header("UI")]
@@ -281,7 +281,7 @@ public class GameManager : MonoBehaviour
         //if (population + populationToAdd > capacity) populationToAdd = capacity - population;
         for (int i = 0; i < populationToAdd; i++)
         {
-            AddOxygenUsage(humanOxygenUseage);
+            AddOxygenUsage(humanOxygenUsage);
         }
             
         population += populationToAdd;
@@ -298,7 +298,7 @@ public class GameManager : MonoBehaviour
     {
         for (int i = 0; i < populationToRemove; i++)
         {
-            RemoveOxygenUsage(humanOxygenUseage);
+            RemoveOxygenUsage(humanOxygenUsage);
         }
 
         population -= populationToRemove;

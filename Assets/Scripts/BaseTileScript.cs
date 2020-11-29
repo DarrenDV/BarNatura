@@ -17,7 +17,7 @@ public class BaseTileScript : Tile
     #endregion
 
     [Tooltip("If true, the starting spaceship will be spawned on this tile.")]
-    [SerializeField] private bool isStartingLocation;
+    [SerializeField] private bool isStartingLocation = false;
 
     private MeshRenderer meshRenderer;
     private bool doMaterialUpdate;

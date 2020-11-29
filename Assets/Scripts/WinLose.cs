@@ -6,34 +6,34 @@ public class WinLose : MonoBehaviour
 {
     public int tileCount;
 
-    bool canWin = true;
-    bool canLose = true;
+    private bool canWin = true;
+    private bool canLose = true;
 
     //Tile required variables
     //Nature
     public int requiredNatureTiles; //public can be removed, currently for testing purposes here
     [Range (0, 1)]
-    [SerializeField] float requiredNatureTilePercent;
+    [SerializeField] private float requiredNatureTilePercent = 0.05f;
     public int currentNatureTiles; //public can be removed, currently for testing purposes here
 
     //Toxic
     public int requiredToxicTiles; //public can be removed, currently for testing purposes here
     [Range(0, 1)]
-    [SerializeField] float requiredToxicTilePercent;
+    [SerializeField] private float requiredToxicTilePercent = 0.3f;
     public int currentToxicTiles; //public can be removed, currently for testing purposes here
 
-    [SerializeField] GameObject WinPopUp;
-    [SerializeField] GameObject LosePopUp;
+    [SerializeField] private GameObject WinPopUp = null;
+    [SerializeField] private GameObject LosePopUp = null;
 
     //Timer Variables
     [Tooltip("The time in seconds")]
     public float timeRemaining = 10;
-    bool timerIsRunning = false;
-    [SerializeField] Text timeText;
+    private bool timerIsRunning;
+    [SerializeField] private Text timeText = null;
 
     //Population related variables
-    [SerializeField] bool populationDeathCanTrigger = false;
-    [SerializeField] int popRequiredForTrigger;
+    [SerializeField] private bool populationDeathCanTrigger;
+    [SerializeField] private int popRequiredForTrigger = 10;
 
     #region Default
     void Start()

@@ -3,7 +3,7 @@
 public class HouseScript : BuildingScript
 {
     [Header("House Script")]
-    [SerializeField] private int populationToAdd;
+    [SerializeField] private int populationToAdd = 3;
 
     public override string GetName()
     {
