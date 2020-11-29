@@ -76,5 +76,39 @@ namespace Tests
 
             Assert.GreaterOrEqual(GameManager.Instance.GetPopulationAmount(), 5);
         }
+
+        [UnityTest]
+        public IEnumerator DoesFactoryConvertRawMaterailsToBuildMaterials()
+        {
+            SceneManager.LoadScene("Main");
+            yield return new WaitForSeconds(2);
+
+            // get test class with building prefabs
+            var prefabs = Object.FindObjectOfType<TestingPrefabs>();
+
+            // find tile with nothing on it
+            var tiles = Object.FindObjectsOfType<BaseTileScript>();
+            var freeTile = tiles.First(tile => tile.PlacedObjects.Count == 0);
+
+            GameManager.Instance.AddRawMaterial(10);
+
+            // place house on the free tile
+            var newFactory = Object.Instantiate(prefabs.Factory, freeTile.transform.position, freeTile.transform.rotation);
+            var newFactoryObject = newFactory.GetComponent<BuildObject>();
+            newFactoryObject.OnBuild();
+            freeTile.PlaceObject(newFactory);
+
+            int rawMaterial = GameManager.Instance.GetRawMaterials();
+            int buildMaterial = GameManager.Instance.GetBuildingMaterials();
+
+            // wait for house to be build
+            yield return new WaitForSeconds(6);
+
+            yield return new WaitForSeconds(6);
+
+            Assert.Less(GameManager.Instance.GetRawMaterials(), rawMaterial);
+            Assert.Greater(GameManager.Instance.GetBuildingMaterials(), buildMaterial);
+
+        }
     }
 }
