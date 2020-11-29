@@ -13,7 +13,7 @@ public class Rubble : BaseObject
 
     public override string GetDescription()
     {
-        return $"OnRemove this rubble to gain {rawMaterialMin} to {rawMaterialMax} raw material.";
+        return $"Remove this rubble to gain {rawMaterialMin} to {rawMaterialMax} raw material.";
     }
 
     public override void OnFinishedRemoving()

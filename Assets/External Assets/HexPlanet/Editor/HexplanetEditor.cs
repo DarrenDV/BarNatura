@@ -1,28 +1,31 @@
-﻿using UnityEngine;
+﻿#if UNITY_EDITOR
+
+using UnityEngine;
 using UnityEditor;
 
 [CustomEditor(typeof(Hexsphere))]
-public class HexplanetEditor : Editor {
+public class HexplanetEditor : Editor
+{
 
-	Hexsphere planet;
+    Hexsphere planet;
 
     string PrefabPath;
 
-	void OnEnable()
+    void OnEnable()
     {
-		planet = (Hexsphere)target;
+        planet = (Hexsphere)target;
 
-        if(planet.tilesGenerated && !planet.TileMeshesRestored)
+        if (planet.tilesGenerated && !planet.TileMeshesRestored)
         {
             // Restore Tile Meshes
-            foreach(Tile t in planet.tiles)
+            foreach (Tile t in planet.tiles)
             {
                 t.RestoreMesh();
             }
 
             planet.TileMeshesRestored = true;
         }
-	}
+    }
 
     #region Experimental Vertex Caching
     //void WriteAllVertexData()
@@ -61,14 +64,14 @@ public class HexplanetEditor : Editor {
 
     public override void OnInspectorGUI()
     {
-		DrawDefaultInspector ();
+        DrawDefaultInspector();
 
-        if(!planet.GenerateAsSingleMesh)
+        if (!planet.GenerateAsSingleMesh)
         {
             planet.GenerateTileColliders = EditorGUILayout.Toggle("Generate Tile Colliders", planet.GenerateTileColliders);
 
             // Drop down for collider type
-            if(planet.GenerateTileColliders)
+            if (planet.GenerateTileColliders)
             {
                 EditorGUI.indentLevel++;
                 planet.TileColliderType = (TileColliderType)EditorGUILayout.EnumPopup("Tile Collider Type: ", planet.TileColliderType);
@@ -76,39 +79,39 @@ public class HexplanetEditor : Editor {
             }
         }
 
-		EditorGUILayout.LabelField ("Planet ID", planet.planetID.ToString());
-		//mainPlanet.detailLevel = EditorGUILayout.IntSlider ("Detail Level", mainPlanet.detailLevel, 1, 4);
-		EditorGUILayout.LabelField ("Tile Count", planet.TileCount.ToString());
+        EditorGUILayout.LabelField("Planet ID", planet.planetID.ToString());
+        //mainPlanet.detailLevel = EditorGUILayout.IntSlider ("Detail Level", mainPlanet.detailLevel, 1, 4);
+        EditorGUILayout.LabelField("Tile Count", planet.TileCount.ToString());
 
-		EditorGUI.BeginDisabledGroup (planet.tilesGenerated);
-		//Generate Planet
-		if(GUILayout.Button("Generate Planet"))
+        EditorGUI.BeginDisabledGroup(planet.tilesGenerated);
+        //Generate Planet
+        if (GUILayout.Button("Generate Planet"))
         {
-			planet.BuildPlanet();
-		}
+            planet.BuildPlanet();
+        }
 
-		EditorGUI.EndDisabledGroup ();
+        EditorGUI.EndDisabledGroup();
 
-        EditorGUI.BeginDisabledGroup (!planet.tilesGenerated);
-		//Random region generation
-		if (GUILayout.Button ("Generate Random Regions"))
+        EditorGUI.BeginDisabledGroup(!planet.tilesGenerated);
+        //Random region generation
+        if (GUILayout.Button("Generate Random Regions"))
         {
-			planet.generateRandomRegions();
-		}
-		//Delete tiles
-		if(GUILayout.Button("Delete Tiles") && planet.tilesGenerated)
+            planet.generateRandomRegions();
+        }
+        //Delete tiles
+        if (GUILayout.Button("Delete Tiles") && planet.tilesGenerated)
         {
-			planet.deleteTiles();
-			//Reset the scale slider to 1 when deleting
-			planet.setWorldScale(1f);
-		}
-		EditorGUI.EndDisabledGroup ();
+            planet.deleteTiles();
+            //Reset the scale slider to 1 when deleting
+            planet.setWorldScale(1f);
+        }
+        EditorGUI.EndDisabledGroup();
 
-		EditorGUI.BeginDisabledGroup (Application.isPlaying || !planet.tilesGenerated);
+        EditorGUI.BeginDisabledGroup(Application.isPlaying || !planet.tilesGenerated);
         //Scale slider
         planet.planetScale = EditorGUILayout.Slider("Planet Scale", planet.planetScale, 0.011f, 10f);
         planet.setWorldScale(planet.planetScale);
-        EditorGUI.EndDisabledGroup ();
+        EditorGUI.EndDisabledGroup();
 
         //EditorGUILayout.Space();
         //// Save prefab
@@ -131,17 +134,17 @@ public class HexplanetEditor : Editor {
         //    {
         //        SavePlanetAsPrefab(path);
         //    }
-            
+
         //}
         //EditorGUILayout.EndHorizontal();
 
         //Ensure that the hexplanet's lists arent destroyed when playmode is entered
         if (GUI.changed)
         {
-			EditorUtility.SetDirty(planet);
-			serializedObject.ApplyModifiedProperties ();
-		}
-	}
+            EditorUtility.SetDirty(planet);
+            serializedObject.ApplyModifiedProperties();
+        }
+    }
 
     private void SavePlanetAsPrefab(string path)
     {
@@ -157,3 +160,5 @@ public class HexplanetEditor : Editor {
         //PrefabUtility.ReplacePrefab(planet.gameObject, prefab, ReplacePrefabOptions.ConnectToPrefab);
     }
 }
+
+#endif

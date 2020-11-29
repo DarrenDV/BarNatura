@@ -1,8 +1,8 @@
-﻿using System.Collections.Generic;
+﻿#if UNITY_EDITOR
+
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
-
-
 
 [CustomEditor(typeof(PlanetTools))]
 public class PlanetToolsInspector : Editor
@@ -45,12 +45,12 @@ public class PlanetToolsInspector : Editor
 
     public override void OnInspectorGUI()
     {
-        if(PlanetEditor == null)
+        if (PlanetEditor == null)
         {
             PlanetEditor = target as PlanetTools;
         }
 
-        if(Planet == null)
+        if (Planet == null)
         {
             Planet = PlanetEditor.GetComponent<Hexsphere>();
         }
@@ -65,7 +65,7 @@ public class PlanetToolsInspector : Editor
         GUILayout.Label("Tile Tools", EditorStyles.boldLabel);
         GUILayout.BeginVertical(EditorStyles.helpBox);
         GUILayout.BeginHorizontal();
-        
+
         //if(GUILayout.Button("Select", Mode == ToolMode.Select ? ToggleButtonStyleToggled : ToggleButtonStyleNormal))
         //{
         //    Mode = ToolMode.Select;
@@ -100,7 +100,7 @@ public class PlanetToolsInspector : Editor
         GUILayout.EndHorizontal();
         GUILayout.EndVertical();
 
-        switch(PlanetEditor.Mode)
+        switch (PlanetEditor.Mode)
         {
             case ToolMode.Select:
                 break;
@@ -135,7 +135,7 @@ public class PlanetToolsInspector : Editor
         GUILayout.BeginVertical(EditorStyles.helpBox);
 
         EditorGUILayout.BeginHorizontal();
-        if(GUILayout.Button("Set Height", HeightMode == HeightPaintMode.Set ? ToggleButtonStyleToggled : ToggleButtonStyleNormal))
+        if (GUILayout.Button("Set Height", HeightMode == HeightPaintMode.Set ? ToggleButtonStyleToggled : ToggleButtonStyleNormal))
         {
             HeightMode = HeightPaintMode.Set;
         }
@@ -197,7 +197,7 @@ public class PlanetToolsInspector : Editor
         EditorGUILayout.EndHorizontal();
         EditorGUILayout.EndScrollView();
 
-        
+
 
         GUILayout.EndVertical();
     }
@@ -273,7 +273,7 @@ public class PlanetToolsInspector : Editor
             }
 
             // OnRemove slot button
-            if(GUILayout.Button("X", GUILayout.Width(20), GUILayout.Height(20)))
+            if (GUILayout.Button("X", GUILayout.Width(20), GUILayout.Height(20)))
             {
                 PlanetEditor.ObjectList.RemoveAt(i);
             }
@@ -283,7 +283,7 @@ public class PlanetToolsInspector : Editor
         }
 
         // Add object slot button
-        if(GUILayout.Button("+", GUILayout.Width(40), GUILayout.Height(40)))
+        if (GUILayout.Button("+", GUILayout.Width(40), GUILayout.Height(40)))
         {
             PlanetEditor.ObjectList.Add(null);
         }
@@ -305,14 +305,14 @@ public class PlanetToolsInspector : Editor
         {
             IsEditing = true;
 
-            if(Event.current.type == EventType.MouseDown)
+            if (Event.current.type == EventType.MouseDown)
             {
                 MouseIsDown = true;
                 GUIUtility.hotControl = controlId;
                 // Use the event
                 Event.current.Use();
             }
-            else if(Event.current.type == EventType.MouseUp)
+            else if (Event.current.type == EventType.MouseUp)
             {
                 MouseIsDown = false;
                 GUIUtility.hotControl = 0;
@@ -320,7 +320,7 @@ public class PlanetToolsInspector : Editor
                 Event.current.Use();
             }
 
-            if(Event.current.type == EventType.ScrollWheel && Event.current.control)
+            if (Event.current.type == EventType.ScrollWheel && Event.current.control)
             {
                 SetSelectCircleRadius(PlanetEditor.SelectRadius + Event.current.delta.y * 0.01f);
                 GUIUtility.hotControl = controlId;
@@ -335,7 +335,7 @@ public class PlanetToolsInspector : Editor
             CircleSelect();
         }
         // Shift is released
-        else if(IsEditing)
+        else if (IsEditing)
         {
             IsEditing = false;
 
@@ -345,7 +345,7 @@ public class PlanetToolsInspector : Editor
                 LastHilightedTile = null;
             }
 
-            foreach(Tile lastT in LastHilightedTiles)
+            foreach (Tile lastT in LastHilightedTiles)
             {
                 lastT.SetHighlight(false);
             }
@@ -396,7 +396,7 @@ public class PlanetToolsInspector : Editor
 
     void SetSelectCircleRadius(float radius)
     {
-        if(radius <= 0.001f)
+        if (radius <= 0.001f)
         {
             radius = 0.001f;
         }
@@ -440,7 +440,7 @@ public class PlanetToolsInspector : Editor
                 }
                 // Overlap sphere on hit tile
                 Collider[] sphereHits = Physics.OverlapSphere(hit.point, PlanetEditor.SelectRadius);
-                foreach(Collider tCollider in sphereHits)
+                foreach (Collider tCollider in sphereHits)
                 {
                     Tile ti = tCollider.GetComponent<Tile>();
                     if (ti != null && !LastHilightedTiles.Contains(ti))
@@ -453,35 +453,35 @@ public class PlanetToolsInspector : Editor
                 // If the mouse is pressed and we havent already applied the action to this tile
                 if (MouseIsDown)
                 {
-                    foreach(Tile hilighted in LastHilightedTiles)
+                    foreach (Tile hilighted in LastHilightedTiles)
                     {
-                        if(!AppliedActionTiles.Contains(hilighted))
+                        if (!AppliedActionTiles.Contains(hilighted))
                         {
                             AppliedActionTiles.Add(hilighted);
                             ApplyToolAction(hilighted);
                         }
                     }
-                    
+
                 }
             }
         }
         else
         {
-            foreach(Tile t in LastHilightedTiles)
+            foreach (Tile t in LastHilightedTiles)
             {
                 t.SetHighlight(false);
             }
             LastHilightedTiles.Clear();
         }
 
-        
+
     }
 
     void ApplyToolAction(Tile t)
     {
         t.InfoDisplayOption = SelectedTileInfoOption;
 
-        switch(PlanetEditor.Mode)
+        switch (PlanetEditor.Mode)
         {
             case ToolMode.Select:
                 break;
@@ -496,20 +496,20 @@ public class PlanetToolsInspector : Editor
 
             case ToolMode.PaintHeight:
 
-                if(HeightMode == HeightPaintMode.Add)
+                if (HeightMode == HeightPaintMode.Add)
                 {
                     t.Extrude(PlanetEditor.ExtrudeHeight);
                 }
-                else if(HeightMode == HeightPaintMode.Set)
+                else if (HeightMode == HeightPaintMode.Set)
                 {
                     t.SetExtrusionHeight(PlanetEditor.ExtrudeHeight);
                 }
-                
+
                 break;
 
             case ToolMode.PaintObject:
 
-                if(PlanetEditor.ObjectMode == ObjectPaintMode.Add)
+                if (PlanetEditor.ObjectMode == ObjectPaintMode.Add)
                 {
                     if (PlanetEditor.SelectedObjectIndex < PlanetEditor.ObjectList.Count && PlanetEditor.ObjectList[PlanetEditor.SelectedObjectIndex] != null)
                     {
@@ -518,16 +518,16 @@ public class PlanetToolsInspector : Editor
                         t.PlaceObject(o);
                     }
                 }
-                else if(PlanetEditor.ObjectMode == ObjectPaintMode.Remove)
+                else if (PlanetEditor.ObjectMode == ObjectPaintMode.Remove)
                 {
                     t.DeleteLastPlacedObject();
                 }
-                
+
                 break;
 
             case ToolMode.PaintNavWeight:
 
-                if(PlanetEditor.NavCostMode == NavCostPaintMode.Add)
+                if (PlanetEditor.NavCostMode == NavCostPaintMode.Add)
                 {
                     t.pathCost += PlanetEditor.SelectedPathCost;
                 }
@@ -549,3 +549,5 @@ public class PlanetToolsInspector : Editor
         Handles.CircleHandleCap(0, Event.current.mousePosition, Quaternion.identity, radius, EventType.Repaint);
     }
 }
+
+#endif
