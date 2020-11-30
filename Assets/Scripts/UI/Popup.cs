@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 using UnityEngine.UI;
 
 public class Popup : MonoBehaviour
@@ -8,10 +9,16 @@ public class Popup : MonoBehaviour
     public Vector3 DisplayOffset = Vector3.zero;
 
     private BaseObject selectedObject;
+    private GameObject panel;
 
     [SerializeField] private GameObject removeButton = null;
     [SerializeField] private Text titleText = null;
     [SerializeField] private Text descriptionText = null;
+
+    [Header("Sound")]
+    [SerializeField] private int volume;
+    [SerializeField] private AudioClip appearSound, disappearSound, removeSound;
+    private AudioSource audioSource;
 
     public void Start()
     {
@@ -24,7 +31,9 @@ public class Popup : MonoBehaviour
             Debug.Log("Popup instance already set!");
         }
 
-        Hide();
+        audioSource = GetComponent<AudioSource>();
+        panel = gameObject.transform.GetChild(0).gameObject;
+        Hide(false);
     }
 
     void Update()
@@ -37,20 +46,22 @@ public class Popup : MonoBehaviour
 
             if (!CheckPathFree(Camera.main.transform.position, selectedObject.transform.position))
             {
-                Hide();
+                Hide(false);
             }
         }
     }
 
     public void Show(BaseObject objectToDisplay)
     {
-        //AudioManager.s
 
         // don't show when already open
-        if (isActiveAndEnabled)
+        if (panel.activeInHierarchy)
         {
             return;
         }
+
+        PlaySound(appearSound);
+
 
         selectedObject = objectToDisplay;
 
@@ -59,7 +70,7 @@ public class Popup : MonoBehaviour
 
         SetPosition();
 
-        gameObject.SetActive(true);
+        panel.SetActive(true);
         removeButton.SetActive(selectedObject.canBeRemovedByPlayer);
     }
 
@@ -68,17 +79,20 @@ public class Popup : MonoBehaviour
         transform.position = Camera.main.WorldToScreenPoint(selectedObject.transform.position) + DisplayOffset;
     }
 
-    public void Hide()
+    public void Hide(bool playSound = true)
     {
-        gameObject.SetActive(false);
+        panel.SetActive(false);
+        if (playSound != false) PlaySound(disappearSound);
     }
 
     public void OnRemoveClicked()
     {
         selectedObject.Remove();
-        Hide();
+        PlaySound(removeSound);
+        Hide(false);
     }
 
+    //What does this function do?
     private bool CheckPathFree(Vector3 position, Vector3 target)
     {
         var direction = target - position;
@@ -101,5 +115,11 @@ public class Popup : MonoBehaviour
         //Debug.Log("rhit: " + string.Join(", ", rhit.Select(x => x.transform.name)));
 
         return rhit.Length == 1;
+    }
+
+    private void PlaySound(AudioClip audioClip)
+    {
+        audioSource.clip = audioClip;
+        audioSource.Play();
     }
 }

@@ -6,7 +6,8 @@ public class AudioManager : MonoBehaviour
 {
     public static AudioManager Instance;
 
-    [SerializeField] private AudioSource buildSound, popUpSound;
+    [SerializeField] private AudioSource buildsounds;
+    [SerializeField] private AudioClip buildSound;
 
     // Start is called before the first frame update
     void Start()
@@ -21,19 +22,10 @@ public class AudioManager : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     public void PlayBuildSound()
     {
-        buildSound.Play();
+        buildsounds.Play();
     }
 
-    public void PlayPopUpSound()
-    {
-        popUpSound.Play();
-    }
 }

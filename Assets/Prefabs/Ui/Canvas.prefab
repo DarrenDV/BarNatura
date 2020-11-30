@@ -108,6 +108,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2429261435597987502}
     m_Modifications:
+    - target: {fileID: 3493212815303245414, guid: 90e85fcff8230484ca8261cf5dc77b89,
+        type: 3}
+      propertyPath: removeButton
+      value: 
+      objectReference: {fileID: 8804928799242887074}
+    - target: {fileID: 3493212815303245414, guid: 90e85fcff8230484ca8261cf5dc77b89,
+        type: 3}
+      propertyPath: DisplayOffset.y
+      value: -120
+      objectReference: {fileID: 0}
     - target: {fileID: 9089102331052308658, guid: 90e85fcff8230484ca8261cf5dc77b89,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -223,6 +233,12 @@ PrefabInstance:
 --- !u!224 &8371902581974304544 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 9089102331052308658, guid: 90e85fcff8230484ca8261cf5dc77b89,
+    type: 3}
+  m_PrefabInstance: {fileID: 723957364864925586}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &8804928799242887074 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8087734256328482864, guid: 90e85fcff8230484ca8261cf5dc77b89,
     type: 3}
   m_PrefabInstance: {fileID: 723957364864925586}
   m_PrefabAsset: {fileID: 0}
