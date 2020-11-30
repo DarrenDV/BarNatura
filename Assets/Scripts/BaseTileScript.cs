@@ -146,7 +146,7 @@ public class BaseTileScript : Tile
         if (gameManager.inBuildMode)
         {
             //Set the position of the preview building to this tile
-            gameManager.buildObjectPreview.gameObject.GetComponent<BuildingModeObject>().ChangeMaterial(isOccupied);
+            gameManager.buildObjectPreview.gameObject.GetComponent<BuildingModeObject>().ChangeMaterial(isOccupied || naturePollutedDegree < 0);
             gameManager.MovePreview(transform.position, transform.rotation);
         }
     }
@@ -155,9 +155,9 @@ public class BaseTileScript : Tile
     {
         var gameManager = GameManager.Instance;
 
-        if (gameManager.inBuildMode)
+        if (Input.GetMouseButtonDown(0) && gameManager.inBuildMode)
         {
-            if (Input.GetMouseButtonDown(0) && !isOccupied && naturePollutedDegree >= 0 && gameManager.IsPointerOverUIElement() == false)
+            if (!isOccupied && naturePollutedDegree >= 0 && gameManager.IsPointerOverUIElement() == false)
             {
                 //Place the new building
                 PlaceObject(Instantiate(gameManager.buildObject.gameObject, transform.position, transform.rotation));
@@ -173,6 +173,11 @@ public class BaseTileScript : Tile
 
                 gameManager.StopBuilding();
             }
+            else
+            {  
+                AudioManager.Instance.PlayBuildFaliedSound();
+            }
+
         }
     }
 

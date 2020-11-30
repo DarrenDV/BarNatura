@@ -25,7 +25,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2e75505bd4f4084c8fd5769743fb1f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canBeRemovedByUser: 1
+  canBeRemovedByPlayer: 1
   RawMaterialMin: 5
   RawMaterialMax: 20
 --- !u!1001 &3456226145305212188
@@ -114,6 +114,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Rubble
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 1df472f5a00fd7440a37a66b34bb5329,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: -7511558181221131132, guid: 1df472f5a00fd7440a37a66b34bb5329, type: 3}

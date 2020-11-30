@@ -17,7 +17,7 @@ public class Popup : MonoBehaviour
 
     [Header("Sound")]
     [SerializeField] private int volume;
-    [SerializeField] private AudioClip appearSound, disappearSound, removeSound;
+    [SerializeField] private AudioClip appearSound, disappearSound;
     private AudioSource audioSource;
 
     public void Start()
@@ -62,7 +62,6 @@ public class Popup : MonoBehaviour
 
         PlaySound(appearSound);
 
-
         selectedObject = objectToDisplay;
 
         titleText.text = selectedObject.GetName();
@@ -82,13 +81,14 @@ public class Popup : MonoBehaviour
     public void Hide(bool playSound = true)
     {
         panel.SetActive(false);
+        selectedObject = null;
         if (playSound != false) PlaySound(disappearSound);
     }
 
     public void OnRemoveClicked()
     {
         selectedObject.Remove();
-        PlaySound(removeSound);
+        AudioManager.Instance.PlayDemolishSound();
         Hide(false);
     }
 

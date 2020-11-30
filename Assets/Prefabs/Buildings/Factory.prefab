@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3714631875868504932}
   - component: {fileID: 336580990482563004}
   - component: {fileID: 8691811088266411654}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Factory
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6824c6e8494701142b12b88444af1626, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canBeRemovedByUser: 1
+  canBeRemovedByPlayer: 1
   oxygenProduction: 0
   oxygenUsage: 5
   pollutionProduction: 15

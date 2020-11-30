@@ -6,8 +6,11 @@ public class AudioManager : MonoBehaviour
 {
     public static AudioManager Instance;
 
-    [SerializeField] private AudioSource buildsounds;
-    [SerializeField] private AudioClip buildSound;
+    [Header("Audomsources")]
+    [SerializeField] private AudioSource uiAudioSource;
+    [SerializeField] private AudioSource buildAudioSource, demolishAudioSource;
+    [SerializeField] private AudioClip selectSound;
+    [SerializeField] private AudioClip build, buildFalied;
 
     // Start is called before the first frame update
     void Start()
@@ -22,10 +25,22 @@ public class AudioManager : MonoBehaviour
         }
     }
 
+    public void PlayDemolishSound()
+    {
+        demolishAudioSource.Play();
+    }
+
 
     public void PlayBuildSound()
     {
-        buildsounds.Play();
+        buildAudioSource.clip = build;
+        buildAudioSource.Play();
+    }
+
+    public void PlayBuildFaliedSound()
+    {
+        buildAudioSource.clip = buildFalied;
+        buildAudioSource.Play();
     }
 
 }

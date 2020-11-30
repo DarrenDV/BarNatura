@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 9021093312160118099}
   - component: {fileID: 3215519612940163885}
   - component: {fileID: 6304328013930547756}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: House
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba93ae56a21e5c74cbbd663409473a43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canBeRemovedByUser: 1
+  canBeRemovedByPlayer: 1
   oxygenProduction: 0
   oxygenUsage: 1
   pollutionProduction: 1
@@ -75,6 +75,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: 90b3007ed7074dd4ea1220f4352dbdec, type: 3}
       propertyPath: m_Name
       value: house_2_v_14
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 90b3007ed7074dd4ea1220f4352dbdec, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 90b3007ed7074dd4ea1220f4352dbdec, type: 3}
       propertyPath: m_LocalPosition.x

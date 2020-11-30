@@ -46,8 +46,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 632e00cd923310e4eaab504a79bca1b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buildSound: {fileID: 2561989280173203010}
-  popUpSound: {fileID: 1531213604055663368}
+  uiAudioSource: {fileID: 0}
+  buildAudioSource: {fileID: 2561989280173203010}
+  demolishAudioSource: {fileID: 1531213604055663368}
+  selectSound: {fileID: 0}
+  build: {fileID: 8300000, guid: 1d18c24212d7dd1469e18a9abc6b39e2, type: 3}
+  buildFalied: {fileID: 8300000, guid: 4873f24387e172640bb7c4e33df47808, type: 3}
 --- !u!82 &8600251432034433669
 AudioSource:
   m_ObjectHideFlags: 0

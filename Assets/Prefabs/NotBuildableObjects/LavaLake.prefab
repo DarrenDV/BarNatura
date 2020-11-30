@@ -1288,7 +1288,7 @@ GameObject:
   - component: {fileID: 8577133075776521073}
   - component: {fileID: 3950491727560203013}
   - component: {fileID: 3938045097978861389}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: LavaLake
   m_TagString: Untagged
   m_Icon: {fileID: 0}
