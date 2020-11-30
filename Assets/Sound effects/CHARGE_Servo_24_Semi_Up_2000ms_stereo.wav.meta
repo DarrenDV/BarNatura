@@ -1,18 +1,22 @@
 fileFormatVersion: 2
-guid: 244c3214b090dea4f87836c19477552c
+guid: 545704946a0271c4da572d35c2f6af5b
 labels:
 - usfx
 - imphenzia
-- user interface
-- ui
-- gui
+- charge
+- power
+- energy
+- electric
+- force
+- scifi
+- sci-fi
 - stereo
-- beep
-- bleep
+- sweep
 AudioImporter:
+  externalObjects: {}
   serializedVersion: 6
   defaultSettings:
-    loadType: 1
+    loadType: 0
     sampleRateSetting: 0
     sampleRateOverride: 0
     compressionFormat: 0
@@ -20,8 +24,10 @@ AudioImporter:
     conversionMode: 0
   platformSettingOverrides: {}
   forceToMono: 0
-  preloadAudioData: 1
+  normalize: 1
+  preloadAudioData: 0
   loadInBackground: 0
+  ambisonic: 0
   3D: 1
   userData: 
   assetBundleName: 

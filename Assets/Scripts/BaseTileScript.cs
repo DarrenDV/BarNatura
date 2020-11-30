@@ -151,11 +151,13 @@ public class BaseTileScript : Tile
         }
     }
 
-    private void OnMouseOver()
+    protected override void OnMouseDown()
     {
+        base.OnMouseDown();
+
         var gameManager = GameManager.Instance;
 
-        if (Input.GetMouseButtonDown(0) && gameManager.inBuildMode)
+        if (gameManager.inBuildMode)
         {
             if (!isOccupied && naturePollutedDegree >= 0 && gameManager.IsPointerOverUIElement() == false)
             {

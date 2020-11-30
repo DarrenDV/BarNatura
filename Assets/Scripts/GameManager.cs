@@ -22,6 +22,8 @@ public class GameManager : MonoBehaviour
     private int population;
     private int maxCapacity;
 
+    private AudioManager audioManager;
+
     // for testing purposes
     [HideInInspector] public int BuildingCount;
 
@@ -72,14 +74,15 @@ public class GameManager : MonoBehaviour
         capacityCounter = GameObject.Find("CapacityCounter").GetComponent<Text>();
         //foodCounter = GameObject.Find("FoodCounter").GetComponent<Text>();
 
-        wl = this.gameObject.GetComponent<WinLose>();
+        wl = gameObject.GetComponent<WinLose>();
     }
 
     void Start()
     {
         ChangeBuildMaterialCounter();
         ChangeRawMaterialCounter();
-        ResetHumanTimer();   
+        ResetHumanTimer();
+        audioManager = AudioManager.Instance;
     }
 
     void Update()
@@ -90,6 +93,7 @@ public class GameManager : MonoBehaviour
         if (Input.GetMouseButtonDown(1))
         {
             StopBuilding();
+            AudioManager.Instance.PlayStopBuildingSound();
         }
 
         HandleAnalytics();
@@ -130,20 +134,24 @@ public class GameManager : MonoBehaviour
                 ResetHumanTimer();
         }
 
-
+        //Start the countdown timer when the player doesn't have enoug oxygen or housing
         if (oxygenSurplus <= 0 && population > 0 || population > maxCapacity)
         {
+            audioManager.PlayDangerLoopSound();
+
             timeLeftUntilHumansDie += Time.deltaTime;
             if (timeLeftUntilHumansDie > humanDeathTimer)
             {
                 timeLeftUntilHumansDie = humanDeathTimer - Random.Range(1f, 2f);
                 RemovePopulation(1);
+                audioManager.PlayHumanDeathSound();
             }
         } 
         else
         {
-            if (timeLeftUntilHumansDie != 0)
-                    timeLeftUntilHumansDie = 0;
+            if (timeLeftUntilHumansDie != 0) timeLeftUntilHumansDie = 0;
+            
+            audioManager.StopDangerLoopSound();
         }
 
     }

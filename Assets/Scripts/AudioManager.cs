@@ -6,13 +6,20 @@ public class AudioManager : MonoBehaviour
 {
     public static AudioManager Instance;
 
-    [Header("Audomsources")]
-    [SerializeField] private AudioSource uiAudioSource;
-    [SerializeField] private AudioSource buildAudioSource, demolishAudioSource;
-    [SerializeField] private AudioClip selectSound;
-    [SerializeField] private AudioClip build, buildFalied;
+    [Header("Danger")]
+    [SerializeField] private AudioSource dangerShort;
+    [SerializeField] private AudioSource dangerLoop;
+    [SerializeField] private AudioClip dangerLoopSound, humanDeath;
 
-    // Start is called before the first frame update
+    [Header("UI")]
+    [SerializeField] private AudioSource uiAudioSource;
+    [SerializeField] private AudioClip selectSound;
+
+    [Header("Temp")]
+    [SerializeField] private AudioSource buildAudioSource, demolishAudioSource;
+    
+    [SerializeField] private AudioClip build, buildFalied, buildStopped;
+
     void Start()
     {
         if (Instance == null)
@@ -25,12 +32,8 @@ public class AudioManager : MonoBehaviour
         }
     }
 
-    public void PlayDemolishSound()
-    {
-        demolishAudioSource.Play();
-    }
 
-
+    #region building
     public void PlayBuildSound()
     {
         buildAudioSource.clip = build;
@@ -41,6 +44,44 @@ public class AudioManager : MonoBehaviour
     {
         buildAudioSource.clip = buildFalied;
         buildAudioSource.Play();
+    }
+
+    public void PlayStopBuildingSound()
+    {
+        buildAudioSource.clip = buildStopped;
+        buildAudioSource.Play();
+    }
+
+    public void PlayDemolishSound()
+    {
+        demolishAudioSource.Play();
+    }
+    #endregion
+
+    public void PlayDangerLoopSound()
+    {
+        if (!dangerLoop.isPlaying)
+        {
+            dangerLoop.clip = dangerLoopSound;
+            dangerLoop.Play();
+        }
+
+    }
+    public void StopDangerLoopSound()
+    {
+        if (dangerLoop.isActiveAndEnabled)
+            dangerLoop.Stop();
+    }
+
+    public void PlayHumanDeathSound()
+    {
+        dangerShort.clip = humanDeath;
+        dangerShort.Play();
+    }
+
+    public void PlayUiSelectSound() {
+        uiAudioSource.clip = selectSound;
+        uiAudioSource.Play();
     }
 
 }
