@@ -40,9 +40,9 @@ public class GameManager : MonoBehaviour
     private float timeLeftUntilHumansDie;
 
     [Header("UI")]
-    [SerializeField]private Text oxygenCounter, drainCounter, pollutionCounter, surplusCounter;
-    [SerializeField] private Text buildMaterialCounter, rawMaterialCounter;
-    [SerializeField] private Text humanCounter, capacityCounter;
+    private Text oxygenCounter, drainCounter, pollutionCounter, surplusCounter;
+    private Text buildMaterialCounter, rawMaterialCounter;
+    private Text humanCounter, capacityCounter;
 
     private float analyticsTimer;
 
