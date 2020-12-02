@@ -80,6 +80,7 @@ public class GameManager : MonoBehaviour
         humanCounter = GameObject.Find("HumanCounter").GetComponent<Text>();
         workerCounter = GameObject.Find("WorkerCounter").GetComponent<Text>();
         capacityCounter = GameObject.Find("CapacityCounter").GetComponent<Text>();
+        oxygenBar = GameObject.Find("Slider").GetComponent<Slider>();
         //foodCounter = GameObject.Find("FoodCounter").GetComponent<Text>();
 
         winLose = GetComponent<WinLose>();
@@ -588,6 +589,9 @@ public class GameManager : MonoBehaviour
             surplusCounter.color = Color.red;
             surplusCounter.text = GetOxygenSurplus().ToString();
         }
+
+        oxygenBar.maxValue = GetOxygenGeneration();
+        oxygenBar.value = oxygenUsage + pollution;
     }
 
     #endregion
