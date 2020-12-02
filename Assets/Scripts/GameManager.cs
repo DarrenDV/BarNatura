@@ -86,7 +86,6 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-
         oxygenSurplus = oxygenGeneration - (oxygenUsage + pollution);
 
         if (Input.GetMouseButtonDown(1))

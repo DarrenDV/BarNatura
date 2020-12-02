@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class Popup : MonoBehaviour
@@ -55,7 +54,6 @@ public class Popup : MonoBehaviour
 
     public void Show(BaseObject objectToDisplay)
     {
-
         // don't show when already open
         if (panel.activeInHierarchy)
         {
@@ -126,7 +124,7 @@ public class Popup : MonoBehaviour
     {
         panel.SetActive(false);
         
-        if (playSound != false)
+        if (playSound)
         {
             PlaySound(disappearSound);
         }

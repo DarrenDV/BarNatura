@@ -172,11 +172,9 @@ public class BaseTileScript : Tile
 
         if (gameManager.inBuildMode)
         {
-            if (!isOccupied && naturePollutedDegree >= 0 && gameManager.IsPointerOverUIElement() == false)
+            if (!isOccupied && !Utils.IsPointerOverUIElement())
             {
                 var plannedBuildObject = gameManager.buildObject.gameObject.GetComponent<BuildObject>();
-		
-		
 
                 // check if the tile is healthy enough
                 if (naturePollutedDegree >= plannedBuildObject.MinimumNaturePollutedDegree)
@@ -186,7 +184,7 @@ public class BaseTileScript : Tile
                     var newBuildingObject = newBuilding.GetComponent<BuildObject>();
                     newBuildingObject.OnBuild();
                     PlaceObject(newBuilding);
-                    
+
                     AudioManager.Instance.PlayBuildSound();
 
                     gameManager.RemoveBuildingMaterial(newBuildingObject.BuildCost);
@@ -194,10 +192,9 @@ public class BaseTileScript : Tile
                 }
             }
             else
-            {  
+            {
                 AudioManager.Instance.PlayBuildFaliedSound();
             }
-
         }
     }
 

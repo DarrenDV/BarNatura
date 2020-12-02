@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class AudioManager : MonoBehaviour
 {
@@ -20,7 +18,7 @@ public class AudioManager : MonoBehaviour
     
     [SerializeField] private AudioClip build, buildFalied, buildStopped;
 
-    void Start()
+    void Awake()
     {
         if (Instance == null)
         {

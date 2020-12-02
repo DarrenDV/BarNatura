@@ -160,9 +160,8 @@ public class BaseObject : MonoBehaviour
     protected virtual void OnMouseDown()
     {
         if (!GameManager.Instance.inBuildMode && !Utils.IsPointerOverUIElement())
-            {
-                Popup.Instance.Show(this);
-            }
+        {
+            Popup.Instance.Show(this);
         }
     }
 }
