@@ -26,6 +26,7 @@ public class BuildMenuButton : MonoBehaviour
         if (BuildMenuItem.buildItem.BuildCost <= GameManager.Instance.GetBuildingMaterials() && BuildMenuItem.buildItem.HumansRequiredToBuild <= GameManager.Instance.GetPopulationAmount())
         {
             GameManager.Instance.ChangeBuildObject(BuildMenuItem.buildItem.gameObject, BuildMenuItem.buildingItemMesh, BuildMenuItem.numberOfMeshes, BuildMenuItem.meshScale);
+            AudioManager.Instance.PlayUiSelectSound();
         }
 
         ToolTip.Instance.Hide();

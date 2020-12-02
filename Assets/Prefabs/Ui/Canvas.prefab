@@ -252,6 +252,12 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 723957364864925586}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &8804928799242887074 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8087734256328482864, guid: 90e85fcff8230484ca8261cf5dc77b89,
+    type: 3}
+  m_PrefabInstance: {fileID: 723957364864925586}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2429261436603191179
 PrefabInstance:
   m_ObjectHideFlags: 0

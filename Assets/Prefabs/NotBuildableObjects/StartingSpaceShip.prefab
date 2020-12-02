@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5905488213670049405}
   - component: {fileID: 5905488213670049406}
   - component: {fileID: 1875452393670931270}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: StartingSpaceShip
   m_TagString: Untagged
   m_Icon: {fileID: 0}
