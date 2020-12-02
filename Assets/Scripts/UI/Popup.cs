@@ -60,6 +60,11 @@ public class Popup : MonoBehaviour
             return;
         }
 
+        if (!CheckPathFree(Camera.main.transform.position, objectToDisplay.transform.position))
+        {
+            return;
+        }
+
         PlaySound(appearSound);
 
         selectedObject = objectToDisplay;
@@ -162,7 +167,12 @@ public class Popup : MonoBehaviour
         {
             var tile = raycastHits[0].transform.GetComponent<BaseTileScript>() != null ? raycastHits[0].transform.GetComponent<BaseTileScript>() : raycastHits[1].transform.GetComponent<BaseTileScript>();
 
-            //This causes a bug for some reason
+            // sometimes we hit two objects but not a tile
+            if (tile == null)
+            {
+                return false;
+            }
+
             if(tile.PlacedObjects.Contains(selectedObject.gameObject))
             {
                 return true;
