@@ -125,7 +125,7 @@ public class BaseObject : MonoBehaviour
 
     public virtual void OnBuild()
     {
-        GameManager.Instance.RemovePopulation(HumansRequiredToBuild);
+        GameManager.Instance.AddWorkers(HumansRequiredToBuild);
         buildProgress = 0f;
         IsBeingBuild = true;
     }
@@ -135,7 +135,7 @@ public class BaseObject : MonoBehaviour
     /// </summary>
     public virtual void OnRemove()
     {
-        GameManager.Instance.RemovePopulation(HumansRequiredToRemove);
+        GameManager.Instance.AddWorkers(HumansRequiredToRemove);
         IsBeingRemoved = true;
     }
 
@@ -144,7 +144,7 @@ public class BaseObject : MonoBehaviour
     /// </summary>
     public virtual void OnFinishedBuilding()
     {
-        GameManager.Instance.AddPopulation(HumansRequiredToBuild);
+        GameManager.Instance.RemoveWorkers(HumansRequiredToBuild);
         OnFinishedBuildingEvent.Invoke();
     }
 
@@ -153,7 +153,7 @@ public class BaseObject : MonoBehaviour
     /// </summary>
     public virtual void OnFinishedRemoving()
     {
-        GameManager.Instance.AddPopulation(HumansRequiredToRemove);
+        GameManager.Instance.RemoveWorkers(HumansRequiredToRemove);
         OnFinishedRemovingEvent.Invoke();
     }
 
