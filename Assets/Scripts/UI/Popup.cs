@@ -60,15 +60,16 @@ public class Popup : MonoBehaviour
             return;
         }
 
-        if (!CheckPathFree(Camera.main.transform.position, objectToDisplay.transform.position))
+        selectedObject = objectToDisplay;
+        
+        if (!CheckPathFree(Camera.main.transform.position, selectedObject.transform.position))
         {
             return;
         }
 
-        PlaySound(appearSound);
-
-        selectedObject = objectToDisplay;
         selectedObject.OnFinishedRemovingEvent.AddListener(OnSelectedBuildingRemoved);
+
+        PlaySound(appearSound);
 
         titleText.text = selectedObject.GetName();
         UpdateDescription();
@@ -154,7 +155,6 @@ public class Popup : MonoBehaviour
         selectedObject.OnRemove();
     }
 
-    //What does this function do?
     private bool CheckPathFree(Vector3 position, Vector3 target)
     {
         var direction = target - position;
