@@ -172,7 +172,14 @@ public class BaseTileScript : Tile
 
         if (gameManager.inBuildMode)
         {
-            if (!isOccupied && !Utils.IsPointerOverUIElement())
+            if (Utils.IsPointerOverUIElement())
+            {
+                // don't build when the user clicked on the ui
+
+                return;
+            }
+
+            if (!isOccupied)
             {
                 var plannedBuildObject = gameManager.buildObject.gameObject.GetComponent<BuildObject>();
 
