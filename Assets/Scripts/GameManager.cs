@@ -19,6 +19,13 @@ public class GameManager : MonoBehaviour
 
     //Population
     private int population;
+    private int availableWorkers;
+    public int AvailableWorkers
+    {
+        get {return availableWorkers; }
+        private set {availableWorkers = value; }
+    }
+    private int workers;
     private int capacity;
 
     private AudioManager audioManager;
@@ -41,8 +48,9 @@ public class GameManager : MonoBehaviour
 
     [Header("UI")]
     private Text oxygenCounter, drainCounter, pollutionCounter, surplusCounter;
+    private Slider oxygenBar;
     private Text buildMaterialCounter, rawMaterialCounter;
-    private Text humanCounter, capacityCounter;
+    private Text humanCounter, workerCounter, capacityCounter;
 
     private float analyticsTimer;
 
@@ -70,6 +78,7 @@ public class GameManager : MonoBehaviour
         rawMaterialCounter = GameObject.Find("RawMaterialCounter").GetComponent<Text>();
 
         humanCounter = GameObject.Find("HumanCounter").GetComponent<Text>();
+        workerCounter = GameObject.Find("WorkerCounter").GetComponent<Text>();
         capacityCounter = GameObject.Find("CapacityCounter").GetComponent<Text>();
         //foodCounter = GameObject.Find("FoodCounter").GetComponent<Text>();
 
@@ -290,6 +299,7 @@ public class GameManager : MonoBehaviour
         }
             
         population += populationToAdd;
+        AvailableWorkers += populationToAdd;
         ChangeHumanCounter();
 
         winLose.CheckPopulation(population);
@@ -307,6 +317,7 @@ public class GameManager : MonoBehaviour
         }
 
         population -= populationToRemove;
+        AvailableWorkers -= populationToRemove;
         ChangeHumanCounter();
 
         winLose.CheckPopulation(population);
@@ -319,6 +330,40 @@ public class GameManager : MonoBehaviour
     public int GetPopulationAmount()
     {
         return population;
+    }
+
+    /// <summary>
+    /// Use this when workers start working on something.
+    /// </summary>
+    /// <param name="workersToAdd">The amount of humans that died.</param>
+    public void AddWorkers(int workersToAdd)
+    {
+        AvailableWorkers -= workersToAdd;
+        workers += workersToAdd;
+        ChangeHumanCounter();
+        ChangeWorkerCounter();
+    }
+
+    /// <summary>
+    /// Use this when workers start have completed their task.
+    /// </summary>
+    /// <param name="workersToRemove">The amount of humans that died.</param>
+    public void RemoveWorkers(int workersToRemove)
+    {
+        AvailableWorkers += workersToRemove;
+        workers -= workersToRemove;
+        ChangeHumanCounter();
+        ChangeWorkerCounter();
+    }
+
+
+    /// <summary>
+    /// Get the current amount of workers.
+    /// </summary>
+    /// <returns></returns>
+    public int GetWorkerAmount()
+    {
+        return workers;
     }
 
     /// <summary>
@@ -518,7 +563,12 @@ public class GameManager : MonoBehaviour
 
     private void ChangeHumanCounter()
     {
-        humanCounter.text = GetPopulationAmount().ToString();
+        humanCounter.text = (GetPopulationAmount() - workers).ToString();
+    }
+
+    private void ChangeWorkerCounter()
+    {
+        workerCounter.text = GetWorkerAmount().ToString();
     }
 
     private void ChangeCapacityCounter()
@@ -528,7 +578,16 @@ public class GameManager : MonoBehaviour
 
     private void ChangeSurplusCounter()
     {
-        surplusCounter.text = GetOxygenSurplus().ToString();
+        if (GetOxygenSurplus() > 0)
+        {
+            surplusCounter.color = Color.green;
+            surplusCounter.text = "+" +GetOxygenSurplus().ToString();
+        }
+        else
+        {
+            surplusCounter.color = Color.red;
+            surplusCounter.text = GetOxygenSurplus().ToString();
+        }
     }
 
     #endregion

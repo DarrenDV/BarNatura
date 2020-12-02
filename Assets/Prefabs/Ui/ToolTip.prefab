@@ -358,4 +358,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TitleText: {fileID: 4307601513415804069}
   DescriptionText: {fileID: 675291896847424042}
-  DisplayOffset: {x: 0, y: 200, z: 0}
+  DisplayOffset: {x: 0, y: 300, z: 0}
