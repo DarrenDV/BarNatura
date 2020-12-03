@@ -2,15 +2,16 @@
 
 public class FactoryScript : BuildingScript
 {
-    [Header("Factory Script")] [SerializeField]
-    private float maxFactoryConvertTimer = 0;
+    [Header("Factory Script")]
+    public ParticleSystem particleSystem;
+    [SerializeField] private float maxFactoryConvertTimer = 0;
 
     [SerializeField] private int rawMaterialConsumption = 2;
     [SerializeField] private int buildingMaterialProduction = 1;
 
     private float factoryConvertTimer;
     private bool isProducing;
-
+    
     // Update is called once per frame
     protected override void Update()
     {
@@ -86,5 +87,11 @@ public class FactoryScript : BuildingScript
         base.OnFinishedRemoving();
 
         transform.parent.GetComponent<BaseTileScript>().DeletePlacedObjects();
+    }
+
+    public override void OnFinishedBuilding()
+    {
+        base.OnFinishedBuilding();
+        particleSystem.Play();
     }
 }
