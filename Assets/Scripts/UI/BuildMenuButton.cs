@@ -24,7 +24,7 @@ public class BuildMenuButton : MonoBehaviour
     public void OnClick()
     {
         if (BuildMenuItem.buildItem.BuildCost <= GameManager.Instance.GetBuildingMaterials()
-            && BuildMenuItem.buildItem.HumansRequiredToBuild <= GameManager.Instance.AvailableWorkers)
+            && GameManager.Instance.AreWorkersAvailable(BuildMenuItem.buildItem.HumansRequiredToBuild))
         {
             GameManager.Instance.ChangeBuildObject(BuildMenuItem.buildItem.gameObject, BuildMenuItem.buildingItemMesh, BuildMenuItem.numberOfMeshes, BuildMenuItem.meshScale);
             AudioManager.Instance.PlayUiSelectSound();

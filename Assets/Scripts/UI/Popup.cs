@@ -60,10 +60,16 @@ public class Popup : MonoBehaviour
             return;
         }
 
-        PlaySound(appearSound);
-
         selectedObject = objectToDisplay;
+        
+        if (!CheckPathFree(Camera.main.transform.position, selectedObject.transform.position))
+        {
+            return;
+        }
+
         selectedObject.OnFinishedRemovingEvent.AddListener(OnSelectedBuildingRemoved);
+
+        PlaySound(appearSound);
 
         titleText.text = selectedObject.GetName();
         UpdateDescription();
@@ -137,7 +143,7 @@ public class Popup : MonoBehaviour
 
     public void OnRemoveClicked()
     {
-        if (GameManager.Instance.GetPopulationAmount() < selectedObject.HumansRequiredToRemove)
+        if (!GameManager.Instance.AreWorkersAvailable(selectedObject.HumansRequiredToRemove))
         {
             // todo: tell player he does not have enough humans
             return;
@@ -149,7 +155,6 @@ public class Popup : MonoBehaviour
         selectedObject.OnRemove();
     }
 
-    //What does this function do?
     private bool CheckPathFree(Vector3 position, Vector3 target)
     {
         var direction = target - position;
@@ -162,7 +167,12 @@ public class Popup : MonoBehaviour
         {
             var tile = raycastHits[0].transform.GetComponent<BaseTileScript>() != null ? raycastHits[0].transform.GetComponent<BaseTileScript>() : raycastHits[1].transform.GetComponent<BaseTileScript>();
 
-            //This causes a bug for some reason
+            // sometimes we hit two objects but not a tile
+            if (tile == null)
+            {
+                return false;
+            }
+
             if(tile.PlacedObjects.Contains(selectedObject.gameObject))
             {
                 return true;

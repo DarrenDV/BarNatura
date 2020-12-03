@@ -20,11 +20,6 @@ public class GameManager : MonoBehaviour
     //Population
     private int population;
     private int availableWorkers;
-    public int AvailableWorkers
-    {
-        get {return availableWorkers; }
-        private set {availableWorkers = value; }
-    }
     private int workers;
     private int capacity;
 
@@ -80,7 +75,7 @@ public class GameManager : MonoBehaviour
         humanCounter = GameObject.Find("HumanCounter").GetComponent<Text>();
         workerCounter = GameObject.Find("WorkerCounter").GetComponent<Text>();
         capacityCounter = GameObject.Find("CapacityCounter").GetComponent<Text>();
-        oxygenBar = GameObject.Find("Slider").GetComponent<Slider>();
+        oxygenBar = GameObject.Find("OxygenSlider").GetComponent<Slider>();
         //foodCounter = GameObject.Find("FoodCounter").GetComponent<Text>();
 
         winLose = GetComponent<WinLose>();
@@ -300,7 +295,7 @@ public class GameManager : MonoBehaviour
         }
             
         population += populationToAdd;
-        AvailableWorkers += populationToAdd;
+        availableWorkers += populationToAdd;
         ChangeHumanCounter();
 
         winLose.CheckPopulation(population);
@@ -318,7 +313,7 @@ public class GameManager : MonoBehaviour
         }
 
         population -= populationToRemove;
-        AvailableWorkers -= populationToRemove;
+        availableWorkers -= populationToRemove;
         ChangeHumanCounter();
 
         winLose.CheckPopulation(population);
@@ -339,7 +334,7 @@ public class GameManager : MonoBehaviour
     /// <param name="workersToAdd">The amount of humans that died.</param>
     public void AddWorkers(int workersToAdd)
     {
-        AvailableWorkers -= workersToAdd;
+        availableWorkers -= workersToAdd;
         workers += workersToAdd;
         ChangeHumanCounter();
         ChangeWorkerCounter();
@@ -351,7 +346,7 @@ public class GameManager : MonoBehaviour
     /// <param name="workersToRemove">The amount of humans that died.</param>
     public void RemoveWorkers(int workersToRemove)
     {
-        AvailableWorkers += workersToRemove;
+        availableWorkers += workersToRemove;
         workers -= workersToRemove;
         ChangeHumanCounter();
         ChangeWorkerCounter();
@@ -365,6 +360,16 @@ public class GameManager : MonoBehaviour
     public int GetWorkerAmount()
     {
         return workers;
+    }
+
+    /// <summary>
+    /// Calculate if we have enough workers
+    /// </summary>
+    /// <returns></returns>
+    /// /// <param name="requestedWorkers">The amount of humans that we need.</param>
+    public bool AreWorkersAvailable(int requestedWorkers)
+    {
+        return !(availableWorkers - requestedWorkers <= -1);
     }
 
     /// <summary>
