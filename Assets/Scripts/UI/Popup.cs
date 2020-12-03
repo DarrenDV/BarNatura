@@ -143,7 +143,7 @@ public class Popup : MonoBehaviour
 
     public void OnRemoveClicked()
     {
-        if (GameManager.Instance.GetPopulationAmount() < selectedObject.HumansRequiredToRemove)
+        if (!GameManager.Instance.AreWorkersAvailable(selectedObject.HumansRequiredToRemove))
         {
             // todo: tell player he does not have enough humans
             return;
