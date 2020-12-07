@@ -56,6 +56,7 @@ MonoBehaviour:
   OnFinishedRemovingEvent:
     m_PersistentCalls:
       m_Calls: []
+  parentTile: {fileID: 0}
   IsBeingBuild: 0
   IsBeingRemoved: 0
   oxygenProduction: 0
@@ -152,27 +153,27 @@ PrefabInstance:
     - target: {fileID: 2300000, guid: 90b3007ed7074dd4ea1220f4352dbdec, type: 3}
       propertyPath: m_Materials.Array.data[2]
       value: 
-      objectReference: {fileID: 2100000, guid: e4007b336b5c32445943b7acf6dac323, type: 2}
+      objectReference: {fileID: 2100000, guid: d0b97e1c0a3204540a69b5bbece50f2b, type: 2}
     - target: {fileID: 2300000, guid: 90b3007ed7074dd4ea1220f4352dbdec, type: 3}
       propertyPath: m_Materials.Array.data[4]
       value: 
-      objectReference: {fileID: 2100000, guid: 473d7f25d7ac87e43a7bfb7b40b806c9, type: 2}
+      objectReference: {fileID: 2100000, guid: ef08ca6ba36fac248adc13c1f5c85786, type: 2}
     - target: {fileID: 2300000, guid: 90b3007ed7074dd4ea1220f4352dbdec, type: 3}
       propertyPath: m_Materials.Array.data[3]
       value: 
-      objectReference: {fileID: 2100000, guid: 38bf28e442e792c4fb7dd0f396a767bb, type: 2}
+      objectReference: {fileID: 2100000, guid: 6e14db35fa7ad944b9c02ba2392b274a, type: 2}
     - target: {fileID: 2300000, guid: 90b3007ed7074dd4ea1220f4352dbdec, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 38bf28e442e792c4fb7dd0f396a767bb, type: 2}
+      objectReference: {fileID: 2100000, guid: 6e14db35fa7ad944b9c02ba2392b274a, type: 2}
     - target: {fileID: 2300000, guid: 90b3007ed7074dd4ea1220f4352dbdec, type: 3}
       propertyPath: m_Materials.Array.data[5]
       value: 
-      objectReference: {fileID: 2100000, guid: 473d7f25d7ac87e43a7bfb7b40b806c9, type: 2}
+      objectReference: {fileID: 2100000, guid: 8646f9a3a20daa341a3885fc195eb483, type: 2}
     - target: {fileID: 2300000, guid: 90b3007ed7074dd4ea1220f4352dbdec, type: 3}
       propertyPath: m_Materials.Array.data[1]
       value: 
-      objectReference: {fileID: 2100000, guid: e4007b336b5c32445943b7acf6dac323, type: 2}
+      objectReference: {fileID: 2100000, guid: d0b97e1c0a3204540a69b5bbece50f2b, type: 2}
     m_RemovedComponents:
     - {fileID: 9500000, guid: 90b3007ed7074dd4ea1220f4352dbdec, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 90b3007ed7074dd4ea1220f4352dbdec, type: 3}

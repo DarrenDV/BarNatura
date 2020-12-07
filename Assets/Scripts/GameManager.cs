@@ -35,11 +35,14 @@ public class GameManager : MonoBehaviour
 
     [Header("Humans")]
     [SerializeField] private int humanOxygenUsage = 1;
+    [SerializeField] private int maxHumansThatCanSpawn = 5;
     private float humanSpawnTimer;
     private float timeSinceLastHumanSpawn;
     [Tooltip("How long it take before the humans die when there isn't enough oxygen")]
     [SerializeField] private float humanDeathTimer = 10;
     private float timeLeftUntilHumansDie;
+    [Tooltip("How many humams thar need to be alive during build mode")]
+    [SerializeField] private int minHumansNeededToBuild = 5;
 
     [Header("UI")]
     private Text oxygenCounter, drainCounter, pollutionCounter, surplusCounter;
@@ -93,10 +96,21 @@ public class GameManager : MonoBehaviour
     {
         oxygenSurplus = oxygenGeneration - (oxygenUsage + pollution);
 
-        if (Input.GetMouseButtonDown(1))
-        {
-            StopBuildingMode();
-            AudioManager.Instance.PlayStopBuildingSound();
+        if (inBuildMode)
+        { 
+
+            if (Input.GetMouseButtonDown(1))
+            {
+                AudioManager.Instance.PlayStopBuildingSound();
+                StopBuildingMode();
+            }
+
+            //Stop buidling if humans are dying while in build mode
+            if (population < minHumansNeededToBuild)
+            {
+                StopBuildingMode();
+            }
+
         }
 
         HandleAnalytics();
@@ -108,21 +122,20 @@ public class GameManager : MonoBehaviour
             if (timeSinceLastHumanSpawn >= humanSpawnTimer)
             {
                 int minHumanSpawn = 1;
-                int possibleMax = 5;
-                int maxHumanSpawn = possibleMax;
+                int maxHumanSpawn = maxHumansThatCanSpawn;
 
                 //Spawn the max amount of humans possible
-                if (capacity - population >= possibleMax && oxygenSurplus >= possibleMax)
+                if (capacity - population >= maxHumansThatCanSpawn && oxygenSurplus >= maxHumansThatCanSpawn)
                 {
-                    maxHumanSpawn = possibleMax;
+                    maxHumanSpawn = maxHumansThatCanSpawn;
                 }
                 //Checks if we have enough oxygen but not enough living space
-                else if (capacity - population < possibleMax && oxygenSurplus >= possibleMax)
+                else if (capacity - population < maxHumansThatCanSpawn && oxygenSurplus >= maxHumansThatCanSpawn)
                 {
                     maxHumanSpawn = capacity - population;
                 }
                 //Checks if we have enough living space but not enough oxygen
-                else if (capacity - population >= possibleMax && oxygenSurplus < possibleMax)
+                else if (capacity - population >= maxHumansThatCanSpawn && oxygenSurplus < maxHumansThatCanSpawn)
                 {
                     maxHumanSpawn = oxygenSurplus - 1;
                 }
