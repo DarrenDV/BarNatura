@@ -24,28 +24,35 @@ public class AtmosphereSystem : MonoBehaviour
         if (currentOxygen > atmosphereLevel3Threshhold && currentAtmosphereLevel != 3)
         {
             currentAtmosphereLevel = 3;
-            UpdateTrees();
+            UpdateTreeNatureRadius();
         } else
         if (currentOxygen > atmosphereLevel2Threshhold && currentAtmosphereLevel != 2)
         {
             currentAtmosphereLevel = 2;
-            UpdateTrees();
+            UpdateTreeNatureRadius();
         } else
         if (currentOxygen > atmosphereLevel1Threshhold && currentAtmosphereLevel != 1)
         {
             currentAtmosphereLevel = 1;
-            UpdateTrees();
+            UpdateTreeNatureRadius();
         }
     }
+
     public int GetCurrentAtmosphereLevel()
     {
         return currentAtmosphereLevel;
     }
-    private void UpdateTrees() 
+
+    private void UpdateTreeNatureRadius()
     {
-        foreach(TreeScript tree in FindObjectsOfType<TreeScript>())
+        foreach (var tile in FindObjectsOfType<BaseTileScript>())
         {
-            tree.UpdateSurroundingTiles(currentAtmosphereLevel);
+            tile.canBecomeNature = false;
+        }
+
+        foreach(var tree in FindObjectsOfType<TreeScript>())
+        {
+            tree.UpdateNatureSpreadTiles(currentAtmosphereLevel);
         }
     }
 }

@@ -1,4 +1,6 @@
-﻿using Assets.Scripts;
+﻿using System.Collections.Generic;
+using System.Linq;
+using Assets.Scripts;
 using UnityEngine;
 
 public class BaseTileScript : Tile
@@ -35,8 +37,14 @@ public class BaseTileScript : Tile
         winLose = FindObjectOfType<WinLose>();
 
         meshRenderer = GetComponent<MeshRenderer>();
-        
+
+        SetStartingColor();
         Spawning();
+    }
+
+    private void SetStartingColor()
+    {
+        meshRenderer.material.SetColor("_Color", tileVariables.gradient.Evaluate(0.5f));
     }
 
     protected override void Update()
@@ -224,7 +232,49 @@ public class BaseTileScript : Tile
         }
         else
         {
-            if (naturePollutedDegree != 10 && naturePollutedDegree != -10) canAdd = true;
+            if (naturePollutedDegree != 10 && naturePollutedDegree != -10)
+            {
+                canAdd = true;
+            }
         }
+    }
+
+    public List<BaseTileScript> GetNeighbourTiles(int radius, bool includeParentTile = true)
+    {
+        var surroundingTiles = new List<Tile>();
+        var tempSurroundingTileList = new List<Tile>();
+        var newIterationTiles = new List<Tile>();
+
+        surroundingTiles.Add(this);
+        tempSurroundingTileList.Add(this);
+
+        for (var i = 0; i < radius; i++)
+        {
+            foreach (var tile in tempSurroundingTileList)
+            {
+                var otherTiles = tile.neighborTiles;
+
+                foreach (var otherTile in otherTiles)
+                {
+                    if (!surroundingTiles.Contains(otherTile))
+                    {
+                        surroundingTiles.Add(otherTile);
+                        newIterationTiles.Add(otherTile);
+                    }
+                }
+            }
+
+            tempSurroundingTileList.Clear();
+
+            tempSurroundingTileList.AddRange(newIterationTiles);
+            newIterationTiles.Clear();
+        }
+
+        if (!includeParentTile)
+        {
+            surroundingTiles.Remove(this);
+        }
+
+        return surroundingTiles.Cast<BaseTileScript>().ToList();
     }
 }
