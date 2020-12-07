@@ -77,7 +77,7 @@ public class BaseTileScript : Tile
         }
 
         //Toxic tile spawning
-        if (Random.Range(0, 100) == 0)
+        if (Random.Range(0, 100) < tileVariables.toxicTileChance)
         {
             SetNaturePollutedDegree(-10);
             ToxicParticles();
