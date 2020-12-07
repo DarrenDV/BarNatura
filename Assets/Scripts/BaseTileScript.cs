@@ -12,7 +12,7 @@ public class BaseTileScript : Tile
     public int naturePollutedDegree;
 
     private float timerSpread;
-    private bool canBecomeNature = true;
+    public bool canBecomeNature = false;
 
     #endregion
 
@@ -56,9 +56,9 @@ public class BaseTileScript : Tile
 
     public override void PlaceObject(GameObject obj)
     {
-        base.PlaceObject(obj);
-
         obj.GetComponent<BaseObject>().parentTile = this;
+
+        base.PlaceObject(obj);
     }
 
     /// <summary>
@@ -189,8 +189,9 @@ public class BaseTileScript : Tile
                     // place the new building
                     var newBuilding = Instantiate(gameManager.buildObject.gameObject, transform.position, transform.rotation);
                     var newBuildingObject = newBuilding.GetComponent<BuildObject>();
-                    newBuildingObject.OnBuild();
+                    
                     PlaceObject(newBuilding);
+                    newBuildingObject.OnBuild();
 
                     AudioManager.Instance.PlayBuildSound();
 
