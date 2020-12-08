@@ -29,7 +29,8 @@ public class BaseTileScript : Tile
     private WinLose winLose;
     private bool canAdd = true;
 
-    bool canAddParticles = true;
+    private bool canAddParticles = true;
+    private GameObject toxicParticles = null;
 
     protected override void Start()
     {
@@ -62,12 +63,24 @@ public class BaseTileScript : Tile
     {
         naturePollutedDegree = newNaturePollutedDegree;
         doMaterialUpdate = true;
+
+        CheckRemoveToxicParticles();
     }
 
-    public void UpdateNaturePollutedDegree(int newNaturePollutedDegree)
+    public void IncreaseNaturePollutedDegree(int newNaturePollutedDegree)
     {
         naturePollutedDegree += newNaturePollutedDegree;
         doMaterialUpdate = true;
+
+        CheckRemoveToxicParticles();
+    }
+
+    private void CheckRemoveToxicParticles()
+    {
+        if (naturePollutedDegree >= 0 && toxicParticles != null)
+        {
+            Destroy(toxicParticles);
+        }
     }
 
     public override void PlaceObject(GameObject obj)
@@ -164,6 +177,8 @@ public class BaseTileScript : Tile
         {
             naturePollutedDegree++;
             doMaterialUpdate = true;
+
+            CheckRemoveToxicParticles();
         }
     }
 
@@ -173,10 +188,10 @@ public class BaseTileScript : Tile
         //Gives toxic particles to tiles when they become completely toxic
         if (canAddParticles)
         {
-            GameObject ps = Instantiate(tileVariables.toxicParticles, Vector3.zero, Quaternion.identity);
-            ps.transform.SetParent(gameObject.transform);
-            ps.transform.localPosition = Vector3.zero;
-            ps.transform.localRotation = Quaternion.identity;
+            toxicParticles = Instantiate(tileVariables.toxicParticles, Vector3.zero, Quaternion.identity);
+            toxicParticles.transform.SetParent(gameObject.transform);
+            toxicParticles.transform.localPosition = Vector3.zero;
+            toxicParticles.transform.localRotation = Quaternion.identity;
 
             canAddParticles = false;
         }

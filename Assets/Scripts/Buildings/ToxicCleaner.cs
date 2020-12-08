@@ -34,7 +34,7 @@ public class ToxicCleaner : BuildingScript
             {
                 if (tile.naturePollutedDegree < 0)
                 {
-                    tile.UpdateNaturePollutedDegree(1);
+                    tile.IncreaseNaturePollutedDegree(1);
                 }
             }
             timeSinceLastClean = 0;

@@ -69,8 +69,6 @@ public class Popup : MonoBehaviour
             return;
         }
 
-        ShowBoostButton();
-
         selectedObject.OnFinishedRemovingEvent.AddListener(OnSelectedBuildingRemoved);
 
         PlaySound(appearSound);
@@ -83,6 +81,7 @@ public class Popup : MonoBehaviour
         panel.SetActive(true);
 
         DisplayRemoveButton();
+        DisplayBoostButton();
     }
 
     private void OnSelectedBuildingRemoved()
@@ -150,13 +149,14 @@ public class Popup : MonoBehaviour
         selectedObject.OnRemove();
     }
 
-    void ShowBoostButton()
+    private void DisplayBoostButton()
     {
         if (selectedObject is FactoryScript)
         {
-            FactoryScript fs = (FactoryScript)selectedObject;
+            var fs = (FactoryScript)selectedObject;
 
             boostButton.gameObject.SetActive(true);
+
             if (fs.BoostOn)
             {
                 boostButtonText.text = "Unboost (+2H)";
@@ -166,16 +166,20 @@ public class Popup : MonoBehaviour
                 boostButtonText.text = "Boost 2x (-2H)";
             }
         }
+        else
+        {
+            boostButton.gameObject.SetActive(false);
+        }
     }
 
     public void OnBoostClicked()
     {
         if (selectedObject is FactoryScript)
         {
-            FactoryScript fs = (FactoryScript)selectedObject;
+            var fs = (FactoryScript)selectedObject;
 
             fs.ToggleBoost();
-            ShowBoostButton();
+            DisplayBoostButton();
         }
     }
 

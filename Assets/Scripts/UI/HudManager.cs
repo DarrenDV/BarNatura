@@ -10,8 +10,6 @@ public class HudManager : MonoBehaviour
     private Text buildMaterialCounter, rawMaterialCounter;
     private Text humanCounter, workerCounter, capacityCounter;
 
-    private GameManager gameManager;
-
     private void Awake()
     {
         if (Instance == null)
@@ -34,76 +32,74 @@ public class HudManager : MonoBehaviour
         humanCounter = GameObject.Find("HumanCounter").GetComponent<Text>();
         workerCounter = GameObject.Find("WorkerCounter").GetComponent<Text>();
         capacityCounter = GameObject.Find("CapacityCounter").GetComponent<Text>();
-        oxygenBar = GameObject.Find("OxygenSlider").GetComponent<Slider>();
-
-        gameManager = GameManager.Instance;
+        oxygenBar = GameObject.Find("OxygenSlider").GetComponent<Slider>();   
     }
 
     private void Start()
     {
+        gameObject.SetActive(false);
+
         UpdateBuildMaterialCounter();
         UpdateRawMaterialCounter();
-
-        gameObject.SetActive(false);
     }
 
     public void UpdateOxygenCounter()
     {
-        oxygenCounter.text = gameManager.GetOxygenGeneration().ToString();
+        oxygenCounter.text = GameManager.Instance.GetOxygenGeneration().ToString();
         UpdateSurplusCounter();
     }
 
     public void UpdateDrainCounter()
     {
-        drainCounter.text = gameManager.GetOxygenUsage().ToString();
+        drainCounter.text = GameManager.Instance.GetOxygenUsage().ToString();
         UpdateSurplusCounter();
     }
 
     public void UpdatePollutionCounter()
     {
-        pollutionCounter.text = gameManager.GetPollution().ToString();
+        pollutionCounter.text = GameManager.Instance.GetPollution().ToString();
         UpdateSurplusCounter();
     }
 
     public void UpdateBuildMaterialCounter()
     {
-        buildMaterialCounter.text = gameManager.GetBuildingMaterials().ToString();
+        buildMaterialCounter.text = GameManager.Instance.GetBuildingMaterials().ToString();
     }
 
     public void UpdateRawMaterialCounter()
     {
-        rawMaterialCounter.text = gameManager.GetRawMaterials().ToString();
+        rawMaterialCounter.text = GameManager.Instance.GetRawMaterials().ToString();
     }
 
     public void UpdateHumanCounter()
     {
-        humanCounter.text = (gameManager.GetPopulationAmount() - gameManager.GetWorkerAmount()).ToString();
+        humanCounter.text = (GameManager.Instance.GetPopulationAmount() - GameManager.Instance.GetWorkerAmount()).ToString();
     }
 
     public void UpdateWorkerCounter()
     {
-        workerCounter.text = gameManager.GetWorkerAmount().ToString();
+        workerCounter.text = GameManager.Instance.GetWorkerAmount().ToString();
     }
 
     public void UpdateCapacityCounter()
     {
-        capacityCounter.text = gameManager.GetCapacityAmount().ToString();
+        capacityCounter.text = GameManager.Instance.GetCapacityAmount().ToString();
     }
 
     public void UpdateSurplusCounter()
     {
-        if (gameManager.GetOxygenSurplus() > 0)
+        if (GameManager.Instance.GetOxygenSurplus() > 0)
         {
             surplusCounter.color = Color.green;
-            surplusCounter.text = "+" + gameManager.GetOxygenSurplus().ToString();
+            surplusCounter.text = "+" + GameManager.Instance.GetOxygenSurplus().ToString();
         }
         else
         {
             surplusCounter.color = Color.red;
-            surplusCounter.text = gameManager.GetOxygenSurplus().ToString();
+            surplusCounter.text = GameManager.Instance.GetOxygenSurplus().ToString();
         }
 
-        oxygenBar.maxValue = gameManager.GetOxygenGeneration();
-        oxygenBar.value = gameManager.GetOxygenUsage() + gameManager.GetPollution();
+        oxygenBar.maxValue = GameManager.Instance.GetOxygenGeneration();
+        oxygenBar.value = GameManager.Instance.GetOxygenUsage() + GameManager.Instance.GetPollution();
     }
 }
