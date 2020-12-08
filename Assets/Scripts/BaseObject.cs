@@ -123,6 +123,22 @@ public class BaseObject : MonoBehaviour
         return $"This {GetName()} is being removed.";
     }
 
+    public string GetCurrentDescription()
+    {
+        if (IsBeingBuild)
+        {
+            return GetWhileBeingBuildDescription();
+        }
+        else if (IsBeingRemoved)
+        {
+            return GetRemoveDescription();
+        }
+        else
+        {
+            return GetDescription();
+        }
+    }
+
     public virtual void OnBuild()
     {
         GameManager.Instance.AddWorkers(HumansRequiredToBuild);

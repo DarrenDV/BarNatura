@@ -88,18 +88,7 @@ public class Popup : MonoBehaviour
 
     private void UpdateDescription()
     {
-        if (selectedObject.IsBeingBuild)
-        {
-            descriptionText.text = selectedObject.GetWhileBeingBuildDescription();
-        }
-        else if(selectedObject.IsBeingRemoved)
-        {
-            descriptionText.text = selectedObject.GetRemoveDescription();
-        }
-        else
-        {
-            descriptionText.text = selectedObject.GetDescription();
-        }
+        descriptionText.text = selectedObject.GetCurrentDescription();
     }
 
     private void DisplayRemoveButton()
