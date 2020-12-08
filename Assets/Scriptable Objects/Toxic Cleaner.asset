@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9992987457936784fb37c5b51e52a261, type: 3}
+  m_Name: Toxic Cleaner
+  m_EditorClassIdentifier: 
+  buildItem: {fileID: 6272885394470434923, guid: 9ff2bcc1464881c4bb2e3f6fb899b7e3,
+    type: 3}
+  buildingItemMesh: {fileID: 4300006, guid: 2524349b3d6c6d74caeeeae67ff0efa1, type: 3}
+  numberOfMeshes: 7
+  meshScale: 1.25
