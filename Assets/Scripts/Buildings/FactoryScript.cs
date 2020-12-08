@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 public class FactoryScript : BuildingScript
 {
@@ -9,9 +10,13 @@ public class FactoryScript : BuildingScript
     [SerializeField] private int rawMaterialConsumption = 2;
     [SerializeField] private int buildingMaterialProduction = 1;
 
+    [SerializeField] private int workersNeededForBoost;
+
     private float factoryConvertTimer;
     private bool isProducing;
-    
+
+    public bool BoostOn = false;
+
     // Update is called once per frame
     protected override void Update()
     {
@@ -94,4 +99,31 @@ public class FactoryScript : BuildingScript
         base.OnFinishedBuilding();
         particleSystem.Play();
     }
+
+    
+    public void ToggleBoost()
+    {
+        if (!BoostOn)
+        {
+            if (GameManager.Instance.AreWorkersAvailable(workersNeededForBoost))
+            {
+                GameManager.Instance.AddWorkers(workersNeededForBoost);
+
+                rawMaterialConsumption *= 2;
+                buildingMaterialProduction *= 2;
+
+                BoostOn = true;
+            }
+        }
+        else
+        {
+            GameManager.Instance.RemoveWorkers(workersNeededForBoost);
+
+            rawMaterialConsumption /= 2;
+            buildingMaterialProduction /= 2;
+
+            BoostOn = false;
+        }
+    }
+    
 }
