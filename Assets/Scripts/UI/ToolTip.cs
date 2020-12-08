@@ -25,7 +25,7 @@ public class ToolTip : MonoBehaviour
 
     public void Show(BuildMenuButton buildMenuButton)
     {
-        transform.position = buildMenuButton.transform.position + DisplayOffset;
+        transform.position = new Vector3((buildMenuButton.transform.position + DisplayOffset).x, transform.position.y, 0);
 
         TitleText.text = buildMenuButton.BuildMenuItem.buildItem.GetName();
         DescriptionText.text = buildMenuButton.BuildMenuItem.buildItem.GetBuildDescription();
