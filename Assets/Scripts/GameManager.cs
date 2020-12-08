@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Analytics;
-using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -44,12 +43,6 @@ public class GameManager : MonoBehaviour
     [Tooltip("How many humams thar need to be alive during build mode")]
     [SerializeField] private int minHumansNeededToBuild = 5;
 
-    [Header("UI")]
-    private Text oxygenCounter, drainCounter, pollutionCounter, surplusCounter;
-    private Slider oxygenBar;
-    private Text buildMaterialCounter, rawMaterialCounter;
-    private Text humanCounter, workerCounter, capacityCounter;
-
     private float analyticsTimer;
 
     private WinLose winLose;
@@ -67,27 +60,11 @@ public class GameManager : MonoBehaviour
             Debug.LogError("Game Manager instance already set!");
         }
 
-        oxygenCounter = GameObject.Find("OxygenCounter").GetComponent<Text>();
-        drainCounter = GameObject.Find("DrainCounter").GetComponent<Text>();
-        pollutionCounter = GameObject.Find("PollutionCounter").GetComponent<Text>();
-        surplusCounter = GameObject.Find("SurplusCounter").GetComponent<Text>();
-
-        buildMaterialCounter = GameObject.Find("BuildMaterialCounter").GetComponent<Text>();
-        rawMaterialCounter = GameObject.Find("RawMaterialCounter").GetComponent<Text>();
-
-        humanCounter = GameObject.Find("HumanCounter").GetComponent<Text>();
-        workerCounter = GameObject.Find("WorkerCounter").GetComponent<Text>();
-        capacityCounter = GameObject.Find("CapacityCounter").GetComponent<Text>();
-        oxygenBar = GameObject.Find("OxygenSlider").GetComponent<Slider>();
-        //foodCounter = GameObject.Find("FoodCounter").GetComponent<Text>();
-
         winLose = GetComponent<WinLose>();
     }
 
     void Start()
     {
-        ChangeBuildMaterialCounter();
-        ChangeRawMaterialCounter();
         ResetHumanTimer();
         audioManager = AudioManager.Instance;
     }
@@ -119,6 +96,7 @@ public class GameManager : MonoBehaviour
         if (oxygenSurplus > 2 && capacity > population)
         {
             timeSinceLastHumanSpawn += Time.deltaTime;
+
             if (timeSinceLastHumanSpawn >= humanSpawnTimer)
             {
                 int minHumanSpawn = 1;
@@ -156,6 +134,7 @@ public class GameManager : MonoBehaviour
             audioManager.PlayDangerLoopSound();
 
             timeLeftUntilHumansDie += Time.deltaTime;
+
             if (timeLeftUntilHumansDie > humanDeathTimer)
             {
                 timeLeftUntilHumansDie = humanDeathTimer - Random.Range(1f, 2f);
@@ -165,11 +144,13 @@ public class GameManager : MonoBehaviour
         } 
         else
         {
-            if (timeLeftUntilHumansDie != 0) timeLeftUntilHumansDie = 0;
+            if (timeLeftUntilHumansDie != 0)
+            {
+                timeLeftUntilHumansDie = 0;
+            }
             
             audioManager.StopDangerLoopSound();
         }
-
     }
 
     #endregion
@@ -217,7 +198,13 @@ public class GameManager : MonoBehaviour
         }
 
         oxygenGeneration += oxygenGenerationToAdd;
-        ChangeOxygenCounter();
+
+        if (HudManager.Instance == null)
+        {
+            return;
+        }
+
+        HudManager.Instance.UpdateOxygenCounter();
     }
 
     /// <summary>
@@ -232,7 +219,7 @@ public class GameManager : MonoBehaviour
         }
 
         oxygenGeneration -= oxygenGenerationToRemove;
-        ChangeOxygenCounter();
+        HudManager.Instance.UpdateOxygenCounter();
     }
 
     /// <summary>
@@ -247,7 +234,13 @@ public class GameManager : MonoBehaviour
         }
 
         oxygenUsage += oxygenUsageToAdd;
-        ChangeDrainCounter();
+
+        if (HudManager.Instance == null)
+        {
+            return;
+        }
+
+        HudManager.Instance.UpdateDrainCounter();
     }
 
     /// <summary>
@@ -262,7 +255,7 @@ public class GameManager : MonoBehaviour
         }
 
         oxygenUsage -= oxygenUsageToRemove;
-        ChangeDrainCounter();
+        HudManager.Instance.UpdateDrainCounter();
     }
 
     /// <summary>
@@ -309,9 +302,15 @@ public class GameManager : MonoBehaviour
             
         population += populationToAdd;
         availableWorkers += populationToAdd;
-        ChangeHumanCounter();
 
         winLose.CheckPopulation(population);
+
+        if (HudManager.Instance == null)
+        {
+            return;
+        }
+
+        HudManager.Instance.UpdateHumanCounter();
     }
 
     /// <summary>
@@ -327,7 +326,7 @@ public class GameManager : MonoBehaviour
 
         population -= populationToRemove;
         availableWorkers -= populationToRemove;
-        ChangeHumanCounter();
+        HudManager.Instance.UpdateHumanCounter();
 
         winLose.CheckPopulation(population);
     }
@@ -349,8 +348,8 @@ public class GameManager : MonoBehaviour
     {
         availableWorkers -= workersToAdd;
         workers += workersToAdd;
-        ChangeHumanCounter();
-        ChangeWorkerCounter();
+        HudManager.Instance.UpdateHumanCounter();
+        HudManager.Instance.UpdateWorkerCounter();
     }
 
     /// <summary>
@@ -361,8 +360,8 @@ public class GameManager : MonoBehaviour
     {
         availableWorkers += workersToRemove;
         workers -= workersToRemove;
-        ChangeHumanCounter();
-        ChangeWorkerCounter();
+        HudManager.Instance.UpdateHumanCounter();
+        HudManager.Instance.UpdateWorkerCounter();
     }
 
 
@@ -392,7 +391,13 @@ public class GameManager : MonoBehaviour
     public void AddCapacity(int capacityToAdd)
     {
         capacity += capacityToAdd;
-        ChangeCapacityCounter();
+
+        if (HudManager.Instance == null)
+        {
+            return;
+        }
+
+        HudManager.Instance.UpdateCapacityCounter();
     }
 
     /// <summary>
@@ -402,7 +407,7 @@ public class GameManager : MonoBehaviour
     public void RemoveCapacity(int capacityToRemove)
     {
         capacity -= capacityToRemove;
-        ChangeCapacityCounter();
+        HudManager.Instance.UpdateCapacityCounter();
     }
 
     /// <summary>
@@ -437,7 +442,13 @@ public class GameManager : MonoBehaviour
     public void AddPollution(int pollutionToAdd)
     {
         pollution += pollutionToAdd;
-        ChangePollutionCounter();
+
+        if (HudManager.Instance == null)
+        {
+            return;
+        }
+
+        HudManager.Instance.UpdatePollutionCounter();
     }
 
     /// <summary>
@@ -447,7 +458,7 @@ public class GameManager : MonoBehaviour
     public void RemovePollution(int pollutionToRemove)
     {
         pollution -= pollutionToRemove;
-        ChangePollutionCounter();
+        HudManager.Instance.UpdatePollutionCounter();
     }
 
     /// <summary>
@@ -470,7 +481,7 @@ public class GameManager : MonoBehaviour
     public void AddRawMaterial(int rawMaterialToAdd)
     {
         rawMaterial += rawMaterialToAdd;
-        ChangeRawMaterialCounter();
+        HudManager.Instance.UpdateRawMaterialCounter();
     }
 
     /// <summary>
@@ -480,7 +491,7 @@ public class GameManager : MonoBehaviour
     public void RemoveRawMaterial(int rawMaterialToRemove)
     {
         rawMaterial -= rawMaterialToRemove;
-        ChangeRawMaterialCounter();
+        HudManager.Instance.UpdateRawMaterialCounter();
     }
 
     /// <summary>
@@ -490,7 +501,7 @@ public class GameManager : MonoBehaviour
     public void AddBuildingMaterial(int buildingMaterialToAdd)
     {
         buildingMaterial += buildingMaterialToAdd;
-        ChangeBuildMaterialCounter();
+        HudManager.Instance.UpdateBuildMaterialCounter();
     }
 
     /// <summary>
@@ -500,7 +511,7 @@ public class GameManager : MonoBehaviour
     public void RemoveBuildingMaterial(int buildMaterialToRemove)
     {
         buildingMaterial -= buildMaterialToRemove;
-        ChangeBuildMaterialCounter();
+        HudManager.Instance.UpdateBuildMaterialCounter();
     }
 
     /// <summary>
@@ -546,70 +557,6 @@ public class GameManager : MonoBehaviour
     {
         inBuildMode = false;
         buildObjectPreview.transform.position = Vector3.zero;
-    }
-
-    #endregion
-
-    #region UI
-
-    private void ChangeOxygenCounter()
-    {
-        oxygenCounter.text = GetOxygenGeneration().ToString();
-        ChangeSurplusCounter();
-    }
-
-    private void ChangeDrainCounter()
-    {
-        drainCounter.text = GetOxygenUsage().ToString();
-        ChangeSurplusCounter();
-    }
-
-    private void ChangePollutionCounter()
-    {
-        pollutionCounter.text = GetPollution().ToString();
-        ChangeSurplusCounter();
-    }
-
-    private void ChangeBuildMaterialCounter()
-    {
-        buildMaterialCounter.text = GetBuildingMaterials().ToString();
-    }
-
-    private void ChangeRawMaterialCounter()
-    {
-        rawMaterialCounter.text = GetRawMaterials().ToString();
-    }
-
-    private void ChangeHumanCounter()
-    {
-        humanCounter.text = (GetPopulationAmount() - workers).ToString();
-    }
-
-    private void ChangeWorkerCounter()
-    {
-        workerCounter.text = GetWorkerAmount().ToString();
-    }
-
-    private void ChangeCapacityCounter()
-    {
-        capacityCounter.text = GetCapacityAmount().ToString();
-    }
-
-    private void ChangeSurplusCounter()
-    {
-        if (GetOxygenSurplus() > 0)
-        {
-            surplusCounter.color = Color.green;
-            surplusCounter.text = "+" +GetOxygenSurplus().ToString();
-        }
-        else
-        {
-            surplusCounter.color = Color.red;
-            surplusCounter.text = GetOxygenSurplus().ToString();
-        }
-
-        oxygenBar.maxValue = GetOxygenGeneration();
-        oxygenBar.value = oxygenUsage + pollution;
     }
 
     #endregion
