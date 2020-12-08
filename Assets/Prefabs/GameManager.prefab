@@ -140,6 +140,7 @@ GameObject:
   - component: {fileID: 5480940546079918393}
   - component: {fileID: 4530827153166617944}
   - component: {fileID: 6878360410142992464}
+  - component: {fileID: 7398388042584783823}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -249,14 +250,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tileCount: 0
   requiredNatureTiles: 0
-  requiredNatureTilePercent: 0.05
+  requiredNatureTilePercent: 0.8
   currentNatureTiles: 0
   requiredToxicTiles: 0
-  requiredToxicTilePercent: 0.3
+  requiredToxicTilePercent: 0.8
   currentToxicTiles: 0
-  WinPopUp: {fileID: 0}
-  LosePopUp: {fileID: 0}
-  timeRemaining: 120
+  timeRemaining: 9999999
   timeText: {fileID: 0}
   populationDeathCanTrigger: 0
   popRequiredForTrigger: 10
+--- !u!114 &7398388042584783823
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7647788133465493295}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a5076cc9921d514d84a23f22fe8badd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  atmosphereLevel1Threshhold: 1300
+  atmosphereLevel2Threshhold: 2600
+  atmosphereLevel3Threshhold: 3900
+  maxAtmopshereTimer: 5
