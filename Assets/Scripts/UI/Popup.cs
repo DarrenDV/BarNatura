@@ -12,6 +12,8 @@ public class Popup : MonoBehaviour
 
     [SerializeField] private Button removeButton = null;
     [SerializeField] private Text removeButtonText = null;
+    [SerializeField] private Button boostButton = null;
+    [SerializeField] private Text boostButtonText = null;
     [SerializeField] private Text titleText = null;
     [SerializeField] private Text descriptionText = null;
 
@@ -66,6 +68,8 @@ public class Popup : MonoBehaviour
         {
             return;
         }
+
+        ShowBoostButton();
 
         selectedObject.OnFinishedRemovingEvent.AddListener(OnSelectedBuildingRemoved);
 
@@ -139,6 +143,8 @@ public class Popup : MonoBehaviour
         {
             selectedObject.OnFinishedRemovingEvent.RemoveListener(OnSelectedBuildingRemoved);
         }
+
+        boostButton.gameObject.SetActive(false);
     }
 
     public void OnRemoveClicked()
@@ -153,6 +159,35 @@ public class Popup : MonoBehaviour
         Hide(false);
 
         selectedObject.OnRemove();
+    }
+
+    void ShowBoostButton()
+    {
+        if (selectedObject is FactoryScript)
+        {
+            FactoryScript fs = (FactoryScript)selectedObject;
+
+            boostButton.gameObject.SetActive(true);
+            if (fs.BoostOn)
+            {
+                boostButtonText.text = "Unboost (+2H)";
+            }
+            else
+            {
+                boostButtonText.text = "Boost 2x (-2H)";
+            }
+        }
+    }
+
+    public void OnBoostClicked()
+    {
+        if (selectedObject is FactoryScript)
+        {
+            FactoryScript fs = (FactoryScript)selectedObject;
+
+            fs.ToggleBoost();
+            ShowBoostButton();
+        }
     }
 
     private bool CheckPathFree(Vector3 position, Vector3 target)

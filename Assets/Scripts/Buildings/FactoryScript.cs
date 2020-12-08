@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 public class FactoryScript : BuildingScript
 {
@@ -11,7 +12,9 @@ public class FactoryScript : BuildingScript
 
     private float factoryConvertTimer;
     private bool isProducing;
-    
+
+    public bool BoostOn = false;
+
     // Update is called once per frame
     protected override void Update()
     {
@@ -94,4 +97,31 @@ public class FactoryScript : BuildingScript
         base.OnFinishedBuilding();
         particleSystem.Play();
     }
+
+    
+    public void ToggleBoost()
+    {
+        if (!BoostOn)
+        {
+            if (GameManager.Instance.AreWorkersAvailable(2))
+            {
+                GameManager.Instance.AddWorkers(2);
+
+                rawMaterialConsumption = rawMaterialConsumption * 2;
+                buildingMaterialProduction = buildingMaterialProduction * 2;
+
+                BoostOn = true;
+            }
+        }
+        else
+        {
+            GameManager.Instance.RemoveWorkers(2);
+
+            rawMaterialConsumption = rawMaterialConsumption / 2;
+            buildingMaterialProduction = buildingMaterialProduction / 2;
+
+            BoostOn = false;
+        }
+    }
+    
 }
