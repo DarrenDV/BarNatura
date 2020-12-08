@@ -4,12 +4,6 @@ using UnityEngine.UI;
 public class BuildMenuButton : MonoBehaviour
 {
     public BuildMenuItem BuildMenuItem = null;
-    [SerializeField] private Image buttonImage = null;
-
-    private void Start()
-    {
-        buttonImage.sprite = BuildMenuItem.sprite;
-    }
 
     public void MouseEnter()
     {
