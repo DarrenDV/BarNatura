@@ -18,8 +18,8 @@ public class BaseTileScript : Tile
 
     #endregion
 
-    [Tooltip("If true, the starting spaceship will be spawned on this tile.")]
-    [SerializeField] private bool isStartingLocation = false;
+    //[Tooltip("If true, the starting spaceship will be spawned on this tile.")]
+    //[SerializeField] private bool isStartingLocation = false;
 
     private MeshRenderer meshRenderer;
     private bool doMaterialUpdate;
@@ -74,19 +74,13 @@ public class BaseTileScript : Tile
     /// </summary>
     private void Spawning()
     {
-        if (isStartingLocation)
-        {
-            PlaceObject(Instantiate(tileVariables.startingSpaceShip, Vector3.zero, Quaternion.identity));
+        //if (isStartingLocation)
+        //{
+        //    PlaceObject(Instantiate(tileVariables.startingSpaceShip, Vector3.zero, Quaternion.identity));
             
-            // we don't want to spawn anything else on this tile, that is why we return out of this function here.
-            return;
-        }
-
-        //Toxic tile spawning
-        if (Random.Range(0, 100) == 0)
-        {
-            SetNaturePollutedDegree(-10);
-        }
+        //    // we don't want to spawn anything else on this tile, that is why we return out of this function here.
+        //    return;
+        //}
 
         //Rubble tile spawning
         if (Random.Range(0, 100) < tileVariables.rubbleSpawnChance)
@@ -100,6 +94,15 @@ public class BaseTileScript : Tile
             {
                 PlaceObject(Instantiate(tileVariables.lavaTile, Vector3.zero, Quaternion.identity));
             }
+        }
+    }
+
+    public void SpawnRandomPolution()
+    {
+        //Toxic tile spawning
+        if (Random.Range(0, 100) == 0)
+        {
+            SetNaturePollutedDegree(-10);
         }
     }
 

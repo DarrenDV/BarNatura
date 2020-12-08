@@ -159,6 +159,12 @@ public class BaseObject : MonoBehaviour
 
     protected virtual void OnMouseDown()
     {
+        // we can only select objects ingame
+        if (GameManager.Instance.CurrentGameState != Enums.GameState.InGame)
+        {
+            return;
+        }
+
         if (!GameManager.Instance.inBuildMode && !Utils.IsPointerOverUIElement())
         {
             Popup.Instance.Show(this);

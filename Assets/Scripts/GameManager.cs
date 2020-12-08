@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Analytics;
+using static Assets.Scripts.Enums;
 
 public class GameManager : MonoBehaviour
 {
@@ -23,6 +24,8 @@ public class GameManager : MonoBehaviour
     private int capacity;
 
     private AudioManager audioManager;
+
+    public GameState CurrentGameState = GameState.MainMenu;
 
     // for testing purposes
     [HideInInspector] public int BuildingCount;

@@ -11,6 +11,7 @@ public class CameraScript : MonoBehaviour
     [SerializeField] private float zoomSensitivity = 10f;
     [SerializeField] private float minZoomFov = 25f;
     [SerializeField] private float maxZoomFov = 100f;
+    [SerializeField] private float mainMenuRotationSpeed = 5f;
 
     private float currentCameraSlowDown;
     private float mouseX, mouseY;
@@ -22,8 +23,18 @@ public class CameraScript : MonoBehaviour
 
     void Update()
     {
-        // When mouse is pressed the cameraSlowDown gets reset and the mouse gets tracked.
-        if (Input.GetMouseButton(0))
+        // don't allow turning the camera in main menu
+        if (GameManager.Instance.CurrentGameState == Assets.Scripts.Enums.GameState.MainMenu)
+        {
+            mouseX = mainMenuRotationSpeed;
+
+            Rotate();
+
+            return;
+        }
+
+        // When right mouse is pressed the cameraSlowDown gets reset and the mouse gets tracked.
+        if (Input.GetMouseButton(1))
         {
             currentCameraSlowDown = cameraSlowDown;
             mouseX = Input.GetAxis("Mouse X");
@@ -31,7 +42,7 @@ public class CameraScript : MonoBehaviour
         }
 
         // This takes care of the sliding effect.
-        if (!Input.GetMouseButton(0))
+        if (!Input.GetMouseButton(1))
         {
             currentCameraSlowDown *= cameraSlowDownFactor;
 
@@ -40,14 +51,25 @@ public class CameraScript : MonoBehaviour
                 currentCameraSlowDown = 0;
             }
         }
-        // This moves the camera around at all times so that the camera can continue sliding.
+
+        Rotate();
+        Zoom();
+    }
+
+    // This moves the camera around at all times so that the camera can continue sliding.
+    private void Rotate()
+    {
         transform.RotateAround(target.transform.position, transform.up, mouseX * dragSpeed * currentCameraSlowDown);
         transform.RotateAround(target.transform.position, transform.right, mouseY * -dragSpeed * currentCameraSlowDown);
+    }
 
-        // Zoom function
+    private void Zoom()
+    {
         float fov = Camera.main.fieldOfView;
+
         fov += Input.GetAxis("Mouse ScrollWheel") * -zoomSensitivity;
         fov = Mathf.Clamp(fov, minZoomFov, maxZoomFov);
+
         Camera.main.fieldOfView = fov;
     }
 }
