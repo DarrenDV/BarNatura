@@ -14,7 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buildItem: {fileID: 6272885394470434923, guid: 9ff2bcc1464881c4bb2e3f6fb899b7e3,
     type: 3}
-  buildingItemMesh: {fileID: -8509748037407824054, guid: 6d7b1b7dbbae8b04999632ec36943117,
-    type: 3}
-  numberOfMeshes: 1
-  meshScale: 5
+  buildingItemMesh: {fileID: 4300006, guid: 2524349b3d6c6d74caeeeae67ff0efa1, type: 3}
+  numberOfMeshes: 7
+  meshScale: 1.25
