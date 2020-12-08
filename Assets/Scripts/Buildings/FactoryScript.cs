@@ -10,6 +10,8 @@ public class FactoryScript : BuildingScript
     [SerializeField] private int rawMaterialConsumption = 2;
     [SerializeField] private int buildingMaterialProduction = 1;
 
+    [SerializeField] private int workersNeededForBoost;
+
     private float factoryConvertTimer;
     private bool isProducing;
 
@@ -103,22 +105,22 @@ public class FactoryScript : BuildingScript
     {
         if (!BoostOn)
         {
-            if (GameManager.Instance.AreWorkersAvailable(2))
+            if (GameManager.Instance.AreWorkersAvailable(workersNeededForBoost))
             {
-                GameManager.Instance.AddWorkers(2);
+                GameManager.Instance.AddWorkers(workersNeededForBoost);
 
-                rawMaterialConsumption = rawMaterialConsumption * 2;
-                buildingMaterialProduction = buildingMaterialProduction * 2;
+                rawMaterialConsumption *= 2;
+                buildingMaterialProduction *= 2;
 
                 BoostOn = true;
             }
         }
         else
         {
-            GameManager.Instance.RemoveWorkers(2);
+            GameManager.Instance.RemoveWorkers(workersNeededForBoost);
 
-            rawMaterialConsumption = rawMaterialConsumption / 2;
-            buildingMaterialProduction = buildingMaterialProduction / 2;
+            rawMaterialConsumption /= 2;
+            buildingMaterialProduction /= 2;
 
             BoostOn = false;
         }
