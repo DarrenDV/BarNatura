@@ -22,8 +22,8 @@ public class WinLose : MonoBehaviour
     [SerializeField] private float requiredToxicTilePercent = 0.3f;
     public int currentToxicTiles; //public can be removed, currently for testing purposes here
 
-    [SerializeField] private GameObject WinPopUp = null;
-    [SerializeField] private GameObject LosePopUp = null;
+    private GameObject WinPopUp = null;
+    private GameObject LosePopUp = null;
 
     //Timer Variables
     [Tooltip("The time in seconds")]
@@ -36,10 +36,20 @@ public class WinLose : MonoBehaviour
     [SerializeField] private int popRequiredForTrigger = 10;
 
     #region Default
+    private void Awake()
+    {
+        WinPopUp = GameObject.Find("WinPopUp");
+        LosePopUp = GameObject.Find("LosePopUp");
+        timeText = GameObject.Find("Timer").GetComponent<Text>();
+    }
+
+
     void Start()
     {
         timerIsRunning = true;
         TileAmountCalculation();
+        WinPopUp.SetActive(false);
+        LosePopUp.SetActive(false);
     }
 
     void Update()
