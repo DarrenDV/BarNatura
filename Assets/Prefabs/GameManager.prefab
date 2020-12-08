@@ -178,9 +178,8 @@ MonoBehaviour:
   buildObjectPreview: {fileID: 3824843029921591926}
   buildObject: {fileID: 0}
   inBuildMode: 0
-  humanOxygenUseage: 1
+  humanOxygenUsage: 1
   humanDeathTimer: 10
-  wl: {fileID: 0}
 --- !u!114 &4530827153166617944
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -227,6 +226,8 @@ MonoBehaviour:
   lavaTile: {fileID: 5128271968838047032, guid: b73021fcd43e4de49baaa557a87bd86f,
     type: 3}
   rubbleTile: {fileID: 2537658061721995341, guid: e41ad1306a813f249bd6971438294a34,
+    type: 3}
+  toxicParticles: {fileID: 2288235026223712931, guid: 20d73fe19e45d2044ad4bc0f83ef0a33,
     type: 3}
   rubbleSpawnChance: 40
   lavaSpawnChance: 1
