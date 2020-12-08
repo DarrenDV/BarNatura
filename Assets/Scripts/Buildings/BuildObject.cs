@@ -5,9 +5,7 @@ public class BuildObject : OxygenUser
     [Header("Building Object")]
     public int BuildCost = 1;
 
-    /// <summary>
-    /// This building can only be placed on tiles with a naturePollutedDegree of this or higher
-    /// </summary>
+    [Tooltip("The minimum health a tile must have bafore this building can be placed on it")]
     public int MinimumNaturePollutedDegree = 1;
 
     public override string GetBuildDescription()

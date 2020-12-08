@@ -192,8 +192,10 @@ public class BaseTileScript : Tile
 
         if (gameManager.inBuildMode)
         {
+            var plannedBuildObject = gameManager.buildObject.gameObject.GetComponent<BuildObject>();
+
             //Set the position of the preview building to this tile
-            gameManager.buildObjectPreview.gameObject.GetComponent<BuildingModeObject>().ChangeMaterial(isOccupied || naturePollutedDegree < 0);
+            gameManager.buildObjectPreview.gameObject.GetComponent<BuildingModeObject>().ChangeMaterial(isOccupied || plannedBuildObject.MinimumNaturePollutedDegree > naturePollutedDegree);
             gameManager.MovePreview(transform.position, transform.rotation);
         }
 
