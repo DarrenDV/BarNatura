@@ -33,7 +33,10 @@ public class TutorialPopupScript : MonoBehaviour
 
         audioSource = GetComponent<AudioSource>();
         panel = gameObject.transform.GetChild(0).gameObject;
+
+        Hide();
     }
+
     public void Next(bool playSound = true)
     {
         descriptionText.text = currentTutorial.Messages[tutorialIndex].Message;
@@ -45,6 +48,12 @@ public class TutorialPopupScript : MonoBehaviour
             PlaySound(disappearSound);
         }
     }
+
+    private void Hide()
+    {
+        panel.SetActive(false);
+    }
+
     private void PlaySound(AudioClip audioClip)
     {
         audioSource.clip = audioClip;

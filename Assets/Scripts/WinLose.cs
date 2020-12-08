@@ -36,13 +36,13 @@ public class WinLose : MonoBehaviour
     [SerializeField] private int popRequiredForTrigger = 10;
 
     #region Default
+
     private void Awake()
     {
         WinPopUp = GameObject.Find("WinPopUp");
         LosePopUp = GameObject.Find("LosePopUp");
         timeText = GameObject.Find("Timer").GetComponent<Text>();
     }
-
 
     void Start()
     {

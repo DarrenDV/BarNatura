@@ -82,8 +82,6 @@ public class BaseTileScript : Tile
     /// </summary>
     private void Spawning()
     {
-        if (Random.Range(0, 100) < tileVariables.toxicTileChance)
-            ToxicParticles();
         //Rubble tile spawning
         if (Random.Range(0, 100) < tileVariables.rubbleSpawnChance)
         {
@@ -101,10 +99,17 @@ public class BaseTileScript : Tile
 
     public void SpawnRandomPolution()
     {
+        // can't place pollution when the tile is occupied
+        if (isOccupied)
+        {
+            return;
+        }
+
         //Toxic tile spawning
-        if (Random.Range(0, 100) == 0)
+        if (Random.Range(0, 100) == tileVariables.toxicTileChance)
         {
             SetNaturePollutedDegree(-10);
+            ToxicParticles();
         }
     }
 

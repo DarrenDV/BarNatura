@@ -29,8 +29,9 @@ public class MineScript : BuildingScript
 
     public override string GetDescription()
     {
-        return $"This mine slowly produces raw materials over time";
+        return $"This mine slowly produces raw materials over time.";
     }
+
     public override void OnFinishedRemoving()
     {
         base.OnFinishedRemoving();
