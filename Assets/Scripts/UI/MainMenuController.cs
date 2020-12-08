@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Assets.Scripts;
+using UnityEngine;
 
 public class MainMenuController : MonoBehaviour
 {
@@ -22,13 +23,8 @@ public class MainMenuController : MonoBehaviour
         CameraScript.Instance.TransitionFromMainMenuToInGamePos();
     }
 
-    // quit game or stop play mode in editor
     public void OnQuitButtonClicked()
     {
-#if UNITY_EDITOR
-        UnityEditor.EditorApplication.isPlaying = false;
-#else
-        Application.Quit();
-#endif
+        Utils.QuitGame();
     }
 }

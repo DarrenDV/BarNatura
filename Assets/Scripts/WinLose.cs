@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using Assets.Scripts;
 
 public class WinLose : MonoBehaviour
 {
@@ -168,13 +169,7 @@ public class WinLose : MonoBehaviour
 
     public void QuitGame()
     {
-        //Quits the game if it is an application
-        Application.Quit();
-
-        //Quits the playing state of the editor if it is in-editor
-         #if UNITY_EDITOR
-            UnityEditor.EditorApplication.isPlaying = false;
-         #endif
+        Utils.QuitGame();
     }
 
     #endregion

@@ -10,6 +10,8 @@ public class Popup : MonoBehaviour
     private BaseObject selectedObject;
     private GameObject panel;
 
+    [HideInInspector] public bool CanOpen = true;
+
     [SerializeField] private Button removeButton = null;
     [SerializeField] private Text removeButtonText = null;
     [SerializeField] private Button boostButton = null;
@@ -18,11 +20,11 @@ public class Popup : MonoBehaviour
     [SerializeField] private Text descriptionText = null;
 
     [Header("Sound")]
-    [SerializeField] private int volume;
+    [SerializeField] private float volume = 1f;
     [SerializeField] private AudioClip appearSound, disappearSound;
     private AudioSource audioSource;
 
-    public void Start()
+    private void Awake()
     {
         if (Instance == null)
         {
@@ -34,7 +36,13 @@ public class Popup : MonoBehaviour
         }
 
         audioSource = GetComponent<AudioSource>();
+        audioSource.volume = volume;
+
         panel = gameObject.transform.GetChild(0).gameObject;
+    }
+
+    public void Start()
+    {
         Hide(false);
     }
 
@@ -56,6 +64,11 @@ public class Popup : MonoBehaviour
 
     public void Show(BaseObject objectToDisplay)
     {
+        if(!CanOpen)
+        {
+            return;
+        }
+
         // don't show when already open
         if (panel.activeInHierarchy)
         {

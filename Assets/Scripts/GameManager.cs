@@ -81,7 +81,6 @@ public class GameManager : MonoBehaviour
 
         if (inBuildMode)
         { 
-
             if (Input.GetMouseButtonDown(1))
             {
                 AudioManager.Instance.PlayStopBuildingSound();
@@ -93,7 +92,6 @@ public class GameManager : MonoBehaviour
             {
                 StopBuildingMode();
             }
-
         }
 
         HandleAnalytics();

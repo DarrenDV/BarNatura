@@ -7,7 +7,7 @@ namespace Assets.Scripts
     /// <summary>
     /// Generic Utilities
     /// </summary>
-    static class Utils
+    public static class Utils
     {
         /// <summary>
         /// Re-maps a number from one range to another.
@@ -33,6 +33,15 @@ namespace Assets.Scripts
             EventSystem.current.RaycastAll(eventData, results);
 
             return results.Count > 0;
+        }
+
+        public static void QuitGame()
+        {
+#if UNITY_EDITOR
+            UnityEditor.EditorApplication.isPlaying = false;
+#else
+        Application.Quit();
+#endif
         }
     }
 }
