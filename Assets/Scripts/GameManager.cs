@@ -550,7 +550,6 @@ public class GameManager : MonoBehaviour
         buildObjectPreview.GetComponent<BuildingModeObject>().NewMaterialsArray(numberOfMeshes);
         buildObjectPreview.transform.localScale = new Vector3(size, size, size);
 
-        //Instantiate(buildObjectPreview.gameObject, transform.position, transform.rotation, previewObjectParent.transform);
     }
 
     public void MovePreview(Vector3 position, Quaternion rotation)
