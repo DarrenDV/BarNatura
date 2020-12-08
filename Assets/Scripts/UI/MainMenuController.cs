@@ -2,11 +2,26 @@
 
 public class MainMenuController : MonoBehaviour
 {
-    public void OnPlayButtonClicked()
+    private void Start()
     {
-
+        CameraScript.Instance.OnTransitionFinished.AddListener(OnCameraTransitionFinished);
     }
 
+    private void OnCameraTransitionFinished()
+    {
+        CameraScript.Instance.OnTransitionFinished.RemoveListener(OnCameraTransitionFinished);
+
+        GameManager.Instance.GoToLocationSelect();
+    }
+
+    public void OnPlayButtonClicked()
+    {
+        gameObject.SetActive(false);
+
+        CameraScript.Instance.TransitionFromMainMenuToInGamePos();
+    }
+
+    // quit game or stop play mode in editor
     public void OnQuitButtonClicked()
     {
 #if UNITY_EDITOR

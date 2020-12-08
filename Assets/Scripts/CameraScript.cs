@@ -1,6 +1,10 @@
 ﻿using UnityEngine;
+using UnityEngine.Events;
+
 public class CameraScript : MonoBehaviour
 {
+    public static CameraScript Instance;
+
     [SerializeField] private GameObject target = null;
 
     [SerializeField] private float cameraSlowDown = 0.35f;
@@ -10,23 +14,50 @@ public class CameraScript : MonoBehaviour
     [SerializeField] private float dragSpeed = 4.2f;
     [SerializeField] private float zoomSensitivity = 10f;
     [SerializeField] private float minZoomFov = 25f;
+    [SerializeField] private float defaultZoomFov = 60f;
     [SerializeField] private float maxZoomFov = 100f;
     [SerializeField] private float mainMenuRotationSpeed = 5f;
 
     private float currentCameraSlowDown;
     private float mouseX, mouseY;
+    private float transitionAmount;
+    private bool doingTransition;
+
+    public UnityEvent OnTransitionFinished;
+
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Debug.LogError("Camera Script instance already set!");
+        }
+    }
 
     private void Start()
     {
         currentCameraSlowDown = cameraSlowDown;
+
+        Camera.main.fieldOfView = maxZoomFov;
     }
 
-    void Update()
+    void LateUpdate()
     {
         // don't allow turning the camera in main menu
         if (GameManager.Instance.CurrentGameState == Assets.Scripts.Enums.GameState.MainMenu)
         {
-            mouseX = mainMenuRotationSpeed;
+            if (!doingTransition)
+            {
+                mouseX = mainMenuRotationSpeed;
+            }
+            else
+            {
+                DoTransitionFromMainMenuToInGamePos();
+                HandleDrag();
+            }
 
             Rotate();
 
@@ -44,16 +75,43 @@ public class CameraScript : MonoBehaviour
         // This takes care of the sliding effect.
         if (!Input.GetMouseButton(1))
         {
-            currentCameraSlowDown *= cameraSlowDownFactor;
-
-            if (currentCameraSlowDown <= cameraSlowDownMinimumSpeed)
-            {
-                currentCameraSlowDown = 0;
-            }
+            HandleDrag();
         }
 
         Rotate();
-        Zoom();
+        UserZoom();
+    }
+
+    private void HandleDrag()
+    {
+        currentCameraSlowDown *= cameraSlowDownFactor;
+
+        if (currentCameraSlowDown <= cameraSlowDownMinimumSpeed)
+        {
+            currentCameraSlowDown = 0;
+        }
+    }
+
+    public void TransitionFromMainMenuToInGamePos()
+    {
+        doingTransition = true;
+    }
+
+    private void DoTransitionFromMainMenuToInGamePos()
+    {
+        transitionAmount += Time.deltaTime;
+
+        if (transitionAmount > 1.57f)
+        {
+            transitionAmount = 1.57f;
+        }
+
+        Camera.main.fieldOfView = Mathf.Lerp(maxZoomFov, defaultZoomFov, Mathf.Sin(transitionAmount));
+
+        if (transitionAmount == 1.57f)
+        {
+            OnTransitionFinished.Invoke();
+        }
     }
 
     // This moves the camera around at all times so that the camera can continue sliding.
@@ -63,7 +121,7 @@ public class CameraScript : MonoBehaviour
         transform.RotateAround(target.transform.position, transform.right, mouseY * -dragSpeed * currentCameraSlowDown);
     }
 
-    private void Zoom()
+    private void UserZoom()
     {
         float fov = Camera.main.fieldOfView;
 

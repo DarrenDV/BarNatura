@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     //Oxygen
     private int oxygenGeneration;
     private int oxygenUsage;
+
     private int pollution;
     private int oxygenSurplus;
 
@@ -560,6 +561,15 @@ public class GameManager : MonoBehaviour
     {
         inBuildMode = false;
         buildObjectPreview.transform.position = Vector3.zero;
+    }
+
+    #endregion
+
+    #region Game Flow
+
+    public void GoToLocationSelect()
+    {
+        CurrentGameState = GameState.SelectLocation;
     }
 
     #endregion
