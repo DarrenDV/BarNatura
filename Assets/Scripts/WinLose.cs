@@ -29,7 +29,7 @@ public class WinLose : MonoBehaviour
     [Tooltip("The time in seconds")]
     public float timeRemaining = 10;
     private bool timerIsRunning;
-    [SerializeField] private Text timeText = null;
+    private Text timeText = null;
 
     //Population related variables
     [SerializeField] private bool populationDeathCanTrigger;

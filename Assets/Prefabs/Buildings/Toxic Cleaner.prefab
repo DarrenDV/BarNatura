@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5550408694384164520}
   - component: {fileID: 6272885394470434923}
+  - component: {fileID: 8068075494459641080}
   m_Layer: 0
   m_Name: Toxic Cleaner
   m_TagString: Untagged
@@ -64,6 +65,21 @@ MonoBehaviour:
   BuildCost: 20
   MinimumNaturePollutedDegree: -10
   maxCapacity: 0
+  cleanRate: 1.75
+  cleanDistance: 1
+--- !u!65 &8068075494459641080
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 630964022898589725}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1.5086025, z: 1}
+  m_Center: {x: 0, y: 0.7386846, z: 0}
 --- !u!1001 &1214262887841100976
 PrefabInstance:
   m_ObjectHideFlags: 0

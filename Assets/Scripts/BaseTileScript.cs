@@ -62,6 +62,12 @@ public class BaseTileScript : Tile
         doMaterialUpdate = true;
     }
 
+    public void UpdateNaturePollutedDegree(int newNaturePollutedDegree)
+    {
+        naturePollutedDegree += newNaturePollutedDegree;
+        doMaterialUpdate = true;
+    }
+
     public override void PlaceObject(GameObject obj)
     {
         obj.GetComponent<BaseObject>().parentTile = this;
