@@ -79,7 +79,7 @@ public class CameraScript : MonoBehaviour
         }
 
         Rotate();
-        UserZoom();
+        Zoom();
     }
 
     private void HandleDrag()
@@ -121,7 +121,7 @@ public class CameraScript : MonoBehaviour
         transform.RotateAround(target.transform.position, transform.right, mouseY * -dragSpeed * currentCameraSlowDown);
     }
 
-    private void UserZoom()
+    private void Zoom()
     {
         float fov = Camera.main.fieldOfView;
 

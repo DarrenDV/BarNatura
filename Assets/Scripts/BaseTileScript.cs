@@ -74,14 +74,6 @@ public class BaseTileScript : Tile
     /// </summary>
     private void Spawning()
     {
-        //if (isStartingLocation)
-        //{
-        //    PlaceObject(Instantiate(tileVariables.startingSpaceShip, Vector3.zero, Quaternion.identity));
-            
-        //    // we don't want to spawn anything else on this tile, that is why we return out of this function here.
-        //    return;
-        //}
-
         //Rubble tile spawning
         if (Random.Range(0, 100) < tileVariables.rubbleSpawnChance)
         {
@@ -163,7 +155,7 @@ public class BaseTileScript : Tile
 
     #region BuildingPlacement
 
-    private void OnMouseEnter()
+    public override void OnMouseEnter()
     {
         var gameManager = GameManager.Instance;
 
@@ -173,6 +165,22 @@ public class BaseTileScript : Tile
             gameManager.buildObjectPreview.gameObject.GetComponent<BuildingModeObject>().ChangeMaterial(isOccupied || naturePollutedDegree < 0);
             gameManager.MovePreview(transform.position, transform.rotation);
         }
+
+        if (gameManager.CurrentGameState == Enums.GameState.SelectLocation)
+        {
+            if (!isOccupied)
+            {
+                Pointer.instance.setPointer(PointerStatus.TILE, FaceCenter, transform.up);
+            }
+        }
+    }
+
+    public override void OnMouseExit()
+    {
+        if (GameManager.Instance.CurrentGameState == Enums.GameState.SelectLocation)
+        {
+            Pointer.instance.unsetPointer();
+        }
     }
 
     protected override void OnMouseDown()
@@ -180,6 +188,16 @@ public class BaseTileScript : Tile
         base.OnMouseDown();
 
         var gameManager = GameManager.Instance;
+
+        if (gameManager.CurrentGameState == Enums.GameState.SelectLocation)
+        {
+            if (!isOccupied)
+            {
+                gameManager.OnStartingLocationSelected(this);
+            }
+
+            return;
+        }
 
         if (gameManager.inBuildMode)
         {
@@ -215,6 +233,11 @@ public class BaseTileScript : Tile
                 AudioManager.Instance.PlayBuildFaliedSound();
             }
         }
+    }
+
+    public void PlaceStartingSpaceShip()
+    {
+        PlaceObject(Instantiate(tileVariables.startingSpaceShip, Vector3.zero, Quaternion.identity));
     }
 
     #endregion

@@ -50,6 +50,7 @@ public class GameManager : MonoBehaviour
     private float analyticsTimer;
 
     private WinLose winLose;
+    private AtmosphereSystem atmosphere;
 
     #region default
 
@@ -65,6 +66,7 @@ public class GameManager : MonoBehaviour
         }
 
         winLose = GetComponent<WinLose>();
+        atmosphere = GetComponent<AtmosphereSystem>();
     }
 
     void Start()
@@ -570,6 +572,20 @@ public class GameManager : MonoBehaviour
     public void GoToLocationSelect()
     {
         CurrentGameState = GameState.SelectLocation;
+    }
+
+    public void OnStartingLocationSelected(BaseTileScript selectedTile)
+    {
+        CurrentGameState = GameState.InGame;
+        Pointer.instance.unsetPointer();
+
+        SelectStartingLocationUiManager.Instance.gameObject.SetActive(false);
+        HudManager.Instance.gameObject.SetActive(true);
+
+        winLose.enabled = true;
+        atmosphere.enabled = true;
+
+        selectedTile.PlaceStartingSpaceShip();
     }
 
     #endregion

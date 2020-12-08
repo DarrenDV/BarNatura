@@ -12,6 +12,7 @@ public class MainMenuController : MonoBehaviour
         CameraScript.Instance.OnTransitionFinished.RemoveListener(OnCameraTransitionFinished);
 
         GameManager.Instance.GoToLocationSelect();
+        SelectStartingLocationUiManager.Instance.gameObject.SetActive(true);
     }
 
     public void OnPlayButtonClicked()
