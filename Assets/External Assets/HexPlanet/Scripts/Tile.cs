@@ -114,11 +114,12 @@ public class Tile : OxygenUser
 		ID++;
 	}
 
-	void OnMouseEnter()
+	public virtual void OnMouseEnter()
     {
 		Pointer.instance.setPointer (PointerStatus.TILE, FaceCenter, transform.up);
 	}
-	void OnMouseExit()
+
+    public virtual void OnMouseExit()
     {
 		Pointer.instance.unsetPointer ();
 	}
