@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class MineScript : BuildingScript
 {
-    public ParticleSystem particleSystem;
-
     [SerializeField] private int rawMaterialsOverTime = 1;
     [SerializeField] private float maxMineTimer = 18;
 
@@ -43,6 +41,5 @@ public class MineScript : BuildingScript
     public override void OnFinishedBuilding()
     {
         base.OnFinishedBuilding();
-        particleSystem.Play();
     }
 }

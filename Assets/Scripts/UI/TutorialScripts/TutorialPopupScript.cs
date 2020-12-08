@@ -19,7 +19,7 @@ public class TutorialPopupScript : MonoBehaviour
     [SerializeField] private AudioClip appearSound, disappearSound;
     private AudioSource audioSource;
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         tutorialManager = GetComponent<TutorialManager>();
         if (Instance == null)
@@ -36,7 +36,6 @@ public class TutorialPopupScript : MonoBehaviour
     }
     public void Next(bool playSound = true)
     {
-        //TODO add code to next popup
         descriptionText.text = currentTutorial.Messages[tutorialIndex].Message;
         titleText.text = currentTutorial.Messages[tutorialIndex].Title;
         tutorialIndex++;
