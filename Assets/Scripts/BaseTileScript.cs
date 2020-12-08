@@ -29,6 +29,8 @@ public class BaseTileScript : Tile
     private WinLose winLose;
     private bool canAdd = true;
 
+    bool canAddParticles = true;
+
     protected override void Start()
     {
         base.Start();
@@ -83,9 +85,10 @@ public class BaseTileScript : Tile
         }
 
         //Toxic tile spawning
-        if (Random.Range(0, 100) == 0)
+        if (Random.Range(0, 100) < tileVariables.toxicTileChance)
         {
             SetNaturePollutedDegree(-10);
+            ToxicParticles();
         }
 
         //Rubble tile spawning
@@ -143,6 +146,7 @@ public class BaseTileScript : Tile
 
         if (naturePollutedDegree == -10)
         {
+            ToxicParticles();
             canBecomeNature = false;
         }
     }
@@ -153,6 +157,21 @@ public class BaseTileScript : Tile
         {
             naturePollutedDegree++;
             doMaterialUpdate = true;
+        }
+    }
+
+
+    private void ToxicParticles()
+    {
+        //Gives toxic particles to tiles when they become completely toxic
+        if (canAddParticles)
+        {
+            GameObject ps = Instantiate(tileVariables.toxicParticles, Vector3.zero, Quaternion.identity);
+            ps.transform.SetParent(gameObject.transform);
+            ps.transform.localPosition = Vector3.zero;
+            ps.transform.localRotation = Quaternion.identity;
+
+            canAddParticles = false;
         }
     }
 
