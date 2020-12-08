@@ -140,6 +140,8 @@ GameObject:
   - component: {fileID: 5480940546079918393}
   - component: {fileID: 4530827153166617944}
   - component: {fileID: 6878360410142992464}
+  - component: {fileID: 2009595385375234190}
+  - component: {fileID: 2429781223298608512}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -243,7 +245,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7647788133465493295}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bc9f80971587c754ca51fb8af83bdead, type: 3}
   m_Name: 
@@ -258,3 +260,63 @@ MonoBehaviour:
   timeRemaining: 9999999
   populationDeathCanTrigger: 0
   popRequiredForTrigger: 10
+  endPopUp: {fileID: 0}
+  endPopUpTitle: {fileID: 0}
+  endPopUpDescription: {fileID: 0}
+  winTitleText: YOU WIN!
+  winDescriptionText: 'Congtratulations commander!
+
+
+    You helped the colony build
+    up to new
+
+    heights and saved humanity!
+
+    The planet is now almost completely
+
+    self
+    sustaining and green.'
+  loseTitleText: YOU LOST!
+  loseDescriptionText: 'Unfortunate commander.
+
+
+    You didn''t manage to help the
+    colony
+
+    thrive. And as a result of your actions (or
+
+    lack thereof) the
+    colony has perished.
+
+    Our last beacon of hope just faded away.'
+--- !u!114 &2009595385375234190
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7647788133465493295}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b595844e25000a54790f6e1e05724cd7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  House: {fileID: 6251984966266381637, guid: 491ec674f21d313448a94490682fd0cd, type: 3}
+  Factory: {fileID: 6000329100225015927, guid: 94e0aaf3d322be44f99877f277031794, type: 3}
+  Tree: {fileID: 7929985801407894482, guid: 07aa7160d9b68d24db2af83816d5b834, type: 3}
+--- !u!114 &2429781223298608512
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7647788133465493295}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a5076cc9921d514d84a23f22fe8badd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  atmosphereLevel1Threshhold: 1300
+  atmosphereLevel2Threshhold: 2600
+  atmosphereLevel3Threshhold: 3900
+  maxAtmopshereTimer: 5

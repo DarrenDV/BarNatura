@@ -12,7 +12,7 @@ public class WinLose : MonoBehaviour
     //Tile required variables
     //Nature
     public int requiredNatureTiles; //public can be removed, currently for testing purposes here
-    [Range (0, 1)]
+    [Range(0, 1)]
     [SerializeField] private float requiredNatureTilePercent = 0.05f;
     public int currentNatureTiles; //public can be removed, currently for testing purposes here
 
@@ -21,9 +21,6 @@ public class WinLose : MonoBehaviour
     [Range(0, 1)]
     [SerializeField] private float requiredToxicTilePercent = 0.3f;
     public int currentToxicTiles; //public can be removed, currently for testing purposes here
-
-    private GameObject WinPopUp = null;
-    private GameObject LosePopUp = null;
 
     //Timer Variables
     [Tooltip("The time in seconds")]
@@ -35,12 +32,21 @@ public class WinLose : MonoBehaviour
     [SerializeField] private bool populationDeathCanTrigger;
     [SerializeField] private int popRequiredForTrigger = 10;
 
+    [Header("Popup")]
+    [SerializeField] private GameObject endPopUp;
+    [SerializeField] private Text endPopUpTitle;
+    [SerializeField] private Text endPopUpDescription;
+
+    [Header("Messages")]
+    [SerializeField] private string winTitleText;
+    [SerializeField] [TextArea] private string winDescriptionText;
+    [SerializeField] private string loseTitleText;
+    [SerializeField] [TextArea] private string loseDescriptionText;
+
     #region Default
 
     private void Awake()
     {
-        WinPopUp = GameObject.Find("WinPopUp");
-        LosePopUp = GameObject.Find("LosePopUp");
         timeText = GameObject.Find("Timer").GetComponent<Text>();
     }
 
@@ -48,8 +54,7 @@ public class WinLose : MonoBehaviour
     {
         timerIsRunning = true;
         TileAmountCalculation();
-        WinPopUp.SetActive(false);
-        LosePopUp.SetActive(false);
+        endPopUp.SetActive(false);
     }
 
     void Update()
@@ -63,7 +68,7 @@ public class WinLose : MonoBehaviour
     void TileAmountCalculation()
     {
         //Gets the amount of tiles from the planet which generates them
-        tileCount = GameObject.Find("Planet").GetComponent<Hexsphere>().TileCount;
+        tileCount = FindObjectOfType<Hexsphere>().TileCount;
 
         //Calculates the required amount of tiles needed to win or lose
         requiredNatureTiles = Mathf.RoundToInt(tileCount * requiredNatureTilePercent);
@@ -107,7 +112,7 @@ public class WinLose : MonoBehaviour
     {
         if (canLose)
         {
-            LosePopUp.SetActive(true);
+            ShowEndPopup(loseTitleText, loseDescriptionText);
             canWin = false;
         }
     }
@@ -138,12 +143,20 @@ public class WinLose : MonoBehaviour
     {
         if (canWin)
         {
-            WinPopUp.SetActive(true);
+            ShowEndPopup(winTitleText, winDescriptionText);
             canLose = false;
         }
     }
 
     #endregion
+
+    private void ShowEndPopup(string title, string message)
+    {
+        endPopUpTitle.text = title;
+        endPopUpDescription.text = message;
+
+        endPopUp.SetActive(true);
+    }
 
     #region PopUpButtons
 
