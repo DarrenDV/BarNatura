@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class ToxicCleaner : BuildingScript
@@ -10,7 +9,6 @@ public class ToxicCleaner : BuildingScript
     [SerializeField] private int cleanDistance;
 
     private List<BaseTileScript> surroundingTiles = new List<BaseTileScript>();
-
 
     public override string GetName()
     {
@@ -37,15 +35,22 @@ public class ToxicCleaner : BuildingScript
                     tile.IncreaseNaturePollutedDegree(1);
                 }
             }
+
             timeSinceLastClean = 0;
         }
-
     }
 
     public override void OnFinishedBuilding()
     {
         base.OnFinishedBuilding();
+
         surroundingTiles = parentTile.GetNeighbourTiles(cleanDistance);
     }
 
+    public override void OnFinishedRemoving()
+    {
+        base.OnFinishedRemoving();
+
+        transform.parent.GetComponent<BaseTileScript>().DeletePlacedObjects();
+    }
 }

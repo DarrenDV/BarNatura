@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class MineScript : BuildingScript
 {
@@ -9,7 +7,6 @@ public class MineScript : BuildingScript
 
     private float mineTimer;
     
-    // Update is called once per frame
     protected override void Update()
     {
         base.Update();
@@ -19,6 +16,7 @@ public class MineScript : BuildingScript
             GameManager.Instance.AddRawMaterial(rawMaterialsOverTime);
             mineTimer = 0;
         }
+
         mineTimer += Time.deltaTime;
     }
 
@@ -37,10 +35,5 @@ public class MineScript : BuildingScript
         base.OnFinishedRemoving();
 
         transform.parent.GetComponent<BaseTileScript>().DeletePlacedObjects();
-    }
-
-    public override void OnFinishedBuilding()
-    {
-        base.OnFinishedBuilding();
     }
 }
