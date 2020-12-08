@@ -8055,7 +8055,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TitleText: {fileID: 8782915105497997709}
   DescriptionText: {fileID: 8782915106234451812}
-  DisplayOffset: {x: 0, y: 100, z: 0}
+  DisplayOffset: {x: 0, y: 110, z: 0}
 --- !u!1 &8782915106811152139
 GameObject:
   m_ObjectHideFlags: 0
