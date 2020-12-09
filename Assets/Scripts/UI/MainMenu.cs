@@ -1,8 +1,22 @@
 ﻿using Assets.Scripts;
 using UnityEngine;
 
-public class MainMenuController : MonoBehaviour
+public class MainMenu : MonoBehaviour
 {
+    public static MainMenu Instance;
+
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Debug.LogError("MainMenu instance already set!");
+        }
+    }
+
     private void Start()
     {
         CameraScript.Instance.OnTransitionFinished.AddListener(OnCameraTransitionFinished);

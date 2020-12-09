@@ -176,6 +176,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 972d0c1f93600984aaa3be79e5f730a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DevMode: 1
   CurrentGameState: 0
   BuildingCount: 0
   buildObjectPreview: {fileID: 3824843029921591926}

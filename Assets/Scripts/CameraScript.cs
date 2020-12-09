@@ -35,13 +35,13 @@ public class CameraScript : MonoBehaviour
         {
             Debug.LogError("Camera Script instance already set!");
         }
+
+        Camera.main.fieldOfView = maxZoomFov;
     }
 
     private void Start()
     {
         currentCameraSlowDown = cameraSlowDown;
-
-        Camera.main.fieldOfView = maxZoomFov;
     }
 
     void LateUpdate()
@@ -129,5 +129,10 @@ public class CameraScript : MonoBehaviour
         fov = Mathf.Clamp(fov, minZoomFov, maxZoomFov);
 
         Camera.main.fieldOfView = fov;
+    }
+
+    public void GoToDefaultZoom()
+    {
+        Camera.main.fieldOfView = defaultZoomFov;
     }
 }

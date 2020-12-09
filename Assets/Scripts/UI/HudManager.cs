@@ -32,13 +32,13 @@ public class HudManager : MonoBehaviour
         humanCounter = GameObject.Find("HumanCounter").GetComponent<Text>();
         workerCounter = GameObject.Find("WorkerCounter").GetComponent<Text>();
         capacityCounter = GameObject.Find("CapacityCounter").GetComponent<Text>();
-        oxygenBar = GameObject.Find("OxygenSlider").GetComponent<Slider>();   
+        oxygenBar = GameObject.Find("OxygenSlider").GetComponent<Slider>();
+
+        gameObject.SetActive(false);
     }
 
     private void Start()
     {
-        gameObject.SetActive(false);
-
         UpdateBuildMaterialCounter();
         UpdateRawMaterialCounter();
     }

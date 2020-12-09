@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Analytics;
 using static Assets.Scripts.Enums;
@@ -6,6 +7,11 @@ using static Assets.Scripts.Enums;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
+
+    /// <summary>
+    /// Start the game without going through the main menu.
+    /// </summary>
+    public bool DevMode = false;
 
     //Oxygen
     private int oxygenGeneration;
@@ -26,7 +32,7 @@ public class GameManager : MonoBehaviour
 
     private AudioManager audioManager;
 
-    public GameState CurrentGameState = GameState.MainMenu;
+    [HideInInspector] public GameState CurrentGameState = GameState.MainMenu;
 
     // for testing purposes
     [HideInInspector] public int BuildingCount;
@@ -73,6 +79,14 @@ public class GameManager : MonoBehaviour
     {
         ResetHumanTimer();
         audioManager = AudioManager.Instance;
+
+        if (DevMode)
+        {
+            OnStartingLocationSelected(GetRandomFreeTile());
+            CameraScript.Instance.GoToDefaultZoom();
+            MainMenu.Instance.gameObject.SetActive(false);
+            HudManager.Instance.gameObject.SetActive(true);
+        }
     }
 
     void Update()
@@ -589,6 +603,17 @@ public class GameManager : MonoBehaviour
         {
             tile.SpawnRandomPolution();
         }
+    }
+
+    #endregion
+
+    #region Utils
+
+    private BaseTileScript GetRandomFreeTile()
+    {
+        var tiles = FindObjectsOfType<BaseTileScript>();
+
+        return tiles.First(tile => !tile.isOccupied);
     }
 
     #endregion

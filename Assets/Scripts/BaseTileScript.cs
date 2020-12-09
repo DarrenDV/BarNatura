@@ -30,16 +30,19 @@ public class BaseTileScript : Tile
     private bool canAdd = true;
 
     private bool canAddParticles = true;
-    private GameObject toxicParticles = null;
+    private GameObject toxicParticles;
 
-    protected override void Start()
+    private void Awake()
     {
-        base.Start();
-
         tileVariables = FindObjectOfType<TileVariables>();
         winLose = FindObjectOfType<WinLose>();
 
         meshRenderer = GetComponent<MeshRenderer>();
+    }
+
+    protected override void Start()
+    {
+        base.Start();
 
         SetStartingColor();
         Spawning();
