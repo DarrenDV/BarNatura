@@ -11,7 +11,14 @@ public class BaseObject : MonoBehaviour
     public int HumansRequiredToBuild = 5;
     public int HumansRequiredToRemove = 5;
 
+    /// <summary>
+    /// The time it takes to build this object.
+    /// </summary>
     [SerializeField] private float buildTime = 5f;
+
+    /// <summary>
+    /// The time it takes to remove this object.
+    /// </summary>
     [SerializeField] private float removeTime = 5f;
 
     public UnityEvent OnFinishedBuildingEvent;

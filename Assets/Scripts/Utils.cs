@@ -5,7 +5,7 @@ using UnityEngine.EventSystems;
 namespace Assets.Scripts
 {
     /// <summary>
-    /// Generic Utilities
+    /// Generic Utility functions
     /// </summary>
     public static class Utils
     {
