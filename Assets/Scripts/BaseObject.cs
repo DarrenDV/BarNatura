@@ -175,9 +175,24 @@ public class BaseObject : MonoBehaviour
 
     protected virtual void OnMouseDown()
     {
-        // we can only select objects ingame
-        if (GameManager.Instance.CurrentGameState != Enums.GameState.InGame)
+        // we can't select objects in the main menu
+        if (GameManager.Instance.CurrentGameState == Enums.GameState.MainMenu)
         {
+            return;
+        }
+
+        if(GameManager.Instance.CurrentGameState == Enums.GameState.SelectLocation)
+        {
+            if (this is BaseTileScript)
+            {
+                // we are good to go
+            }
+            else
+            {
+                AudioManager.Instance.PlayBuildFaliedSound();
+                SelectStartingLocationUiManager.Instance.ShowBuildOnFreeSpaceMessage();
+            }
+
             return;
         }
 

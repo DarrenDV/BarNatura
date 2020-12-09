@@ -243,6 +243,11 @@ public class BaseTileScript : Tile
             {
                 gameManager.OnStartingLocationSelected(this);
             }
+            else
+            {
+                AudioManager.Instance.PlayBuildFaliedSound();
+                SelectStartingLocationUiManager.Instance.ShowBuildOnFreeSpaceMessage();
+            }
 
             return;
         }
