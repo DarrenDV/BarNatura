@@ -16,4 +16,4 @@ MonoBehaviour:
     type: 3}
   buildingItemMesh: {fileID: 4300000, guid: 2e6e9c0c0cb4b7f4bab48b071df012b0, type: 3}
   numberOfMeshes: 1
-  meshScale: 0.3
+  meshScale: 0.4
