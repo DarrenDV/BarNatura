@@ -34,11 +34,12 @@ public class HudManager : MonoBehaviour
         capacityCounter = GameObject.Find("CapacityCounter").GetComponent<Text>();
         oxygenBar = GameObject.Find("OxygenSlider").GetComponent<Slider>();
 
-        gameObject.SetActive(false);
+        
     }
 
     private void Start()
     {
+        gameObject.SetActive(false);
         UpdateBuildMaterialCounter();
         UpdateRawMaterialCounter();
     }
