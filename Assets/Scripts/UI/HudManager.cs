@@ -8,7 +8,7 @@ public class HudManager : MonoBehaviour
     private Text oxygenCounter, drainCounter, pollutionCounter, surplusCounter;
     private Slider oxygenBar;
     private Text buildMaterialCounter, rawMaterialCounter;
-    private Text humanCounter, workerCounter, capacityCounter;
+    private Text humanCounter, capacityCounter;
 
     private void Awake()
     {
@@ -30,7 +30,6 @@ public class HudManager : MonoBehaviour
         rawMaterialCounter = GameObject.Find("RawMaterialCounter").GetComponent<Text>();
 
         humanCounter = GameObject.Find("HumanCounter").GetComponent<Text>();
-        workerCounter = GameObject.Find("WorkerCounter").GetComponent<Text>();
         capacityCounter = GameObject.Find("CapacityCounter").GetComponent<Text>();
         oxygenBar = GameObject.Find("OxygenSlider").GetComponent<Slider>();
 
@@ -74,12 +73,8 @@ public class HudManager : MonoBehaviour
 
     public void UpdateHumanCounter()
     {
-        humanCounter.text = (GameManager.Instance.GetPopulationAmount() - GameManager.Instance.GetWorkerAmount()).ToString();
-    }
-
-    public void UpdateWorkerCounter()
-    {
-        workerCounter.text = GameManager.Instance.GetWorkerAmount().ToString();
+        humanCounter.text = (GameManager.Instance.GetPopulationAmount() - GameManager.Instance.GetWorkerAmount() +
+            " / " + GameManager.Instance.GetWorkerAmount()).ToString();
     }
 
     public void UpdateCapacityCounter()

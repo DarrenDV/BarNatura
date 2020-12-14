@@ -367,7 +367,6 @@ public class GameManager : MonoBehaviour
         availableWorkers -= workersToAdd;
         workers += workersToAdd;
         HudManager.Instance.UpdateHumanCounter();
-        HudManager.Instance.UpdateWorkerCounter();
     }
 
     /// <summary>
@@ -379,7 +378,6 @@ public class GameManager : MonoBehaviour
         availableWorkers += workersToRemove;
         workers -= workersToRemove;
         HudManager.Instance.UpdateHumanCounter();
-        HudManager.Instance.UpdateWorkerCounter();
     }
 
 
