@@ -3,7 +3,8 @@
 public class HouseScript : BuildingScript
 {
     [Header("House Script")]
-    [SerializeField] private int populationToAdd = 3;
+    [Tooltip("How many humans spawn when this house is done building")]
+    [SerializeField] private int populationToAdd;
 
     public override string GetName()
     {
@@ -13,13 +14,6 @@ public class HouseScript : BuildingScript
     public override string GetDescription()
     {
         return $"This building houses a max of {maxCapacity} people.";
-    }
-
-    public override void OnRemove()
-    {
-        base.OnRemove();
-
-        GameManager.Instance.RemoveCapacity(maxCapacity);
     }
 
     public override void OnFinishedBuilding()
