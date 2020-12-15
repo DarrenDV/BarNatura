@@ -1,9 +1,11 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 public class AtmosphereSystem : MonoBehaviour
 {
     [SerializeField] private int atmosphereLevel1Threshhold = 1300, atmosphereLevel2Threshhold = 2600, atmosphereLevel3Threshhold = 3900;
     [SerializeField] private float maxAtmopshereTimer = 5;
+    [SerializeField] private Text currentOxygenCounter;
     private int currentOxygen, currentAtmosphereLevel;
     private float atmosphereTimer = 0;
     // Update is called once per frame
@@ -16,6 +18,7 @@ public class AtmosphereSystem : MonoBehaviour
             LevelCheck();
             atmosphereTimer = 0;
         }
+        UpdateCurrentOxygenCounter();
         atmosphereTimer += Time.deltaTime;
     }
     void LevelCheck()
@@ -54,5 +57,9 @@ public class AtmosphereSystem : MonoBehaviour
         {
             tree.UpdateNatureSpreadTiles(currentAtmosphereLevel);
         }
+    }
+    private void UpdateCurrentOxygenCounter()
+    {
+        currentOxygenCounter.text = currentOxygen.ToString();
     }
 }
