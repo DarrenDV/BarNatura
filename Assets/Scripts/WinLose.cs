@@ -34,7 +34,7 @@ public class WinLose : MonoBehaviour
     [SerializeField] private int popRequiredForTrigger = 10;
 
     //Popup
-    [SerializeField] private GameObject endPopUpPanel;
+    [SerializeField] private GameObject endPopUpBack;
     [SerializeField] private Text endPopUpTitle;
     [SerializeField] private Text endPopUpDescription;
 
@@ -48,18 +48,18 @@ public class WinLose : MonoBehaviour
 
     private void Awake()
     {
-        endPopUpPanel = GameObject.Find("EndPopUp/Panel");
+        endPopUpBack = GameObject.Find("EndPopUp");
     }
 
     void Start()
     {
         timeText = GameObject.Find("Timer").GetComponent<Text>();
         
-        endPopUpTitle = GameObject.Find("EndPopUp/Panel/Title").GetComponent<Text>();
-        endPopUpDescription = GameObject.Find("EndPopUp/Panel/DescriptionText").GetComponent<Text>();
+        endPopUpTitle = GameObject.Find("EndPopUp/Border/Background/Panel/Title").GetComponent<Text>();
+        endPopUpDescription = GameObject.Find("EndPopUp/Border/Background/Panel/DescriptionText").GetComponent<Text>();
         timerIsRunning = true;
         TileAmountCalculation();
-        endPopUpPanel.SetActive(false);
+        endPopUpBack.SetActive(false);
     }
 
     void Update()
@@ -160,7 +160,7 @@ public class WinLose : MonoBehaviour
         endPopUpTitle.text = title;
         endPopUpDescription.text = message;
 
-        endPopUpPanel.SetActive(true);
+        endPopUpBack.SetActive(true);
     }
 
     #region PopUpButtons
