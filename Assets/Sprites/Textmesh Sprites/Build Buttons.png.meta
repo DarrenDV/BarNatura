@@ -1,0 +1,491 @@
+fileFormatVersion: 2
+guid: bd0fdf15b0210f6408eb457628c924fe
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -2934951170086482669
+    second: Build Buttons_0
+  - first:
+      213: -8440954186792775292
+    second: Build Buttons_1
+  - first:
+      213: 478115644193672504
+    second: Build Buttons_2
+  - first:
+      213: -4782546812094685030
+    second: Build Buttons_3
+  - first:
+      213: -4790415430727742427
+    second: Build Buttons_4
+  - first:
+      213: 8618120658873358036
+    second: Build Buttons_5
+  - first:
+      213: -7653698005983951600
+    second: Build Buttons_6
+  - first:
+      213: -5157380802138976901
+    second: Build Buttons_7
+  - first:
+      213: -5768607590354315778
+    second: Build Buttons_8
+  - first:
+      213: 3832273256871689796
+    second: Build Buttons_9
+  - first:
+      213: -245141947201978594
+    second: Build Buttons_10
+  - first:
+      213: 2835436739243305911
+    second: Build Buttons_11
+  - first:
+      213: -1833538755010072025
+    second: Build Buttons_12
+  - first:
+      213: 4720885387933009297
+    second: Build Buttons_13
+  - first:
+      213: 8864142149132032606
+    second: Build Buttons_14
+  - first:
+      213: -1900879799625203406
+    second: Build Buttons_15
+  - first:
+      213: 1027972792545952384
+    second: Build Buttons_16
+  - first:
+      213: -4595487348704302623
+    second: Build Buttons_17
+  - first:
+      213: -2459254134276924425
+    second: Build Buttons_18
+  - first:
+      213: -8414697162199316745
+    second: Build Buttons_19
+  - first:
+      213: -4353670501593207158
+    second: Build Buttons_20
+  - first:
+      213: 1351857116636304202
+    second: Build Buttons_21
+  - first:
+      213: 4873706565229221088
+    second: Build Buttons_22
+  - first:
+      213: 8509875356488380586
+    second: Build Buttons_23
+  - first:
+      213: -7960334946115023068
+    second: Build Buttons_24
+  - first:
+      213: -1491069329214507033
+    second: Build Buttons_25
+  - first:
+      213: 4065869060804193069
+    second: Build Buttons_26
+  - first:
+      213: 1920381414994651808
+    second: Build Buttons_27
+  - first:
+      213: -2116050385845353535
+    second: Build Buttons_28
+  - first:
+      213: -7947848944474651190
+    second: Build Buttons_29
+  - first:
+      213: 8556374955676530769
+    second: Build Buttons_30
+  - first:
+      213: -2303347869864759097
+    second: Build Buttons_31
+  - first:
+      213: -3673904615326144570
+    second: Build Buttons_32
+  - first:
+      213: 8632821868108877295
+    second: Build Buttons_33
+  - first:
+      213: 7764105496391719657
+    second: Build Buttons_34
+  - first:
+      213: -21319701305044949
+    second: Build Buttons_35
+  - first:
+      213: 5200908652496758869
+    second: Build Buttons_36
+  - first:
+      213: 7379537370005580603
+    second: Build Buttons_37
+  - first:
+      213: 5154457807049258532
+    second: Build Buttons_38
+  - first:
+      213: 1949452595409236915
+    second: Build Buttons_39
+  - first:
+      213: 3141885552462746628
+    second: Build Buttons_40
+  - first:
+      213: -3395851928362779005
+    second: Build Buttons_41
+  - first:
+      213: -4597625367571770707
+    second: Build Buttons_42
+  - first:
+      213: 1351672028583376915
+    second: Build Buttons_43
+  - first:
+      213: -6508187917200115685
+    second: Build Buttons_44
+  - first:
+      213: -6716111715292146034
+    second: Build Buttons_45
+  - first:
+      213: 3762476385903118266
+    second: Build Buttons_46
+  - first:
+      213: 8451357400919953360
+    second: Build Buttons_47
+  - first:
+      213: 1073833998854849154
+    second: Build Buttons_48
+  - first:
+      213: 8177234514748220228
+    second: Build Buttons_49
+  - first:
+      213: -6233279734925855449
+    second: Build Buttons_50
+  - first:
+      213: 7855886904893962732
+    second: Build Buttons_51
+  - first:
+      213: 490971088078095796
+    second: Build Buttons_52
+  - first:
+      213: 343244176341372344
+    second: Build Buttons_53
+  - first:
+      213: -2349212945073781470
+    second: Build Buttons_54
+  - first:
+      213: 1535959729284787523
+    second: Build Buttons_55
+  - first:
+      213: -7482791750112189264
+    second: Build Buttons_56
+  - first:
+      213: 3253450466096235118
+    second: Build Buttons_57
+  - first:
+      213: 588971857051205816
+    second: Build Buttons_58
+  - first:
+      213: -3741174376890033336
+    second: Build Buttons_59
+  - first:
+      213: 4179191998696987746
+    second: Build Buttons_60
+  - first:
+      213: -6630731757042803690
+    second: Build Buttons_61
+  - first:
+      213: 5739429548213076297
+    second: Build Buttons_62
+  - first:
+      213: 3987038328331612438
+    second: Build Buttons_63
+  - first:
+      213: 617465050320858959
+    second: Build Buttons_64
+  - first:
+      213: -1186934533852472756
+    second: Build Buttons_65
+  - first:
+      213: -7358018379586909195
+    second: Build Buttons_66
+  - first:
+      213: -7628494219781591181
+    second: Build Buttons_67
+  - first:
+      213: -3554560329738539052
+    second: Build Buttons_68
+  - first:
+      213: -8251367227762931250
+    second: Build Buttons_69
+  - first:
+      213: -8396144085398534635
+    second: Build Buttons_70
+  - first:
+      213: 2231925871158173946
+    second: Build Buttons_71
+  - first:
+      213: -2324576245588421198
+    second: Build Buttons_72
+  - first:
+      213: -1950799159839413379
+    second: Build Buttons_73
+  - first:
+      213: 1946376083473186737
+    second: Build Buttons_74
+  - first:
+      213: 5335108380892232979
+    second: Build Buttons_75
+  - first:
+      213: 276223522761538346
+    second: Build Buttons_76
+  - first:
+      213: 4768571577201325073
+    second: Build Buttons_77
+  - first:
+      213: -2001718668033401875
+    second: Build Buttons_78
+  - first:
+      213: 2237422309447773946
+    second: Build Buttons_79
+  - first:
+      213: -8763840440273872283
+    second: Build Buttons_80
+  - first:
+      213: 5295823245979538592
+    second: Build Buttons_81
+  - first:
+      213: 6324431590251877114
+    second: Build Buttons_82
+  - first:
+      213: -749572830991928802
+    second: Build Buttons_83
+  - first:
+      213: -4780379550554920068
+    second: Build Buttons_84
+  - first:
+      213: -5976792070812565363
+    second: Build Buttons_85
+  - first:
+      213: 2947019276810492493
+    second: Build Buttons_86
+  - first:
+      213: 3063512439342711409
+    second: Build Buttons_87
+  - first:
+      213: 8308012248414185154
+    second: Build Buttons_88
+  - first:
+      213: -7715890053102195160
+    second: Build Buttons_89
+  - first:
+      213: 7819582357495933006
+    second: Build Buttons_90
+  - first:
+      213: -9078262799080426770
+    second: Build Buttons_91
+  - first:
+      213: 6719918991335474135
+    second: Build Buttons_92
+  - first:
+      213: 3577449211376644870
+    second: Build Buttons_93
+  - first:
+      213: 4948586723157113793
+    second: Build Buttons_94
+  - first:
+      213: -7243551213828982434
+    second: Build Buttons_95
+  - first:
+      213: 1871921455332311354
+    second: Build Buttons_96
+  - first:
+      213: 8100069248706807594
+    second: Build Buttons_97
+  - first:
+      213: 582955996377473015
+    second: Build Buttons_98
+  - first:
+      213: -5039379448247305952
+    second: Build Buttons_99
+  - first:
+      213: -4712726838893753090
+    second: Build Buttons_100
+  - first:
+      213: -8468845626780719647
+    second: Build Buttons_101
+  - first:
+      213: -1736812625244262462
+    second: Build Buttons_102
+  - first:
+      213: 6032102058398868033
+    second: Build Buttons_103
+  - first:
+      213: 6468112014455263006
+    second: Build Buttons_104
+  - first:
+      213: -8773806459128856418
+    second: Build Buttons_105
+  - first:
+      213: -4743043495845854338
+    second: Build Buttons_106
+  - first:
+      213: 3942726866218670483
+    second: Build Buttons_107
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 16
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 0
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 512
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 2
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 512
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 2
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Build Buttons_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 456
+        height: 384
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 75, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 31dc0e9f575f447d0800000000000000
+      internalID: -2934951170086482669
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Build Buttons_1
+      rect:
+        serializedVersion: 2
+        x: 456
+        y: 0
+        width: 449
+        height: 380
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 481ded2a3e4bbda80800000000000000
+      internalID: -8440954186792775292
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Build Buttons_2
+      rect:
+        serializedVersion: 2
+        x: 907
+        y: 0
+        width: 412
+        height: 384
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 19, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 83d88bd25ab92a600800000000000000
+      internalID: 478115644193672504
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

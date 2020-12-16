@@ -49,14 +49,16 @@ public class WinLose : MonoBehaviour
     private void Awake()
     {
         endPopUpBack = GameObject.Find("EndPopUp");
+        timeText = GameObject.Find("Timer").GetComponent<Text>();
+        endPopUpTitle = GameObject.Find("EndPopUp/Border/Background/Panel/Title").GetComponent<Text>();
+        endPopUpDescription = GameObject.Find("EndPopUp/Border/Background/Panel/DescriptionText").GetComponent<Text>();
     }
 
     void Start()
     {
-        timeText = GameObject.Find("Timer").GetComponent<Text>();
+
         
-        endPopUpTitle = GameObject.Find("EndPopUp/Border/Background/Panel/Title").GetComponent<Text>();
-        endPopUpDescription = GameObject.Find("EndPopUp/Border/Background/Panel/DescriptionText").GetComponent<Text>();
+
         timerIsRunning = true;
         TileAmountCalculation();
         endPopUpBack.SetActive(false);

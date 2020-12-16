@@ -21,10 +21,10 @@ public class HudManager : MonoBehaviour
             Debug.LogError("Hud Manager instance already set!");
         }
 
-        oxygenCounter = GameObject.Find("OxygenCounter").GetComponent<Text>();
-        drainCounter = GameObject.Find("DrainCounter").GetComponent<Text>();
-        pollutionCounter = GameObject.Find("PollutionCounter").GetComponent<Text>();
-        surplusCounter = GameObject.Find("SurplusCounter").GetComponent<Text>();
+        oxygenCounter = GameObject.Find("Oxygen Counter").GetComponent<Text>();
+        drainCounter = GameObject.Find("Drain Counter").GetComponent<Text>();
+        pollutionCounter = GameObject.Find("Pollution Counter").GetComponent<Text>();
+        surplusCounter = GameObject.Find("Surplus Counter").GetComponent<Text>();
 
         buildMaterialCounter = GameObject.Find("BuildMaterialCounter").GetComponent<Text>();
         rawMaterialCounter = GameObject.Find("RawMaterialCounter").GetComponent<Text>();
@@ -74,7 +74,7 @@ public class HudManager : MonoBehaviour
     public void UpdateHumanCounter()
     {
         humanCounter.text = (GameManager.Instance.GetPopulationAmount() - GameManager.Instance.GetWorkerAmount() +
-            " / " + GameManager.Instance.GetWorkerAmount()).ToString();
+            " / " + GameManager.Instance.GetPopulationAmount()).ToString();
     }
 
     public void UpdateCapacityCounter()
