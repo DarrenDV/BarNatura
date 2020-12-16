@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 public class AtmosphereSystem : MonoBehaviour
 {
-    [SerializeField] private int atmosphereLevel1Threshhold = 1300, atmosphereLevel2Threshhold = 2600, atmosphereLevel3Threshhold = 3900;
+    [SerializeField] private int atmosphereLevel1Threshhold = 300, atmosphereLevel2Threshhold = 1300, atmosphereLevel3Threshhold = 2600, atmosphereLevel4Threshhold  = 3900;
     [SerializeField] private float maxAtmopshereTimer = 5;
     [SerializeField] private Text currentOxygenCounter;
     private int currentOxygen, currentAtmosphereLevel;
@@ -24,6 +24,11 @@ public class AtmosphereSystem : MonoBehaviour
     void LevelCheck()
     {
         //level check, this could be a switch case but i cant fill in atmosphereLevel1Threshhold as a case, with no magic numbers this is all i could think of.
+        if (currentOxygen > atmosphereLevel4Threshhold && currentAtmosphereLevel != 4)
+        {
+            currentAtmosphereLevel = 4;
+            UpdateTreeNatureRadius();
+        } else
         if (currentOxygen > atmosphereLevel3Threshhold && currentAtmosphereLevel != 3)
         {
             currentAtmosphereLevel = 3;
