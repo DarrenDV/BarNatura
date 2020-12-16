@@ -142,8 +142,11 @@ public class BaseTileScript : Tile
                 //Only applies the spreading if the random is met.
                 if (Random.Range(0, 4) == 0)
                 {
-                    ToxicSpreading(neighbour);
                     NatureSpreading(neighbour);
+                }
+                if(Random.Range(0, 6) == 0)
+                {
+                    ToxicSpreading(neighbour);
                 }
             }
 

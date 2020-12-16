@@ -261,7 +261,7 @@ MonoBehaviour:
   timeRemaining: 9999999
   populationDeathCanTrigger: 0
   popRequiredForTrigger: 10
-  endPopUp: {fileID: 0}
+  endPopUpPanel: {fileID: 0}
   endPopUpTitle: {fileID: 0}
   endPopUpDescription: {fileID: 0}
   winTitleText: YOU WIN!
@@ -317,7 +317,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a5076cc9921d514d84a23f22fe8badd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  atmosphereLevel1Threshhold: 1300
-  atmosphereLevel2Threshhold: 2600
-  atmosphereLevel3Threshhold: 3900
+  atmosphereLevel1Threshhold: 300
+  atmosphereLevel2Threshhold: 1300
+  atmosphereLevel3Threshhold: 2600
+  atmosphereLevel4Threshhold: 3900
   maxAtmopshereTimer: 5
+  currentOxygenCounter: {fileID: 0}
