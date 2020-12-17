@@ -25,15 +25,14 @@ public class MineScript : BuildingScript
         return "Mine";
     }
 
+    protected override string GetBuildingFunction()
+    {
+        return $"Mines for {GetIcon("Raw")}";
+    }
+
     public override string GetDescription()
     {
-        return $"This mine slowly produces raw materials over time.";
+        return $"This mine slowly produces {GetIcon("Raw")}  over time.";
     }
 
-    public override void OnFinishedRemoving()
-    {
-        base.OnFinishedRemoving();
-
-        transform.parent.GetComponent<BaseTileScript>().DeletePlacedObjects();
-    }
 }

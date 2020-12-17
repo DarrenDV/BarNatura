@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class ToxicCleaner : BuildingScript
 {
+    #region Variables
+
     [Header("Toxic Cleaner")]
     [SerializeField] private float cleanRate;
     private float timeSinceLastClean;
@@ -10,15 +12,28 @@ public class ToxicCleaner : BuildingScript
 
     private List<BaseTileScript> surroundingTiles = new List<BaseTileScript>();
 
+    #endregion
+
+    #region Strings
+
     public override string GetName()
     {
         return "Toxic cleaner";
+    }
+
+    protected override string GetBuildingFunction()
+    {
+        return $"Cleans {GetIcon("Toxic")} tiles";
     }
 
     public override string GetDescription()
     {
         return $"This toxic cleaner cleans toxicity up to {cleanDistance} tiles away every {cleanRate} seconds.";
     }
+
+    #endregion
+
+    #region Defaults
 
     protected override void Update()
     {
@@ -40,6 +55,10 @@ public class ToxicCleaner : BuildingScript
         }
     }
 
+    #endregion
+
+    #region Buildings
+
     public override void OnFinishedBuilding()
     {
         base.OnFinishedBuilding();
@@ -47,10 +66,5 @@ public class ToxicCleaner : BuildingScript
         surroundingTiles = parentTile.GetNeighbourTiles(cleanDistance);
     }
 
-    public override void OnFinishedRemoving()
-    {
-        base.OnFinishedRemoving();
-
-        transform.parent.GetComponent<BaseTileScript>().DeletePlacedObjects();
-    }
+    #endregion
 }

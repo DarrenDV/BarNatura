@@ -10,6 +10,11 @@ public class HouseScript : BuildingScript
         return "House";
     }
 
+    protected override string GetBuildingFunction()
+    {
+        return $"+ {maxCapacity} {GetIcon("House")}, + {populationToAdd} {GetIcon("Human")}";
+    }
+
     public override string GetDescription()
     {
         return $"This building houses a max of {maxCapacity} people.";
@@ -29,10 +34,4 @@ public class HouseScript : BuildingScript
         GameManager.Instance.AddPopulation(populationToAdd);
     }
 
-    public override void OnFinishedRemoving()
-    {
-        base.OnFinishedRemoving();
-
-        transform.parent.GetComponent<BaseTileScript>().DeletePlacedObjects();
-    }
 }

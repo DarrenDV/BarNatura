@@ -37,13 +37,6 @@ public class TreeScript : BuildObject
         parentTile.SetNaturePollutedDegree(10);
     }
 
-    public override void OnFinishedRemoving()
-    {
-        base.OnFinishedRemoving();
-
-        transform.parent.GetComponent<BaseTileScript>().DeletePlacedObjects();
-    }
-
     /// <summary>
     /// Called when the atmosphere changes
     /// </summary>

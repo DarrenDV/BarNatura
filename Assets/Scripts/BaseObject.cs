@@ -104,15 +104,6 @@ public class BaseObject : MonoBehaviour
     }
 
     /// <summary>
-    /// Get the description when the player wants to build this object.
-    /// </summary>
-    /// <returns></returns>
-    public virtual string GetBuildButtonInformation()
-    {
-        return $"Humans required:\n{HumansRequiredToBuild}";
-    }
-
-    /// <summary>
     /// Get the description when this object is getting build.
     /// </summary>
     /// <returns></returns>
@@ -177,6 +168,7 @@ public class BaseObject : MonoBehaviour
     public virtual void OnFinishedRemoving()
     {
         GameManager.Instance.RemoveWorkers(HumansRequiredToRemove);
+        transform.parent.GetComponent<BaseTileScript>().DeletePlacedObjects();
         OnFinishedRemovingEvent.Invoke();
     }
 

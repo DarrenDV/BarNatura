@@ -8,7 +8,7 @@ public class BuildObject : OxygenUser
     [Tooltip("The minimum health a tile must have bafore this building can be placed on it")]
     public int MinimumNaturePollutedDegree = 1;
 
-    //#region Build tool tip info
+    #region Build tool tip info
 
     /// <summary>
     /// Return a icon to use in the tooltip
@@ -29,17 +29,25 @@ public class BuildObject : OxygenUser
             case "OxygenMin": return "<sprite=7>";
             case "Pollution": return "<sprite=8>";
             default: return "Icon not found";
-    };
-        ;
+        };
+        
     }
 
-    public override string GetBuildButtonInformation()
+    /// <summary>
+    /// Get the description when the player wants to build this object.
+    /// </summary>
+    /// <returns></returns>
+    public string GetBuildButtonInformation()
     {
         return $"{GetBuildingFunction()}\n" +
             $"{GetBuildRequirements()}\n" +
             $"{GetOygenCosts()}";
     }
 
+    /// <summary>
+    /// Describe what the building does
+    /// </summary>
+    /// <returns></returns>
     protected virtual string GetBuildingFunction()
     {
         return "Allan please add details";
@@ -55,5 +63,5 @@ public class BuildObject : OxygenUser
         return $"{GetIcon("OxygenMin")} {oxygenUsage} {GetIcon("Pollution")} {pollutionProduction}";
     }
 
-    //#endregion
+    #endregion
 }

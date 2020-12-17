@@ -21,6 +21,5 @@ public class Rubble : BaseObject
         base.OnFinishedRemoving();
 
         GameManager.Instance.AddRawMaterial(Random.Range(rawMaterialMin, rawMaterialMax));
-        transform.parent.GetComponent<BaseTileScript>().DeletePlacedObjects();
     }
 }
