@@ -152,7 +152,6 @@ public class BaseTileScript : Tile
 
             timerSpread = 0;
         }
-
         timerSpread += Time.deltaTime;
 
         if (doMaterialUpdate)
@@ -161,7 +160,6 @@ public class BaseTileScript : Tile
             doMaterialUpdate = false;
         }
     }
-
     private void ToxicSpreading(BaseTileScript neighbour)
     {
         if (neighbour.naturePollutedDegree == -10 && naturePollutedDegree > -10)
