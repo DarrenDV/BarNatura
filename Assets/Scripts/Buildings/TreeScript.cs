@@ -9,9 +9,19 @@ public class TreeScript : BuildObject
         return "Tree";
     }
 
+    protected override string GetBuildingFunction()
+    {
+        return $"Produces {GetIcon("OxygenPlus")}";
+    }
+
+    protected override string GetOygenCosts()
+    {
+        return $"<sprite=6> {oxygenProduction}";
+    } 
+
     public override string GetDescription()
     {
-        return $"This tree produces {oxygenProduction} oxygen.";
+        return $"This tree produces {oxygenProduction} {GetIcon("OxygenPlus")}.";
     }
 
     public override string GetWhileBeingBuildDescription()

@@ -8,8 +8,52 @@ public class BuildObject : OxygenUser
     [Tooltip("The minimum health a tile must have bafore this building can be placed on it")]
     public int MinimumNaturePollutedDegree = 1;
 
-    public override string GetBuildDescription()
+    //#region Build tool tip info
+
+    /// <summary>
+    /// Return a icon to use in the tooltip
+    /// </summary>
+    /// <param name="IconName">The name of the icon</param>
+    /// <returns></returns>
+    protected string GetIcon(string IconName)
     {
-        return $"<b>Build cost:</b>\nBuilding materials: {BuildCost}\nHumans required: {HumansRequiredToBuild}\nMinimum tile health: {MinimumNaturePollutedDegree}";
+        switch(IconName)
+        {
+            case "House": return "<sprite=0>";
+            case "Raw": return "<sprite=1>";
+            case "Toxic": return "<sprite=2>";
+            case "Human": return "<sprite=3>";
+            case "Brick": return "<sprite=4>";
+            case "Nature": return "<sprite=5>";
+            case "OxygenPlus": return "<sprite=6>";
+            case "OxygenMin": return "<sprite=7>";
+            case "Pollution": return "<sprite=8>";
+            default: return "Icon not found";
+    };
+        ;
     }
+
+    public override string GetBuildButtonInformation()
+    {
+        return $"{GetBuildingFunction()}\n" +
+            $"{GetBuildRequirements()}\n" +
+            $"{GetOygenCosts()}";
+    }
+
+    protected virtual string GetBuildingFunction()
+    {
+        return "Allan please add details";
+    }
+
+    protected virtual string GetBuildRequirements()
+    {
+        return $"{GetIcon("Human")} {HumansRequiredToBuild} {GetIcon("Brick")} {BuildCost} {GetIcon("Nature")} {MinimumNaturePollutedDegree}";
+    }
+
+    protected virtual string GetOygenCosts()
+    {
+        return $"{GetIcon("OxygenMin")} {oxygenUsage} {GetIcon("Pollution")} {pollutionProduction}";
+    }
+
+    //#endregion
 }

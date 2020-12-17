@@ -31164,6 +31164,11 @@ PrefabInstance:
       propertyPath: m_AnchorMax.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4840916176568158143, guid: 383cea0d31276274194af115f21eaea3,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -119.3501
+      objectReference: {fileID: 0}
     - target: {fileID: 5024238427457819502, guid: 383cea0d31276274194af115f21eaea3,
         type: 3}
       propertyPath: m_LocalPosition.y
@@ -31548,6 +31553,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SizeDelta.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5754677793340719763, guid: 383cea0d31276274194af115f21eaea3,
+        type: 3}
+      propertyPath: m_AdditionalShaderChannelsFlag
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 5758229978630305272, guid: 383cea0d31276274194af115f21eaea3,
         type: 3}

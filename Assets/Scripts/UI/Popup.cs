@@ -104,7 +104,7 @@ public class Popup : MonoBehaviour
 
     private void UpdateDescription()
     {
-        descriptionText.text = selectedObject.GetCurrentDescription();
+        descriptionText.text = selectedObject.GetDescription();
     }
 
     private void DisplayRemoveButton()

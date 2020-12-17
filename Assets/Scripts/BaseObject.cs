@@ -107,7 +107,7 @@ public class BaseObject : MonoBehaviour
     /// Get the description when the player wants to build this object.
     /// </summary>
     /// <returns></returns>
-    public virtual string GetBuildDescription()
+    public virtual string GetBuildButtonInformation()
     {
         return $"Humans required:\n{HumansRequiredToBuild}";
     }
