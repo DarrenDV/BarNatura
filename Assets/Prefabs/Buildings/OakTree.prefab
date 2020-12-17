@@ -44,6 +44,7 @@ MonoBehaviour:
   pollutionProduction: 0
   BuildCost: 10
   MinimumNaturePollutedDegree: 0
+  buildCostReturn: 2
 --- !u!1001 &7929985801407822064
 PrefabInstance:
   m_ObjectHideFlags: 0
