@@ -80,22 +80,38 @@ public class WinLose : MonoBehaviour
         requiredToxicTiles = Mathf.RoundToInt(tileCount * requiredToxicTilePercent);
     }
 
-    //Ran from Basetilescript, when a tile either is completely nature or completely toxic it runs this function to add it
-    public void AddTile(bool natureTile, bool toxicTile)
+
+    //Ran from Basetilescript
+    /// <summary>
+    /// When a tile either is completely nature or completely toxic it runs this function to add it - 0 = nature, 1 = toxic
+    /// </summary>
+    public void AddTile(int tile)
     {
-        if (natureTile)
+        //if Tile = 0, tile is nature -- If tile = 1, tile is toxic
+        if (tile == 0)
         {
             currentNatureTiles++;
 
             //Checks the win when a tile is added, this way it doens't need to run every frame
             CheckTileWin();
         }
-        if (toxicTile)
+        if (tile == 1)
         {
             currentToxicTiles++;
 
             CheckTileLose();
         }
+    }
+
+    /// <summary>
+    /// Call this function when a tile isn't completely nature or toxic anymore - 0 = nature, 1 = toxic
+    /// </summary>
+    public void RemoveTile(int tile)
+    {
+        //if Tile = 0, tile is nature -- If tile = 1, tile is toxic
+        if (tile == 0) currentNatureTiles--;
+
+        if (tile == 1) currentToxicTiles--;
     }
 
     //Checks for both types of tiles if they are equal or greater than the required amount for the win or loss
@@ -155,6 +171,8 @@ public class WinLose : MonoBehaviour
 
     #endregion
 
+    #region PopUps
+
     private void ShowEndPopup(string title, string message)
     {
         endPopUpTitle.text = title;
@@ -162,8 +180,6 @@ public class WinLose : MonoBehaviour
 
         endPopUpPanel.SetActive(true);
     }
-
-    #region PopUpButtons
 
     public void PlayAgain()
     {

@@ -26,8 +26,11 @@ public class BaseTileScript : Tile
 
     private TileVariables tileVariables;
 
+    //Winlose variables
     private WinLose winLose;
-    private bool canAdd = true;
+    private bool canAddToWinLose = true;
+    private bool isToxic;
+    private bool isNature;
 
     private bool canAddParticles = true;
     private GameObject toxicParticles;
@@ -301,25 +304,47 @@ public class BaseTileScript : Tile
 
     #endregion
 
-    void CheckTile()
+    void CheckTile() //Checktile function to give tile data to WinLose when needed.
     {
-        if (canAdd) {
+        //Checks if the tile can be added.
+        if (canAddToWinLose) {   
+
+            //Checks for nature tile
             if (naturePollutedDegree == 10)
             {
-                winLose.AddTile(true, false);
-                canAdd = false;
+                winLose.AddTile(0);
+                isNature = true;
+
+                canAddToWinLose = false; 
             }
+
+            //Checks toxic tile.
             else if(naturePollutedDegree == -10)
             {
-                winLose.AddTile(false, true);
-                canAdd = false;
+                winLose.AddTile(1);
+                isToxic = true;
+
+                canAddToWinLose = false;
             }
         }
+
+        //Checks when the tile isn't toxic anymore and removes it if nessecary
         else
         {
             if (naturePollutedDegree != 10 && naturePollutedDegree != -10)
             {
-                canAdd = true;
+                if (isNature)
+                {
+                    winLose.RemoveTile(0);
+                    isNature = false;
+                }
+                if (isToxic)
+                {
+                    winLose.RemoveTile(1);
+                    isToxic = false;
+                }
+
+                canAddToWinLose = true;
             }
         }
     }
