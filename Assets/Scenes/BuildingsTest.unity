@@ -32543,6 +32543,11 @@ PrefabInstance:
       propertyPath: buildingMaterial
       value: 100
       objectReference: {fileID: 0}
+    - target: {fileID: 5480940546079918393, guid: 73ea7c1d1bc50c44d842e0feea1795dd,
+        type: 3}
+      propertyPath: DevMode
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7647788133465493295, guid: 73ea7c1d1bc50c44d842e0feea1795dd,
         type: 3}
       propertyPath: m_Name

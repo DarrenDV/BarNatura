@@ -33,10 +33,9 @@ public class WinLose : MonoBehaviour
     [SerializeField] private bool populationDeathCanTrigger;
     [SerializeField] private int popRequiredForTrigger = 10;
 
-    //Popup
-    [SerializeField] private GameObject endPopUpBack;
-    [SerializeField] private Text endPopUpTitle;
-    [SerializeField] private Text endPopUpDescription;
+    private GameObject endPopUpBack;
+    private Text endPopUpTitle;
+    private Text endPopUpDescription;
 
     [Header("Messages")]
     [SerializeField] private string winTitleText;
