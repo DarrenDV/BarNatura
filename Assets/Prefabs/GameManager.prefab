@@ -227,6 +227,9 @@ MonoBehaviour:
     m_Mode: 0
     m_NumColorKeys: 3
     m_NumAlphaKeys: 2
+  maxChance: 100
+  natureChance: 25
+  toxicChance: 17
   startingSpaceShip: {fileID: 5905488213670049407, guid: 136a54d0731c2514ca3e13f424e82fd4,
     type: 3}
   lavaTile: {fileID: 5128271968838047032, guid: b73021fcd43e4de49baaa557a87bd86f,

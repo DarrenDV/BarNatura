@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class BaseTileScript : Tile
 {
-    #region Spreading Variables
+    #region Nature / Toxic Variables
 
     [Header("Base Tile Script")]
     [Tooltip("The degree to which a tile is either polluted or nature.")]
@@ -16,13 +16,18 @@ public class BaseTileScript : Tile
     private float timerSpread;
     public bool canBecomeNature = false;
 
+    private MeshRenderer meshRenderer;
+    private bool doMaterialUpdate;
+
+    private bool canAddParticles = true;
+    private GameObject toxicParticles;
+
     #endregion
 
     //[Tooltip("If true, the starting spaceship will be spawned on this tile.")]
     //[SerializeField] private bool isStartingLocation = false;
 
-    private MeshRenderer meshRenderer;
-    private bool doMaterialUpdate;
+    #region Other variables
 
     private TileVariables tileVariables;
 
@@ -32,8 +37,9 @@ public class BaseTileScript : Tile
     private bool isToxic;
     private bool isNature;
 
-    private bool canAddParticles = true;
-    private GameObject toxicParticles;
+    #endregion
+
+    #region Default
 
     private void Awake()
     {
@@ -65,36 +71,54 @@ public class BaseTileScript : Tile
         CheckTile();
     }
 
-    public void SetNaturePollutedDegree(int newNaturePollutedDegree)
+    /// <summary>
+    /// Get the specied neibour tiles according to the radius.
+    /// </summary>
+    /// <param name="radius"></param>
+    /// <param name="includeParentTile"></param>
+    /// <returns></returns>
+    public List<BaseTileScript> GetNeighbourTiles(int radius, bool includeParentTile = true)
     {
-        naturePollutedDegree = newNaturePollutedDegree;
-        doMaterialUpdate = true;
+        var surroundingTiles = new List<Tile>();
+        var tempSurroundingTileList = new List<Tile>();
+        var newIterationTiles = new List<Tile>();
 
-        CheckRemoveToxicParticles();
-    }
+        surroundingTiles.Add(this);
+        tempSurroundingTileList.Add(this);
 
-    public void IncreaseNaturePollutedDegree(int newNaturePollutedDegree)
-    {
-        naturePollutedDegree += newNaturePollutedDegree;
-        doMaterialUpdate = true;
-
-        CheckRemoveToxicParticles();
-    }
-
-    private void CheckRemoveToxicParticles()
-    {
-        if (naturePollutedDegree >= 0 && toxicParticles != null)
+        for (var i = 0; i < radius; i++)
         {
-            Destroy(toxicParticles);
+            foreach (var tile in tempSurroundingTileList)
+            {
+                var otherTiles = tile.neighborTiles;
+
+                foreach (var otherTile in otherTiles)
+                {
+                    if (!surroundingTiles.Contains(otherTile))
+                    {
+                        surroundingTiles.Add(otherTile);
+                        newIterationTiles.Add(otherTile);
+                    }
+                }
+            }
+
+            tempSurroundingTileList.Clear();
+
+            tempSurroundingTileList.AddRange(newIterationTiles);
+            newIterationTiles.Clear();
         }
+
+        if (!includeParentTile)
+        {
+            surroundingTiles.Remove(this);
+        }
+
+        return surroundingTiles.Cast<BaseTileScript>().ToList();
     }
 
-    public override void PlaceObject(GameObject obj)
-    {
-        obj.GetComponent<BaseObject>().parentTile = this;
+    #endregion
 
-        base.PlaceObject(obj);
-    }
+    #region Spawning
 
     /// <summary>
     /// Toxic tile and natural tile spawning.
@@ -131,9 +155,13 @@ public class BaseTileScript : Tile
             ToxicParticles();
         }
     }
+    #endregion
 
     #region Tile Spreading
 
+    /// <summary>
+    /// Spreads the toxic and nature tiles every few seconds to every tile around it on a chance basis.
+    /// </summary>
     private void Spread()
     {
         if (timerSpread >= tileVariables.secondsToUpdate)
@@ -143,11 +171,11 @@ public class BaseTileScript : Tile
                 var neighbour = (BaseTileScript) tile;
 
                 //Only applies the spreading if the random is met.
-                if (Random.Range(0, 4) == 0)
+                if (Random.Range(0, tileVariables.maxChance) <= tileVariables.natureChance)
                 {
                     NatureSpreading(neighbour);
                 }
-                if(Random.Range(0, 6) == 0)
+                if(Random.Range(0, tileVariables.maxChance) <= tileVariables.toxicChance)
                 {
                     ToxicSpreading(neighbour);
                 }
@@ -155,7 +183,6 @@ public class BaseTileScript : Tile
 
             timerSpread = 0;
         }
-
         timerSpread += Time.deltaTime;
 
         if (doMaterialUpdate)
@@ -191,7 +218,36 @@ public class BaseTileScript : Tile
         }
     }
 
+    public void SetNaturePollutedDegree(int newNaturePollutedDegree)
+    {
+        naturePollutedDegree = newNaturePollutedDegree;
+        doMaterialUpdate = true;
 
+        CheckRemoveToxicParticles();
+    }
+
+    public void IncreaseNaturePollutedDegree(int newNaturePollutedDegree)
+    {
+        naturePollutedDegree += newNaturePollutedDegree;
+        doMaterialUpdate = true;
+
+        CheckRemoveToxicParticles();
+    }
+
+    /// <summary>
+    /// Checks if the tile isn't toxic anymore and removes the particle effect if so.
+    /// </summary>
+    private void CheckRemoveToxicParticles()
+    {
+        if (naturePollutedDegree >= 0 && toxicParticles != null)
+        {
+            Destroy(toxicParticles);
+        }
+    }
+
+    /// <summary>
+    /// Spawn toxic particles.
+    /// </summary>
     private void ToxicParticles()
     {
         //Gives toxic particles to tiles when they become completely toxic
@@ -297,6 +353,13 @@ public class BaseTileScript : Tile
         }
     }
 
+    public override void PlaceObject(GameObject obj)
+    {
+        obj.GetComponent<BaseObject>().parentTile = this;
+
+        base.PlaceObject(obj);
+    }
+
     public void PlaceStartingSpaceShip()
     {
         PlaceObject(Instantiate(tileVariables.startingSpaceShip, Vector3.zero, Quaternion.identity));
@@ -304,7 +367,12 @@ public class BaseTileScript : Tile
 
     #endregion
 
-    void CheckTile() //Checktile function to give tile data to WinLose when needed.
+    #region WinLose
+    /// <summary>
+    /// Checks if the tile is completely nature or toxic and adds it to the WinLose calculation. Also removes it if it isn't nature or toxic anymore.
+    /// </summary>
+    void CheckTile()
+
     {
         //Checks if the tile can be added.
         if (canAddToWinLose) {   
@@ -349,42 +417,5 @@ public class BaseTileScript : Tile
         }
     }
 
-    public List<BaseTileScript> GetNeighbourTiles(int radius, bool includeParentTile = true)
-    {
-        var surroundingTiles = new List<Tile>();
-        var tempSurroundingTileList = new List<Tile>();
-        var newIterationTiles = new List<Tile>();
-
-        surroundingTiles.Add(this);
-        tempSurroundingTileList.Add(this);
-
-        for (var i = 0; i < radius; i++)
-        {
-            foreach (var tile in tempSurroundingTileList)
-            {
-                var otherTiles = tile.neighborTiles;
-
-                foreach (var otherTile in otherTiles)
-                {
-                    if (!surroundingTiles.Contains(otherTile))
-                    {
-                        surroundingTiles.Add(otherTile);
-                        newIterationTiles.Add(otherTile);
-                    }
-                }
-            }
-
-            tempSurroundingTileList.Clear();
-
-            tempSurroundingTileList.AddRange(newIterationTiles);
-            newIterationTiles.Clear();
-        }
-
-        if (!includeParentTile)
-        {
-            surroundingTiles.Remove(this);
-        }
-
-        return surroundingTiles.Cast<BaseTileScript>().ToList();
-    }
+    #endregion
 }
