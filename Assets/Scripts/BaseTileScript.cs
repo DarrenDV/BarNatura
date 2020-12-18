@@ -12,6 +12,7 @@ public class BaseTileScript : Tile
     [Range(-10, 10)]
     [SerializeField]
     public int naturePollutedDegree;
+    public Material infectionTexture;
 
     private float timerSpread;
     public bool canBecomeNature = false;
@@ -175,7 +176,9 @@ public class BaseTileScript : Tile
 
         if (naturePollutedDegree == -10)
         {
+            ToxicTexture();
             ToxicParticles();
+            doMaterialUpdate = true;
             canBecomeNature = false;
         }
     }
@@ -204,6 +207,10 @@ public class BaseTileScript : Tile
 
             canAddParticles = false;
         }
+    }
+    private void ToxicTexture()
+    {
+        GetComponent<Renderer>().material = infectionTexture;
     }
 
     #endregion
