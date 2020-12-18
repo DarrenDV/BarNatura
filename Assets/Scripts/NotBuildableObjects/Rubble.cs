@@ -13,7 +13,7 @@ public class Rubble : BaseObject
 
     public override string GetDescription()
     {
-        return $"Remove this rubble to gain {rawMaterialMin} to {rawMaterialMax} raw material.";
+        return $"Remove this rubble to gain a randomly gain {rawMaterialMin} to {rawMaterialMax} {HudManager.GetIcon("Raw")}.";
     }
 
     public override void OnFinishedRemoving()

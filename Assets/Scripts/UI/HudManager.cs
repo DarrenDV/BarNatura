@@ -32,7 +32,6 @@ public class HudManager : MonoBehaviour
         humanCounter = GameObject.Find("HumanCounter").GetComponent<Text>();
         capacityCounter = GameObject.Find("CapacityCounter").GetComponent<Text>();
         oxygenBar = GameObject.Find("OxygenSlider").GetComponent<Slider>();
-
         
     }
 
@@ -97,5 +96,28 @@ public class HudManager : MonoBehaviour
 
         oxygenBar.maxValue = GameManager.Instance.GetOxygenGeneration();
         oxygenBar.value = GameManager.Instance.GetOxygenUsage() + GameManager.Instance.GetPollution();
+    }
+
+    /// <summary>
+    /// Return a icon to use in the tooltip
+    /// </summary>
+    /// <param name="IconName">The name of the icon</param>
+    /// <returns></returns>
+    public static string GetIcon(string IconName)
+    {
+        switch (IconName)
+        {
+            case "House": return "<sprite=0>";
+            case "Raw": return "<sprite=1>";
+            case "Toxic": return "<sprite=2>";
+            case "Human": return "<sprite=3>";
+            case "Brick": return "<sprite=4>";
+            case "Nature": return "<sprite=5>";
+            case "OxygenPlus": return "<sprite=6>";
+            case "OxygenMin": return "<sprite=7>";
+            case "Pollution": return "<sprite=8>";
+            default: return "Icon not found";
+        };
+
     }
 }

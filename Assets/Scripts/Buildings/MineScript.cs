@@ -27,12 +27,12 @@ public class MineScript : BuildingScript
 
     protected override string GetBuildingFunction()
     {
-        return $"Mines for {GetIcon("Raw")}";
+        return $"Mines for {HudManager.GetIcon("Raw")}";
     }
 
     public override string GetDescription()
     {
-        return $"This mine slowly produces {GetIcon("Raw")}  over time.";
+        return $"This mine slowly produces {HudManager.GetIcon("Raw")}  over time.";
     }
 
 }

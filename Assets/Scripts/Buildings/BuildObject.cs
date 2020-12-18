@@ -11,29 +11,6 @@ public class BuildObject : OxygenUser
     #region Build tool tip info
 
     /// <summary>
-    /// Return a icon to use in the tooltip
-    /// </summary>
-    /// <param name="IconName">The name of the icon</param>
-    /// <returns></returns>
-    protected string GetIcon(string IconName)
-    {
-        switch(IconName)
-        {
-            case "House": return "<sprite=0>";
-            case "Raw": return "<sprite=1>";
-            case "Toxic": return "<sprite=2>";
-            case "Human": return "<sprite=3>";
-            case "Brick": return "<sprite=4>";
-            case "Nature": return "<sprite=5>";
-            case "OxygenPlus": return "<sprite=6>";
-            case "OxygenMin": return "<sprite=7>";
-            case "Pollution": return "<sprite=8>";
-            default: return "Icon not found";
-        };
-        
-    }
-
-    /// <summary>
     /// Get the description when the player wants to build this object.
     /// </summary>
     /// <returns></returns>
@@ -55,12 +32,12 @@ public class BuildObject : OxygenUser
 
     protected virtual string GetBuildRequirements()
     {
-        return $"{GetIcon("Human")} {HumansRequiredToBuild} {GetIcon("Brick")} {BuildCost} {GetIcon("Nature")} {MinimumNaturePollutedDegree}";
+        return $"{HudManager.GetIcon("Human")} {HumansRequiredToBuild} {HudManager.GetIcon("Brick")} {BuildCost}";
     }
 
     protected virtual string GetOygenCosts()
     {
-        return $"{GetIcon("OxygenMin")} {oxygenUsage} {GetIcon("Pollution")} {pollutionProduction}";
+        return $"{HudManager.GetIcon("OxygenMin")} {oxygenUsage} {HudManager.GetIcon("Pollution")} {pollutionProduction}";
     }
 
     #endregion

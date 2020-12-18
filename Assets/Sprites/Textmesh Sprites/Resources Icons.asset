@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 84a92b25f83d49b9bc132d206b370281, type: 3}
-  m_Name: Build Meni Button Icons
+  m_Name: Resources Icons
   m_EditorClassIdentifier: 
   hashCode: 550232599
   material: {fileID: -6048595292625504484}

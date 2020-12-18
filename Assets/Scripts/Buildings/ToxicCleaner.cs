@@ -23,12 +23,12 @@ public class ToxicCleaner : BuildingScript
 
     protected override string GetBuildingFunction()
     {
-        return $"Cleans {GetIcon("Toxic")} tiles";
+        return $"Cleans {HudManager.GetIcon("Toxic")} tiles";
     }
 
     public override string GetDescription()
     {
-        return $"This toxic cleaner cleans toxicity up to {cleanDistance} tiles away every {cleanRate} seconds.";
+        return $"This toxic cleaner cleans {HudManager.GetIcon("Toxic")} up to {cleanDistance} tiles away every {cleanRate} seconds.";
     }
 
     #endregion

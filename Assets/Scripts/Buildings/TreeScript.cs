@@ -4,6 +4,7 @@ using System.Linq;
 public class TreeScript : BuildObject
 {
     private List<BaseTileScript> surroundingTiles = new List<BaseTileScript>();
+
     public override string GetName()
     {
         return "Tree";
@@ -11,7 +12,7 @@ public class TreeScript : BuildObject
 
     protected override string GetBuildingFunction()
     {
-        return $"Produces {GetIcon("OxygenPlus")}";
+        return $"Produces {HudManager.GetIcon("OxygenPlus")}";
     }
 
     protected override string GetOygenCosts()
@@ -21,12 +22,7 @@ public class TreeScript : BuildObject
 
     public override string GetDescription()
     {
-        return $"This tree produces {oxygenProduction} {GetIcon("OxygenPlus")}.";
-    }
-
-    public override string GetWhileBeingBuildDescription()
-    {
-        return "This tree is currently growing.";
+        return $"This tree produces {oxygenProduction} {HudManager.GetIcon("OxygenPlus")}";
     }
 
     public override void OnFinishedBuilding()

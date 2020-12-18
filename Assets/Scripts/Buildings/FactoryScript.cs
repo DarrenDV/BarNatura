@@ -30,12 +30,12 @@ public class FactoryScript : BuildingScript
 
     protected override string GetBuildingFunction()
     {
-        return $"Converts {GetIcon("Brick")} to {GetIcon("Raw")}";
+        return $"Converts {HudManager.GetIcon("Brick")} to {HudManager.GetIcon("Raw")}";
     }
 
     public override string GetDescription()
     {
-        return $"This factory converts {rawMaterialConsumption} raw materials to {buildingMaterialProduction} building materials every {maxFactoryConvertTimer} seconds.\n\n{ShowProgress()}";
+        return $"This factory converts {rawMaterialConsumption} {HudManager.GetIcon("Raw")} to {HudManager.GetIcon("Brick")} building materials every {maxFactoryConvertTimer} seconds.\n\n{ShowProgress()}";
     }
 
     private string ShowProgress()

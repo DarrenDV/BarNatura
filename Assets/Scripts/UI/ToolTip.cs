@@ -8,7 +8,6 @@ public class ToolTip : MonoBehaviour
 
     public Text TitleText = null;
     public TextMeshProUGUI DescriptionText = null;
-    public Vector3 DisplayOffset = Vector3.zero;
 
     [HideInInspector] public bool CanOpen = true;
 
@@ -36,7 +35,7 @@ public class ToolTip : MonoBehaviour
             return;
         }
 
-        transform.position = new Vector3((buildMenuButton.transform.position + DisplayOffset).x, transform.position.y, 0);
+        transform.position = new Vector3(buildMenuButton.transform.position.x, transform.position.y, 0);
 
         TitleText.text = buildMenuButton.BuildMenuItem.buildItem.GetName();
         DescriptionText.text = buildMenuButton.BuildMenuItem.buildItem.GetBuildButtonInformation();
