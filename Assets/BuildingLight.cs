@@ -7,29 +7,39 @@ public class BuildingLight : MonoBehaviour
     GameObject sun, moon;
     Light light;
 
+    float checkTimer = 5f;
+    [SerializeField] float timeBetweenChecks = 5f;
 
-    // Start is called before the first frame update
     void Start()
     {
         sun = GameObject.Find("Sun");
         moon = GameObject.Find("Moon");
-        light = this.gameObject.GetComponent<Light>();
+        light = gameObject.GetComponent<Light>();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        if(Vector3.Distance(moon.transform.position, this.transform.position) <= Vector3.Distance(sun.transform.position, this.transform.position))
+        //Simple timer to only run the check function every x seconds
+        if (checkTimer <= timeBetweenChecks) checkTimer += Time.deltaTime;
+        if (checkTimer >= timeBetweenChecks)
         {
-            light.color = Color.blue;
+            CheckLightPos();
+            checkTimer = 0;
         }
-        else if(Vector3.Distance(sun.transform.position, this.transform.position) <= Vector3.Distance(moon.transform.position, this.transform.position))
+    }
+
+    /// <summary>
+    /// Checks if the position of the moon is closer than the sun, thus turning on the light.
+    /// </summary>
+    void CheckLightPos()
+    {
+        if (Vector3.Distance(moon.transform.position, transform.position) <= Vector3.Distance(sun.transform.position, transform.position))
         {
-            light.color = Color.red;
+            light.enabled = true;
         }
         else
         {
-            light.color = Color.white;
+            light.enabled = false;
         }
     }
 }

@@ -39,13 +39,13 @@ Light:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5842576442130662729}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 10
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 0.990566, g: 0.8131094, b: 0.378471, a: 1}
-  m_Intensity: 1.8
-  m_Range: 3
+  m_Intensity: 2
+  m_Range: 4
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
@@ -105,3 +105,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de7806232054b1b4c9163beeef106d85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timeBetweenChecks: 5
