@@ -4,19 +4,25 @@ using System.Linq;
 public class TreeScript : BuildObject
 {
     private List<BaseTileScript> surroundingTiles = new List<BaseTileScript>();
+
     public override string GetName()
     {
         return "Tree";
     }
 
-    public override string GetDescription()
+    protected override string GetBuildingFunction()
     {
-        return $"This tree produces {oxygenProduction} oxygen.";
+        return $"Produces {HudManager.GetIcon("OxygenPlus")}";
     }
 
-    public override string GetWhileBeingBuildDescription()
+    protected override string GetOygenCosts()
     {
-        return "This tree is currently growing.";
+        return $"<sprite=6> {oxygenProduction}";
+    } 
+
+    public override string GetDescription()
+    {
+        return $"This tree produces {oxygenProduction} {HudManager.GetIcon("OxygenPlus")}";
     }
 
     public override void OnFinishedBuilding()
@@ -25,13 +31,6 @@ public class TreeScript : BuildObject
 
         UpdateNatureSpreadTiles(FindObjectOfType<AtmosphereSystem>().GetCurrentAtmosphereLevel());
         parentTile.SetNaturePollutedDegree(10);
-    }
-
-    public override void OnFinishedRemoving()
-    {
-        base.OnFinishedRemoving();
-
-        transform.parent.GetComponent<BaseTileScript>().DeletePlacedObjects();
     }
 
     /// <summary>

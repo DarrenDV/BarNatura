@@ -33,10 +33,9 @@ public class WinLose : MonoBehaviour
     [SerializeField] private bool populationDeathCanTrigger;
     [SerializeField] private int popRequiredForTrigger = 10;
 
-    //Popup
-    [SerializeField] private GameObject endPopUpPanel;
-    [SerializeField] private Text endPopUpTitle;
-    [SerializeField] private Text endPopUpDescription;
+    private GameObject endPopUpBack;
+    private Text endPopUpTitle;
+    private Text endPopUpDescription;
 
     [Header("Messages")]
     [SerializeField] private string winTitleText;
@@ -48,18 +47,20 @@ public class WinLose : MonoBehaviour
 
     private void Awake()
     {
-        endPopUpPanel = GameObject.Find("EndPopUp/Panel");
+        endPopUpBack = GameObject.Find("EndPopUp");
+        timeText = GameObject.Find("Timer").GetComponent<Text>();
+        endPopUpTitle = GameObject.Find("EndPopUp/Border/Background/Panel/Title").GetComponent<Text>();
+        endPopUpDescription = GameObject.Find("EndPopUp/Border/Background/Panel/DescriptionText").GetComponent<Text>();
     }
 
     void Start()
     {
-        timeText = GameObject.Find("Timer").GetComponent<Text>();
+
         
-        endPopUpTitle = GameObject.Find("EndPopUp/Panel/Title").GetComponent<Text>();
-        endPopUpDescription = GameObject.Find("EndPopUp/Panel/DescriptionText").GetComponent<Text>();
+
         timerIsRunning = true;
         TileAmountCalculation();
-        endPopUpPanel.SetActive(false);
+        endPopUpBack.SetActive(false);
     }
 
     void Update()
@@ -178,7 +179,7 @@ public class WinLose : MonoBehaviour
         endPopUpTitle.text = title;
         endPopUpDescription.text = message;
 
-        endPopUpPanel.SetActive(true);
+        endPopUpBack.SetActive(true);
     }
 
     public void PlayAgain()

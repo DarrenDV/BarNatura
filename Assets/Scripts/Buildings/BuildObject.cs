@@ -8,8 +8,37 @@ public class BuildObject : OxygenUser
     [Tooltip("The minimum health a tile must have bafore this building can be placed on it")]
     public int MinimumNaturePollutedDegree = 1;
 
-    public override string GetBuildDescription()
+    #region Build tool tip info
+
+    /// <summary>
+    /// Get the description when the player wants to build this object.
+    /// </summary>
+    /// <returns></returns>
+    public string GetBuildButtonInformation()
     {
-        return $"<b>Build cost:</b>\nBuilding materials: {BuildCost}\nHumans required: {HumansRequiredToBuild}\nMinimum tile health: {MinimumNaturePollutedDegree}";
+        return $"{GetBuildingFunction()}\n" +
+            $"{GetBuildRequirements()}\n" +
+            $"{GetOygenCosts()}";
     }
+
+    /// <summary>
+    /// Describe what the building does
+    /// </summary>
+    /// <returns></returns>
+    protected virtual string GetBuildingFunction()
+    {
+        return "Allan please add details";
+    }
+
+    protected virtual string GetBuildRequirements()
+    {
+        return $"{HudManager.GetIcon("Human")} {HumansRequiredToBuild} {HudManager.GetIcon("Brick")} {BuildCost}";
+    }
+
+    protected virtual string GetOygenCosts()
+    {
+        return $"{HudManager.GetIcon("OxygenMin")} {oxygenUsage} {HudManager.GetIcon("Pollution")} {pollutionProduction}";
+    }
+
+    #endregion
 }

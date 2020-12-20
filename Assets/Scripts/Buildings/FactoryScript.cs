@@ -3,9 +3,11 @@ using UnityEngine.UI;
 
 public class FactoryScript : BuildingScript
 {
+    #region Variables
+
     [Header("Factory Script")]
-    public ParticleSystem particleSystem;
-    [SerializeField] private float maxFactoryConvertTimer = 0;
+    [SerializeField] private ParticleSystem smokeTrail;
+    [SerializeField] private float maxFactoryConvertTimer;
 
     [SerializeField] private int rawMaterialConsumption = 2;
     [SerializeField] private int buildingMaterialProduction = 1;
@@ -17,7 +19,41 @@ public class FactoryScript : BuildingScript
 
     public bool BoostOn = false;
 
-    // Update is called once per frame
+    #endregion
+
+    #region Strings
+
+    public override string GetName()
+    {
+        return "Factory";
+    }
+
+    protected override string GetBuildingFunction()
+    {
+        return $"Converts {HudManager.GetIcon("Brick")} to {HudManager.GetIcon("Raw")}";
+    }
+
+    public override string GetDescription()
+    {
+        return $"This factory converts {rawMaterialConsumption} {HudManager.GetIcon("Raw")} to {HudManager.GetIcon("Brick")} building materials every {maxFactoryConvertTimer} seconds.\n\n{ShowProgress()}";
+    }
+
+    private string ShowProgress()
+    {
+        if (isProducing)
+        {
+            return GetProgressBar();
+        }
+        else
+        {
+            return "Not enough raw materials!";
+        }
+    }
+
+    #endregion
+
+    #region Default
+
     protected override void Update()
     {
         base.Update();
@@ -47,27 +83,9 @@ public class FactoryScript : BuildingScript
         }
     }
 
-    public override string GetName()
-    {
-        return "Factory";
-    }
+    #endregion
 
-    public override string GetDescription()
-    {
-        return $"This factory converts {rawMaterialConsumption} raw materials to {buildingMaterialProduction} building materials every {maxFactoryConvertTimer} seconds.\n\n{ShowProgress()}";
-    }
-
-    private string ShowProgress()
-    {
-        if (isProducing)
-        {
-            return GetProgressBar();
-        }
-        else
-        {
-            return "Not enough raw materials!";
-        }
-    }
+    #region Progress
 
     private string GetProgressBar()
     {
@@ -87,20 +105,6 @@ public class FactoryScript : BuildingScript
         return $"[RM {arrows} BM]";
     }
 
-    public override void OnFinishedRemoving()
-    {
-        base.OnFinishedRemoving();
-
-        transform.parent.GetComponent<BaseTileScript>().DeletePlacedObjects();
-    }
-
-    public override void OnFinishedBuilding()
-    {
-        base.OnFinishedBuilding();
-        particleSystem.Play();
-    }
-
-    
     public void ToggleBoost()
     {
         if (!BoostOn)
@@ -125,5 +129,13 @@ public class FactoryScript : BuildingScript
             BoostOn = false;
         }
     }
-    
+
+    #endregion
+
+    public override void OnFinishedBuilding()
+    {
+        base.OnFinishedBuilding();
+        smokeTrail.Play();
+    }
+
 }
