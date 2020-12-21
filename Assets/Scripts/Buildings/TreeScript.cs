@@ -15,9 +15,9 @@ public class TreeScript : BuildObject
         return $"Produces {HudManager.GetIcon("OxygenPlus")}";
     }
 
-    protected override string GetOygenCosts()
+    protected override string GetOxygenCosts()
     {
-        return $"<sprite=6> {oxygenProduction}";
+        return $"{HudManager.GetIcon("OxygenPlus")} {oxygenProduction}";
     } 
 
     public override string GetDescription()

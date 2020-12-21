@@ -18,7 +18,7 @@ public class BuildObject : OxygenUser
     {
         return $"{GetBuildingFunction()}\n" +
             $"{GetBuildRequirements()}\n" +
-            $"{GetOygenCosts()}";
+            $"{GetOxygenCosts()}";
     }
 
     /// <summary>
@@ -35,7 +35,7 @@ public class BuildObject : OxygenUser
         return $"{HudManager.GetIcon("Human")} {HumansRequiredToBuild} {HudManager.GetIcon("Brick")} {BuildCost}";
     }
 
-    protected virtual string GetOygenCosts()
+    protected virtual string GetOxygenCosts()
     {
         return $"{HudManager.GetIcon("OxygenMin")} {oxygenUsage} {HudManager.GetIcon("Pollution")} {pollutionProduction}";
     }
