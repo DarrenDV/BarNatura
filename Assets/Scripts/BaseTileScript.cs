@@ -128,7 +128,7 @@ public class BaseTileScript : Tile
         //Rubble tile spawning
         if (Random.Range(0, 100) < tileVariables.rubbleSpawnChance)
         {
-            PlaceObject(Instantiate(tileVariables.rubbleTile, Vector3.zero, Quaternion.identity));
+            PlaceObject(Instantiate(tileVariables.rubbleTiles[Random.Range(0, tileVariables.rubbleTiles.Length)], Vector3.zero, Quaternion.identity));
         } 
         else
         {
