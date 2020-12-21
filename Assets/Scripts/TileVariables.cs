@@ -8,6 +8,13 @@ public class TileVariables : MonoBehaviour
     [Header("Colors")]
     public Gradient gradient;
 
+    [Header("Tile spreading")]
+    public int maxChance = 100;
+    [Range(1, 100)]
+    public int natureChance;
+    [Range(1, 100)]
+    public int toxicChance; 
+
     //Spawned tile variables
     [Header("Spawning objects")]
     public GameObject startingSpaceShip;

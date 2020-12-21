@@ -10,6 +10,7 @@ public class BaseObject : MonoBehaviour
     public bool CanBeRemovedByPlayer = true;
     public int HumansRequiredToBuild = 5;
     public int HumansRequiredToRemove = 5;
+    private bool canBeClikced;
 
     /// <summary>
     /// The time it takes to build this object.
@@ -53,6 +54,7 @@ public class BaseObject : MonoBehaviour
     {
         if (IsBeingBuild)
         {
+            canBeClikced = false;
             buildProgress += Time.deltaTime / buildTime;
 
             if (buildProgress >= 1)
@@ -67,6 +69,7 @@ public class BaseObject : MonoBehaviour
         }
         else if (IsBeingRemoved)
         {
+            canBeClikced = false;
             buildProgress -= Time.deltaTime / removeTime; // 5 sec remove time
 
             if (buildProgress <= 0)
@@ -80,6 +83,12 @@ public class BaseObject : MonoBehaviour
             {
                 UpdateScale();
             }
+        }
+
+        else
+        {
+            if (canBeClikced == false) canBeClikced = true;
+
         }
     }
 
@@ -101,15 +110,6 @@ public class BaseObject : MonoBehaviour
     {
         // if not being build or destroyed, get description of own object, to be overwritten by object.
         return "No description set up for this object!";
-    }
-
-    /// <summary>
-    /// Get the description when the player wants to build this object.
-    /// </summary>
-    /// <returns></returns>
-    public virtual string GetBuildDescription()
-    {
-        return $"Humans required:\n{HumansRequiredToBuild}";
     }
 
     /// <summary>
@@ -177,6 +177,7 @@ public class BaseObject : MonoBehaviour
     public virtual void OnFinishedRemoving()
     {
         GameManager.Instance.RemoveWorkers(HumansRequiredToRemove);
+        transform.parent.GetComponent<BaseTileScript>().DeletePlacedObjects();
         OnFinishedRemovingEvent.Invoke();
     }
 
@@ -203,7 +204,7 @@ public class BaseObject : MonoBehaviour
             return;
         }
 
-        if (!GameManager.Instance.inBuildMode && !Utils.IsPointerOverUIElement())
+        if (!GameManager.Instance.inBuildMode && !Utils.IsPointerOverUIElement() && canBeClikced)
         {
             Popup.Instance.Show(this);
         }

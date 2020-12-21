@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class Popup : MonoBehaviour
 {
@@ -15,9 +16,9 @@ public class Popup : MonoBehaviour
     [SerializeField] private Button removeButton = null;
     [SerializeField] private Text removeButtonText = null;
     [SerializeField] private Button boostButton = null;
-    [SerializeField] private Text boostButtonText = null;
+    [SerializeField] private TextMeshProUGUI boostButtonText = null;
     [SerializeField] private Text titleText = null;
-    [SerializeField] private Text descriptionText = null;
+    [SerializeField] private TextMeshProUGUI descriptionText = null;
 
     [Header("Sound")]
     [SerializeField] private float volume = 1f;
@@ -64,13 +65,7 @@ public class Popup : MonoBehaviour
 
     public void Show(BaseObject objectToDisplay)
     {
-        if(!CanOpen)
-        {
-            return;
-        }
-
-        // don't show when already open
-        if (panel.activeInHierarchy)
+        if(!CanOpen || panel.activeInHierarchy)
         {
             return;
         }
@@ -85,8 +80,7 @@ public class Popup : MonoBehaviour
         selectedObject.OnFinishedRemovingEvent.AddListener(OnSelectedBuildingRemoved);
 
         PlaySound(appearSound);
-
-        titleText.text = selectedObject.GetName();
+  
         UpdateDescription();
 
         SetPosition();
@@ -104,7 +98,8 @@ public class Popup : MonoBehaviour
 
     private void UpdateDescription()
     {
-        descriptionText.text = selectedObject.GetCurrentDescription();
+        titleText.text = selectedObject.GetName();
+        descriptionText.text = selectedObject.GetDescription();
     }
 
     private void DisplayRemoveButton()
@@ -164,19 +159,17 @@ public class Popup : MonoBehaviour
 
     private void DisplayBoostButton()
     {
-        if (selectedObject is FactoryScript)
+        if (selectedObject is FactoryScript fs)
         {
-            var fs = (FactoryScript)selectedObject;
-
             boostButton.gameObject.SetActive(true);
 
             if (fs.BoostOn)
             {
-                boostButtonText.text = "Unboost (+2H)";
+                boostButtonText.text = $"Unboost (+2{HudManager.GetIcon("Human")})";
             }
             else
             {
-                boostButtonText.text = "Boost 2x (-2H)";
+                boostButtonText.text = $"Boost 2x (-2{HudManager.GetIcon("Human")})";
             }
         }
         else

@@ -8,7 +8,7 @@ public class HudManager : MonoBehaviour
     private Text oxygenCounter, drainCounter, pollutionCounter, surplusCounter;
     private Slider oxygenBar;
     private Text buildMaterialCounter, rawMaterialCounter;
-    private Text humanCounter, workerCounter, capacityCounter;
+    private Text humanCounter, capacityCounter;
 
     private void Awake()
     {
@@ -21,19 +21,17 @@ public class HudManager : MonoBehaviour
             Debug.LogError("Hud Manager instance already set!");
         }
 
-        oxygenCounter = GameObject.Find("OxygenCounter").GetComponent<Text>();
-        drainCounter = GameObject.Find("DrainCounter").GetComponent<Text>();
-        pollutionCounter = GameObject.Find("PollutionCounter").GetComponent<Text>();
-        surplusCounter = GameObject.Find("SurplusCounter").GetComponent<Text>();
+        oxygenCounter = GameObject.Find("Oxygen Counter").GetComponent<Text>();
+        drainCounter = GameObject.Find("Drain Counter").GetComponent<Text>();
+        pollutionCounter = GameObject.Find("Pollution Counter").GetComponent<Text>();
+        surplusCounter = GameObject.Find("Surplus Counter").GetComponent<Text>();
 
         buildMaterialCounter = GameObject.Find("BuildMaterialCounter").GetComponent<Text>();
         rawMaterialCounter = GameObject.Find("RawMaterialCounter").GetComponent<Text>();
 
         humanCounter = GameObject.Find("HumanCounter").GetComponent<Text>();
-        workerCounter = GameObject.Find("WorkerCounter").GetComponent<Text>();
         capacityCounter = GameObject.Find("CapacityCounter").GetComponent<Text>();
         oxygenBar = GameObject.Find("OxygenSlider").GetComponent<Slider>();
-
         
     }
 
@@ -74,12 +72,8 @@ public class HudManager : MonoBehaviour
 
     public void UpdateHumanCounter()
     {
-        humanCounter.text = (GameManager.Instance.GetPopulationAmount() - GameManager.Instance.GetWorkerAmount()).ToString();
-    }
-
-    public void UpdateWorkerCounter()
-    {
-        workerCounter.text = GameManager.Instance.GetWorkerAmount().ToString();
+        humanCounter.text = (GameManager.Instance.GetPopulationAmount() - GameManager.Instance.GetWorkerAmount() +
+            " / " + GameManager.Instance.GetPopulationAmount()).ToString();
     }
 
     public void UpdateCapacityCounter()
@@ -102,5 +96,28 @@ public class HudManager : MonoBehaviour
 
         oxygenBar.maxValue = GameManager.Instance.GetOxygenGeneration();
         oxygenBar.value = GameManager.Instance.GetOxygenUsage() + GameManager.Instance.GetPollution();
+    }
+
+    /// <summary>
+    /// Return a icon to use in the tooltip
+    /// </summary>
+    /// <param name="IconName">The name of the icon</param>
+    /// <returns></returns>
+    public static string GetIcon(string IconName)
+    {
+        switch (IconName)
+        {
+            case "House": return "<sprite=0>";
+            case "Raw": return "<sprite=1>";
+            case "Toxic": return "<sprite=2>";
+            case "Human": return "<sprite=3>";
+            case "Brick": return "<sprite=4>";
+            case "Nature": return "<sprite=5>";
+            case "OxygenPlus": return "<sprite=6>";
+            case "OxygenMin": return "<sprite=7>";
+            case "Pollution": return "<sprite=8>";
+            default: return "Icon not found";
+        };
+
     }
 }
