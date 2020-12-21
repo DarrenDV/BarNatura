@@ -368,8 +368,12 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: txt <sprite=0> txt <sprite=1> txt <sprite=2> txt <sprite=3> txt <sprite=4>
-    txt <sprite=5> txt <sprite=6> txt <sprite=7> txt <sprite=8>
+  m_text: 'txt <sprite=0 color= CE6A17> txt <sprite=1 color= 63330B> txt <sprite=2
+    color= 5A1960> txt <sprite=3 color= 03BCC0>
+
+    txt <sprite=4 color= BE1351>
+    txt <sprite=5 color= 00A0FF> txt <sprite=5 color= ff0000> txt <sprite=6 color=
+    ffff00>'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -388,7 +392,7 @@ MonoBehaviour:
     bottomLeft: {r: 1, g: 1, b: 1, a: 1}
     bottomRight: {r: 1, g: 1, b: 1, a: 1}
   m_fontColorGradientPreset: {fileID: 0}
-  m_spriteAsset: {fileID: 11400000, guid: 6fe607123a9b05d4997fa52acea27ffe, type: 2}
+  m_spriteAsset: {fileID: 11400000, guid: 0fe20a2074fafe14c9ca4e08a78362f3, type: 2}
   m_tintAllSprites: 0
   m_StyleSheet: {fileID: 0}
   m_TextStyleHashCode: -1183493901

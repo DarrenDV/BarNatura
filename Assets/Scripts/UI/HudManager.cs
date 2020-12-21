@@ -107,15 +107,15 @@ public class HudManager : MonoBehaviour
     {
         switch (IconName)
         {
-            case "House": return "<sprite=0>";
-            case "Raw": return "<sprite=1>";
-            case "Toxic": return "<sprite=2>";
-            case "Human": return "<sprite=3>";
-            case "Brick": return "<sprite=4>";
-            case "Nature": return "<sprite=5>";
-            case "OxygenPlus": return "<sprite=6>";
-            case "OxygenMin": return "<sprite=7>";
-            case "Pollution": return "<sprite=8>";
+            case "House": return "<sprite=0 color= CE6A17>";
+            case "Raw": return "<sprite=1 color= 63330B>";
+            case "Toxic": return "<sprite=2 color= 5A1960>";
+            case "Human": return "<sprite=3 color= 03BCC0>";
+            case "Brick": return "<sprite=4 color= BE1351>";
+            //case "Nature": return "<sprite=5>";
+            case "OxygenPlus": return "<sprite=5 color= 00A0FF>";
+            case "OxygenMin": return "<sprite=5 color= ff0000>";
+            case "Pollution": return "<sprite=6 color= ffff00>";
             default: return "Icon not found";
         };
 

@@ -84,7 +84,7 @@ MonoBehaviour:
     bottomLeft: {r: 1, g: 1, b: 1, a: 1}
     bottomRight: {r: 1, g: 1, b: 1, a: 1}
   m_fontColorGradientPreset: {fileID: 0}
-  m_spriteAsset: {fileID: 11400000, guid: 6fe607123a9b05d4997fa52acea27ffe, type: 2}
+  m_spriteAsset: {fileID: 11400000, guid: 0fe20a2074fafe14c9ca4e08a78362f3, type: 2}
   m_tintAllSprites: 0
   m_StyleSheet: {fileID: 11400000, guid: f952c082cb03451daed3ee968ac6c63e, type: 2}
   m_TextStyleHashCode: -1183493901
@@ -400,7 +400,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TitleText: {fileID: 4307601513415804069}
   DescriptionText: {fileID: 2051694655765083784}
-  DisplayOffset: {x: 0, y: 0, z: 0}
   CanOpen: 1
 --- !u!1001 &2237962918663454994
 PrefabInstance:

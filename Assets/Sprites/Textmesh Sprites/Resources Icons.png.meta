@@ -1,103 +1,136 @@
 fileFormatVersion: 2
-guid: 4975826781b47db498894c734da5b32a
+guid: c07306571618ce74689b0b166a6ce221
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -4174719641443906419
-    second: Build Meni Button Icons_0
+      213: 2430859724754253913
+    second: Resources Icons_0
   - first:
-      213: 2041284772864331636
-    second: Build Meni Button Icons_1
+      213: 6552690458060522755
+    second: Resources Icons_1
   - first:
-      213: -5163033614308724801
-    second: Build Meni Button Icons_2
+      213: 2172807081940874139
+    second: Resources Icons_2
   - first:
-      213: -7966125640536089927
-    second: Build Meni Button Icons_3
+      213: 7292831207659288217
+    second: Resources Icons_3
   - first:
-      213: -1654947596451294633
-    second: Build Meni Button Icons_4
+      213: -5991336285551163123
+    second: Resources Icons_4
   - first:
-      213: -1065729445766494769
-    second: Build Meni Button Icons_5
+      213: 6048726864797976804
+    second: Resources Icons_5
   - first:
-      213: 906759570641598038
-    second: Build Meni Button Icons_6
+      213: -6502883080328994162
+    second: Resources Icons_6
   - first:
-      213: 3275051234594861545
-    second: Build Meni Button Icons_7
+      213: 1859578485109572017
+    second: Resources Icons_7
   - first:
-      213: 443356552423811299
-    second: Build Meni Button Icons_8
+      213: -5030705272293124154
+    second: Resources Icons_8
   - first:
-      213: -5937726515099929968
-    second: Build Meni Button Icons_9
+      213: 6919965675016535615
+    second: Resources Icons_9
   - first:
-      213: 1783945591891175041
-    second: Build Meni Button Icons_10
+      213: -8043315688678683827
+    second: Resources Icons_10
   - first:
-      213: 369442758825148889
-    second: Build Meni Button Icons_11
+      213: 497745673968281862
+    second: Resources Icons_11
   - first:
-      213: 1233820677318720476
-    second: Build Meni Button Icons_12
+      213: -4322060851049250137
+    second: Resources Icons_12
   - first:
-      213: 4818363721689473656
-    second: Build Meni Button Icons_13
+      213: 1618502446493608244
+    second: Resources Icons_13
   - first:
-      213: -2854791112047873114
-    second: Build Meni Button Icons_14
+      213: 4627447978019022056
+    second: Resources Icons_14
   - first:
-      213: -8430484153166900622
-    second: Build Meni Button Icons_15
+      213: 972346721836329521
+    second: Resources Icons_15
   - first:
-      213: -8226528916516007983
-    second: Build Meni Button Icons_16
+      213: -7406941531307872415
+    second: Resources Icons_16
   - first:
-      213: -3322422129478244574
-    second: Build Meni Button Icons_17
+      213: -4255675379307501289
+    second: Resources Icons_17
   - first:
-      213: 620058487583710612
-    second: Build Meni Button Icons_18
+      213: -5483932006528682973
+    second: Resources Icons_18
   - first:
-      213: -2331545290130090791
-    second: Build Meni Button Icons_19
+      213: -3366644033666878986
+    second: Resources Icons_19
   - first:
-      213: 347130345784384524
-    second: Build Meni Button Icons_20
+      213: 7098784794083667621
+    second: Resources Icons_20
   - first:
-      213: 3869001012459366463
-    second: Build Meni Button Icons_21
+      213: 2361137201200901834
+    second: Resources Icons_21
   - first:
-      213: -1950752072446668781
-    second: Build Meni Button Icons_22
+      213: -2788196655635278583
+    second: Resources Icons_22
   - first:
-      213: 7901651952087628587
-    second: Build Meni Button Icons_0
+      213: -6904609515908120207
+    second: Resources Icons_23
   - first:
-      213: -5086969616475320586
-    second: Build Meni Button Icons_1
+      213: 2490327886647749595
+    second: Resources Icons_24
   - first:
-      213: 4417046184268690979
-    second: Build Meni Button Icons_3
+      213: -3681101852211718592
+    second: Resources Icons_25
   - first:
-      213: 5596476724142668484
-    second: Build Meni Button Icons_4
+      213: -1915546362834955769
+    second: Resources Icons_26
   - first:
-      213: 9182882739001155804
-    second: Build Meni Button Icons_12
+      213: 6418251951789186657
+    second: Resources Icons_27
   - first:
-      213: -4254591681457147805
-    second: Build Meni Button Icons_15
+      213: -6549790159727672654
+    second: Resources Icons_28
   - first:
-      213: 4627533609941856775
-    second: Build Meni Button Icons_17
+      213: 8627675900561257050
+    second: Resources Icons_29
   - first:
-      213: 1227352483459893232
-    second: Build Meni Button Icons_18
+      213: 7107303950941722881
+    second: Resources Icons_30
   - first:
-      213: 6007408338044618909
-    second: Build Meni Button Icons_19
+      213: -6769124505947486909
+    second: Resources Icons_31
+  - first:
+      213: 8130408297099673311
+    second: Resources Icons_32
+  - first:
+      213: 1214935096296415907
+    second: Resources Icons_33
+  - first:
+      213: 9108659475351839054
+    second: Resources Icons_34
+  - first:
+      213: 3071435771368714069
+    second: Resources Icons_35
+  - first:
+      213: -706448843699375649
+    second: Resources Icons_36
+  - first:
+      213: -6999844756920113661
+    second: Resources Icons_37
+  - first:
+      213: 1045617073395559671
+    second: Resources Icons_38
+  - first:
+      213: 7896488852490901978
+    second: Resources Icons_39
+  - first:
+      213: 6869554768072551270
+    second: Resources Icons_40
+  - first:
+      213: -4499553585928253810
+    second: Resources Icons_41
+  - first:
+      213: -7317679660824942485
+    second: Resources Icons_42
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -183,190 +216,148 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Build Meni Button Icons_0
+      name: Resources Icons_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 614
-        width: 446
-        height: 386
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: b2b74fee59e48ad60800000000000000
-      internalID: 7901651952087628587
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Build Meni Button Icons_1
-      rect:
-        serializedVersion: 2
-        x: 860
-        y: 78
-        width: 985
-        height: 922
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 6fe88c2f5147769b0800000000000000
-      internalID: -5086969616475320586
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Build Meni Button Icons_2
-      rect:
-        serializedVersion: 2
-        x: 1841
-        y: 900
-        width: 104
-        height: 100
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: fbf2abf58483958b0800000000000000
-      internalID: -5163033614308724801
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Build Meni Button Icons_3
-      rect:
-        serializedVersion: 2
-        x: 1942
-        y: 690
-        width: 459
-        height: 310
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 32674d12a108c4d30800000000000000
-      internalID: 4417046184268690979
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Build Meni Button Icons_4
-      rect:
-        serializedVersion: 2
-        x: 2409
         y: 0
-        width: 991
-        height: 1000
+        width: 512
+        height: 512
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4caf340ededaaad40800000000000000
-      internalID: 5596476724142668484
+      spriteID: 958f7c85a062cb120800000000000000
+      internalID: 2430859724754253913
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Build Meni Button Icons_10
+      name: Resources Icons_1
       rect:
         serializedVersion: 2
-        x: 446
-        y: 636
-        width: 419
-        height: 364
+        x: 512
+        y: 0
+        width: 512
+        height: 512
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1862c476019d1c810800000000000000
-      internalID: 1783945591891175041
+      spriteID: 3050ac30145dfea50800000000000000
+      internalID: 6552690458060522755
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Build Meni Button Icons_12
+      name: Resources Icons_2
       rect:
         serializedVersion: 2
-        x: 3386
-        y: 55
-        width: 980
-        height: 945
+        x: 1024
+        y: 0
+        width: 512
+        height: 512
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cd0ea38b237207f70800000000000000
-      internalID: 9182882739001155804
+      spriteID: b93f98c678c572e10800000000000000
+      internalID: 2172807081940874139
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Build Meni Button Icons_15
+      name: Resources Icons_3
       rect:
         serializedVersion: 2
-        x: 4364
-        y: 55
-        width: 982
-        height: 945
+        x: 1536
+        y: 0
+        width: 512
+        height: 512
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3603a625867a4f4c0800000000000000
-      internalID: -4254591681457147805
+      spriteID: 9963a632857553560800000000000000
+      internalID: 7292831207659288217
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Build Meni Button Icons_19
+      name: Resources Icons_4
       rect:
         serializedVersion: 2
-        x: 5346
-        y: 246
-        width: 878
-        height: 754
+        x: 2048
+        y: 0
+        width: 512
+        height: 512
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d988ed90e0a9e5350800000000000000
-      internalID: 6007408338044618909
+      spriteID: d0980d9446f7adca0800000000000000
+      internalID: -5991336285551163123
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Resources Icons_5
+      rect:
+        serializedVersion: 2
+        x: 2560
+        y: 0
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4e845a7390561f350800000000000000
+      internalID: 6048726864797976804
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Resources Icons_6
+      rect:
+        serializedVersion: 2
+        x: 3072
+        y: 0
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e82a71dca4e11c5a0800000000000000
+      internalID: -6502883080328994162
       vertices: []
       indices: 
       edges: []
@@ -374,7 +365,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: c90ccfc6698c5dd479e68e3bff8fd7f4
+    spriteID: e7a71e6b4e9f9b24d8dff16f874009ad
     internalID: 0
     vertices: []
     indices: 
