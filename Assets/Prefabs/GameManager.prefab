@@ -234,8 +234,20 @@ MonoBehaviour:
     type: 3}
   lavaTile: {fileID: 5128271968838047032, guid: b73021fcd43e4de49baaa557a87bd86f,
     type: 3}
-  rubbleTile: {fileID: 2537658061721995341, guid: e41ad1306a813f249bd6971438294a34,
-    type: 3}
+  rubbleTiles:
+  - {fileID: 2537658061721995341, guid: e41ad1306a813f249bd6971438294a34, type: 3}
+  - {fileID: 4386392585156861154, guid: 4b5eef6d39df00249bef1ea96c8c0480, type: 3}
+  - {fileID: 8905154849136264931, guid: 39fd6904f97b1624c872598d2f2f0c03, type: 3}
+  - {fileID: 2944104118479290470, guid: 8e82497d05ecada4cba565c030eab304, type: 3}
+  - {fileID: 5439608644245600190, guid: 12a3b56cd56ab5d408eefe76e2485293, type: 3}
+  - {fileID: 2537395993185254653, guid: 44ca62d17c463554dafdf6713cec14e2, type: 3}
+  - {fileID: 3825004413802402779, guid: dae0a9580a39dd54d98a15b582d61553, type: 3}
+  - {fileID: 1272665751837697227, guid: 92791b04f71292f43b158c9b5835c4c7, type: 3}
+  - {fileID: 7241104878767201497, guid: cb173a2a0fba0b04f984d2bd25d90132, type: 3}
+  - {fileID: 3230729538750123754, guid: 6b82012cde55fe1479d471d24d5554df, type: 3}
+  - {fileID: 5581417044123657397, guid: 856502733cebcf34488d949f438af116, type: 3}
+  - {fileID: 7533863112709041058, guid: 90f7e820820baea49b5d6a343b38f822, type: 3}
+  - {fileID: 4482554311292272518, guid: 6901615fd32cb07469841eb6181eb507, type: 3}
   toxicParticles: {fileID: 2288235026223712931, guid: 20d73fe19e45d2044ad4bc0f83ef0a33,
     type: 3}
   rubbleSpawnChance: 40
@@ -264,9 +276,6 @@ MonoBehaviour:
   timeRemaining: 9999999
   populationDeathCanTrigger: 0
   popRequiredForTrigger: 10
-  endPopUpPanel: {fileID: 0}
-  endPopUpTitle: {fileID: 0}
-  endPopUpDescription: {fileID: 0}
   winTitleText: YOU WIN!
   winDescriptionText: 'Congtratulations commander!
 

@@ -19,7 +19,7 @@ public class TileVariables : MonoBehaviour
     [Header("Spawning objects")]
     public GameObject startingSpaceShip;
     public GameObject lavaTile;
-    public GameObject rubbleTile;
+    public GameObject[] rubbleTiles;
     public GameObject toxicParticles;
     [Range(1, 100)]
     public int rubbleSpawnChance;
