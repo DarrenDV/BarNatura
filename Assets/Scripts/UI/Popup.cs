@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Linq;
+using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
@@ -195,11 +196,12 @@ public class Popup : MonoBehaviour
         var distance = Vector3.Distance(position, target);
 
         var raycastHits = Physics.RaycastAll(position, direction, distance);
+        var filteredList = raycastHits.Where(raycastHit => !raycastHit.transform.gameObject.CompareTag("NatureDecal")).ToArray(); // we don't care about decals
 
         // sometimes the ray also finds the tile the building is on
-        if (raycastHits.Length == 2)
+        if (filteredList.Length == 2)
         {
-            var tile = raycastHits[0].transform.GetComponent<BaseTileScript>() != null ? raycastHits[0].transform.GetComponent<BaseTileScript>() : raycastHits[1].transform.GetComponent<BaseTileScript>();
+            var tile = filteredList[0].transform.GetComponent<BaseTileScript>() != null ? filteredList[0].transform.GetComponent<BaseTileScript>() : filteredList[1].transform.GetComponent<BaseTileScript>();
 
             // sometimes we hit two objects but not a tile
             if (tile == null)
@@ -213,7 +215,7 @@ public class Popup : MonoBehaviour
             }
         }
 
-        return raycastHits.Length == 1;
+        return filteredList.Length == 1;
     }
 
     private void PlaySound(AudioClip audioClip)

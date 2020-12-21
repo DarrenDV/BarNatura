@@ -2,19 +2,23 @@
 using System.Linq;
 using Assets.Scripts;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class BaseTileScript : Tile
 {
     #region Nature / Toxic Variables
 
+    //[Header("Base Tile Script")]
+    //[Tooltip("The degree to which a tile is either polluted or nature.")]
+    //[Range(-10, 10)]
+    //[SerializeField]
+    private int naturePollutedDegree;
+
     [Header("Base Tile Script")]
-    [Tooltip("The degree to which a tile is either polluted or nature.")]
-    [Range(-10, 10)]
-    [SerializeField]
-    public int naturePollutedDegree;
+    public UnityEvent OnNaturePollutedDegreeChangedEvent;
 
     private float timerSpread;
-    public bool canBecomeNature = false;
+    public bool canBecomeNature;
 
     private MeshRenderer meshRenderer;
     private bool doMaterialUpdate;
@@ -47,6 +51,8 @@ public class BaseTileScript : Tile
         winLose = FindObjectOfType<WinLose>();
 
         meshRenderer = GetComponent<MeshRenderer>();
+
+        OnNaturePollutedDegreeChangedEvent.AddListener(OnNatureDegreeChanged);
     }
 
     protected override void Start()
@@ -67,8 +73,6 @@ public class BaseTileScript : Tile
         base.Update();
 
         Spread();
-
-        CheckTile();
     }
 
     /// <summary>
@@ -114,6 +118,63 @@ public class BaseTileScript : Tile
         }
 
         return surroundingTiles.Cast<BaseTileScript>().ToList();
+    }
+
+    private void OnNatureDegreeChanged()
+    {
+        UpdateDecals();
+        CheckTile();
+    }
+
+    private void UpdateDecals()
+    {
+        if (naturePollutedDegree <= 0)
+        {
+            // remove all decals
+            foreach (var placedObject in PlacedObjects)
+            {
+                if (placedObject.CompareTag("NatureDecal"))
+                {
+                    DeletePlacedObject(placedObject, false);
+                }
+            }
+        }
+        else
+        {
+            var currentDecalAmount = PlacedObjects.Count(placedObject => placedObject.CompareTag("NatureDecal"));
+            var decalDiff = naturePollutedDegree - currentDecalAmount;
+
+            // we need to place more
+            if (decalDiff > 0)
+            {
+                // we don't want any decals on tiles with a lava lake on it
+                if (PlacedObjects.Count > 0 && PlacedObjects[0].GetComponent<LavaLake>() != null)
+                {
+                    return;
+                }
+
+                for (var i = 0; i < decalDiff; i++)
+                {
+                    var newDecal = Instantiate(tileVariables.tileDecals[Random.Range(0, tileVariables.tileDecals.Length)], transform);
+                    PlaceObject(newDecal, false);
+
+                    var rand = Random.insideUnitCircle * 0.065f;
+                    newDecal.transform.localPosition = new Vector3(rand.x, 0f, rand.y);
+                }
+            }
+            else // we need to remove some decals
+            {
+                // remove x amount
+                for (var i = 0; i < Mathf.Abs(decalDiff); i++)
+                {
+                    // find placed decal object
+                    var decalToRemove = PlacedObjects.First(x => x.CompareTag("NatureDecal"));
+
+                    // and delete it
+                    DeletePlacedObject(decalToRemove, false);
+                }
+            }
+        }
     }
 
     #endregion
@@ -196,8 +257,7 @@ public class BaseTileScript : Tile
     {
         if (neighbour.naturePollutedDegree == -10 && naturePollutedDegree > -10)
         {
-            naturePollutedDegree--;
-            doMaterialUpdate = true;
+            AddNaturePollutedDegree(-1);
         }
 
         if (naturePollutedDegree == -10)
@@ -211,9 +271,7 @@ public class BaseTileScript : Tile
     {
         if (neighbour.naturePollutedDegree == 10 && naturePollutedDegree < 10 && canBecomeNature)
         {
-            naturePollutedDegree++;
-            doMaterialUpdate = true;
-
+            AddNaturePollutedDegree(1);
             CheckRemoveToxicParticles();
         }
     }
@@ -221,14 +279,16 @@ public class BaseTileScript : Tile
     public void SetNaturePollutedDegree(int newNaturePollutedDegree)
     {
         naturePollutedDegree = newNaturePollutedDegree;
+        OnNaturePollutedDegreeChangedEvent.Invoke();
         doMaterialUpdate = true;
 
         CheckRemoveToxicParticles();
     }
 
-    public void IncreaseNaturePollutedDegree(int newNaturePollutedDegree)
+    public void AddNaturePollutedDegree(int newNaturePollutedDegree)
     {
         naturePollutedDegree += newNaturePollutedDegree;
+        OnNaturePollutedDegreeChangedEvent.Invoke();
         doMaterialUpdate = true;
 
         CheckRemoveToxicParticles();
@@ -261,6 +321,8 @@ public class BaseTileScript : Tile
             canAddParticles = false;
         }
     }
+
+    public int NaturePollutedDegree => naturePollutedDegree;
 
     #endregion
 
@@ -353,11 +415,11 @@ public class BaseTileScript : Tile
         }
     }
 
-    public override void PlaceObject(GameObject obj)
+    public override void PlaceObject(GameObject obj, bool updateOccupied = true)
     {
         obj.GetComponent<BaseObject>().parentTile = this;
 
-        base.PlaceObject(obj);
+        base.PlaceObject(obj, updateOccupied);
     }
 
     public void PlaceStartingSpaceShip()
@@ -371,8 +433,7 @@ public class BaseTileScript : Tile
     /// <summary>
     /// Checks if the tile is completely nature or toxic and adds it to the WinLose calculation. Also removes it if it isn't nature or toxic anymore.
     /// </summary>
-    void CheckTile()
-
+    private void CheckTile()
     {
         //Checks if the tile can be added.
         if (canAddToWinLose) {   

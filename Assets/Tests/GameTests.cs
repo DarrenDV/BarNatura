@@ -48,13 +48,13 @@ namespace Tests
             yield return new WaitForSeconds(10);
             
             // get a tile that has nature and is free
-            var freeNatureTile = tiles.FirstOrDefault(tile => tile.naturePollutedDegree > 0 && tile.PlacedObjects.Count == 0);
+            var freeNatureTile = tiles.FirstOrDefault(tile => tile.NaturePollutedDegree > 0 && tile.PlacedObjects.Count == 0);
 
             // if all nearby tiles have rubble we need to clear some space
             if (freeNatureTile == null)
             {
                 var tileToClear = tiles.First(tile =>
-                    tile.naturePollutedDegree > 0 &&
+                    tile.NaturePollutedDegree > 0 &&
                     tile.PlacedObjects.First(building => building.GetComponent<Rubble>() != null));
 
                 tileToClear.PlacedObjects[0].GetComponent<Rubble>().OnRemove();
