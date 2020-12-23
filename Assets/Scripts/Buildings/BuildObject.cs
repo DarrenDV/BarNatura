@@ -3,6 +3,7 @@
 public class BuildObject : OxygenUser
 {
     [Header("Building Object")]
+    [Tooltip("Cost in building materials")]
     public int BuildCost = 1;
 
     [Tooltip("The minimum health a tile must have bafore this building can be placed on it")]
