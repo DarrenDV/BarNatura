@@ -321,8 +321,6 @@ public class GameManager : MonoBehaviour
         population += populationToAdd;
         availableWorkers += populationToAdd;
 
-        winLose.CheckPopulation(population);
-
         if (HudManager.Instance == null)
         {
             return;
@@ -379,7 +377,6 @@ public class GameManager : MonoBehaviour
         workers -= workersToRemove;
         HudManager.Instance.UpdateHumanCounter();
     }
-
 
     /// <summary>
     /// Get the current amount of workers.
