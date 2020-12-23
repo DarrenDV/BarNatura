@@ -8,6 +8,9 @@ public class BuildObject : OxygenUser
     [Tooltip("The minimum health a tile must have bafore this building can be placed on it")]
     public int MinimumNaturePollutedDegree = 1;
 
+    [Tooltip("Divides the build cost by this int. How much materials are returned on demolish.")]
+    [SerializeField] int buildCostReturnDivider = 2;
+
     #region Build tool tip info
 
     /// <summary>
@@ -25,6 +28,7 @@ public class BuildObject : OxygenUser
     /// Describe what the building does
     /// </summary>
     /// <returns></returns>
+
     protected virtual string GetBuildingFunction()
     {
         return "Allan please add details";
@@ -41,4 +45,11 @@ public class BuildObject : OxygenUser
     }
 
     #endregion
+    public override void OnFinishedRemoving()
+    {
+        base.OnFinishedRemoving();
+
+        //Gives resources back
+        GameManager.Instance.AddBuildingMaterial(BuildCost / buildCostReturnDivider);
+    }
 }
