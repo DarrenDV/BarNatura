@@ -6,6 +6,8 @@ public class AtmosphereSystem : MonoBehaviour
     [SerializeField] private int atmosphereLevel1Threshhold = 300, atmosphereLevel2Threshhold = 1300, atmosphereLevel3Threshhold = 2600, atmosphereLevel4Threshhold  = 3900;
     [SerializeField] private float maxAtmopshereTimer = 5;
     [SerializeField] private Text currentOxygenCounter;
+    [SerializeField] private Sprite level1, level2, level3, level4;
+    [SerializeField] private Image atmosphereLevelImage;
     private int currentOxygen, currentAtmosphereLevel;
     private float atmosphereTimer = 0;
     // Update is called once per frame
@@ -27,21 +29,25 @@ public class AtmosphereSystem : MonoBehaviour
         if (currentOxygen > atmosphereLevel4Threshhold && currentAtmosphereLevel != 4)
         {
             currentAtmosphereLevel = 4;
+            atmosphereLevelImage.sprite = level4;
             UpdateTreeNatureRadius();
         } else
         if (currentOxygen > atmosphereLevel3Threshhold && currentAtmosphereLevel != 3)
         {
             currentAtmosphereLevel = 3;
+            atmosphereLevelImage.sprite = level3;
             UpdateTreeNatureRadius();
         } else
         if (currentOxygen > atmosphereLevel2Threshhold && currentAtmosphereLevel != 2)
         {
             currentAtmosphereLevel = 2;
+            atmosphereLevelImage.sprite = level2;
             UpdateTreeNatureRadius();
         } else
         if (currentOxygen > atmosphereLevel1Threshhold && currentAtmosphereLevel != 1)
         {
             currentAtmosphereLevel = 1;
+            atmosphereLevelImage.sprite = level1;
             UpdateTreeNatureRadius();
         }
     }
