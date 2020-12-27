@@ -261,7 +261,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7647788133465493295}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bc9f80971587c754ca51fb8af83bdead, type: 3}
   m_Name: 
@@ -274,8 +274,6 @@ MonoBehaviour:
   requiredToxicTilePercent: 0.8
   currentToxicTiles: 0
   timeRemaining: 9999999
-  populationDeathCanTrigger: 0
-  popRequiredForTrigger: 10
   winTitleText: YOU WIN!
   winDescriptionText: 'Congtratulations commander!
 
@@ -324,7 +322,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7647788133465493295}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8a5076cc9921d514d84a23f22fe8badd, type: 3}
   m_Name: 
@@ -335,3 +333,8 @@ MonoBehaviour:
   atmosphereLevel4Threshhold: 3900
   maxAtmopshereTimer: 5
   currentOxygenCounter: {fileID: 0}
+  level1: {fileID: 21300000, guid: 8da012b16ea552048be51c210c43c75e, type: 3}
+  level2: {fileID: 21300000, guid: 2cb1b552aa5ff59488c8198a52aab0fc, type: 3}
+  level3: {fileID: 21300000, guid: cf56bfaaa34c7af48b2ae9b8fd4498cc, type: 3}
+  level4: {fileID: 21300000, guid: 1e88576b97c0d5f4eb0a62068db5d952, type: 3}
+  atmosphereLevelImage: {fileID: 0}

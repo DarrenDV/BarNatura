@@ -5,6 +5,8 @@ using Assets.Scripts;
 
 public class WinLose : MonoBehaviour
 {
+    #region Variables
+
     public int tileCount;
 
     private bool canWin = true;
@@ -29,10 +31,6 @@ public class WinLose : MonoBehaviour
     private bool timerIsRunning;
     private Text timeText = null;
 
-    //Population related variables
-    [SerializeField] private bool populationDeathCanTrigger;
-    [SerializeField] private int popRequiredForTrigger = 10;
-
     private GameObject endPopUpBack;
     private Text endPopUpTitle;
     private Text endPopUpDescription;
@@ -42,6 +40,8 @@ public class WinLose : MonoBehaviour
     [SerializeField] [TextArea] private string winDescriptionText;
     [SerializeField] private string loseTitleText;
     [SerializeField] [TextArea] private string loseDescriptionText;
+
+    #endregion
 
     #region Default
 
@@ -55,9 +55,6 @@ public class WinLose : MonoBehaviour
 
     void Start()
     {
-
-        
-
         timerIsRunning = true;
         TileAmountCalculation();
         endPopUpBack.SetActive(false);
@@ -80,7 +77,6 @@ public class WinLose : MonoBehaviour
         requiredNatureTiles = Mathf.RoundToInt(tileCount * requiredNatureTilePercent);
         requiredToxicTiles = Mathf.RoundToInt(tileCount * requiredToxicTilePercent);
     }
-
 
     //Ran from Basetilescript
     /// <summary>
@@ -130,6 +126,9 @@ public class WinLose : MonoBehaviour
 
     #region Losing
 
+    /// <summary>
+    /// Run this if the player lost.
+    /// </summary>
     void Lost()
     {
         if (canLose)
@@ -139,28 +138,30 @@ public class WinLose : MonoBehaviour
         }
     }
 
-    void CheckTime()
+    /// <summary>
+    /// Check if the player loses due to a time loss.
+    /// </summary>
+    void CheckTime() // this function can be removed if time losses are removed. 
     {
         if (!timerIsRunning) Lost();
     }
 
+    /// <summary>
+    /// Checks the current population in the game, if it is 0 or less, the player loses.
+    /// </summary>
+    /// <param name="pop"></param>
     public void CheckPopulation(int pop)
     {
-
-        if (pop > popRequiredForTrigger) populationDeathCanTrigger = true;
-
-        if (populationDeathCanTrigger)
-        {
-            if(pop <= 0)
-            {
-                Lost();
-            }
-        }
+        if(pop <= 0) Lost();
     }
+
     #endregion
 
     #region Winning
 
+    /// <summary>
+    /// Run this if the player won. 
+    /// </summary>
     void Won()
     {
         if (canWin)
@@ -225,5 +226,5 @@ public class WinLose : MonoBehaviour
         //Displays the seconds and minuts on the Text UI
         timeText.text = $"{minutes:00}:{seconds:00}";
     }
-    #endregion
+    #endregion // this entire section can be removed if the player won't lose to time anymore.
 }
