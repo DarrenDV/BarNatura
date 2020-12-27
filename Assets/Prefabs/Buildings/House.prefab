@@ -65,6 +65,7 @@ MonoBehaviour:
   pollutionProduction: 1
   BuildCost: 10
   MinimumNaturePollutedDegree: 1
+  buildCostReturnDivider: 2
   maxCapacity: 10
   populationToAdd: 3
 --- !u!65 &6304328013930547756
@@ -154,11 +155,11 @@ PrefabInstance:
     - target: {fileID: 2300000, guid: 90b3007ed7074dd4ea1220f4352dbdec, type: 3}
       propertyPath: m_Materials.Array.data[2]
       value: 
-      objectReference: {fileID: 2100000, guid: d0b97e1c0a3204540a69b5bbece50f2b, type: 2}
+      objectReference: {fileID: 2100000, guid: ef08ca6ba36fac248adc13c1f5c85786, type: 2}
     - target: {fileID: 2300000, guid: 90b3007ed7074dd4ea1220f4352dbdec, type: 3}
       propertyPath: m_Materials.Array.data[4]
       value: 
-      objectReference: {fileID: 2100000, guid: ef08ca6ba36fac248adc13c1f5c85786, type: 2}
+      objectReference: {fileID: 2100000, guid: 0548e729574ab2c4dbc7d0c31b7620ab, type: 2}
     - target: {fileID: 2300000, guid: 90b3007ed7074dd4ea1220f4352dbdec, type: 3}
       propertyPath: m_Materials.Array.data[3]
       value: 
