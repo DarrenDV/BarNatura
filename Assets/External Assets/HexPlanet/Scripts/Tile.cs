@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System;
+using System.Linq;
 
 public enum TileDisplayOptions
 {
@@ -148,43 +149,73 @@ public class Tile : OxygenUser
 		}
 	}
 
-	public virtual void PlaceObject(GameObject obj)
+	public virtual void PlaceObject(GameObject obj, bool updateOccupied = true)
     {
 		obj.transform.position = FaceCenter;
 		obj.transform.up = transform.up;
 		obj.transform.rotation = transform.rotation;
 		obj.transform.SetParent(transform);
         PlacedObjects.Add(obj);
-		isOccupied = true;
+
+        if (updateOccupied)
+        {
+            isOccupied = true;
+        }
     }
 
-	public void DeleteLastPlacedObject()
+	public void DeleteLastPlacedObject(bool updateOccupied = true)
     {
-        isOccupied = false;
+        if (updateOccupied)
+        {
+            isOccupied = false;
+        }
 
-		if (PlacedObjects.Count > 0)
+        if (PlacedObjects.Count > 0)
         {
             DestroyImmediate(PlacedObjects[PlacedObjects.Count - 1]);
             PlacedObjects.RemoveAt(PlacedObjects.Count - 1);
         }
     }
 
-    public void DeletePlacedObjects()
+    public void DeletePlacedObjects(bool updateOccupied = true)
     {
-        isOccupied = false;
-
-		for (int i = 0; i < PlacedObjects.Count; i++)
+        if (updateOccupied)
         {
-            if(PlacedObjects[i] != null)
+            isOccupied = false;
+        }
+
+		foreach (var placedObject in PlacedObjects)
+        {
+            if(placedObject != null)
             {
-                DestroyImmediate(PlacedObjects[i]);
+                DestroyImmediate(placedObject);
             }
         }
 
         PlacedObjects.Clear();
 	}
 
-	public void SetExtrusionHeight(float height)
+    public void DeletePlacedObject(GameObject objectToDelete, bool updateOccupied = true)
+    {
+        foreach (var placedObject in PlacedObjects)
+        {
+            if (placedObject != null && placedObject == objectToDelete)
+            {
+                DestroyImmediate(placedObject);
+
+                break;
+            }
+        }
+
+        PlacedObjects.Remove(objectToDelete);
+
+        if (updateOccupied && PlacedObjects.Count(x => !x.gameObject.CompareTag("NatureDecal")) == 0)
+        {
+            isOccupied = false;
+        }
+    }
+
+    public void SetExtrusionHeight(float height)
     {
         float delta = height - ExtrudedHeight;
         Extrude(delta);
