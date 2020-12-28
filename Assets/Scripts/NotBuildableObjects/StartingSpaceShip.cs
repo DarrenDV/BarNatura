@@ -5,6 +5,9 @@ public class StartingSpaceShip : BuildingScript
     [Header("Spaceship")]
     [Tooltip("The amount of seconds the spaceship will supply oxygen.")]
     [SerializeField] private float oxygenSupplyTime = 60;
+    [SerializeField] private ParticleSystem particles;
+    private float particleTimer, particleEndTime = 3;
+    private bool checkParticles = true;
 
     private float lifeTime;
     private bool supplyOxygen = true;
@@ -41,6 +44,15 @@ public class StartingSpaceShip : BuildingScript
         if (supplyOxygen)
         {
             SupplyOxygen();
+        }
+
+        if (checkParticles) {
+            if (particleTimer > particleEndTime)
+            {
+                particles.Stop();
+                checkParticles = false;
+            }
+            particleTimer += Time.deltaTime;
         }
     }
 
