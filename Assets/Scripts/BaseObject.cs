@@ -101,7 +101,7 @@ public class BaseObject : MonoBehaviour
     public virtual void OnFinishedRemoving()
     {
         GameManager.Instance.RemoveWorkers(HumansRequiredToRemove);
-        transform.parent.GetComponent<BaseTileScript>().DeletePlacedObjects();
+        transform.parent.GetComponent<BaseTileScript>().DeletePlacedObject(gameObject);
         OnFinishedRemovingEvent.Invoke();
     }
 

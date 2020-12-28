@@ -227,9 +227,15 @@ MonoBehaviour:
     m_Mode: 0
     m_NumColorKeys: 3
     m_NumAlphaKeys: 2
+  infectionTexture: {fileID: 2100000, guid: 568ef3f2eeb3d64428692ab2652db315, type: 2}
   maxChance: 100
   natureChance: 25
   toxicChance: 17
+  tileDecals:
+  - {fileID: 7627049994104345723, guid: 1c16bca94a38f6649a8725d0a08a9b89, type: 3}
+  - {fileID: 5749680141189955985, guid: d15c5e5ca8221074282e4d32fbf0454e, type: 3}
+  - {fileID: 2564801839741846557, guid: 93579e753aeaa5841b388bd196ace146, type: 3}
+  - {fileID: 9047861065185084924, guid: 1322dd503b7d34648a48a420bee5fbb8, type: 3}
   startingSpaceShip: {fileID: 5905488213670049407, guid: 136a54d0731c2514ca3e13f424e82fd4,
     type: 3}
   lavaTile: {fileID: 5128271968838047032, guid: b73021fcd43e4de49baaa557a87bd86f,

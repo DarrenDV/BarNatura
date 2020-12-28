@@ -45,9 +45,9 @@ public class ToxicCleaner : BuildingScript
         {
             foreach (var tile in surroundingTiles)
             {
-                if (tile.naturePollutedDegree < 0)
+                if (tile.NaturePollutedDegree < 0)
                 {
-                    tile.IncreaseNaturePollutedDegree(1);
+                    tile.AddNaturePollutedDegree(1);
                 }
             }
 
