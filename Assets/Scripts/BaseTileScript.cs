@@ -131,12 +131,11 @@ public class BaseTileScript : Tile
         if (naturePollutedDegree <= 0)
         {
             // remove all decals
-            foreach (var placedObject in PlacedObjects)
+            var decalsToRemove = PlacedObjects.Where(placedObject => placedObject.CompareTag("NatureDecal")).ToList();
+
+            for (var i = 0; i < decalsToRemove.Count; i++)
             {
-                if (placedObject.CompareTag("NatureDecal"))
-                {
-                    DeletePlacedObject(placedObject, false);
-                }
+                DeletePlacedObject(decalsToRemove[i], false);
             }
         }
         else
