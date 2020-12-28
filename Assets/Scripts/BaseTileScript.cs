@@ -16,7 +16,6 @@ public class BaseTileScript : Tile
 
     [Header("Base Tile Script")]
     public UnityEvent OnNaturePollutedDegreeChangedEvent;
-    public Material infectionTexture;
 
     private float timerSpread;
     public bool canBecomeNature;
@@ -262,7 +261,7 @@ public class BaseTileScript : Tile
 
         if (naturePollutedDegree == -10)
         {
-            ToxicTexture();
+            SetToxicTexture();
             ToxicParticles();
             doMaterialUpdate = true;
             canBecomeNature = false;
@@ -323,9 +322,10 @@ public class BaseTileScript : Tile
             canAddParticles = false;
         }
     }
-    private void ToxicTexture()
+
+    private void SetToxicTexture()
     {
-        GetComponent<Renderer>().material = infectionTexture;
+        GetComponent<Renderer>().material = tileVariables.infectionTexture;
     }
 
     public int NaturePollutedDegree => naturePollutedDegree;

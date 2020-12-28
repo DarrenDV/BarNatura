@@ -227,6 +227,7 @@ MonoBehaviour:
     m_Mode: 0
     m_NumColorKeys: 3
     m_NumAlphaKeys: 2
+  infectionTexture: {fileID: 2100000, guid: 568ef3f2eeb3d64428692ab2652db315, type: 2}
   maxChance: 100
   natureChance: 25
   toxicChance: 17
