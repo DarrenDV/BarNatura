@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 681146282853851392}
   - component: {fileID: 6108151460571086472}
+  - component: {fileID: 1955923614118700894}
   m_Layer: 0
   m_Name: PollutionConverter
   m_TagString: Untagged
@@ -63,12 +64,25 @@ MonoBehaviour:
   oxygenUsage: 10
   pollutionProduction: 0
   BuildCost: 40
-  MinimumNaturePollutedDegree: 10
+  MinimumNaturePollutedDegree: 1
   buildCostReturnDivider: 2
   maxCapacity: 0
   pollutionToRemove: 1
   oxygenToAdd: 1
   conversionRate: 30
+--- !u!65 &1955923614118700894
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4994487236214115197}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.3283882, y: 0.43352735, z: 0.65065897}
+  m_Center: {x: 0.007320732, y: 0.21105856, z: 0.036088943}
 --- !u!1001 &436861348486847884
 PrefabInstance:
   m_ObjectHideFlags: 0

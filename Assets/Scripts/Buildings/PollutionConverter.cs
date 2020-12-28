@@ -32,7 +32,7 @@ public class PollutionConverter : BuildingScript
 
     public override string GetDescription()
     {
-        return $"This pollution converter converts {pollutionToRemove} {HudManager.GetIcon("Pollution")} into {oxygenToAdd} every {conversionRate} seconds.";
+        return $"This pollution converter converts {pollutionToRemove} {HudManager.GetIcon("Pollution")} into {oxygenToAdd} {HudManager.GetIcon("OxygenPlus")} every {conversionRate} seconds.";
     }
 
     #endregion

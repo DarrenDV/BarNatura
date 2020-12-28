@@ -105,20 +105,13 @@ public class Popup : MonoBehaviour
 
     private void DisplayRemoveButton()
     {
-        if (selectedObject.IsBeingBuild || selectedObject.IsBeingRemoved)
-        {
-            removeButton.gameObject.SetActive(false);
-        }
-        else
-        {
-            var showButton = selectedObject.CanBeRemovedByPlayer;
+        var showButton = selectedObject.CanBeRemovedByPlayer;
 
-            removeButton.gameObject.SetActive(showButton);
+        removeButton.gameObject.SetActive(showButton);
 
-            if (showButton)
-            {
-                removeButtonText.text = $"Remove ({selectedObject.HumansRequiredToRemove} H)";
-            }
+        if (showButton)
+        {
+            removeButtonText.text = $"Remove ({selectedObject.HumansRequiredToRemove} H)";
         }
     }
 
