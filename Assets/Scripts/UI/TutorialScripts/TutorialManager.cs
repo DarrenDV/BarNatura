@@ -9,7 +9,12 @@ public class TutorialManager : MonoBehaviour
 
     public List<TutorialSequence> Tutorials;
 
-    bool firstTreeBuilt, firstHouseBuilt, firstFactoryBuilt, firstRubbleRemoved;
+    private bool enoughTreesBuilt, firstHouseBuilt, firstFactoryBuilt, firstRubbleRemoved;
+
+    private int currentTrees;
+    [SerializeField] private int allowedTrees = 2;
+
+    private bool hasBoosted = false, hasUnboosted = false;
 
     public void Start()
     {
@@ -17,18 +22,22 @@ public class TutorialManager : MonoBehaviour
         TutorialPopupScript.Instance.Next();
     }
 
+    #region Checks
+
     public void OnSpaceShipBuilt()
     {
         TutorialPopupScript.Instance.Next();
     }
 
-    public void OnFirstTreeBuilt()
+    public void OnTreeBuilt()
     {
-        if (!firstTreeBuilt)
+        if (currentTrees + 1 == allowedTrees) 
         {
+            enoughTreesBuilt = true;
             TutorialPopupScript.Instance.Next();
-            firstTreeBuilt = true;
         }
+
+        if (!enoughTreesBuilt) currentTrees++;
     }
 
     public void OnFirstHouseBuilt()
@@ -40,6 +49,15 @@ public class TutorialManager : MonoBehaviour
         }
     }
 
+    public void OnFirstFactoryBuilt()
+    {
+        if (!firstFactoryBuilt)
+        {
+            TutorialPopupScript.Instance.Next();
+            firstFactoryBuilt = true;
+        }
+    }
+
     public void OnFirstRubbleRemoved()
     {
         if (!firstRubbleRemoved)
@@ -48,4 +66,20 @@ public class TutorialManager : MonoBehaviour
             firstRubbleRemoved = true;
         }
     }
+
+    public void FactoryBoosted(bool boosting)
+    {
+        if (!hasBoosted && boosting)
+        {
+            TutorialPopupScript.Instance.Next();
+            hasBoosted = true;
+        }
+        if(!hasUnboosted && !boosting)
+        {
+            TutorialPopupScript.Instance.Next();
+            hasUnboosted = true;
+        }
+    }
+
+    #endregion
 }

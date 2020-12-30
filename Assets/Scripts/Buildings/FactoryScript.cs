@@ -54,6 +54,13 @@ public class FactoryScript : BuildingScript
 
     #region Default
 
+    protected override void Start()
+    {
+        base.Start();
+
+        FindObjectOfType<TutorialManager>().OnFirstFactoryBuilt();
+    }
+
     protected override void Update()
     {
         base.Update();
@@ -116,7 +123,10 @@ public class FactoryScript : BuildingScript
                 rawMaterialConsumption *= 2;
                 buildingMaterialProduction *= 2;
 
+                FindObjectOfType<TutorialManager>().FactoryBoosted(true);
+
                 BoostOn = true;
+
             }
         }
         else
@@ -125,6 +135,8 @@ public class FactoryScript : BuildingScript
 
             rawMaterialConsumption /= 2;
             buildingMaterialProduction /= 2;
+
+            FindObjectOfType<TutorialManager>().FactoryBoosted(false);
 
             BoostOn = false;
         }
