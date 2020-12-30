@@ -11,6 +11,7 @@ public class ToxicCleaner : BuildingScript
     [SerializeField] private int cleanDistance;
 
     private List<BaseTileScript> surroundingTiles = new List<BaseTileScript>();
+    [SerializeField] private ParticleSystem BuildingRemovingParticleEffect;
 
     #endregion
 
@@ -62,8 +63,13 @@ public class ToxicCleaner : BuildingScript
     public override void OnFinishedBuilding()
     {
         base.OnFinishedBuilding();
-
+        BuildingRemovingParticleEffect.Stop();
         surroundingTiles = parentTile.GetNeighbourTiles(cleanDistance);
+    }
+    public override void OnRemove()
+    {
+        base.OnRemove();
+        BuildingRemovingParticleEffect.Play();
     }
 
     #endregion

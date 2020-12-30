@@ -7,6 +7,7 @@ public class FactoryScript : BuildingScript
 
     [Header("Factory Script")]
     [SerializeField] private ParticleSystem smokeTrail;
+    [SerializeField] private ParticleSystem BuildingRemovingParticleEffect;
     [SerializeField] private float maxFactoryConvertTimer;
 
     [SerializeField] private int rawMaterialConsumption = 2;
@@ -132,10 +133,17 @@ public class FactoryScript : BuildingScript
 
     #endregion
 
+    #region Building
     public override void OnFinishedBuilding()
     {
         base.OnFinishedBuilding();
         smokeTrail.Play();
+        BuildingRemovingParticleEffect.Stop();
     }
-
+    public override void OnRemove()
+    {
+        base.OnRemove();
+        BuildingRemovingParticleEffect.Play();
+    }
+    #endregion
 }
