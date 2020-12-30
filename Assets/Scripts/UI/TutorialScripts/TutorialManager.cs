@@ -9,7 +9,7 @@ public class TutorialManager : MonoBehaviour
 
     public List<TutorialSequence> Tutorials;
 
-    bool firstTreeBuilt, firstHouseBuilt, firstFactoryBuilt;
+    bool firstTreeBuilt, firstHouseBuilt, firstFactoryBuilt, firstRubbleRemoved;
 
     public void Start()
     {
@@ -37,6 +37,15 @@ public class TutorialManager : MonoBehaviour
         {
             TutorialPopupScript.Instance.Next();
             firstHouseBuilt = true;
+        }
+    }
+
+    public void OnFirstRubbleRemoved()
+    {
+        if (!firstRubbleRemoved)
+        {
+            TutorialPopupScript.Instance.Next();
+            firstRubbleRemoved = true;
         }
     }
 }
