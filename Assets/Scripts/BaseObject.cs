@@ -39,7 +39,6 @@ public class BaseObject : MonoBehaviour
 
     protected virtual void Update()
     {
-
         if (IsBeingRemoved)
         {
             canBeClikced = false;
@@ -58,11 +57,12 @@ public class BaseObject : MonoBehaviour
                 UpdateScale();
             }
         }
-
         else
         {
-            if (canBeClikced == false) canBeClikced = true;
-
+            if (canBeClikced == false)
+            {
+                canBeClikced = true;
+            }
         }
     }
 
@@ -101,7 +101,7 @@ public class BaseObject : MonoBehaviour
     public virtual void OnFinishedRemoving()
     {
         GameManager.Instance.RemoveWorkers(HumansRequiredToRemove);
-        transform.parent.GetComponent<BaseTileScript>().DeletePlacedObject(gameObject);
+        parentTile.DeletePlacedObject(gameObject);
         OnFinishedRemovingEvent.Invoke();
     }
 

@@ -7,8 +7,6 @@ public class BuildingScript : BuildObject
     [Tooltip("How many humans can be in this building at the same time?")]
     [SerializeField] protected int maxCapacity;
 
-
-
     private List<Human> occupants = new List<Human>();
 
     public override void OnFinishedBuilding()
@@ -23,8 +21,16 @@ public class BuildingScript : BuildObject
     {
         base.OnRemove();
 
-        // testing
         GameManager.Instance.BuildingCount--;
         GameManager.Instance.RemoveCapacity(maxCapacity);
+    }
+
+    /// <summary>
+    /// Remove the building without getting resources back. Used when toxic destroys the building.
+    /// </summary>
+    public void Demolish()
+    {
+        parentTile.DeletePlacedObject(gameObject);
+        OnFinishedRemovingEvent.Invoke();
     }
 }
