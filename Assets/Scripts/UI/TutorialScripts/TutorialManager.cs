@@ -9,6 +9,8 @@ public class TutorialManager : MonoBehaviour
 
     public List<TutorialSequence> Tutorials;
 
+    bool firstTreeBuilt, firstHouseBuilt, firstFactoryBuilt;
+
     public void Start()
     {
         TutorialPopupScript.Instance.ShowNextTutorial();
@@ -18,5 +20,23 @@ public class TutorialManager : MonoBehaviour
     public void OnSpaceShipBuilt()
     {
         TutorialPopupScript.Instance.Next();
+    }
+
+    public void OnFirstTreeBuilt()
+    {
+        if (!firstTreeBuilt)
+        {
+            TutorialPopupScript.Instance.Next();
+            firstTreeBuilt = true;
+        }
+    }
+
+    public void OnFirstHouseBuilt()
+    {
+        if (!firstHouseBuilt)
+        {
+            TutorialPopupScript.Instance.Next();
+            firstHouseBuilt = true;
+        }
     }
 }
