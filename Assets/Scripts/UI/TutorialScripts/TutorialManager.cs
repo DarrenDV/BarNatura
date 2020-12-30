@@ -14,4 +14,9 @@ public class TutorialManager : MonoBehaviour
         TutorialPopupScript.Instance.ShowNextTutorial();
         TutorialPopupScript.Instance.Next();
     }
+
+    public void OnSpaceShipBuilt()
+    {
+        TutorialPopupScript.Instance.Next();
+    }
 }

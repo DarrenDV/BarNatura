@@ -39,6 +39,12 @@ public class TutorialPopupScript : MonoBehaviour
 
     public void Next(bool playSound = true)
     {
+        if(tutorialIndex == currentTutorial.Messages.Count)
+        {
+            ShowNextTutorial();
+            tutorialIndex = 0;
+        }
+
         descriptionText.text = currentTutorial.Messages[tutorialIndex].Message;
         titleText.text = currentTutorial.Messages[tutorialIndex].Title;
         currentTutorial.Messages[tutorialIndex].TutorialEvent.Invoke();
