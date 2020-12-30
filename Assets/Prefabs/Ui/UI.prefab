@@ -2234,6 +2234,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7344187465744813017, guid: b89effcb55ce99b40ae20d9b41826553,
         type: 3}
+      propertyPath: Tutorials.Array.data[6].Messages.Array.data[0].TutorialEvent.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7344187465744813017, guid: b89effcb55ce99b40ae20d9b41826553,
+        type: 3}
       propertyPath: Tutorials.Array.data[0].Messages.Array.data[1].Message
       value: "To start, let\u2019s find a suitable position for our dropship. Try
         looking around the planet for a nice spot."
@@ -3692,6 +3697,41 @@ PrefabInstance:
       propertyPath: Tutorials.Array.data[5].Messages.Array.data[0].TutorialEvent.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 7344187465744813017, guid: b89effcb55ce99b40ae20d9b41826553,
+        type: 3}
+      propertyPath: TutorialIndex
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7344187465744813017, guid: b89effcb55ce99b40ae20d9b41826553,
+        type: 3}
+      propertyPath: mainCam
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7344187465744813017, guid: b89effcb55ce99b40ae20d9b41826553,
+        type: 3}
+      propertyPath: Tutorials.Array.data[6].Messages.Array.data[0].TutorialEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 6013798697240695757}
+    - target: {fileID: 7344187465744813017, guid: b89effcb55ce99b40ae20d9b41826553,
+        type: 3}
+      propertyPath: Tutorials.Array.data[6].Messages.Array.data[0].TutorialEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ToxicMission
+      objectReference: {fileID: 0}
+    - target: {fileID: 7344187465744813017, guid: b89effcb55ce99b40ae20d9b41826553,
+        type: 3}
+      propertyPath: Tutorials.Array.data[6].Messages.Array.data[0].TutorialEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7344187465744813017, guid: b89effcb55ce99b40ae20d9b41826553,
+        type: 3}
+      propertyPath: Tutorials.Array.data[6].Messages.Array.data[0].TutorialEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 7344187465744813017, guid: b89effcb55ce99b40ae20d9b41826553,
+        type: 3}
+      propertyPath: Tutorials.Array.data[6].Messages.Array.data[0].TutorialEvent.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 7639558175413818054, guid: b89effcb55ce99b40ae20d9b41826553,
         type: 3}
       propertyPath: m_Name
@@ -3705,6 +3745,18 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 3935730028224288788}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &6013798697240695757 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7344187465744813017, guid: b89effcb55ce99b40ae20d9b41826553,
+    type: 3}
+  m_PrefabInstance: {fileID: 3935730028224288788}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 386602b2e81f62b4caa1af2c73fd0f72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8840790027997952372 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5489410942813315424, guid: b89effcb55ce99b40ae20d9b41826553,

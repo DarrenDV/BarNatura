@@ -605,12 +605,6 @@ public class GameManager : MonoBehaviour
             atmosphere.enabled = true;
 
             selectedTile.PlaceStartingSpaceShip();
-
-            // should happen in the tutorial somewhere
-            foreach (var tile in FindObjectsOfType<BaseTileScript>())
-            {
-                tile.SpawnRandomPolution();
-            }
         }
     }
 

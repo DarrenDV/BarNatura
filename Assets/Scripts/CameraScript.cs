@@ -135,4 +135,5 @@ public class CameraScript : MonoBehaviour
     {
         Camera.main.fieldOfView = defaultZoomFov;
     }
+
 }

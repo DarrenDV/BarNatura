@@ -154,6 +154,8 @@ public class BaseTileScript : Tile
         {
             SetNaturePollutedDegree(-10);
             ToxicParticles();
+
+            FindObjectOfType<TutorialManager>().AssignToxicTile(gameObject);
         }
     }
     #endregion
