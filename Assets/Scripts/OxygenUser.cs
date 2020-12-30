@@ -20,9 +20,9 @@ public class OxygenUser : BaseObject
         GameManager.Instance.AddPollution(pollutionProduction);
     }
 
-    public override void OnRemove()
+    public override void OnRemove(bool instant = false)
     {
-        base.OnRemove();
+        base.OnRemove(instant);
 
         GameManager.Instance.RemoveOxygenGeneration(oxygenProduction);
         GameManager.Instance.RemoveOxygenUsage(oxygenUsage);

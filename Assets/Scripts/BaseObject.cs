@@ -89,10 +89,13 @@ public class BaseObject : MonoBehaviour
     /// <summary>
     /// Called when this object is starting to get removed.
     /// </summary>
-    public virtual void OnRemove()
+    public virtual void OnRemove(bool instant = false)
     {
-        GameManager.Instance.AddWorkers(HumansRequiredToRemove);
-        IsBeingRemoved = true;
+        if (!instant)
+        {
+            GameManager.Instance.AddWorkers(HumansRequiredToRemove);
+            IsBeingRemoved = true;
+        }
     }
 
     /// <summary>

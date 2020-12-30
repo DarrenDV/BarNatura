@@ -1,13 +1,10 @@
-﻿using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class BuildingScript : BuildObject
 {
     [Header("Building Script")]
     [Tooltip("How many humans can be in this building at the same time?")]
     [SerializeField] protected int maxCapacity;
-
-    private List<Human> occupants = new List<Human>();
 
     public override void OnFinishedBuilding()
     {
@@ -17,9 +14,9 @@ public class BuildingScript : BuildObject
         GameManager.Instance.AddCapacity(maxCapacity);
     }
 
-    public override void OnRemove()
+    public override void OnRemove(bool instant = false)
     {
-        base.OnRemove();
+        base.OnRemove(instant);
 
         GameManager.Instance.BuildingCount--;
         GameManager.Instance.RemoveCapacity(maxCapacity);
@@ -30,6 +27,8 @@ public class BuildingScript : BuildObject
     /// </summary>
     public void Demolish()
     {
+        OnRemove(true);
+
         parentTile.DeletePlacedObject(gameObject);
         OnFinishedRemovingEvent.Invoke();
     }
