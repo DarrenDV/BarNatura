@@ -7,14 +7,14 @@ public class TutorialManager : MonoBehaviour
 {
     public int TutorialIndex;
 
-    public List<TutorialSequence> Tutorials;
-
     private bool enoughTreesBuilt, firstHouseBuilt, firstFactoryBuilt, firstRubbleRemoved;
 
     private int currentTrees;
-    [SerializeField] private int allowedTrees = 2;
+    [SerializeField] private int neededTrees = 2;
 
     private bool hasBoosted = false, hasUnboosted = false;
+
+    public List<TutorialSequence> Tutorials;
 
     public void Start()
     {
@@ -31,7 +31,7 @@ public class TutorialManager : MonoBehaviour
 
     public void OnTreeBuilt()
     {
-        if (currentTrees + 1 == allowedTrees) 
+        if (currentTrees + 1 == neededTrees) 
         {
             enoughTreesBuilt = true;
             TutorialPopupScript.Instance.Next();

@@ -1973,6 +1973,18 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 3909008168294595179}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1093644520665856919 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4112615295927681532, guid: 97dbe4a1092a6f742abf511037634d93,
+    type: 3}
+  m_PrefabInstance: {fileID: 3909008168294595179}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2561128172062294645 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1564264984090277918, guid: 97dbe4a1092a6f742abf511037634d93,
+    type: 3}
+  m_PrefabInstance: {fileID: 3909008168294595179}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3935730028224288788
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2158,7 +2170,7 @@ PrefabInstance:
     - target: {fileID: 7344187465744813017, guid: b89effcb55ce99b40ae20d9b41826553,
         type: 3}
       propertyPath: Tutorials.Array.data[5].Messages.Array.data[1].TutorialEvent.m_PersistentCalls.m_Calls.Array.size
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7344187465744813017, guid: b89effcb55ce99b40ae20d9b41826553,
         type: 3}
@@ -2213,6 +2225,11 @@ PrefabInstance:
     - target: {fileID: 7344187465744813017, guid: b89effcb55ce99b40ae20d9b41826553,
         type: 3}
       propertyPath: Tutorials.Array.data[4].Messages.Array.data[0].TutorialEvent.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7344187465744813017, guid: b89effcb55ce99b40ae20d9b41826553,
+        type: 3}
+      propertyPath: Tutorials.Array.data[5].Messages.Array.data[0].TutorialEvent.m_PersistentCalls.m_Calls.Array.size
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7344187465744813017, guid: b89effcb55ce99b40ae20d9b41826553,
@@ -2280,7 +2297,7 @@ PrefabInstance:
         type: 3}
       propertyPath: Tutorials.Array.data[1].Messages.Array.data[0].Message
       value: "Commander, To start the new colony we require a local oxygen production.
-        Select the \u201CTree\u201D icon and place it somewhere near the starting
+        Select the \u201CTree\u201D icon and place two somewhere near the starting
         space."
       objectReference: {fileID: 0}
     - target: {fileID: 7344187465744813017, guid: b89effcb55ce99b40ae20d9b41826553,
@@ -2953,7 +2970,7 @@ PrefabInstance:
         type: 3}
       propertyPath: Tutorials.Array.data[5].Messages.Array.data[1].TutorialEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 8840790027997952372}
+      objectReference: {fileID: 2561128172062294645}
     - target: {fileID: 7344187465744813017, guid: b89effcb55ce99b40ae20d9b41826553,
         type: 3}
       propertyPath: Tutorials.Array.data[5].Messages.Array.data[1].TutorialEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
@@ -3615,6 +3632,66 @@ PrefabInstance:
       propertyPath: Tutorials.Array.data[4].Messages.Array.data[2].TutorialEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 8840790027997952372}
+    - target: {fileID: 7344187465744813017, guid: b89effcb55ce99b40ae20d9b41826553,
+        type: 3}
+      propertyPath: Tutorials.Array.data[4].Messages.Array.data[0].TutorialEvent.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1093644520665856919}
+    - target: {fileID: 7344187465744813017, guid: b89effcb55ce99b40ae20d9b41826553,
+        type: 3}
+      propertyPath: Tutorials.Array.data[4].Messages.Array.data[0].TutorialEvent.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: SetActive
+      objectReference: {fileID: 0}
+    - target: {fileID: 7344187465744813017, guid: b89effcb55ce99b40ae20d9b41826553,
+        type: 3}
+      propertyPath: Tutorials.Array.data[4].Messages.Array.data[0].TutorialEvent.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7344187465744813017, guid: b89effcb55ce99b40ae20d9b41826553,
+        type: 3}
+      propertyPath: Tutorials.Array.data[4].Messages.Array.data[0].TutorialEvent.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 7344187465744813017, guid: b89effcb55ce99b40ae20d9b41826553,
+        type: 3}
+      propertyPath: Tutorials.Array.data[4].Messages.Array.data[0].TutorialEvent.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_BoolArgument
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7344187465744813017, guid: b89effcb55ce99b40ae20d9b41826553,
+        type: 3}
+      propertyPath: Tutorials.Array.data[4].Messages.Array.data[0].TutorialEvent.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7344187465744813017, guid: b89effcb55ce99b40ae20d9b41826553,
+        type: 3}
+      propertyPath: Tutorials.Array.data[5].Messages.Array.data[0].TutorialEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 8840790027997952372}
+    - target: {fileID: 7344187465744813017, guid: b89effcb55ce99b40ae20d9b41826553,
+        type: 3}
+      propertyPath: Tutorials.Array.data[5].Messages.Array.data[0].TutorialEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetActive
+      objectReference: {fileID: 0}
+    - target: {fileID: 7344187465744813017, guid: b89effcb55ce99b40ae20d9b41826553,
+        type: 3}
+      propertyPath: Tutorials.Array.data[5].Messages.Array.data[0].TutorialEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7344187465744813017, guid: b89effcb55ce99b40ae20d9b41826553,
+        type: 3}
+      propertyPath: Tutorials.Array.data[5].Messages.Array.data[0].TutorialEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 7344187465744813017, guid: b89effcb55ce99b40ae20d9b41826553,
+        type: 3}
+      propertyPath: Tutorials.Array.data[5].Messages.Array.data[0].TutorialEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_BoolArgument
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7344187465744813017, guid: b89effcb55ce99b40ae20d9b41826553,
+        type: 3}
+      propertyPath: Tutorials.Array.data[5].Messages.Array.data[0].TutorialEvent.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 7639558175413818054, guid: b89effcb55ce99b40ae20d9b41826553,
         type: 3}
       propertyPath: m_Name
