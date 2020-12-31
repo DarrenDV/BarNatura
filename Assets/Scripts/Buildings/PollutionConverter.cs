@@ -27,12 +27,12 @@ public class PollutionConverter : BuildingScript
 
     protected override string GetBuildingFunction()
     {
-        return $"Converts {HudManager.GetIcon("Pollution")} into {HudManager.GetIcon("OxygenPlus")}";
+        return $"Converts {pollution} into {oxygenPlus}";
     }
 
     public override string GetDescription()
     {
-        return $"This pollution converter converts {pollutionToRemove} {HudManager.GetIcon("Pollution")} into {oxygenToAdd} {HudManager.GetIcon("OxygenPlus")} every {conversionRate} seconds.";
+        return $"This pollution converter converts {pollutionToRemove} {pollution} into {oxygenToAdd} {oxygenPlus} every {conversionRate} seconds.\n\n {ShowProgress()}";
     }
 
     #endregion
@@ -55,6 +55,7 @@ public class PollutionConverter : BuildingScript
         {
             if(GameManager.Instance.GetPollution() > 0)
             {
+                isProducing = true;
                 conversionTimer += Time.deltaTime;
 
                 if (conversionTimer >= conversionRate)
@@ -65,7 +66,40 @@ public class PollutionConverter : BuildingScript
                     conversionTimer = 0;
                 }
             }
+            else
+            {
+                isProducing = false;
+            }
         }
+    }
+
+    #endregion
+
+    #region Progress
+
+    //protected override float GetMaxArrows()
+    //{
+    //    return conversionRate;
+    //}
+
+    protected override float GetTimer()
+    {
+        return conversionTimer;
+    }
+
+    protected override string GetResousreDrained()
+    {
+        return $"{pollution}";
+    }
+
+    protected override string GetResousreGain()
+    {
+        return $"{oxygenPlus}";
+    }
+
+    protected override string GetNoProducingString()
+    {
+        return $"No {pollution} left in the air!";
     }
 
     #endregion

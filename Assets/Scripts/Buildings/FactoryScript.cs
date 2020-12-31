@@ -15,7 +15,6 @@ public class FactoryScript : BuildingScript
     [SerializeField] private int workersNeededForBoost;
 
     private float factoryConvertTimer;
-    private bool isProducing;
 
     public bool BoostOn = false;
 
@@ -30,24 +29,12 @@ public class FactoryScript : BuildingScript
 
     protected override string GetBuildingFunction()
     {
-        return $"Converts {HudManager.GetIcon("Brick")} to {HudManager.GetIcon("Raw")}";
+        return $"Converts {brick} to {raw}";
     }
 
     public override string GetDescription()
     {
-        return $"This factory converts {rawMaterialConsumption} {HudManager.GetIcon("Raw")} to {HudManager.GetIcon("Brick")} building materials every {maxFactoryConvertTimer} seconds.\n\n{ShowProgress()}";
-    }
-
-    private string ShowProgress()
-    {
-        if (isProducing)
-        {
-            return GetProgressBar();
-        }
-        else
-        {
-            return "Not enough raw materials!";
-        }
+        return $"This factory converts {rawMaterialConsumption} {raw} to {brick} building materials every {maxFactoryConvertTimer} seconds.\n\n{ShowProgress()}";
     }
 
     #endregion
@@ -87,22 +74,29 @@ public class FactoryScript : BuildingScript
 
     #region Progress
 
-    private string GetProgressBar()
+    //protected override float GetMaxArrows()
+    //{
+    //    return maxFactoryConvertTimer;
+    //}
+
+    protected override float GetTimer()
     {
-        var maxArrows = Mathf.RoundToInt(maxFactoryConvertTimer);
-        var arrows = string.Empty;
+        return factoryConvertTimer;
+    }
 
-        for (var i = 0; i < Mathf.RoundToInt(factoryConvertTimer); i++)
-        {
-            arrows += ">";
-        }
+    protected override string GetResousreDrained()
+    {
+        return $"{raw}";
+    }
 
-        while (arrows.Length < maxArrows)
-        {
-            arrows += "_";
-        }
+    protected override string GetResousreGain()
+    {
+        return $"{brick}";
+    }
 
-        return $"[RM {arrows} BM]";
+    protected override string GetNoProducingString()
+    {
+        return "Not enough raw materials!";
     }
 
     public void ToggleBoost()

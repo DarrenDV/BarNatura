@@ -368,12 +368,26 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'txt <sprite=0 color= CE6A17> txt <sprite=1 color= 63330B> txt <sprite=2
-    color= 5A1960> txt <sprite=3 color= 03BCC0>
+  m_text: 'txt <sprite=0 color= CE6A17>
 
-    txt <sprite=4 color= BE1351>
-    txt <sprite=5 color= 00A0FF> txt <sprite=5 color= ff0000> txt <sprite=6 color=
-    ffff00>'
+    txt <sprite=1 color= 63330B>
+
+    txt
+    <sprite=2 color= 5A1960>
+
+    txt <sprite=3 color= 03BCC0>
+
+    txt <sprite=4
+    color= BE1351>
+
+    txt <sprite=5 color= 00A0FF>
+
+    txt <sprite=5 color= ff0000>
+
+    txt
+    <sprite=6 color= ffff00>
+
+    txt <sprite=7 color= 00ff00>'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
