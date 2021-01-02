@@ -203,4 +203,13 @@ public class TutorialManager : MonoBehaviour
     }
 
     #endregion
+
+    #region OnClick
+
+    public void EndTutorial()
+    {
+        gameObject.SetActive(false);
+    }
+
+    #endregion
 }
