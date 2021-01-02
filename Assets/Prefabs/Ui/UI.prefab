@@ -3732,6 +3732,11 @@ PrefabInstance:
       propertyPath: Tutorials.Array.data[6].Messages.Array.data[0].TutorialEvent.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 7344187465744813017, guid: b89effcb55ce99b40ae20d9b41826553,
+        type: 3}
+      propertyPath: whenCameraPans
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 7639558175413818054, guid: b89effcb55ce99b40ae20d9b41826553,
         type: 3}
       propertyPath: m_Name

@@ -9,10 +9,12 @@ public class TutorialManager : MonoBehaviour
 
     public int TutorialIndex;
 
+    //bools for general missions
     private bool enoughTreesBuilt, firstHouseBuilt, firstFactoryBuilt, firstRubbleRemoved;
 
-    //Tree mission variables
+    //Tree mission variables`
     private int currentTrees;
+    [Tooltip("How many trees are needed for the tree mission to progress?")]
     [SerializeField] private int neededTrees = 2;
 
     //Factory mission variables
@@ -22,10 +24,11 @@ public class TutorialManager : MonoBehaviour
     [SerializeField] private GameObject mainCam;
     [SerializeField] private GameObject toxicTile;
     private bool canAssignToxic = true;
-    private float cameraPanTimer; 
-    [Header("After how many seconds does the camera start to pan?")]
+    private float cameraPanTimer;
+    [Tooltip("After how many seconds does the camera start to pan?")]
     [SerializeField] private float whenCameraPans;
-    bool canPan;
+    private bool camIsMoving;
+    Vector3 savedNormal;
 
     //List of all the tutorials
     public List<TutorialSequence> Tutorials;
@@ -41,9 +44,7 @@ public class TutorialManager : MonoBehaviour
 
     private void Update()
     {
-        //CameraPan in the update function so it runs alltime as that's needed for this.
-        CameraPan();
-
+        CameraMovement();
     }
 
     #endregion
@@ -118,7 +119,6 @@ public class TutorialManager : MonoBehaviour
     public void ToxicMission()
     {
         SpawnToxicTile();
-        canPan = true;
     }
 
     /// <summary>
@@ -142,38 +142,49 @@ public class TutorialManager : MonoBehaviour
         {
             toxicTile = givenToxicTile;
             canAssignToxic = false;
+            camIsMoving = true;
         }
     }
 
     /// <summary>
-    /// Pans the camera to the toxic tile and zooms in
+    /// Moves the camera to the needed tile
     /// </summary>
-    public void CameraPan() 
+    void CameraMovement()
     {
-        if (canPan)
+        if (camIsMoving)
         {
-            //Simple timer so it doesn't instantly start rotating when there isn't a tile to rotate to
-            if (cameraPanTimer >= whenCameraPans)
-            {
-                //This rotatearound seems to work
-                mainCam.transform.RotateAround(toxicTile.transform.up, GetNormal(mainCam.transform.position, toxicTile.transform.position), 20 * Time.deltaTime);
-            }
-
-            cameraPanTimer += Time.deltaTime;
-
-            //TODO
-            //Camera needs to stop rotating on it own - set canPan to false
-
-            //Test for stopping rotation on its own, doens't work.
-            if(mainCam.transform.position == toxicTile.transform.up)
-            {
-                canPan = false;
-            }
+            mainCam.GetComponent<CameraScript>().enabled = false; //Turns off camera script so the player can't mess the sequence up
+            CameraPan();
         }
         else
         {
-            //TODO
-            //Zoom camera using FOV
+            mainCam.GetComponent<CameraScript>().enabled = true; //Turns the camera script back on when the player can't mess it up anymore
+        }
+    }
+
+    /// <summary>
+    /// Pans the camera to the toxic tile
+    /// </summary>
+    private void CameraPan()
+    {
+        //Timer to control rotating
+        if (cameraPanTimer < 1)
+        {
+            savedNormal = GetNormal(mainCam.transform.position, toxicTile.transform.position); //Get the original normal for later reference.
+        }
+
+        if (cameraPanTimer >= whenCameraPans)
+        {
+            //Rotates around the planet toward the toxic tile.
+            mainCam.transform.RotateAround(toxicTile.transform.up, GetNormal(mainCam.transform.position, toxicTile.transform.position), 20 * Time.deltaTime);
+        }
+
+        cameraPanTimer += Time.deltaTime;
+
+        //If the normal isn't the same normal anymore the camera stops moving on it's own.
+        if (savedNormal != GetNormal(mainCam.transform.position, toxicTile.transform.position))
+        {
+            camIsMoving = false;
         }
     }
 
@@ -183,7 +194,7 @@ public class TutorialManager : MonoBehaviour
     /// <param name="movingObject"></param>
     /// <param name="target"></param>
     /// <returns></returns>
-    Vector3 GetNormal(Vector3 movingObject, Vector3 target)
+    private Vector3 GetNormal(Vector3 movingObject, Vector3 target)
     {
         //Vector3 side1 = target - movingObject;
         //Vector3 side2 = Vector3.zero - movingObject;
