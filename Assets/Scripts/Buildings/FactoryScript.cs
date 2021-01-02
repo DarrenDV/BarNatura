@@ -74,22 +74,22 @@ public class FactoryScript : BuildingScript
 
     #region Progress
 
-    //protected override float GetMaxArrows()
-    //{
-    //    return maxFactoryConvertTimer;
-    //}
+    protected override float GetMaxTime()
+    {
+        return maxFactoryConvertTimer;
+    }
 
     protected override float GetTimer()
     {
         return factoryConvertTimer;
     }
 
-    protected override string GetResousreDrained()
+    protected override string GetResourceDrained()
     {
         return $"{raw}";
     }
 
-    protected override string GetResousreGain()
+    protected override string GetResourceGain()
     {
         return $"{brick}";
     }

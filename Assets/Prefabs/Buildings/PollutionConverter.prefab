@@ -56,10 +56,10 @@ MonoBehaviour:
   IsBeingRemoved: 0
   oxygenProduction: 0
   oxygenUsage: 10
-  pollutionProduction: 1
-  BuildCost: 1
+  pollutionProduction: 0
+  BuildCost: 40
   HumansRequiredToBuild: 1
-  buildTime: 1
+  buildTime: 20
   MinimumNaturePollutedDegree: 0
   buildCostReturnDivider: 2
   OnFinishedBuildingEvent:

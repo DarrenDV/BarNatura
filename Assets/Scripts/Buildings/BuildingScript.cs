@@ -18,9 +18,9 @@ public class BuildingScript : BuildObject
 
         house = HudManager.GetIcon("House");
         raw = HudManager.GetIcon("Raw");
-        brick = HudManager.GetIcon("Toxic");
-        toxic = HudManager.GetIcon("Human");
-        human = HudManager.GetIcon("Brick");
+        brick = HudManager.GetIcon("Brick");
+        toxic = HudManager.GetIcon("Toxic");
+        human = HudManager.GetIcon("Human");
         oxygenPlus = HudManager.GetIcon("OxygenPlus");
         oxygenMin = HudManager.GetIcon("OxygenMin");
         pollution = HudManager.GetIcon("Pollution");
@@ -65,7 +65,10 @@ public class BuildingScript : BuildObject
 
     protected virtual string GetProgressBar()
     {
-        var maxArrows = Mathf.RoundToInt(GetMaxArrows());
+        Popup.Instance.SetProgressBar(GetMaxTime(), GetTimer(), GetResourceDrained(), GetResourceGain());
+        return "";
+
+        var maxArrows = Mathf.RoundToInt(GetMaxTime());
         var arrows = string.Empty;
 
         for (var i = 0; i < Mathf.RoundToInt(GetTimer()); i++)
@@ -78,10 +81,15 @@ public class BuildingScript : BuildObject
             arrows += "_";
         }
 
-        return $"[{GetResousreDrained()} {arrows} {GetResousreGain()}]";
+        return $"[{GetResourceDrained()} {arrows} {GetResourceGain()}]";
     }
 
-    protected virtual float GetMaxArrows()
+    protected virtual string GetNoProducingString()
+    {
+        return "";
+    }
+
+    protected virtual float GetMaxTime()
     {
         return 10;
     }
@@ -91,18 +99,12 @@ public class BuildingScript : BuildObject
         return 1;
     }
 
-
-    protected virtual string GetNoProducingString()
-    {
-        return "";
-    }
-
-    protected virtual string GetResousreDrained()
+    protected virtual string GetResourceDrained()
     {
         return $"{oxygenPlus}";
     }
 
-    protected virtual string GetResousreGain()
+    protected virtual string GetResourceGain()
     {
         return $"{oxygenMin}";
     }

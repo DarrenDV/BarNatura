@@ -77,22 +77,22 @@ public class PollutionConverter : BuildingScript
 
     #region Progress
 
-    //protected override float GetMaxArrows()
-    //{
-    //    return conversionRate;
-    //}
+    protected override float GetMaxTime()
+    {
+        return conversionRate;
+    }
 
     protected override float GetTimer()
     {
         return conversionTimer;
     }
 
-    protected override string GetResousreDrained()
+    protected override string GetResourceDrained()
     {
         return $"{pollution}";
     }
 
-    protected override string GetResousreGain()
+    protected override string GetResourceGain()
     {
         return $"{oxygenPlus}";
     }

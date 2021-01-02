@@ -18,7 +18,10 @@ public class MineScript : BuildingScript
         }
 
         mineTimer += Time.deltaTime;
+        isProducing = true;
     }
+
+    #region Strings
 
     public override string GetName()
     {
@@ -27,12 +30,38 @@ public class MineScript : BuildingScript
 
     protected override string GetBuildingFunction()
     {
-        return $"Mines for {HudManager.GetIcon("Raw")}";
+        return $"Mines for {raw}";
     }
 
     public override string GetDescription()
     {
-        return $"This mine slowly produces {HudManager.GetIcon("Raw")}  over time.";
+        return $"This mine slowly produces {raw}  over time.\n\n{ShowProgress()}";
     }
+
+    #endregion
+
+    #region Production
+
+    protected override float GetMaxTime()
+    {
+        return maxMineTimer;
+    }
+
+    protected override float GetTimer()
+    {
+        return mineTimer;
+    }
+
+    protected override string GetResourceDrained()
+    {
+        return $"{""}";
+    }
+
+    protected override string GetResourceGain()
+    {
+        return $"{raw}";
+    }
+
+    #endregion
 
 }
