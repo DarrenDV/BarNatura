@@ -4,19 +4,25 @@ public class AudioManager : MonoBehaviour
 {
     public static AudioManager Instance;
 
-    [Header("Danger")]
+    [Header("Build sounds")]
+    [SerializeField] private AudioSource buildAudioSource;
+    
+    [SerializeField] private AudioClip build, buildFalied, buildStopped;
+
+    [Header("Danger sounds")]
     [SerializeField] private AudioSource dangerShort;
     [SerializeField] private AudioSource dangerLoop;
     [SerializeField] private AudioClip dangerLoopSound, humanDeath;
 
-    [Header("UI")]
+    [Header("Demolis sounds")]
+    [SerializeField] private AudioSource demolishAudioSource;
+    [SerializeField] private AudioClip demolishSound, disappearSound;
+
+    [Header("UI sounds")]
     [SerializeField] private AudioSource uiAudioSource;
     [SerializeField] private AudioClip selectSound;
 
-    [Header("Temp")]
-    [SerializeField] private AudioSource buildAudioSource, demolishAudioSource;
-    
-    [SerializeField] private AudioClip build, buildFalied, buildStopped;
+
 
     void Awake()
     {
@@ -52,6 +58,13 @@ public class AudioManager : MonoBehaviour
 
     public void PlayDemolishSound()
     {
+        demolishAudioSource.clip = demolishSound;
+        demolishAudioSource.Play();
+    }
+
+    public void PlayDisappearSound()
+    {
+        demolishAudioSource.clip = disappearSound;
         demolishAudioSource.Play();
     }
     #endregion
@@ -65,6 +78,7 @@ public class AudioManager : MonoBehaviour
         }
 
     }
+
     public void StopDangerLoopSound()
     {
         if (dangerLoop.isActiveAndEnabled)

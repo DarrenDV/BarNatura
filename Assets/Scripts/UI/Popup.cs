@@ -172,9 +172,7 @@ public class Popup : MonoBehaviour
 
         selectedObject.OnRemove();
 
-        AudioManager.Instance.PlayDemolishSound();
         Hide(false);
-
 
     }
 

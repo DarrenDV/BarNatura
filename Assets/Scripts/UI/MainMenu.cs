@@ -34,6 +34,7 @@ public class MainMenu : MonoBehaviour
     {
         gameObject.SetActive(false);
 
+        AudioManager.Instance.PlayUiSelectSound();
         CameraScript.Instance.TransitionFromMainMenuToInGamePos();
     }
 

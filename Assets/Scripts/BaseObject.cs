@@ -92,6 +92,7 @@ public class BaseObject : MonoBehaviour
     public virtual void OnRemove()
     {
         GameManager.Instance.AddWorkers(HumansRequiredToRemove);
+        AudioManager.Instance.PlayDemolishSound();
         IsBeingRemoved = true;
     }
 
@@ -101,6 +102,7 @@ public class BaseObject : MonoBehaviour
     public virtual void OnFinishedRemoving()
     {
         GameManager.Instance.RemoveWorkers(HumansRequiredToRemove);
+        AudioManager.Instance.PlayDisappearSound();
         transform.parent.GetComponent<BaseTileScript>().DeletePlacedObject(gameObject);
         OnFinishedRemovingEvent.Invoke();
     }
