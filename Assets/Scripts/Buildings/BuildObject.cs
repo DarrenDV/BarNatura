@@ -16,6 +16,8 @@ public class BuildObject : OxygenUser
     [Tooltip("Divides the build cost by this int. How much materials are returned on demolish.")]
     [SerializeField] int buildCostReturnDivider = 2;
 
+    [SerializeField] private ParticleSystem buildParticleEffect;
+
     public UnityEvent OnFinishedBuildingEvent;
 
     /// <summary>
@@ -78,17 +80,13 @@ public class BuildObject : OxygenUser
     }
 
     #endregion
-    public override void OnFinishedRemoving()
-    {
-        base.OnFinishedRemoving();
 
-        //Gives resources back
-        GameManager.Instance.AddBuildingMaterial(BuildCost / buildCostReturnDivider);
-    }
+    #region Building
 
     public virtual void OnBuild()
     {
         GameManager.Instance.AddWorkers(HumansRequiredToBuild);
+        buildParticleEffect.Play();
         buildProgress = 0f;
         IsBeingBuild = true;
     }
@@ -100,5 +98,22 @@ public class BuildObject : OxygenUser
     {
         GameManager.Instance.RemoveWorkers(HumansRequiredToBuild);
         OnFinishedBuildingEvent.Invoke();
+        buildParticleEffect.Stop();
     }
+
+    public override void OnRemove()
+    {
+        base.OnRemove();
+        buildParticleEffect.Play();
+    }
+
+    public override void OnFinishedRemoving()
+    {
+        base.OnFinishedRemoving();
+
+        //Gives resources back
+        GameManager.Instance.AddBuildingMaterial(BuildCost / buildCostReturnDivider);
+    }
+
+    #endregion
 }

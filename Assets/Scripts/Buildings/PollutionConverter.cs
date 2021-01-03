@@ -15,8 +15,6 @@ public class PollutionConverter : BuildingScript
     [Tooltip("Time in seconds for every conversion")]
     [SerializeField] private float conversionRate;
 
-    [SerializeField] private ParticleSystem BuildingRemovingParticleEffect;
-
     private float conversionTimer;
 
     #endregion
@@ -25,7 +23,7 @@ public class PollutionConverter : BuildingScript
 
     public override string GetName()
     {
-        return "Toxic cleaner";
+        return "Pollution converter";
     }
 
     protected override string GetBuildingFunction()
@@ -73,16 +71,4 @@ public class PollutionConverter : BuildingScript
 
     #endregion
 
-    #region Building
-    public override void OnFinishedBuilding()
-    {
-        base.OnFinishedBuilding();
-        BuildingRemovingParticleEffect.Stop();
-    }
-    public override void OnRemove()
-    {
-        base.OnRemove();
-        BuildingRemovingParticleEffect.Play();
-    }
-    #endregion
 }

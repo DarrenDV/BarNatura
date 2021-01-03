@@ -7,7 +7,6 @@ public class FactoryScript : BuildingScript
 
     [Header("Factory Script")]
     [SerializeField] private ParticleSystem smokeTrail;
-    [SerializeField] private ParticleSystem BuildingRemovingParticleEffect;
     [SerializeField] private float maxFactoryConvertTimer;
 
     [SerializeField] private int rawMaterialConsumption = 2;
@@ -16,7 +15,6 @@ public class FactoryScript : BuildingScript
     [SerializeField] private int workersNeededForBoost;
 
     private float factoryConvertTimer;
-    private bool isProducing;
 
     public bool BoostOn = false;
 
@@ -31,24 +29,12 @@ public class FactoryScript : BuildingScript
 
     protected override string GetBuildingFunction()
     {
-        return $"Converts {HudManager.GetIcon("Brick")} to {HudManager.GetIcon("Raw")}";
+        return $"Converts {brick} to {raw}";
     }
 
     public override string GetDescription()
     {
-        return $"This factory converts {rawMaterialConsumption} {HudManager.GetIcon("Raw")} to {HudManager.GetIcon("Brick")} building materials every {maxFactoryConvertTimer} seconds.\n\n{ShowProgress()}";
-    }
-
-    private string ShowProgress()
-    {
-        if (isProducing)
-        {
-            return GetProgressBar();
-        }
-        else
-        {
-            return "Not enough raw materials!";
-        }
+        return $"This factory converts {rawMaterialConsumption} {raw} to {brick} building materials every {maxFactoryConvertTimer} seconds.\n\n{ShowProgress()}";
     }
 
     #endregion
@@ -88,22 +74,29 @@ public class FactoryScript : BuildingScript
 
     #region Progress
 
-    private string GetProgressBar()
+    protected override float GetMaxTime()
     {
-        var maxArrows = Mathf.RoundToInt(maxFactoryConvertTimer);
-        var arrows = string.Empty;
+        return maxFactoryConvertTimer;
+    }
 
-        for (var i = 0; i < Mathf.RoundToInt(factoryConvertTimer); i++)
-        {
-            arrows += ">";
-        }
+    protected override float GetTimer()
+    {
+        return factoryConvertTimer;
+    }
 
-        while (arrows.Length < maxArrows)
-        {
-            arrows += "_";
-        }
+    protected override string GetResourceDrained()
+    {
+        return $"{raw}";
+    }
 
-        return $"[RM {arrows} BM]";
+    protected override string GetResourceGain()
+    {
+        return $"{brick}";
+    }
+
+    protected override string GetNoProducingString()
+    {
+        return "Not enough raw materials!";
     }
 
     public void ToggleBoost()
@@ -138,12 +131,7 @@ public class FactoryScript : BuildingScript
     {
         base.OnFinishedBuilding();
         smokeTrail.Play();
-        BuildingRemovingParticleEffect.Stop();
     }
-    public override void OnRemove()
-    {
-        base.OnRemove();
-        BuildingRemovingParticleEffect.Play();
-    }
+
     #endregion
 }

@@ -21,10 +21,16 @@ public class Popup : MonoBehaviour
     [SerializeField] private Text titleText = null;
     [SerializeField] private TextMeshProUGUI descriptionText = null;
 
+    [Header("ProgesSlider")]
+    [SerializeField] private Slider progressSlider;
+    [SerializeField] private TextMeshProUGUI rDrain, rGain;
+
     [Header("Sound")]
     [SerializeField] private float volume = 1f;
     [SerializeField] private AudioClip appearSound, disappearSound;
     private AudioSource audioSource;
+
+    #region Defaults
 
     private void Awake()
     {
@@ -63,6 +69,8 @@ public class Popup : MonoBehaviour
             }
         }
     }
+
+    #endregion
 
     public void Show(BaseObject objectToDisplay)
     {
@@ -134,7 +142,24 @@ public class Popup : MonoBehaviour
             selectedObject.OnFinishedRemovingEvent.RemoveListener(OnSelectedBuildingRemoved);
         }
 
+        selectedObject = null;
+        HideProgressBar();
         boostButton.gameObject.SetActive(false);
+    }
+
+    public void SetProgressBar(float maxValue, float CurrentTime, string drainSprite, string gainSprite)
+    {
+        progressSlider.gameObject.SetActive(true);
+        progressSlider.maxValue = maxValue;
+        progressSlider.value = CurrentTime;
+
+        rDrain.text = drainSprite;
+        rGain.text = gainSprite;   
+    }
+
+    public void HideProgressBar()
+    {
+        progressSlider.gameObject.SetActive(false);
     }
 
     public void OnRemoveClicked()
@@ -144,11 +169,13 @@ public class Popup : MonoBehaviour
             // todo: tell player he does not have enough humans
             return;
         }
-        
+
+        selectedObject.OnRemove();
+
         AudioManager.Instance.PlayDemolishSound();
         Hide(false);
 
-        selectedObject.OnRemove();
+
     }
 
     private void DisplayBoostButton()
@@ -174,10 +201,8 @@ public class Popup : MonoBehaviour
 
     public void OnBoostClicked()
     {
-        if (selectedObject is FactoryScript)
+        if (selectedObject is FactoryScript fs)
         {
-            var fs = (FactoryScript)selectedObject;
-
             fs.ToggleBoost();
             DisplayBoostButton();
         }

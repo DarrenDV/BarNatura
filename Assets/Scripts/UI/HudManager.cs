@@ -112,10 +112,10 @@ public class HudManager : MonoBehaviour
             case "Toxic": return "<sprite=2 color= 5A1960>";
             case "Human": return "<sprite=3 color= 03BCC0>";
             case "Brick": return "<sprite=4 color= BE1351>";
-            //case "Nature": return "<sprite=5>";
             case "OxygenPlus": return "<sprite=5 color= 00A0FF>";
             case "OxygenMin": return "<sprite=5 color= ff0000>";
             case "Pollution": return "<sprite=6 color= ffff00>";
+            case "Nature": return "<sprite=7 color= 00ff00>";
             default: return "Icon not found";
         };
 
