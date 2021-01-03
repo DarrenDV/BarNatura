@@ -58,6 +58,9 @@ public class GameManager : MonoBehaviour
     private WinLose winLose;
     private AtmosphereSystem atmosphere;
 
+    //Bool for allowing the starting spaceship to get placed
+    private bool tutorialAllowsStart;
+
     #region default
 
     private void Awake()
@@ -580,23 +583,28 @@ public class GameManager : MonoBehaviour
         CurrentGameState = GameState.SelectLocation;
     }
 
+    /// <summary>
+    /// This function is used to enable the placement of the starting spaceship.
+    /// </summary>
+    public void TutorialAllowsStart() //Fuck unity en dat ze geen bool toestaan om direct aangepast te worden.
+    {
+        tutorialAllowsStart = true;
+    }
+
     public void OnStartingLocationSelected(BaseTileScript selectedTile)
     {
-        CurrentGameState = GameState.InGame;
-        Pointer.instance.unsetPointer();
-
-        SelectStartingLocationUiManager.Instance.gameObject.SetActive(false);
-        HudManager.Instance.gameObject.SetActive(true);
-
-        winLose.enabled = true;
-        atmosphere.enabled = true;
-
-        selectedTile.PlaceStartingSpaceShip();
-
-        // should happen in the tutorial somewhere
-        foreach (var tile in FindObjectsOfType<BaseTileScript>())
+        if (tutorialAllowsStart)
         {
-            tile.SpawnRandomPolution();
+            CurrentGameState = GameState.InGame;
+            Pointer.instance.unsetPointer();
+
+            SelectStartingLocationUiManager.Instance.gameObject.SetActive(false);
+            HudManager.Instance.gameObject.SetActive(true);
+
+            winLose.enabled = true;
+            atmosphere.enabled = true;
+
+            selectedTile.PlaceStartingSpaceShip();
         }
     }
 

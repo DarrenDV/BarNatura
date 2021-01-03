@@ -34,13 +34,20 @@ public class TutorialPopupScript : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
         panel = gameObject.transform.GetChild(0).gameObject;
 
-        Hide();
+        //Hide();
     }
 
     public void Next(bool playSound = true)
     {
+        if(tutorialIndex == currentTutorial.Messages.Count)
+        {
+            ShowNextTutorial();
+            tutorialIndex = 0;
+        }
+
         descriptionText.text = currentTutorial.Messages[tutorialIndex].Message;
         titleText.text = currentTutorial.Messages[tutorialIndex].Title;
+        currentTutorial.Messages[tutorialIndex].TutorialEvent.Invoke();
         tutorialIndex++;
 
         if (playSound)
@@ -60,8 +67,9 @@ public class TutorialPopupScript : MonoBehaviour
         audioSource.Play();
     }
 
-    public void ShowTutorial(string tutorialID)
+    public void ShowNextTutorial()
     {
-        currentTutorial = tutorialManager.Tutorials.Single(x => x.Id == tutorialID);
+        currentTutorial = tutorialManager.Tutorials[tutorialManager.TutorialIndex];
+        tutorialManager.TutorialIndex++;
     }
 }
