@@ -45,6 +45,8 @@ public class TutorialManager : MonoBehaviour
     private void Update()
     {
         CameraMovement();
+
+        //Quick debug style way to go trough the tutorial, remove this when done
         if (Input.GetKeyDown(KeyCode.K))
         {
             TutorialPopupScript.Instance.Next();
