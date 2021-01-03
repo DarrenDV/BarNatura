@@ -11,11 +11,6 @@ public class AtmosphereSystem : MonoBehaviour
     private int currentOxygen, currentAtmosphereLevel;
     private float atmosphereTimer = 0;
 
-    private void Awake()
-    {
-        currentOxygenCounter = GameObject.Find("CurrentOxygenCounter").GetComponent<Text>();
-    }
-
     void Update()
     {
         //This counts up the total amount of oxygen produced by the player.
