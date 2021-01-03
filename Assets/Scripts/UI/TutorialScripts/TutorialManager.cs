@@ -45,6 +45,10 @@ public class TutorialManager : MonoBehaviour
     private void Update()
     {
         CameraMovement();
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            TutorialPopupScript.Instance.Next();
+        }
     }
 
     #endregion
