@@ -16,7 +16,7 @@ public class FactoryScript : BuildingScript
 
     private float factoryConvertTimer;
 
-    public bool BoostOn = false;
+    public bool boostOn = false;
 
     #endregion
 
@@ -45,7 +45,7 @@ public class FactoryScript : BuildingScript
     {
         base.Start();
 
-        FindObjectOfType<TutorialManager>().OnFirstFactoryBuilt();
+        if (!GameManager.Instance.tutorialEnded) FindObjectOfType<TutorialManager>().OnFirstFactoryBuilt();
     }
 
     protected override void Update()
@@ -74,6 +74,12 @@ public class FactoryScript : BuildingScript
         else
         {
             isProducing = false;
+        }
+
+        //turns of the factory boost if the oxygen surplus is negative
+        if (GameManager.Instance.GetOxygenSurplus() < 0)
+        {
+            if(boostOn) EndBoost();
         }
     }
 
@@ -108,7 +114,7 @@ public class FactoryScript : BuildingScript
 
     public void ToggleBoost()
     {
-        if (!BoostOn)
+        if (!boostOn)
         {
             if (GameManager.Instance.AreWorkersAvailable(workersNeededForBoost))
             {
@@ -117,23 +123,29 @@ public class FactoryScript : BuildingScript
                 rawMaterialConsumption *= 2;
                 buildingMaterialProduction *= 2;
 
-                FindObjectOfType<TutorialManager>().FactoryBoosted(true);
+                if(!GameManager.Instance.tutorialEnded) FindObjectOfType<TutorialManager>().FactoryBoosted(true);
 
-                BoostOn = true;
+                boostOn = true;
 
             }
         }
         else
         {
-            GameManager.Instance.RemoveWorkers(workersNeededForBoost);
-
-            rawMaterialConsumption /= 2;
-            buildingMaterialProduction /= 2;
-
-            FindObjectOfType<TutorialManager>().FactoryBoosted(false);
-
-            BoostOn = false;
+            EndBoost();
         }
+
+    }
+
+    private void EndBoost()
+    {
+        GameManager.Instance.RemoveWorkers(workersNeededForBoost);
+
+        rawMaterialConsumption /= 2;
+        buildingMaterialProduction /= 2;
+
+        if (!GameManager.Instance.tutorialEnded) FindObjectOfType<TutorialManager>().FactoryBoosted(false);
+
+        boostOn = false;
     }
 
     #endregion

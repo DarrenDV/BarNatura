@@ -60,6 +60,7 @@ public class GameManager : MonoBehaviour
 
     //Bool for allowing the starting spaceship to get placed
     private bool tutorialAllowsStart;
+    public bool tutorialEnded;
 
     #region default
 

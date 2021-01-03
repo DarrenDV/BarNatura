@@ -184,7 +184,7 @@ public class Popup : MonoBehaviour
         {
             boostButton.gameObject.SetActive(true);
 
-            if (fs.BoostOn)
+            if (fs.boostOn)
             {
                 boostButtonText.text = $"Unboost (+2{HudManager.GetIcon("Human")})";
             }

@@ -9,7 +9,7 @@ public class TreeScript : BuildObject
     {
         base.Start();
 
-        FindObjectOfType<TutorialManager>().OnTreeBuilt();
+        if (!GameManager.Instance.tutorialEnded) FindObjectOfType<TutorialManager>().OnTreeBuilt();
     }
 
     public override string GetName()

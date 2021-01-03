@@ -27,7 +27,7 @@ public class TutorialManager : MonoBehaviour
     private float cameraPanTimer;
     [Tooltip("After how many seconds does the camera start to pan?")]
     [SerializeField] private float whenCameraPans;
-    private bool camIsMoving;
+    public bool camIsMoving;
     Vector3 savedNormal;
 
     //List of all the tutorials
@@ -47,10 +47,12 @@ public class TutorialManager : MonoBehaviour
         CameraMovement();
 
         //Quick debug style way to go trough the tutorial, remove this when done
+        #if UNITY_EDITOR
         if (Input.GetKeyDown(KeyCode.K))
         {
             TutorialPopupScript.Instance.Next();
         }
+        #endif
     }
 
     #endregion
@@ -210,11 +212,17 @@ public class TutorialManager : MonoBehaviour
 
     #endregion
 
-    #region OnClick
+    #region OnClick and OnPanel
 
     public void EndTutorial()
     {
         gameObject.SetActive(false);
+        GameManager.Instance.tutorialEnded = true;
+    }
+
+    public void StopCamMovement()
+    {
+        camIsMoving = false;
     }
 
     #endregion

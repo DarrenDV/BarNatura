@@ -10,7 +10,7 @@ public class HouseScript : BuildingScript
     {
         base.Start();
 
-        FindObjectOfType<TutorialManager>().OnFirstHouseBuilt();
+        if (!GameManager.Instance.tutorialEnded) FindObjectOfType<TutorialManager>().OnFirstHouseBuilt();
     }
 
     public override string GetName()
