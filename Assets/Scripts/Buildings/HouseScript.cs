@@ -5,7 +5,6 @@ public class HouseScript : BuildingScript
     [Header("House Script")]
     [Tooltip("How many humans spawn when this house is done building")]
     [SerializeField] private int populationToAdd;
-    [SerializeField] private ParticleSystem BuildingRemovingParticleEffect;
     public override string GetName()
     {
         return "House";
@@ -13,12 +12,12 @@ public class HouseScript : BuildingScript
 
     protected override string GetBuildingFunction()
     {
-        return $"+ {maxCapacity} {HudManager.GetIcon("House")}, + {populationToAdd} {HudManager.GetIcon("Human")}";
+        return $"+ {maxCapacity} {house}, + {populationToAdd} {human}";
     }
 
     public override string GetDescription()
     {
-        return $"This house has {maxCapacity} {HudManager.GetIcon("House")}.";
+        return $"This house has {maxCapacity} {house}";
     }
 
     #region Building
@@ -27,12 +26,6 @@ public class HouseScript : BuildingScript
         base.OnFinishedBuilding();
 
         GameManager.Instance.AddPopulation(populationToAdd);
-        BuildingRemovingParticleEffect.Stop();
-    }
-    public override void OnRemove()
-    {
-        base.OnRemove();
-        BuildingRemovingParticleEffect.Play();
     }
     #endregion
 }

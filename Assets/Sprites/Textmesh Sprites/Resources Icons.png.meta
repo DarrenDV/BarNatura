@@ -131,6 +131,39 @@ TextureImporter:
   - first:
       213: -7317679660824942485
     second: Resources Icons_42
+  - first:
+      213: 1355943919816750121
+    second: Resources Icons_0
+  - first:
+      213: 1927891069684819772
+    second: Resources Icons_1
+  - first:
+      213: -3023411631191517304
+    second: Resources Icons_2
+  - first:
+      213: 7855774513520030673
+    second: Resources Icons_3
+  - first:
+      213: 6297761886334455634
+    second: Resources Icons_4
+  - first:
+      213: 6182177568455661592
+    second: Resources Icons_5
+  - first:
+      213: -1720803625173584278
+    second: Resources Icons_6
+  - first:
+      213: 7795659541128868612
+    second: Resources Icons_43
+  - first:
+      213: 6455646259824097005
+    second: Resources Icons_44
+  - first:
+      213: 674548326398651540
+    second: Resources Icons_45
+  - first:
+      213: 464512630571421610
+    second: Resources Icons_7
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -230,8 +263,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 958f7c85a062cb120800000000000000
-      internalID: 2430859724754253913
+      spriteID: 924370c9fc741d210800000000000000
+      internalID: 1355943919816750121
       vertices: []
       indices: 
       edges: []
@@ -251,8 +284,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3050ac30145dfea50800000000000000
-      internalID: 6552690458060522755
+      spriteID: c372636a6be31ca10800000000000000
+      internalID: 1927891069684819772
       vertices: []
       indices: 
       edges: []
@@ -272,8 +305,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b93f98c678c572e10800000000000000
-      internalID: 2172807081940874139
+      spriteID: 8879b01e32faa06d0800000000000000
+      internalID: -3023411631191517304
       vertices: []
       indices: 
       edges: []
@@ -293,8 +326,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9963a632857553560800000000000000
-      internalID: 7292831207659288217
+      spriteID: 1d3bde16c41550d60800000000000000
+      internalID: 7855774513520030673
       vertices: []
       indices: 
       edges: []
@@ -314,8 +347,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d0980d9446f7adca0800000000000000
-      internalID: -5991336285551163123
+      spriteID: 25f85f29115266750800000000000000
+      internalID: 6297761886334455634
       vertices: []
       indices: 
       edges: []
@@ -335,8 +368,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4e845a7390561f350800000000000000
-      internalID: 6048726864797976804
+      spriteID: 81810327eb18bc550800000000000000
+      internalID: 6182177568455661592
       vertices: []
       indices: 
       edges: []
@@ -356,8 +389,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e82a71dca4e11c5a0800000000000000
-      internalID: -6502883080328994162
+      spriteID: a66f259583a7e18e0800000000000000
+      internalID: -1720803625173584278
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Resources Icons_7
+      rect:
+        serializedVersion: 2
+        x: 3584
+        y: 0
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aaf44e2c6c7427600800000000000000
+      internalID: 464512630571421610
       vertices: []
       indices: 
       edges: []

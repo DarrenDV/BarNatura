@@ -11,7 +11,6 @@ public class ToxicCleaner : BuildingScript
     [SerializeField] private int cleanDistance;
 
     private List<BaseTileScript> surroundingTiles = new List<BaseTileScript>();
-    [SerializeField] private ParticleSystem BuildingRemovingParticleEffect;
 
     #endregion
 
@@ -24,12 +23,12 @@ public class ToxicCleaner : BuildingScript
 
     protected override string GetBuildingFunction()
     {
-        return $"Cleans {HudManager.GetIcon("Toxic")} tiles";
+        return $"Cleans {toxic} tiles";
     }
 
     public override string GetDescription()
     {
-        return $"This toxic cleaner cleans {HudManager.GetIcon("Toxic")} up to {cleanDistance} tiles away every {cleanRate} seconds.";
+        return $"This toxic cleaner cleans {toxic} up to {cleanDistance} tiles away every {cleanRate} seconds.\n\n{ShowProgress()}";
     }
 
     #endregion
@@ -40,6 +39,7 @@ public class ToxicCleaner : BuildingScript
     {
         base.Update();
 
+        isProducing = true;
         timeSinceLastClean += Time.deltaTime;
 
         if (timeSinceLastClean >= cleanRate)
@@ -63,13 +63,31 @@ public class ToxicCleaner : BuildingScript
     public override void OnFinishedBuilding()
     {
         base.OnFinishedBuilding();
-        BuildingRemovingParticleEffect.Stop();
         surroundingTiles = parentTile.GetNeighbourTiles(cleanDistance);
     }
-    public override void OnRemove()
+
+    #endregion
+
+    #region Production
+
+    protected override float GetMaxTime()
     {
-        base.OnRemove();
-        BuildingRemovingParticleEffect.Play();
+        return cleanRate;
+    }
+
+    protected override float GetTimer()
+    {
+        return timeSinceLastClean;
+    }
+
+    protected override string GetResourceDrained()
+    {
+        return $"{toxic}";
+    }
+
+    protected override string GetResourceGain()
+    {
+        return $"{nature}";
     }
 
     #endregion

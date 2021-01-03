@@ -4,7 +4,6 @@ public class MineScript : BuildingScript
 {
     [SerializeField] private int rawMaterialsOverTime = 1;
     [SerializeField] private float maxMineTimer = 18;
-    [SerializeField] private ParticleSystem BuildingRemovingParticleEffect;
 
     private float mineTimer;
     
@@ -35,16 +34,5 @@ public class MineScript : BuildingScript
     {
         return $"This mine slowly produces {HudManager.GetIcon("Raw")}  over time.";
     }
-    #region Building
-    public override void OnFinishedBuilding()
-    {
-        base.OnFinishedBuilding();
-        BuildingRemovingParticleEffect.Stop();
-    }
-    public override void OnRemove()
-    {
-        base.OnRemove();
-        BuildingRemovingParticleEffect.Play();
-    }
-    #endregion
+
 }

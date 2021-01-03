@@ -31,7 +31,7 @@ Transform:
   m_Children:
   - {fileID: 2736458649733294186}
   - {fileID: 3054238786538320866}
-  - {fileID: 5725168436979405445}
+  - {fileID: 2476087609431997188}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -63,6 +63,7 @@ MonoBehaviour:
   buildTime: 5
   MinimumNaturePollutedDegree: 1
   buildCostReturnDivider: 2
+  buildParticleEffect: {fileID: 3207502920623215824}
   OnFinishedBuildingEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -70,7 +71,6 @@ MonoBehaviour:
   maxCapacity: 0
   rawMaterialsOverTime: 10
   maxMineTimer: 30
-  BuildingRemovingParticleEffect: {fileID: 4732263112468168017}
 --- !u!65 &6812236342090459102
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -179,7 +179,7 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2736458649733165802}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &5030522861403496477
+--- !u!1001 &2954140561251027356
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -244,21 +244,21 @@ PrefabInstance:
     - target: {fileID: 3627722651630614350, guid: ad4b24d9bb19e3e469cf5cec246df570,
         type: 3}
       propertyPath: m_Name
-      value: Building_Destroying Particle effect
+      value: On Build Effect
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ad4b24d9bb19e3e469cf5cec246df570, type: 3}
---- !u!4 &5725168436979405445 stripped
+--- !u!4 &2476087609431997188 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 766706773359882904, guid: ad4b24d9bb19e3e469cf5cec246df570,
     type: 3}
-  m_PrefabInstance: {fileID: 5030522861403496477}
+  m_PrefabInstance: {fileID: 2954140561251027356}
   m_PrefabAsset: {fileID: 0}
---- !u!198 &4732263112468168017 stripped
+--- !u!198 &3207502920623215824 stripped
 ParticleSystem:
   m_CorrespondingSourceObject: {fileID: 323240861493534028, guid: ad4b24d9bb19e3e469cf5cec246df570,
     type: 3}
-  m_PrefabInstance: {fileID: 5030522861403496477}
+  m_PrefabInstance: {fileID: 2954140561251027356}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8156707948049393636
 PrefabInstance:
