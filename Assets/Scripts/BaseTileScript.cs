@@ -213,6 +213,8 @@ public class BaseTileScript : Tile
         {
             SetNaturePollutedDegree(-10);
             ToxicParticles();
+
+            FindObjectOfType<TutorialManager>().AssignToxicTile(gameObject);
         }
     }
     #endregion
@@ -247,6 +249,7 @@ public class BaseTileScript : Tile
 
         if (doMaterialUpdate)
         {
+            CheckToxicTexture();
             meshRenderer.material.SetColor("_Color", tileVariables.gradient.Evaluate(Utils.Map(naturePollutedDegree, -10, 10, 0, 1)));
             doMaterialUpdate = false;
         }
@@ -261,7 +264,6 @@ public class BaseTileScript : Tile
 
         if (naturePollutedDegree == -10)
         {
-            SetToxicTexture();
             ToxicParticles();
             doMaterialUpdate = true;
             canBecomeNature = false;
@@ -323,11 +325,17 @@ public class BaseTileScript : Tile
         }
     }
 
-    private void SetToxicTexture()
+    private void CheckToxicTexture()
     {
-        GetComponent<Renderer>().material = tileVariables.infectionTexture;
+        if (naturePollutedDegree == -10)
+        {
+            meshRenderer.material = tileVariables.infectionTexture;
+        }
+        else
+        {
+            meshRenderer.material = tileVariables.barrenTexture;
+        }
     }
-
     public int NaturePollutedDegree => naturePollutedDegree;
 
     #endregion

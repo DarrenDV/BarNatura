@@ -5,6 +5,14 @@ public class HouseScript : BuildingScript
     [Header("House Script")]
     [Tooltip("How many humans spawn when this house is done building")]
     [SerializeField] private int populationToAdd;
+
+    protected override void Start()
+    {
+        base.Start();
+
+        if (!GameManager.Instance.tutorialEnded) FindObjectOfType<TutorialManager>().OnFirstHouseBuilt();
+    }
+
     public override string GetName()
     {
         return "House";
