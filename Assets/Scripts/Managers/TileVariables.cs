@@ -7,7 +7,10 @@ public class TileVariables : MonoBehaviour
     //Tile spreading variables
     [Header("Colors")]
     public Gradient gradient;
+
+    [Header("Materials")]
     public Material infectionTexture;
+    public Material barrenTexture;
 
     [Header("Tile spreading")]
     public int maxChance = 100;
