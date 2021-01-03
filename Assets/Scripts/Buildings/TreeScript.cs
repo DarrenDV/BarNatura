@@ -5,6 +5,13 @@ public class TreeScript : BuildObject
 {
     private List<BaseTileScript> surroundingTiles = new List<BaseTileScript>();
 
+    protected override void Start()
+    {
+        base.Start();
+
+        FindObjectOfType<TutorialManager>().OnTreeBuilt();
+    }
+
     public override string GetName()
     {
         return "Tree";
