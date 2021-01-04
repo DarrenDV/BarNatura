@@ -319,6 +319,31 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 2480479599583112770, guid: e86f98e4597dfa14e9032aaac6f297e1,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1964208881205869320}
+    - target: {fileID: 2480479599583112770, guid: e86f98e4597dfa14e9032aaac6f297e1,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480479599583112770, guid: e86f98e4597dfa14e9032aaac6f297e1,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480479599583112770, guid: e86f98e4597dfa14e9032aaac6f297e1,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480479599583112770, guid: e86f98e4597dfa14e9032aaac6f297e1,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3717672702830123440, guid: e86f98e4597dfa14e9032aaac6f297e1,
         type: 3}
       propertyPath: m_Name
