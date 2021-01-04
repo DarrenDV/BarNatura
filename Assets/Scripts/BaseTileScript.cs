@@ -361,6 +361,7 @@ public class BaseTileScript : Tile
             meshRenderer.material = tileVariables.barrenTexture;
         }
     }
+
     public int NaturePollutedDegree => naturePollutedDegree;
 
     #endregion
@@ -371,7 +372,7 @@ public class BaseTileScript : Tile
     {
         var gameManager = GameManager.Instance;
 
-        if (gameManager.inBuildMode)
+        if (gameManager.inBuildMode && !Utils.IsPointerOverUIElement())
         {
             var plannedBuildObject = gameManager.buildObject.gameObject.GetComponent<BuildObject>();
 
