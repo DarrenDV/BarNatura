@@ -157,13 +157,16 @@ public class GameManager : MonoBehaviour
         {
             audioManager.PlayDangerLoopSound();
 
-            timeLeftUntilHumansDie += Time.deltaTime;
-
-            if (timeLeftUntilHumansDie > humanDeathTimer)
+            if (availableWorkers > 0)
             {
-                timeLeftUntilHumansDie = humanDeathTimer - Random.Range(1f, 2f);
-                RemovePopulation(1);
-                audioManager.PlayHumanDeathSound();
+                timeLeftUntilHumansDie += Time.deltaTime;
+
+                if (timeLeftUntilHumansDie > humanDeathTimer)
+                {
+                    timeLeftUntilHumansDie = humanDeathTimer - Random.Range(1f, 2f);
+                    RemovePopulation(1);
+                    audioManager.PlayHumanDeathSound();
+                }
             }
         } 
         else
