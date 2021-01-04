@@ -23,7 +23,7 @@ public class PollutionConverter : BuildingScript
 
     public override string GetName()
     {
-        return "Pollution converter";
+        return "Pollution Converter";
     }
 
     protected override string GetBuildingFunction()
@@ -33,7 +33,7 @@ public class PollutionConverter : BuildingScript
 
     public override string GetDescription()
     {
-        return $"This pollution converter converts {pollutionToRemove} {HudManager.GetIcon("Pollution")} into {oxygenToAdd} {HudManager.GetIcon("OxygenPlus")} every {conversionRate} seconds.";
+        return $"This {GetName()} converts {pollutionToRemove} {HudManager.GetIcon("Pollution")} into {oxygenToAdd} {HudManager.GetIcon("OxygenPlus")} every {conversionRate} seconds.";
     }
 
     #endregion

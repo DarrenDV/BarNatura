@@ -7,23 +7,6 @@ public class BuildingScript : BuildObject
     [SerializeField] protected int maxCapacity;
 
     protected bool isProducing;
-    protected string house, raw, brick, toxic, human,
-        oxygenPlus, oxygenMin, pollution, nature;
-
-    protected override void Start()
-    {
-        base.Start();
-
-        house = HudManager.GetIcon("House");
-        raw = HudManager.GetIcon("Raw");
-        brick = HudManager.GetIcon("Brick");
-        toxic = HudManager.GetIcon("Toxic");
-        human = HudManager.GetIcon("Human");
-        oxygenPlus = HudManager.GetIcon("OxygenPlus");
-        oxygenMin = HudManager.GetIcon("OxygenMin");
-        pollution = HudManager.GetIcon("Pollution");
-        nature = HudManager.GetIcon("Nature");
-    }
 
     #region Construction
     public override void OnFinishedBuilding()
@@ -107,12 +90,12 @@ public class BuildingScript : BuildObject
 
     protected virtual string GetResourceDrained()
     {
-        return $"{oxygenPlus}";
+        return $"{HudManager.GetIcon("OxygenPlus")}";
     }
 
     protected virtual string GetResourceGain()
     {
-        return $"{oxygenMin}";
+        return $"{HudManager.GetIcon("OxygenMin")}";
     }
 
     #endregion

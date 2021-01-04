@@ -29,7 +29,7 @@ public class TreeScript : BuildObject
 
     public override string GetDescription()
     {
-        return $"This tree produces {oxygenProduction} {HudManager.GetIcon("OxygenPlus")}";
+        return $"This {GetName()} produces {oxygenProduction} {HudManager.GetIcon("OxygenPlus")}";
     }
 
     public override void OnFinishedBuilding()

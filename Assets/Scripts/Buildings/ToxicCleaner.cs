@@ -18,17 +18,17 @@ public class ToxicCleaner : BuildingScript
 
     public override string GetName()
     {
-        return "Toxic cleaner";
+        return "Toxic Cleaner";
     }
 
     protected override string GetBuildingFunction()
     {
-        return $"Cleans {toxic} tiles";
+        return $"Cleans {HudManager.GetIcon("Toxic")} tiles";
     }
 
     public override string GetDescription()
     {
-        return $"This toxic cleaner cleans {toxic} up to {cleanDistance} tiles away every {cleanRate} seconds.\n\n{ShowProgress()}";
+        return $"This {GetName()} cleaner cleans {HudManager.GetIcon("Toxic")} up to {cleanDistance} tiles away every {cleanRate} seconds.\n\n{ShowProgress()}";
     }
 
     #endregion
@@ -82,12 +82,12 @@ public class ToxicCleaner : BuildingScript
 
     protected override string GetResourceDrained()
     {
-        return $"{toxic}";
+        return $"{HudManager.GetIcon("Toxic")}";
     }
 
     protected override string GetResourceGain()
     {
-        return $"{nature}";
+        return $"{HudManager.GetIcon("Nature")}";
     }
 
     #endregion

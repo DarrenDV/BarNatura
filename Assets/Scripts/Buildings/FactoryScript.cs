@@ -29,12 +29,12 @@ public class FactoryScript : BuildingScript
 
     protected override string GetBuildingFunction()
     {
-        return $"Converts {brick} to {raw}";
+        return $"Converts {HudManager.GetIcon("Brick")} to {HudManager.GetIcon("Raw")}";
     }
 
     public override string GetDescription()
     {
-        return $"This factory converts {rawMaterialConsumption} {raw} to {brick} building materials every {maxFactoryConvertTimer} seconds.\n\n{ShowProgress()}";
+        return $"This {GetName()} converts {rawMaterialConsumption} {HudManager.GetIcon("Raw")} to {HudManager.GetIcon("Brick")} building materials every {maxFactoryConvertTimer} seconds.\n\n{ShowProgress()}";
     }
 
     #endregion
@@ -99,12 +99,12 @@ public class FactoryScript : BuildingScript
 
     protected override string GetResourceDrained()
     {
-        return $"{raw}";
+        return $"{HudManager.GetIcon("Raw")}";
     }
 
     protected override string GetResourceGain()
     {
-        return $"{brick}";
+        return $"{HudManager.GetIcon("Brick")}";
     }
 
     protected override string GetNoProducingString()

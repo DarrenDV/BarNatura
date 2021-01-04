@@ -32,7 +32,7 @@ public class MineScript : BuildingScript
 
     public override string GetDescription()
     {
-        return $"This mine slowly produces {HudManager.GetIcon("Raw")}  over time.";
+        return $"This {GetName()} slowly produces {HudManager.GetIcon("Raw")}  over time.";
     }
 
 }

@@ -25,6 +25,8 @@ public class BuildObject : OxygenUser
     /// </summary>
     [HideInInspector] public bool IsBeingBuild;
 
+    #region Standard
+
     protected override void Update()
     {
         base.Update();
@@ -45,6 +47,8 @@ public class BuildObject : OxygenUser
             UpdateScale();
         }
     }
+
+    #endregion
 
     #region Build tool tip info
 

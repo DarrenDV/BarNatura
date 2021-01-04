@@ -20,12 +20,12 @@ public class HouseScript : BuildingScript
 
     protected override string GetBuildingFunction()
     {
-        return $"+ {maxCapacity} {house}, + {populationToAdd} {human}";
+        return $"+ {maxCapacity} {HudManager.GetIcon("House")}, + {populationToAdd} {HudManager.GetIcon("Human")}";
     }
 
     public override string GetDescription()
     {
-        return $"This house has {maxCapacity} {house}";
+        return $"This {GetName()} has {maxCapacity} {HudManager.GetIcon("House")}";
     }
 
     #region Building
