@@ -3,13 +3,17 @@ using UnityEngine.UI;
 
 public class AtmosphereSystem : MonoBehaviour
 {
-    [SerializeField] private int atmosphereLevel1Threshhold = 300, atmosphereLevel2Threshhold = 1300, atmosphereLevel3Threshhold = 2600, atmosphereLevel4Threshhold  = 3900;
+    [SerializeField] private int atmosphereLevel1Threshhold = 300;
+    [SerializeField] private int atmosphereLevel2Threshhold = 1300;
+    [SerializeField] private int atmosphereLevel3Threshhold = 2600;
+    [SerializeField] private int atmosphereLevel4Threshhold = 3900;
+
     [SerializeField] private float maxAtmopshereTimer = 5;
     [SerializeField] private Text currentOxygenCounter;
     [SerializeField] private Sprite level1, level2, level3, level4;
     [SerializeField] private Image atmosphereLevelImage;
     private int currentOxygen, currentAtmosphereLevel;
-    private float atmosphereTimer = 0;
+    private float atmosphereTimer;
 
     void Update()
     {
@@ -20,11 +24,12 @@ public class AtmosphereSystem : MonoBehaviour
             LevelCheck();
             atmosphereTimer = 0;
         }
+
         UpdateCurrentOxygenCounter();
         atmosphereTimer += Time.deltaTime;
     }
 
-    void LevelCheck()
+    private void LevelCheck()
     {
         //level check, this could be a switch case but i cant fill in atmosphereLevel1Threshhold as a case, with no magic numbers this is all i could think of.
         if (currentOxygen > atmosphereLevel4Threshhold && currentAtmosphereLevel != 4)
@@ -32,20 +37,20 @@ public class AtmosphereSystem : MonoBehaviour
             currentAtmosphereLevel = 4;
             atmosphereLevelImage.sprite = level4;
             UpdateTreeNatureRadius();
-        } else
-        if (currentOxygen > atmosphereLevel3Threshhold && currentAtmosphereLevel != 3)
+        }
+        else if (currentOxygen > atmosphereLevel3Threshhold && currentAtmosphereLevel != 3)
         {
             currentAtmosphereLevel = 3;
             atmosphereLevelImage.sprite = level3;
             UpdateTreeNatureRadius();
-        } else
-        if (currentOxygen > atmosphereLevel2Threshhold && currentAtmosphereLevel != 2)
+        }
+        else if (currentOxygen > atmosphereLevel2Threshhold && currentAtmosphereLevel != 2)
         {
             currentAtmosphereLevel = 2;
             atmosphereLevelImage.sprite = level2;
             UpdateTreeNatureRadius();
-        } else
-        if (currentOxygen > atmosphereLevel1Threshhold && currentAtmosphereLevel != 1)
+        }
+        else if (currentOxygen > atmosphereLevel1Threshhold && currentAtmosphereLevel != 1)
         {
             currentAtmosphereLevel = 1;
             atmosphereLevelImage.sprite = level1;
@@ -65,7 +70,7 @@ public class AtmosphereSystem : MonoBehaviour
             tile.canBecomeNature = false;
         }
 
-        foreach(var tree in FindObjectsOfType<TreeScript>())
+        foreach (var tree in FindObjectsOfType<TreeScript>())
         {
             tree.UpdateNatureSpreadTiles(currentAtmosphereLevel);
         }
@@ -73,6 +78,9 @@ public class AtmosphereSystem : MonoBehaviour
 
     private void UpdateCurrentOxygenCounter()
     {
-        currentOxygenCounter.text = currentOxygen.ToString();
+        if (currentOxygenCounter != null)
+        {
+            currentOxygenCounter.text = currentOxygen.ToString();
+        }
     }
 }
