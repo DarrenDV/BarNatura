@@ -101,9 +101,10 @@ public class BuildObject : OxygenUser
         buildParticleEffect.Stop();
     }
 
-    public override void OnRemove()
+    public override void OnRemove(bool instant = false)
     {
-        base.OnRemove();
+        base.OnRemove(instant);
+
         buildParticleEffect.Play();
     }
 

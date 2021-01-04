@@ -32,7 +32,6 @@ public class HudManager : MonoBehaviour
         humanCounter = GameObject.Find("HumanCounter").GetComponent<Text>();
         capacityCounter = GameObject.Find("CapacityCounter").GetComponent<Text>();
         oxygenBar = GameObject.Find("OxygenSlider").GetComponent<Slider>();
-        
     }
 
     private void Start()
@@ -72,8 +71,7 @@ public class HudManager : MonoBehaviour
 
     public void UpdateHumanCounter()
     {
-        humanCounter.text = (GameManager.Instance.GetPopulationAmount() - GameManager.Instance.GetWorkerAmount() +
-            " / " + GameManager.Instance.GetPopulationAmount()).ToString();
+        humanCounter.text = GameManager.Instance.GetPopulationAmount() - GameManager.Instance.GetWorkerAmount() + " / " + GameManager.Instance.GetPopulationAmount();
     }
 
     public void UpdateCapacityCounter()
@@ -86,7 +84,7 @@ public class HudManager : MonoBehaviour
         if (GameManager.Instance.GetOxygenSurplus() > 0)
         {
             surplusCounter.color = Color.green;
-            surplusCounter.text = "+" + GameManager.Instance.GetOxygenSurplus().ToString();
+            surplusCounter.text = "+" + GameManager.Instance.GetOxygenSurplus();
         }
         else
         {
@@ -116,8 +114,7 @@ public class HudManager : MonoBehaviour
             case "OxygenMin": return "<sprite=5 color= ff0000>";
             case "Pollution": return "<sprite=6 color= ffff00>";
             case "Nature": return "<sprite=7 color= 00ff00>";
-            default: return "Icon not found";
-        };
-
+            default: return "Icon not found!";
+        }
     }
 }

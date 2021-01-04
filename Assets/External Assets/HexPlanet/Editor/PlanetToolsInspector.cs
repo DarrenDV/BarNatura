@@ -188,7 +188,7 @@ public class PlanetToolsInspector : Editor
         EditorGUILayout.BeginHorizontal();
         for (int i = 0; i < Planet.GroupMaterials.Length; i++)
         {
-            if (GUILayout.Button("Group " + i.ToString(), i == PlanetEditor.SelectedGroup ? ToggleButtonStyleToggled : ToggleButtonStyleNormal))
+            if (GUILayout.Button("Group " + i, i == PlanetEditor.SelectedGroup ? ToggleButtonStyleToggled : ToggleButtonStyleNormal))
             {
                 PlanetEditor.SelectedGroup = i;
             }

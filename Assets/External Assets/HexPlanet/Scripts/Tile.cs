@@ -233,17 +233,17 @@ public class Tile : OxygenUser
 			//Apply extrusion heights
 			for(int i = 0; i < sides; i++)
             {
-				Vector3 worldV = (transform.TransformPoint (verts [i]) - parentPlanet.transform.position);
+				Vector3 worldV = transform.TransformPoint (verts [i]) - parentPlanet.transform.position;
 				worldV += heightDelta * worldV.normalized * parentPlanet.planetScale;
 				verts [i] = transform.InverseTransformPoint (worldV + parentPlanet.transform.position);
 			}
 			for (int i = sides + 2; i < sides + sides * 4; i += 4)
             {
-				Vector3 worldV = (transform.TransformPoint (verts [i]) - parentPlanet.transform.position);
+				Vector3 worldV = transform.TransformPoint (verts [i]) - parentPlanet.transform.position;
 				worldV += heightDelta * worldV.normalized * parentPlanet.planetScale;
 				verts [i] = transform.InverseTransformPoint (worldV + parentPlanet.transform.position);
 
-				worldV = (transform.TransformPoint (verts [i + 1]) - parentPlanet.transform.position);
+				worldV = transform.TransformPoint (verts [i + 1]) - parentPlanet.transform.position;
 				worldV += heightDelta * worldV.normalized * parentPlanet.planetScale;
 				verts [i + 1] = transform.InverseTransformPoint (worldV + parentPlanet.transform.position);
 			}
@@ -271,7 +271,7 @@ public class Tile : OxygenUser
 		//Translate duplicated verts along local up
 		for(int i = 0; i < faceVerts.Count; i++)
         {
-			Vector3 worldV = (transform.TransformPoint (faceVerts [i]) - parentPlanet.transform.position);
+			Vector3 worldV = transform.TransformPoint (faceVerts [i]) - parentPlanet.transform.position;
 			worldV += heightDelta * worldV.normalized * parentPlanet.planetScale;
 			faceVerts [i] = transform.InverseTransformPoint (worldV + parentPlanet.transform.position);
 		}
@@ -547,7 +547,7 @@ public class ClockwiseComparer : IComparer
 			return -1;
 		}
 
-		return (firstOffset.sqrMagnitude < secondOffset.sqrMagnitude) ? 1 : -1;
+		return firstOffset.sqrMagnitude < secondOffset.sqrMagnitude ? 1 : -1;
 	}
 }
 
@@ -591,6 +591,6 @@ public class ClockwiseComparer2D : IComparer
             return -1;
         }
 
-        return (firstOffset.sqrMagnitude < secondOffset.sqrMagnitude) ? 1 : -1;
+        return firstOffset.sqrMagnitude < secondOffset.sqrMagnitude ? 1 : -1;
     }
 }

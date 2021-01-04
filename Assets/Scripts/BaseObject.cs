@@ -91,10 +91,11 @@ public class BaseObject : MonoBehaviour
     /// </summary>
     public virtual void OnRemove(bool instant = false)
     {
+        AudioManager.Instance.PlayDemolishSound();
+
         if (!instant)
         {
             GameManager.Instance.AddWorkers(HumansRequiredToRemove);
-        AudioManager.Instance.PlayDemolishSound();
             IsBeingRemoved = true;
         }
     }

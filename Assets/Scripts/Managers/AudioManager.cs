@@ -22,8 +22,6 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioSource uiAudioSource;
     [SerializeField] private AudioClip selectSound;
 
-
-
     void Awake()
     {
         if (Instance == null)
@@ -35,7 +33,6 @@ public class AudioManager : MonoBehaviour
             Debug.LogError("Audio Manager instance already set!");
         }
     }
-
 
     #region building
     public void PlayBuildSound()
@@ -67,6 +64,7 @@ public class AudioManager : MonoBehaviour
         demolishAudioSource.clip = disappearSound;
         demolishAudioSource.Play();
     }
+
     #endregion
 
     public void PlayDangerLoopSound()
@@ -76,13 +74,14 @@ public class AudioManager : MonoBehaviour
             dangerLoop.clip = dangerLoopSound;
             dangerLoop.Play();
         }
-
     }
 
     public void StopDangerLoopSound()
     {
         if (dangerLoop.isActiveAndEnabled)
+        {
             dangerLoop.Stop();
+        }
     }
 
     public void PlayHumanDeathSound()
@@ -91,9 +90,9 @@ public class AudioManager : MonoBehaviour
         dangerShort.Play();
     }
 
-    public void PlayUiSelectSound() {
+    public void PlayUiSelectSound()
+    {
         uiAudioSource.clip = selectSound;
         uiAudioSource.Play();
     }
-
 }

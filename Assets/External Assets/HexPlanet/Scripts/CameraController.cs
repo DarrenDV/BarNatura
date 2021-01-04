@@ -64,7 +64,7 @@ public class CameraController : MonoBehaviour {
 			//t += Time.deltaTime * transitionSpeed * .3f;
 			targetAngle -= Time.deltaTime * transitionSpeed * 25f;
 			//Debug.Log("Current Angle: " + targetAngle);
-			transform.position = Vector3.RotateTowards(transform.position, targetPos, (Time.deltaTime * transitionSpeed * 25f) * Mathf.Deg2Rad, 0f);
+			transform.position = Vector3.RotateTowards(transform.position, targetPos, Time.deltaTime * transitionSpeed * 25f * Mathf.Deg2Rad, 0f);
 			transform.LookAt(Vector3.zero);
 			
 			if(targetAngle <= 0){
