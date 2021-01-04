@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Assets.Scripts;
+using UnityEngine;
 using UnityEngine.Events;
 
 public class CameraScript : MonoBehaviour
@@ -47,7 +48,7 @@ public class CameraScript : MonoBehaviour
     void LateUpdate()
     {
         // don't allow turning the camera in main menu
-        if (GameManager.Instance.CurrentGameState == Assets.Scripts.Enums.GameState.MainMenu)
+        if (GameManager.Instance.CurrentGameState == Enums.GameState.MainMenu)
         {
             if (!doingTransition)
             {
@@ -64,12 +65,16 @@ public class CameraScript : MonoBehaviour
             return;
         }
 
-        // When right mouse is pressed the cameraSlowDown gets reset and the mouse gets tracked.
-        if (Input.GetMouseButton(1))
+        if (!Utils.IsPointerOverUIElement())
         {
-            currentCameraSlowDown = cameraSlowDown;
-            mouseX = Input.GetAxis("Mouse X");
-            mouseY = Input.GetAxis("Mouse Y");
+            // When right mouse is pressed the cameraSlowDown gets reset and the mouse gets tracked.
+            if (Input.GetMouseButton(1))
+            {
+                currentCameraSlowDown = cameraSlowDown;
+
+                mouseX = Input.GetAxis("Mouse X");
+                mouseY = Input.GetAxis("Mouse Y");
+            }
         }
 
         // This takes care of the sliding effect.
@@ -135,5 +140,4 @@ public class CameraScript : MonoBehaviour
     {
         Camera.main.fieldOfView = defaultZoomFov;
     }
-
 }
