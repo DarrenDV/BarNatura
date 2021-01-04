@@ -18,7 +18,7 @@ GameObject:
   m_TagString: NatureDecal
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &5749680141189602737
 Transform:
@@ -108,16 +108,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CanBeRemovedByPlayer: 0
-  HumansRequiredToBuild: 0
   HumansRequiredToRemove: 0
-  buildTime: 0
   removeTime: 0
-  OnFinishedBuildingEvent:
-    m_PersistentCalls:
-      m_Calls: []
   OnFinishedRemovingEvent:
     m_PersistentCalls:
       m_Calls: []
   parentTile: {fileID: 0}
-  IsBeingBuild: 0
   IsBeingRemoved: 0

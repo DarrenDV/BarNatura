@@ -16,7 +16,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &1322002616147902981
 Transform:
@@ -95,7 +95,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &2854732173328536656
 Transform:
@@ -138,18 +138,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CanBeRemovedByPlayer: 1
-  HumansRequiredToBuild: 0
   HumansRequiredToRemove: 5
-  buildTime: 0
   removeTime: 10
-  OnFinishedBuildingEvent:
-    m_PersistentCalls:
-      m_Calls: []
   OnFinishedRemovingEvent:
     m_PersistentCalls:
       m_Calls: []
   parentTile: {fileID: 0}
-  IsBeingBuild: 0
   IsBeingRemoved: 0
   rawMaterialMin: 5
   rawMaterialMax: 20

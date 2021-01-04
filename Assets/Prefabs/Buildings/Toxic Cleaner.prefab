@@ -16,7 +16,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &5550408694384164520
 Transform:
@@ -166,9 +166,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5550408694384164520}
     m_Modifications:
+    - target: {fileID: 1543995937117134, guid: 6bc63aeb4e2f97d4785d53f5c282d318, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 1621237971383888, guid: 6bc63aeb4e2f97d4785d53f5c282d318, type: 3}
       propertyPath: m_Name
       value: Factory_4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1621237971383888, guid: 6bc63aeb4e2f97d4785d53f5c282d318, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 1788800548821582, guid: 6bc63aeb4e2f97d4785d53f5c282d318, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 4225718213830926, guid: 6bc63aeb4e2f97d4785d53f5c282d318, type: 3}
       propertyPath: m_LocalPosition.x
@@ -335,6 +347,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: On Build Effect
+      objectReference: {fileID: 0}
+    - target: {fileID: 3627722651630614350, guid: ad4b24d9bb19e3e469cf5cec246df570,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ad4b24d9bb19e3e469cf5cec246df570, type: 3}
