@@ -852,18 +852,20 @@ MonoBehaviour:
   mainCam: {fileID: 0}
   toxicTile: {fileID: 0}
   whenCameraPans: 0
+  camIsMoving: 0
   Tutorials:
-  - Id: 'Welcome to BarNatura commander! '
+  - Id: Welcome to BarNatura!
     Messages:
-    - Title: 'Welcome to BarNatura commander! '
+    - Title: Welcome to BarNatura!
       Message: "Welcome commander! We are the last bastion of humanity and we need
         to colonize this planet if we want to survive as a race, that\u2019s where
         you come in."
       TutorialEvent:
         m_PersistentCalls:
           m_Calls: []
-    - Title: 'Welcome to BarNatura commander! '
-      Message: REEEEEEEEEEEEEEEEE
+    - Title: Welcome to BarNatura!
+      Message: "To start, let\u2019s find a suitable location for our dropship to
+        land. Try looking around the planet for a nice free spot."
       TutorialEvent:
         m_PersistentCalls:
           m_Calls:
@@ -903,6 +905,400 @@ MonoBehaviour:
           - m_Target: {fileID: 0}
             m_MethodName: SetActive
             m_Mode: 6
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 1
+            m_CallState: 2
+          - m_Target: {fileID: 0}
+            m_MethodName: SetActive
+            m_Mode: 6
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
+          - m_Target: {fileID: 0}
+            m_MethodName: TutorialAllowsStart
+            m_Mode: 1
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 1
+            m_CallState: 2
+  - Id: Setting foot
+    Messages:
+    - Title: Setting foot
+      Message: "Commander, to start the new colony we require local oxygen production.
+        Select the \u201CTree\u201D icon at the bottom of your screen and place two
+        trees somewhere near our dropship. Notice that placing a tree (or any other
+        structure) temporarily costs 5 humans to place."
+      TutorialEvent:
+        m_PersistentCalls:
+          m_Calls: []
+    - Title: 'Setting foot: Oxygen'
+      Message: Good job Commander. These trees together now produces 16 units of
+        Oxygen. This can be seen on the left side in the oxygen bar. Our dropship
+        also temporarily produces 25 units of oxygen, but this will run out soon.
+      TutorialEvent:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 0}
+            m_MethodName: SetActive
+            m_Mode: 6
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 1
+            m_CallState: 2
+    - Title: 'Setting foot: Tile health'
+      Message: As you can see, the trees are making the surrounding land liveable
+        by growing grass.
+      TutorialEvent:
+        m_PersistentCalls:
+          m_Calls: []
+  - Id: Residency
+    Messages:
+    - Title: Residency
+      Message: Now we need more people and thus the colony requires more places for
+        our people to sleep and live. Construct a house on top of a liveable tile.
+      TutorialEvent:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 0}
+            m_MethodName: SetActive
+            m_Mode: 6
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 1
+            m_CallState: 2
+          - m_Target: {fileID: 0}
+            m_MethodName: SetActive
+            m_Mode: 6
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
+    - Title: 'Residency: Oxygen'
+      Message: Commander, the construction of the house is complete. As more and
+        more people enter our colony aswell as you building more buildings, the oxygen
+        upkeep will also increase.
+      TutorialEvent:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 0}
+            m_MethodName: SetActive
+            m_Mode: 6
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 1
+            m_CallState: 2
+    - Title: 'Residency: Oxygen'
+      Message: If the oxygen upkeep gets higher than what we have available, some
+        colonists will die until we have enough oxygen. If this gets too out of hand,
+        we can lose the colony and humanity will die with it.
+      TutorialEvent:
+        m_PersistentCalls:
+          m_Calls: []
+  - Id: Materials
+    Messages:
+    - Title: 'Materials: Expanding'
+      Message: "Great job so far Commander. We now need more space for our colony.
+        Clear some rubble off the planet by selecting rubble and pressing the \u201CRemove\u201D
+        button."
+      TutorialEvent:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 0}
+            m_MethodName: SetActive
+            m_Mode: 6
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
+    - Title: 'Materials: Obtaining'
+      Message: It seems like you obtained some Raw Materials from that rubble. These
+        can be converted to Building Materials which are required for the construction
+        of more buildings
+      TutorialEvent:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 0}
+            m_MethodName: SetActive
+            m_Mode: 6
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 1
+            m_CallState: 2
+  - Id: Conversion Time
+    Messages:
+    - Title: 'Conversion Time: Factory'
+      Message: "Let\u2019s build a factory commander. We should be able to convert
+        those Raw Materials you just obtained into Building Materials with one."
+      TutorialEvent:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 0}
+            m_MethodName: SetActive
+            m_Mode: 6
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
+          - m_Target: {fileID: 0}
+            m_MethodName: SetActive
+            m_Mode: 6
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 1
+            m_CallState: 2
+    - Title: 'Conversion Time: Factory'
+      Message: Every couple of seconds, a few Raw Materials will be converted to
+        some Building Materials in this factory. Using these Building Materials we
+        can expand our colony even further!
+      TutorialEvent:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 0}
+            m_MethodName: SetActive
+            m_Mode: 6
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 1
+            m_CallState: 2
+    - Title: 'Conversion Time: Boosting'
+      Message: "Let\u2019s speed things up a notch! We can boost the factory to accomplish
+        this, boosting does however require more humans to permanently work in the
+        factory. You can boost the factory by clicking on it and pressing on the
+        \"Boost\" button."
+      TutorialEvent:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 0}
+            m_MethodName: SetActive
+            m_Mode: 6
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
+    - Title: 'Conversion Time: Unboosting'
+      Message: "We can also unboost the factory to get our humans back. Let\u2019s
+        do that now by pressing the \"Unboost\" button."
+      TutorialEvent:
+        m_PersistentCalls:
+          m_Calls: []
+  - Id: Ah Oh Pollution
+    Messages:
+    - Title: 'Ah Oh Pollution: What?'
+      Message: "It seems that the factory is emitting pollution. For now it\u2019s
+        no big deal but this is certainly something we have to consider while expanding
+        our colony. Why, you ask? Well in order to thrive as a colony we want an
+        atmosphere. Having a strong and thick atmosphere will no longer require us
+        to keep our helmets on to breathe outside, it also helps in spreading nature."
+      TutorialEvent:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 0}
+            m_MethodName: SetActive
+            m_Mode: 6
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 1
+            m_CallState: 2
+          - m_Target: {fileID: 0}
+            m_MethodName: set_fontSize
+            m_Mode: 3
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 27
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 1
+            m_CallState: 2
+    - Title: 'Ah Oh Pollution: Atmosphere'
+      Message: "The atmosphere consists of 4 layers, each bringing more benefits
+        to the table. Currently we\u2019re in level 1, in order to thrive as a colony,
+        we\u2019re going to need to achieve level 4. The more oxygen we produce,
+        the faster the atmosphere grows. Pollution however, does slow this process
+        down."
+      TutorialEvent:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 0}
+            m_MethodName: SetActive
+            m_Mode: 6
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 1
+            m_CallState: 2
+    - Title: 'Ah Oh Pollution: Our planet'
+      Message: "In order to make this planet ours, we need around 80% of the surface
+        to be covered in nature. Achieving this won\u2019t be easy, but placing more
+        trees and building up the atmosphere will definitely help."
+      TutorialEvent:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 0}
+            m_MethodName: set_fontSize
+            m_Mode: 3
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 30
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
+  - Id: Toxicity arrives
+    Messages:
+    - Title: 'Toxicity arrives: Toxicity'
+      Message: "Commander, I\u2019ve got some troubling news! We\u2019ve gotten reports
+        that a new form of toxicity is starting to spread around our planet!"
+      TutorialEvent:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 0}
+            m_MethodName: ToxicMission
+            m_Mode: 1
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
+    - Title: 'Toxicity arrives: Tiles'
+      Message: "This can be really bad for us commander! This toxicity seems to spread
+        just like nature and completely stops us from building on them. If this toxicity
+        gets too out of hand we\u2019re going to lose our planet to it."
+      TutorialEvent:
+        m_PersistentCalls:
+          m_Calls: []
+  - Id: Tutorial complete
+    Messages:
+    - Title: Tutorial complete
+      Message: "That\u2019s all you need to know commander. I\u2019m hereby going
+        to leave all responsibility of this colony to you. Remember to keep watch
+        of your pollution and the toxicity.\n\nWe know you can do this, for humanity."
+      TutorialEvent:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 1981535061725474793}
+            m_MethodName: SetActive
+            m_Mode: 6
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 1
+            m_CallState: 2
+          - m_Target: {fileID: 0}
+            m_MethodName: SetActive
+            m_Mode: 6
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 1
+            m_CallState: 2
+          - m_Target: {fileID: 0}
+            m_MethodName: SetActive
+            m_Mode: 6
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 1
+            m_CallState: 2
+          - m_Target: {fileID: 0}
+            m_MethodName: SetActive
+            m_Mode: 6
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 1
+            m_CallState: 2
+          - m_Target: {fileID: 5489410942813315424}
+            m_MethodName: SetActive
+            m_Mode: 6
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
+          - m_Target: {fileID: 7344187465744813017}
+            m_MethodName: StopCamMovement
+            m_Mode: 1
             m_Arguments:
               m_ObjectArgument: {fileID: 0}
               m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1087,6 +1483,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e86f98e4597dfa14e9032aaac6f297e1, type: 3}
+--- !u!1 &1981535061725474793 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3717672702830123440, guid: e86f98e4597dfa14e9032aaac6f297e1,
+    type: 3}
+  m_PrefabInstance: {fileID: 2947605971473266265}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &3659760429934621991 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1883090387958186878, guid: e86f98e4597dfa14e9032aaac6f297e1,
@@ -1247,6 +1649,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e86f98e4597dfa14e9032aaac6f297e1, type: 3}
+--- !u!1 &5489410942813315424 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3717672702830123440, guid: e86f98e4597dfa14e9032aaac6f297e1,
+    type: 3}
+  m_PrefabInstance: {fileID: 9203560535241308368}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &7321596459645664174 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1883090387958186878, guid: e86f98e4597dfa14e9032aaac6f297e1,

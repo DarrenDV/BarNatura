@@ -2302,17 +2302,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7344187465744813017, guid: b89effcb55ce99b40ae20d9b41826553,
         type: 3}
-      propertyPath: Tutorials.Array.data[7].Messages.Array.data[0].TutorialEvent.m_PersistentCalls.m_Calls.Array.size
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 7344187465744813017, guid: b89effcb55ce99b40ae20d9b41826553,
-        type: 3}
-      propertyPath: Tutorials.Array.data[0].Messages.Array.data[1].Message
-      value: "To start, let\u2019s find a suitable position for our dropship. Try
-        looking around the planet for a nice spot."
-      objectReference: {fileID: 0}
-    - target: {fileID: 7344187465744813017, guid: b89effcb55ce99b40ae20d9b41826553,
-        type: 3}
       propertyPath: Tutorials.Array.data[0].Messages.Array.data[1].TutorialEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 0}
@@ -2368,21 +2357,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7344187465744813017, guid: b89effcb55ce99b40ae20d9b41826553,
         type: 3}
-      propertyPath: Tutorials.Array.data[1].Messages.Array.data[0].Message
-      value: "Commander, To start the new colony we require a local oxygen production.
-        Select the \u201CTree\u201D icon and place two somewhere near the starting
-        space."
-      objectReference: {fileID: 0}
-    - target: {fileID: 7344187465744813017, guid: b89effcb55ce99b40ae20d9b41826553,
-        type: 3}
       propertyPath: Tutorials.Array.data[1].Messages.Array.data[1].Title
       value: 'Setting foot: Oxygen'
-      objectReference: {fileID: 0}
-    - target: {fileID: 7344187465744813017, guid: b89effcb55ce99b40ae20d9b41826553,
-        type: 3}
-      propertyPath: Tutorials.Array.data[1].Messages.Array.data[1].Message
-      value: Good job Commander. This tree now produces 8 units of Oxygen. This can
-        be seen on the left side at the oxygen bar.
       objectReference: {fileID: 0}
     - target: {fileID: 7344187465744813017, guid: b89effcb55ce99b40ae20d9b41826553,
         type: 3}
@@ -2418,12 +2394,6 @@ PrefabInstance:
         type: 3}
       propertyPath: Tutorials.Array.data[1].Messages.Array.data[2].Title
       value: 'Setting foot: Tile health'
-      objectReference: {fileID: 0}
-    - target: {fileID: 7344187465744813017, guid: b89effcb55ce99b40ae20d9b41826553,
-        type: 3}
-      propertyPath: Tutorials.Array.data[1].Messages.Array.data[2].Message
-      value: As you can see Commander the tree is making the surrounding land liveable
-        by growing grass.
       objectReference: {fileID: 0}
     - target: {fileID: 7344187465744813017, guid: b89effcb55ce99b40ae20d9b41826553,
         type: 3}
@@ -2537,33 +2507,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7344187465744813017, guid: b89effcb55ce99b40ae20d9b41826553,
         type: 3}
-      propertyPath: Tutorials.Array.data[2].Messages.Array.data[0].Message
-      value: Now we need more people and thus the colony requires more places for
-        our people to sleep and live. Construct a house on one of the liveable tiles.
-      objectReference: {fileID: 0}
-    - target: {fileID: 7344187465744813017, guid: b89effcb55ce99b40ae20d9b41826553,
-        type: 3}
       propertyPath: Tutorials.Array.data[2].Messages.Array.data[1].Title
       value: 'Residency: Oxygen'
       objectReference: {fileID: 0}
     - target: {fileID: 7344187465744813017, guid: b89effcb55ce99b40ae20d9b41826553,
         type: 3}
-      propertyPath: Tutorials.Array.data[2].Messages.Array.data[1].Message
-      value: Commander, the construction of the house is complete. As more and more
-        people enter our colony and you build more buildings the oxygen up keep will
-        only increase.
-      objectReference: {fileID: 0}
-    - target: {fileID: 7344187465744813017, guid: b89effcb55ce99b40ae20d9b41826553,
-        type: 3}
       propertyPath: Tutorials.Array.data[2].Messages.Array.data[2].Title
       value: 'Residency: Oxygen'
-      objectReference: {fileID: 0}
-    - target: {fileID: 7344187465744813017, guid: b89effcb55ce99b40ae20d9b41826553,
-        type: 3}
-      propertyPath: Tutorials.Array.data[2].Messages.Array.data[2].Message
-      value: If the oxygen upkeep gets higher than what we have available, some colonists
-        will perish until we have enough oxygen. If this gets too out of hand, we
-        can lose the colony and humanity will die with it.
       objectReference: {fileID: 0}
     - target: {fileID: 7344187465744813017, guid: b89effcb55ce99b40ae20d9b41826553,
         type: 3}
@@ -2677,22 +2627,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7344187465744813017, guid: b89effcb55ce99b40ae20d9b41826553,
         type: 3}
-      propertyPath: Tutorials.Array.data[3].Messages.Array.data[0].Message
-      value: "Great job so far Commander. Now we need more space for our colony,
-        clear some rubble off the planet my selecting the rubble and pressing the
-        \u201CRemove\u201D button."
-      objectReference: {fileID: 0}
-    - target: {fileID: 7344187465744813017, guid: b89effcb55ce99b40ae20d9b41826553,
-        type: 3}
       propertyPath: Tutorials.Array.data[3].Messages.Array.data[1].Title
       value: 'Materials: Obtaining'
-      objectReference: {fileID: 0}
-    - target: {fileID: 7344187465744813017, guid: b89effcb55ce99b40ae20d9b41826553,
-        type: 3}
-      propertyPath: Tutorials.Array.data[3].Messages.Array.data[1].Message
-      value: It seems you obtained some Raw Materials from that rubble tile, these
-        can be converted to building materials which are required for the construction
-        of more buildings
       objectReference: {fileID: 0}
     - target: {fileID: 7344187465744813017, guid: b89effcb55ce99b40ae20d9b41826553,
         type: 3}
@@ -2847,21 +2783,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7344187465744813017, guid: b89effcb55ce99b40ae20d9b41826553,
         type: 3}
-      propertyPath: Tutorials.Array.data[4].Messages.Array.data[0].Message
-      value: "Let\u2019s build a factory commander, we should be able to convert
-        those raw materials into building materials with one."
-      objectReference: {fileID: 0}
-    - target: {fileID: 7344187465744813017, guid: b89effcb55ce99b40ae20d9b41826553,
-        type: 3}
       propertyPath: Tutorials.Array.data[4].Messages.Array.data[1].Title
       value: 'Conversion Time: Factory'
-      objectReference: {fileID: 0}
-    - target: {fileID: 7344187465744813017, guid: b89effcb55ce99b40ae20d9b41826553,
-        type: 3}
-      propertyPath: Tutorials.Array.data[4].Messages.Array.data[1].Message
-      value: Every couple of seconds, a few raw materials will be converted to some
-        building materials in this factory. Using these building materials we can
-        expand even further!
       objectReference: {fileID: 0}
     - target: {fileID: 7344187465744813017, guid: b89effcb55ce99b40ae20d9b41826553,
         type: 3}
@@ -2897,14 +2820,6 @@ PrefabInstance:
         type: 3}
       propertyPath: Tutorials.Array.data[4].Messages.Array.data[2].Title
       value: 'Conversion Time: Boosting'
-      objectReference: {fileID: 0}
-    - target: {fileID: 7344187465744813017, guid: b89effcb55ce99b40ae20d9b41826553,
-        type: 3}
-      propertyPath: Tutorials.Array.data[4].Messages.Array.data[2].Message
-      value: "Let\u2019s speed it up a notch! We can boost the factory to accomplish
-        that, boosting does however require more humans to permanently work in the
-        factory. You can boost the factory by clicking on it and pressing the boost
-        button."
       objectReference: {fileID: 0}
     - target: {fileID: 7344187465744813017, guid: b89effcb55ce99b40ae20d9b41826553,
         type: 3}
@@ -3018,26 +2933,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7344187465744813017, guid: b89effcb55ce99b40ae20d9b41826553,
         type: 3}
-      propertyPath: Tutorials.Array.data[5].Messages.Array.data[0].Message
-      value: "It seems that the factory is emitting some pollution. For now it\u2019s
-        no big deal but this is certainly something we have to look at. Why, you
-        ask? Well in order to thrive as a colony we want an atmosphere. Having a
-        strong and thick atmosphere will no longer require us to keep our helmets
-        on to breathe outside, it also helps in spreading nature around the planet."
-      objectReference: {fileID: 0}
-    - target: {fileID: 7344187465744813017, guid: b89effcb55ce99b40ae20d9b41826553,
-        type: 3}
       propertyPath: Tutorials.Array.data[5].Messages.Array.data[1].Title
       value: 'Ah Oh Pollution: Atmosphere'
-      objectReference: {fileID: 0}
-    - target: {fileID: 7344187465744813017, guid: b89effcb55ce99b40ae20d9b41826553,
-        type: 3}
-      propertyPath: Tutorials.Array.data[5].Messages.Array.data[1].Message
-      value: "The atmosphere consists of 4 layers, each bringing more benefits to
-        the table. Currently we\u2019re in level 1, and in order to thrive as a colony,
-        we\u2019re going to need to achieve level 4. The more oxygen we produce,
-        the faster the atmosphere grows. Pollution however, does slow this process
-        down."
       objectReference: {fileID: 0}
     - target: {fileID: 7344187465744813017, guid: b89effcb55ce99b40ae20d9b41826553,
         type: 3}
@@ -3193,21 +3090,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7344187465744813017, guid: b89effcb55ce99b40ae20d9b41826553,
         type: 3}
-      propertyPath: Tutorials.Array.data[6].Messages.Array.data[0].Message
-      value: "Commander, I\u2019ve got some troubling news. We\u2019ve gotten reports
-        that a new form of toxicity is starting to spread around the planet!"
-      objectReference: {fileID: 0}
-    - target: {fileID: 7344187465744813017, guid: b89effcb55ce99b40ae20d9b41826553,
-        type: 3}
       propertyPath: Tutorials.Array.data[6].Messages.Array.data[1].Title
       value: 'Toxicity arrives: Tiles'
-      objectReference: {fileID: 0}
-    - target: {fileID: 7344187465744813017, guid: b89effcb55ce99b40ae20d9b41826553,
-        type: 3}
-      propertyPath: Tutorials.Array.data[6].Messages.Array.data[1].Message
-      value: "This can be bad for us commander. This toxicity seems to spread just
-        like nature and completely halts us from building on them. If this toxicity
-        gets too out-of-hand we\u2019re going to lose our planet to it."
       objectReference: {fileID: 0}
     - target: {fileID: 7344187465744813017, guid: b89effcb55ce99b40ae20d9b41826553,
         type: 3}
@@ -3359,13 +3243,6 @@ PrefabInstance:
         type: 3}
       propertyPath: Tutorials.Array.data[7].Messages.Array.data[0].Title
       value: Tutorial complete
-      objectReference: {fileID: 0}
-    - target: {fileID: 7344187465744813017, guid: b89effcb55ce99b40ae20d9b41826553,
-        type: 3}
-      propertyPath: Tutorials.Array.data[7].Messages.Array.data[0].Message
-      value: "That\u2019s all you need to know commander. I\u2019m hereby going to
-        leave all responsibility of this colony to you. Remember, keep watch of your
-        pollution and toxicity. We know you can do this, for humanity."
       objectReference: {fileID: 0}
     - target: {fileID: 7344187465744813017, guid: b89effcb55ce99b40ae20d9b41826553,
         type: 3}
@@ -3523,12 +3400,6 @@ PrefabInstance:
         type: 3}
       propertyPath: Tutorials.Array.data[4].Messages.Array.data[3].Title
       value: 'Conversion Time: Unboosting'
-      objectReference: {fileID: 0}
-    - target: {fileID: 7344187465744813017, guid: b89effcb55ce99b40ae20d9b41826553,
-        type: 3}
-      propertyPath: Tutorials.Array.data[4].Messages.Array.data[3].Message
-      value: "We can also unboost it to get our humans back commander, let\u2019s
-        do that for now."
       objectReference: {fileID: 0}
     - target: {fileID: 7344187465744813017, guid: b89effcb55ce99b40ae20d9b41826553,
         type: 3}
@@ -3807,11 +3678,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7344187465744813017, guid: b89effcb55ce99b40ae20d9b41826553,
         type: 3}
-      propertyPath: Tutorials.Array.data[7].Messages.Array.data[0].TutorialEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 8840790027997952372}
-    - target: {fileID: 7344187465744813017, guid: b89effcb55ce99b40ae20d9b41826553,
-        type: 3}
       propertyPath: Tutorials.Array.data[7].Messages.Array.data[0].TutorialEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: SetActive
       objectReference: {fileID: 0}
@@ -3834,7 +3700,7 @@ PrefabInstance:
         type: 3}
       propertyPath: Tutorials.Array.data[7].Messages.Array.data[0].TutorialEvent.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 3306018401595783165}
+      objectReference: {fileID: 1387652817572175230}
     - target: {fileID: 7344187465744813017, guid: b89effcb55ce99b40ae20d9b41826553,
         type: 3}
       propertyPath: Tutorials.Array.data[7].Messages.Array.data[0].TutorialEvent.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
@@ -3924,7 +3790,7 @@ PrefabInstance:
         type: 3}
       propertyPath: Tutorials.Array.data[7].Messages.Array.data[0].TutorialEvent.m_PersistentCalls.m_Calls.Array.data[2].m_Target
       value: 
-      objectReference: {fileID: 1387652817572175230}
+      objectReference: {fileID: 2748022049232516997}
     - target: {fileID: 7344187465744813017, guid: b89effcb55ce99b40ae20d9b41826553,
         type: 3}
       propertyPath: Tutorials.Array.data[7].Messages.Array.data[0].TutorialEvent.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
@@ -3954,7 +3820,7 @@ PrefabInstance:
         type: 3}
       propertyPath: Tutorials.Array.data[7].Messages.Array.data[0].TutorialEvent.m_PersistentCalls.m_Calls.Array.data[3].m_Target
       value: 
-      objectReference: {fileID: 2748022049232516997}
+      objectReference: {fileID: 1968008731155530736}
     - target: {fileID: 7344187465744813017, guid: b89effcb55ce99b40ae20d9b41826553,
         type: 3}
       propertyPath: Tutorials.Array.data[7].Messages.Array.data[0].TutorialEvent.m_PersistentCalls.m_Calls.Array.data[3].m_MethodName
@@ -3979,31 +3845,6 @@ PrefabInstance:
         type: 3}
       propertyPath: Tutorials.Array.data[7].Messages.Array.data[0].TutorialEvent.m_PersistentCalls.m_Calls.Array.data[3].m_CallState
       value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7344187465744813017, guid: b89effcb55ce99b40ae20d9b41826553,
-        type: 3}
-      propertyPath: Tutorials.Array.data[7].Messages.Array.data[0].TutorialEvent.m_PersistentCalls.m_Calls.Array.data[4].m_Target
-      value: 
-      objectReference: {fileID: 1968008731155530736}
-    - target: {fileID: 7344187465744813017, guid: b89effcb55ce99b40ae20d9b41826553,
-        type: 3}
-      propertyPath: Tutorials.Array.data[7].Messages.Array.data[0].TutorialEvent.m_PersistentCalls.m_Calls.Array.data[4].m_MethodName
-      value: SetActive
-      objectReference: {fileID: 0}
-    - target: {fileID: 7344187465744813017, guid: b89effcb55ce99b40ae20d9b41826553,
-        type: 3}
-      propertyPath: Tutorials.Array.data[7].Messages.Array.data[0].TutorialEvent.m_PersistentCalls.m_Calls.Array.data[4].m_Mode
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 7344187465744813017, guid: b89effcb55ce99b40ae20d9b41826553,
-        type: 3}
-      propertyPath: Tutorials.Array.data[7].Messages.Array.data[0].TutorialEvent.m_PersistentCalls.m_Calls.Array.data[4].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 7344187465744813017, guid: b89effcb55ce99b40ae20d9b41826553,
-        type: 3}
-      propertyPath: Tutorials.Array.data[7].Messages.Array.data[0].TutorialEvent.m_PersistentCalls.m_Calls.Array.data[4].m_Arguments.m_BoolArgument
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7344187465744813017, guid: b89effcb55ce99b40ae20d9b41826553,
         type: 3}
@@ -4050,12 +3891,6 @@ MonoBehaviour:
 --- !u!1 &8840790027997952372 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5489410942813315424, guid: b89effcb55ce99b40ae20d9b41826553,
-    type: 3}
-  m_PrefabInstance: {fileID: 3935730028224288788}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &3306018401595783165 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1981535061725474793, guid: b89effcb55ce99b40ae20d9b41826553,
     type: 3}
   m_PrefabInstance: {fileID: 3935730028224288788}
   m_PrefabAsset: {fileID: 0}

@@ -7,7 +7,7 @@ using UnityEngine.Events;
 public class TutorialMessage
 {
     public string Title;
-    [TextArea]
+    [TextArea(10, 20)]
     public string Message;
 
     public UnityEvent TutorialEvent = new UnityEvent();

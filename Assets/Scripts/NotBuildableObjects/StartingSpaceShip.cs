@@ -14,18 +14,18 @@ public class StartingSpaceShip : BuildingScript
 
     public override string GetName()
     {
-        return "Spaceship";
+        return "Dropship";
     }
 
     public override string GetDescription()
     {
         if (supplyOxygen)
         {
-            return $"The spaceship houses {maxCapacity} humans and supplies {oxygenProduction} oxygen until its tanks are empty.\n\nOxygen tanks running out in: {Mathf.Floor(oxygenSupplyTime - lifeTime)} sec.";
+            return $"The dropship houses {maxCapacity} humans and supplies {oxygenProduction} oxygen until its tanks are empty.\n\nOxygen tanks running out in: {Mathf.Floor(oxygenSupplyTime - lifeTime)} sec.";
         }
         else
         {
-            return "The spaceship has run out of oxygen.";
+            return "The dropship has run out of oxygen.";
         }
     }
 
@@ -48,12 +48,14 @@ public class StartingSpaceShip : BuildingScript
             SupplyOxygen();
         }
 
-        if (checkParticles) {
+        if (checkParticles)
+        {
             if (particleTimer > particleEndTime)
             {
                 particles.Stop();
                 checkParticles = false;
             }
+
             particleTimer += Time.deltaTime;
         }
     }
