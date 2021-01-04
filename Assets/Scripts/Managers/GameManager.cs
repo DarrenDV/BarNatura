@@ -1,8 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.Analytics;
 using static Assets.Scripts.Enums;
+using Random = UnityEngine.Random;
 
 public class GameManager : MonoBehaviour
 {
@@ -613,11 +615,12 @@ public class GameManager : MonoBehaviour
 
     #region Utils
 
-    private BaseTileScript GetRandomFreeTile()
+    public BaseTileScript GetRandomFreeTile()
     {
-        var tiles = FindObjectsOfType<BaseTileScript>();
+        var allTiles = FindObjectsOfType<BaseTileScript>();
+        var shuffleTiles= allTiles.OrderBy(a => Guid.NewGuid()).ToList();
 
-        return tiles.First(tile => !tile.isOccupied);
+        return shuffleTiles.First(tile => !tile.isOccupied);
     }
 
     #endregion

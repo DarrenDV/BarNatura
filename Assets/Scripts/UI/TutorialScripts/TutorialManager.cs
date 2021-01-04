@@ -1,7 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
 
 public class TutorialManager : MonoBehaviour
 {
@@ -122,26 +120,33 @@ public class TutorialManager : MonoBehaviour
     #region ToxicMission
 
     /// <summary>
-    /// Starts everything related to the toxic mission
+    /// Starts everything related to the toxic mission.
     /// </summary>
     public void ToxicMission()
     {
-        SpawnToxicTile();
+        SpawnToxicTiles();
     }
 
     /// <summary>
-    /// Spawns multiple toxic tiles
+    /// Spawns multiple toxic tiles.
     /// </summary>
-    public void SpawnToxicTile()
+    public void SpawnToxicTiles()
     {
-        foreach (var tile in FindObjectsOfType<BaseTileScript>())
+        var placedToxic = 0;
+
+        while (placedToxic < FindObjectOfType<TileVariables>().ToxicTilesToSpawn)
         {
-            tile.SpawnRandomPolution();
+            var randomFreeTile = GameManager.Instance.GetRandomFreeTile();
+
+            if (randomFreeTile.TrySpawnPollution())
+            {
+                placedToxic++;
+            }
         }
     }
 
     /// <summary>
-    /// Gets the first toxic tile created and assings it here for rotation
+    /// Gets the first toxic tile created and assings it here for rotation.
     /// </summary>
     /// <param name="givenToxicTile"></param>
     public void AssignToxicTile(GameObject givenToxicTile)

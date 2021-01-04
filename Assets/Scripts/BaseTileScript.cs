@@ -217,12 +217,16 @@ public class BaseTileScript : Tile
         }
     }
 
-    public void SpawnRandomPolution()
+    /// <summary>
+    /// Try to spawn toxic on this tile.
+    /// </summary>
+    /// <returns>True if toxic was placed.</returns>
+    public bool TrySpawnPollution()
     {
-        // can't place pollution when the tile is occupied
-        if (isOccupied)
+        // can't place pollution when the tile is occupied or already toxic
+        if (isOccupied || naturePollutedDegree == -10)
         {
-            return;
+            return false;
         }
 
         //Toxic tile spawning
@@ -232,7 +236,11 @@ public class BaseTileScript : Tile
             ToxicParticles();
 
             FindObjectOfType<TutorialManager>().AssignToxicTile(gameObject);
+
+            return true;
         }
+
+        return false;
     }
     #endregion
 

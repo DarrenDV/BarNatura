@@ -21,6 +21,7 @@ public class TileVariables : MonoBehaviour
 
     //Spawned tile variables
     [Header("Spawning objects")]
+    public int ToxicTilesToSpawn = 3;
     public GameObject[] tileDecals;
     public GameObject startingSpaceShip;
     public GameObject lavaTile;
