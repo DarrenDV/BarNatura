@@ -120,10 +120,27 @@ public class BaseTileScript : Tile
         return surroundingTiles.Cast<BaseTileScript>().ToList();
     }
 
+    /// <summary>
+    /// Called whenever the tile changes natureDegree, use naturePollutedDegree to see the new degree
+    /// </summary>
     private void OnNatureDegreeChanged()
     {
+        CheckRemoveBuilding();
         UpdateDecals();
-        CheckTile();
+        WinLoseCheck();
+    }
+
+    private void CheckRemoveBuilding()
+    {
+        if (naturePollutedDegree == -10)
+        {
+            var placedBuilding = PlacedObjects.SingleOrDefault(x => x.TryGetComponent(out BuildingScript _));
+
+            if (placedBuilding != null)
+            {
+                placedBuilding.GetComponent<BuildingScript>().Demolish();
+            }
+        }
     }
 
     private void UpdateDecals()
@@ -447,7 +464,7 @@ public class BaseTileScript : Tile
     /// <summary>
     /// Checks if the tile is completely nature or toxic and adds it to the WinLose calculation. Also removes it if it isn't nature or toxic anymore.
     /// </summary>
-    private void CheckTile()
+    private void WinLoseCheck()
     {
         //Checks if the tile can be added.
         if (canAddToWinLose) {   

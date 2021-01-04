@@ -39,7 +39,6 @@ public class BaseObject : MonoBehaviour
 
     protected virtual void Update()
     {
-
         if (IsBeingRemoved)
         {
             canBeClikced = false;
@@ -58,11 +57,12 @@ public class BaseObject : MonoBehaviour
                 UpdateScale();
             }
         }
-
         else
         {
-            if (canBeClikced == false) canBeClikced = true;
-
+            if (canBeClikced == false)
+            {
+                canBeClikced = true;
+            }
         }
     }
 
@@ -89,11 +89,14 @@ public class BaseObject : MonoBehaviour
     /// <summary>
     /// Called when this object is starting to get removed.
     /// </summary>
-    public virtual void OnRemove()
+    public virtual void OnRemove(bool instant = false)
     {
-        GameManager.Instance.AddWorkers(HumansRequiredToRemove);
+        if (!instant)
+        {
+            GameManager.Instance.AddWorkers(HumansRequiredToRemove);
         AudioManager.Instance.PlayDemolishSound();
-        IsBeingRemoved = true;
+            IsBeingRemoved = true;
+        }
     }
 
     /// <summary>
@@ -103,7 +106,7 @@ public class BaseObject : MonoBehaviour
     {
         GameManager.Instance.RemoveWorkers(HumansRequiredToRemove);
         AudioManager.Instance.PlayDisappearSound();
-        transform.parent.GetComponent<BaseTileScript>().DeletePlacedObject(gameObject);
+        parentTile.DeletePlacedObject(gameObject);
         OnFinishedRemovingEvent.Invoke();
     }
 

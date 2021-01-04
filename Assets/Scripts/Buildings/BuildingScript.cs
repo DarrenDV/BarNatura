@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class BuildingScript : BuildObject
 {
@@ -8,7 +7,6 @@ public class BuildingScript : BuildObject
     [SerializeField] protected int maxCapacity;
 
     protected bool isProducing;
-
     protected string house, raw, brick, toxic, human,
         oxygenPlus, oxygenMin, pollution, nature;
 
@@ -27,9 +25,7 @@ public class BuildingScript : BuildObject
         nature = HudManager.GetIcon("Nature");
     }
 
-
     #region Construction
-
     public override void OnFinishedBuilding()
     {
         base.OnFinishedBuilding();
@@ -38,13 +34,23 @@ public class BuildingScript : BuildObject
         GameManager.Instance.AddCapacity(maxCapacity);
     }
 
-    public override void OnRemove()
+    public override void OnRemove(bool instant = false)
     {
-        base.OnRemove();
+        base.OnRemove(instant);
 
-        // testing
         GameManager.Instance.BuildingCount--;
         GameManager.Instance.RemoveCapacity(maxCapacity);
+    }
+
+    /// <summary>
+    /// Remove the building without getting resources back. Used when toxic destroys the building.
+    /// </summary>
+    public void Demolish()
+    {
+        OnRemove(true);
+
+        parentTile.DeletePlacedObject(gameObject);
+        OnFinishedRemovingEvent.Invoke();
     }
 
     #endregion
