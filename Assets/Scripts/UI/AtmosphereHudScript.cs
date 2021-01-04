@@ -1,17 +1,17 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class AtmosphereHudScript : MonoBehaviour
 {
-    [SerializeField] private Vector3 extendedPosition;
-    [SerializeField] private float extentionSpeed = 1;
+    [SerializeField] private RectTransform basePosition;
+    [SerializeField] private RectTransform extendedPosition;
+    [SerializeField] private float expandSpeed = 3;
 
-    private bool isOpen = false;
-    private Vector3 basePosition;
+    private bool isOpen;
+
     private void Start()
     {
-        basePosition = transform.localPosition;
+        //basePosition = transform.localPosition;
+        transform.position = basePosition.position;
     }
 
     // Update is called once per frame
@@ -20,11 +20,13 @@ public class AtmosphereHudScript : MonoBehaviour
         //This animates the pop-up depending on the current desired location (extended or closed).
         if (isOpen)
         {
-            transform.localPosition = Vector3.Lerp(transform.localPosition, extendedPosition, Time.deltaTime * extentionSpeed);
+            // expand
+            transform.position = Vector3.Lerp(transform.position, extendedPosition.position, Time.deltaTime * expandSpeed);
         }
         else
         {
-            transform.localPosition = Vector3.Lerp(transform.localPosition, basePosition, Time.deltaTime * extentionSpeed);
+            // retract
+            transform.position = Vector3.Lerp(transform.position, basePosition.position, Time.deltaTime * expandSpeed);
         }
     }
 
