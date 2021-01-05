@@ -9,7 +9,7 @@ public class TreeScript : BuildObject
     {
         base.Start();
 
-        if (!GameManager.Instance.tutorialEnded) FindObjectOfType<TutorialManager>().OnTreeBuilt();
+        if (!GameManager.Instance.tutorialEnded) FindObjectOfType<TutorialManager>().OnTreeBuilt(); //Runs the ontreebuilt if the tutorial hasn't ended
     }
 
     public override string GetName()
@@ -37,7 +37,7 @@ public class TreeScript : BuildObject
         base.OnFinishedBuilding();
 
         UpdateNatureSpreadTiles(FindObjectOfType<AtmosphereSystem>().GetCurrentAtmosphereLevel());
-        parentTile.SetNaturePollutedDegree(10);
+        parentTile.SetNaturePollutedDegree(10); //Sets the tile to full nature
     }
 
     /// <summary>
@@ -45,7 +45,7 @@ public class TreeScript : BuildObject
     /// </summary>
     public void UpdateNatureSpreadTiles(int currentAtmosphereLevel)
     {
-        var radius = currentAtmosphereLevel * 2 + 1;
+        var radius = currentAtmosphereLevel * 2 + 1; //Doubles the atmopshere level and does that +1 and applies that as radius. IE Atmopshere level 1 will gave radius 3
 
         surroundingTiles = parentTile.GetNeighbourTiles(radius);
 
