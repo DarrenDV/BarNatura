@@ -10,7 +10,6 @@ public class AtmosphereHudScript : MonoBehaviour
 
     private void Start()
     {
-        //basePosition = transform.localPosition;
         transform.position = basePosition.position;
     }
 

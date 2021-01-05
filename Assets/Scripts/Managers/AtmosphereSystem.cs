@@ -66,11 +66,13 @@ public class AtmosphereSystem : MonoBehaviour
 
     private void UpdateTreeNatureRadius()
     {
+        // disable the ability for nature to grow on all tiles..
         foreach (var tile in FindObjectsOfType<BaseTileScript>())
         {
             tile.canBecomeNature = false;
         }
 
+        //..so the new tiles that nature can grow on can be set
         foreach (var tree in FindObjectsOfType<TreeScript>())
         {
             tree.UpdateNatureSpreadTiles(currentAtmosphereLevel);

@@ -37,7 +37,7 @@ public class PauseMenu : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape)) //Pause menu is activated by pressing ESC
         {
             if(panel.activeSelf)
             {
@@ -50,6 +50,9 @@ public class PauseMenu : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Show the panel and stop the game whilst the pause menu is on.
+    /// </summary>
     public void Show()
     {
         GameManager.Instance.StopBuildingMode();
@@ -67,6 +70,10 @@ public class PauseMenu : MonoBehaviour
         panel.SetActive(true);
     }
 
+    /// <summary>
+    /// Hides the panel when the player is in the panel and wants to go back to the game
+    /// </summary>
+    /// <param name="playSound"></param>
     public void Hide(bool playSound = true)
     {
         Time.timeScale = 1f;

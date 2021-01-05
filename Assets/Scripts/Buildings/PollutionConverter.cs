@@ -52,7 +52,7 @@ public class PollutionConverter : BuildingScript
     /// </summary>
     private void UpdatePollution()
     {
-        if (!IsBeingBuild && !IsBeingRemoved)
+        if (!IsBeingBuild && !IsBeingRemoved) //Starts the cleaning if the tile is done and not removing
         {
             
             if(GameManager.Instance.GetPollution() > 0)
@@ -60,9 +60,9 @@ public class PollutionConverter : BuildingScript
                 isProducing = true;
                 timeSinceLastConversion += Time.deltaTime;
 
-                if (timeSinceLastConversion >= conversionRate)
+                if (timeSinceLastConversion >= conversionRate) //If enough time has passed, remove x pollution and add y oxygen to atmosphere
                 {
-                    GameManager.Instance.RemovePollution(pollutionToRemove);
+                    GameManager.Instance.RemovePollution(pollutionToRemove); 
                     GameManager.Instance.AddOxygenGeneration(oxygenToAdd);
 
                     timeSinceLastConversion = 0;

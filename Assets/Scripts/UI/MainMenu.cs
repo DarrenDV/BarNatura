@@ -22,6 +22,9 @@ public class MainMenu : MonoBehaviour
         CameraScript.Instance.OnTransitionFinished.AddListener(OnCameraTransitionFinished);
     }
 
+    /// <summary>
+    /// When the camere stops transitioning, go to the next phase.
+    /// </summary>
     private void OnCameraTransitionFinished()
     {
         CameraScript.Instance.OnTransitionFinished.RemoveListener(OnCameraTransitionFinished);
@@ -30,6 +33,9 @@ public class MainMenu : MonoBehaviour
         SelectStartingLocationUiManager.Instance.gameObject.SetActive(true);
     }
 
+    /// <summary>
+    /// When the play button is clicked, turn the main menu off and zoom the cam to the planet
+    /// </summary>
     public void OnPlayButtonClicked()
     {
         gameObject.SetActive(false);

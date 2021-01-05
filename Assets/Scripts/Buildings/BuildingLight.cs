@@ -7,7 +7,7 @@ public class BuildingLight : MonoBehaviour
     GameObject sun, moon;
     Light light;
 
-    float checkTimer = 5f;
+    float checkTimer = 5f; //Standard 5 so the first check is instantly
     [SerializeField] float timeBetweenChecks = 5f;
 
     void Start()

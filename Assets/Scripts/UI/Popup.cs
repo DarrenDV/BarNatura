@@ -51,6 +51,7 @@ public class Popup : MonoBehaviour
 
     public void Start()
     {
+        // hide the popup when the game starts
         Hide(false);
     }
 
@@ -63,8 +64,10 @@ public class Popup : MonoBehaviour
             UpdateDescription();
             DisplayRemoveButton();
 
+            // check of the path between the main camera and the selected object is free.
             if (!CheckPathFree(Camera.main.transform.position, selectedObject.transform.position))
             {
+                // if not, we hide the popup.
                 Hide(false);
             }
         }
@@ -72,6 +75,9 @@ public class Popup : MonoBehaviour
 
     #endregion
 
+    /// <summary>
+    /// Show the popup for the selected object.
+    /// </summary>
     public void Show(BaseObject objectToDisplay)
     {
         if(!CanOpen || panel.activeInHierarchy)
@@ -100,6 +106,9 @@ public class Popup : MonoBehaviour
         DisplayBoostButton();
     }
 
+    /// <summary>
+    /// If the selected object gets removed, we hide the popup.
+    /// </summary>
     private void OnSelectedBuildingRemoved()
     {
         Hide();
@@ -111,6 +120,9 @@ public class Popup : MonoBehaviour
         descriptionText.text = selectedObject.GetDescription();
     }
 
+    /// <summary>
+    /// Show the remove button and update the amount of humans needed.
+    /// </summary>
     private void DisplayRemoveButton()
     {
         var showButton = selectedObject.CanBeRemovedByPlayer;
@@ -123,11 +135,17 @@ public class Popup : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Make sure the popup follows the selected object.
+    /// </summary>
     private void SetPosition()
     {
         transform.position = Camera.main.WorldToScreenPoint(selectedObject.transform.position) + DisplayOffset;
     }
 
+    /// <summary>
+    /// Hide the popup.
+    /// </summary>
     public void Hide(bool playSound = true)
     {
         panel.SetActive(false);
@@ -147,21 +165,30 @@ public class Popup : MonoBehaviour
         boostButton.gameObject.SetActive(false);
     }
 
-    public void SetProgressBar(float maxValue, float CurrentTime, string drainSprite, string gainSprite)
+    /// <summary>
+    /// Update the progress bar, used to show factory progress.
+    /// </summary>
+    public void SetProgressBar(float maxValue, float currentTime, string drainSprite, string gainSprite)
     {
         progressSlider.gameObject.SetActive(true);
         progressSlider.maxValue = maxValue;
-        progressSlider.value = CurrentTime;
+        progressSlider.value = currentTime;
 
         rDrain.text = drainSprite;
         rGain.text = gainSprite;   
     }
 
+    /// <summary>
+    /// Hide the progress bar
+    /// </summary>
     public void HideProgressBar()
     {
         progressSlider.gameObject.SetActive(false);
     }
 
+    /// <summary>
+    /// Used when the player wants to remove the selected object.
+    /// </summary>
     public void OnRemoveClicked()
     {
         if (!GameManager.Instance.AreWorkersAvailable(selectedObject.HumansRequiredToRemove))
@@ -173,9 +200,11 @@ public class Popup : MonoBehaviour
         selectedObject.OnRemove();
 
         Hide(false);
-
     }
 
+    /// <summary>
+    /// Check if we have to show the boost button, and do so
+    /// </summary>
     private void DisplayBoostButton()
     {
         if (selectedObject is FactoryScript fs)
@@ -197,6 +226,9 @@ public class Popup : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Used when the player wants to boost or un-boost the selected object.
+    /// </summary>
     public void OnBoostClicked()
     {
         if (selectedObject is FactoryScript fs)
@@ -206,6 +238,9 @@ public class Popup : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Check if the path between position and target is free.
+    /// </summary>
     private bool CheckPathFree(Vector3 position, Vector3 target)
     {
         var direction = target - position;

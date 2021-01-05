@@ -26,6 +26,9 @@ public class BuildMenu : MonoBehaviour
         buttons = GetComponentsInChildren<Button>().ToList();
     }
 
+    /// <summary>
+    /// Disable all build buttons.
+    /// </summary>
     public void DisableButtons()
     {
         foreach(var button in buttons)
@@ -34,6 +37,9 @@ public class BuildMenu : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Enable all build buttons.
+    /// </summary>
     public void EnableButtons()
     {
         foreach (var button in buttons)
