@@ -79,6 +79,12 @@ public class HudManager : MonoBehaviour
         capacityCounter.text = GameManager.Instance.GetCapacityAmount().ToString();
     }
 
+    public void CapacityDanger(bool inDanger = true)
+    {
+        if (inDanger) capacityCounter.color = Color.red;
+        else capacityCounter.color = Color.white;
+    }
+
     public void UpdateSurplusCounter()
     {
         if (GameManager.Instance.GetOxygenSurplus() > 0)

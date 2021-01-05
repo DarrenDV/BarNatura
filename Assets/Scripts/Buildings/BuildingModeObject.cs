@@ -10,10 +10,12 @@ public class BuildingModeObject : MonoBehaviour
     {
         if (isOccupied == false)
         {
+            //green color
             meshRenderer.sharedMaterial.SetColor("_Color", colors[0]);
         }
         else
         {
+            //Red color
             meshRenderer.sharedMaterial.SetColor("_Color", colors[1]);
         }
     }
@@ -23,7 +25,7 @@ public class BuildingModeObject : MonoBehaviour
         //Create a new array based on how many materials the object has
         meshRenderer.materials = new Material[numberOfMeshes];
 
-        //Create a copy of the materials array, change it's materials and then past if back into the main array
+        //Create a copy of the materials array, change it's materials and then paste if back into the main array
         //No I can't just change the original array because Unity is a bitch
         var mats = meshRenderer.materials;
 

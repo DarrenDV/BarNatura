@@ -14,7 +14,7 @@ public class FactoryScript : BuildingScript
 
     [SerializeField] private int workersNeededForBoost;
 
-    private float factoryConvertTimer;
+    private float TimeSincelastConversion;
 
     public bool boostOn = false;
 
@@ -60,15 +60,15 @@ public class FactoryScript : BuildingScript
 
         if (GameManager.Instance.GetRawMaterials() >= rawMaterialConsumption)
         {
-            factoryConvertTimer += Time.deltaTime;
+            TimeSincelastConversion += Time.deltaTime;
             isProducing = true;
 
-            if (factoryConvertTimer >= maxFactoryConvertTimer)
+            if (TimeSincelastConversion >= maxFactoryConvertTimer)
             {
                 GameManager.Instance.RemoveRawMaterial(rawMaterialConsumption);
                 GameManager.Instance.AddBuildingMaterial(buildingMaterialProduction);
 
-                factoryConvertTimer = 0;
+                TimeSincelastConversion = 0;
             }
         }
         else
@@ -94,7 +94,7 @@ public class FactoryScript : BuildingScript
 
     protected override float GetTimer()
     {
-        return factoryConvertTimer;
+        return TimeSincelastConversion;
     }
 
     protected override string GetResourceDrained()

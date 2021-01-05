@@ -74,16 +74,28 @@ public class BuildingScript : BuildObject
         return $"[{GetResourceDrained()} {arrows} {GetResourceGain()}]";
     }
 
+    /// <summary>
+    /// What should the popup say when there is nothing to convert?
+    /// </summary>
+    /// <returns></returns>
     protected virtual string GetNoProducingString()
     {
         return "";
     }
 
+    /// <summary>
+    /// The maximum amount of time it takes to convert something
+    /// </summary>
+    /// <returns></returns>
     protected virtual float GetMaxTime()
     {
         return 10;
     }
 
+    /// <summary>
+    /// The converter timer
+    /// </summary>
+    /// <returns></returns>
     protected virtual float GetTimer()
     {
         return 1;

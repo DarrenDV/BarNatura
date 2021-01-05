@@ -155,6 +155,8 @@ public class GameManager : MonoBehaviour
         //Start the countdown timer when the player doesn't have enoug oxygen or housing
         if (oxygenSurplus <= 0 && population > 0 || population > capacity)
         {
+            HudManager.Instance.CapacityDanger(population > capacity);
+
             audioManager.PlayDangerLoopSound();
 
             if (availableWorkers > 0)
@@ -173,6 +175,7 @@ public class GameManager : MonoBehaviour
         {
             if (timeLeftUntilHumansDie != 0)
             {
+                HudManager.Instance.CapacityDanger(false);
                 timeLeftUntilHumansDie = 0;
             }
             

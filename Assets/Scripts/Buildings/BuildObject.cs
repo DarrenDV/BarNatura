@@ -53,7 +53,7 @@ public class BuildObject : OxygenUser
     #region Build tool tip info
 
     /// <summary>
-    /// Get the description when the player wants to build this object.
+    /// Get the description and build costs when the player hovers the build button.
     /// </summary>
     /// <returns></returns>
     public string GetBuildButtonInformation()
@@ -67,7 +67,6 @@ public class BuildObject : OxygenUser
     /// Describe what the building does
     /// </summary>
     /// <returns></returns>
-
     protected virtual string GetBuildingFunction()
     {
         return "Allan please add details";
