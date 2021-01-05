@@ -12,6 +12,7 @@ public class HudManager : MonoBehaviour
 
     private void Awake()
     {
+        //Checks if this is already instanced, if not, make it an instance
         if (Instance == null)
         {
             Instance = this;
@@ -40,6 +41,11 @@ public class HudManager : MonoBehaviour
         UpdateBuildMaterialCounter();
         UpdateRawMaterialCounter();
     }
+
+    #region UpdateCounters
+
+    //A bunch of update counter functions for the UI
+    //Each takes the corresponding value from the GameManager and applies it to the HUD
 
     public void UpdateOxygenCounter()
     {
@@ -79,6 +85,9 @@ public class HudManager : MonoBehaviour
         capacityCounter.text = GameManager.Instance.GetCapacityAmount().ToString();
     }
 
+    /// <summary>
+    /// Update the surplus counter, adjust to red when oxygensurplus is negative. If it's positive, makes it green.
+    /// </summary>
     public void UpdateSurplusCounter()
     {
         if (GameManager.Instance.GetOxygenSurplus() > 0)
@@ -92,9 +101,11 @@ public class HudManager : MonoBehaviour
             surplusCounter.text = GameManager.Instance.GetOxygenSurplus().ToString();
         }
 
-        oxygenBar.maxValue = GameManager.Instance.GetOxygenGeneration();
-        oxygenBar.value = GameManager.Instance.GetOxygenUsage() + GameManager.Instance.GetPollution();
+        oxygenBar.maxValue = GameManager.Instance.GetOxygenGeneration(); //Adjust the oxygenBar size to fit the oxygen generated
+        oxygenBar.value = GameManager.Instance.GetOxygenUsage() + GameManager.Instance.GetPollution(); //Updates the oxygen Bar
     }
+
+    #endregion
 
     /// <summary>
     /// Return a icon to use in the tooltip
