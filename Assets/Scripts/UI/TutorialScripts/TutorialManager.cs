@@ -65,7 +65,7 @@ public class TutorialManager : MonoBehaviour
 
     public void OnTreeBuilt()
     {
-        if (currentTrees + 1 == neededTrees) 
+        if (currentTrees + 1 == neededTrees && !enoughTreesBuilt) 
         {
             enoughTreesBuilt = true;
             TutorialPopupScript.Instance.Next();
@@ -94,7 +94,7 @@ public class TutorialManager : MonoBehaviour
 
     public void OnFirstRubbleRemoved()
     {
-        if (!firstRubbleRemoved)
+        if (!firstRubbleRemoved && TutorialIndex == 4)
         {
             TutorialPopupScript.Instance.Next();
             firstRubbleRemoved = true;
