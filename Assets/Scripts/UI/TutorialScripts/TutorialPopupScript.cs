@@ -19,9 +19,10 @@ public class TutorialPopupScript : MonoBehaviour
     [SerializeField] private int volume;
     [SerializeField] private AudioClip appearSound, disappearSound;
     private AudioSource audioSource;
-    // Start is called before the first frame update
+
     void Awake()
     {
+        //Makes an instance of this popupscript. 
         tutorialManager = GetComponent<TutorialManager>();
         if (Instance == null)
         {
@@ -38,17 +39,24 @@ public class TutorialPopupScript : MonoBehaviour
         //Hide();
     }
 
+    /// <summary>
+    /// Go to the next message in the tutorial, if there are no more messages in the current mission, go to the next mission.
+    /// </summary>
+    /// <param name="playSound"></param>
     public void Next(bool playSound = true)
     {
+
+        //Go to next tutorial if there are no more messages. 
         if(tutorialIndex == currentTutorial.Messages.Count)
         {
             ShowNextTutorial();
             tutorialIndex = 0;
         }
 
+        //Update title and message 
         descriptionText.text = currentTutorial.Messages[tutorialIndex].Message;
         titleText.text = currentTutorial.Messages[tutorialIndex].Title;
-        currentTutorial.Messages[tutorialIndex].TutorialEvent.Invoke();
+        currentTutorial.Messages[tutorialIndex].TutorialEvent.Invoke(); //Run all the unity events associated with the message 
         tutorialIndex++;
 
         if (playSound)
@@ -68,6 +76,9 @@ public class TutorialPopupScript : MonoBehaviour
         audioSource.Play();
     }
 
+    /// <summary>
+    /// Go to the next tutorial mission. 
+    /// </summary>
     public void ShowNextTutorial()
     {
         currentTutorial = tutorialManager.Tutorials[tutorialManager.TutorialIndex];

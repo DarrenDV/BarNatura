@@ -42,7 +42,7 @@ public class ToxicCleaner : BuildingScript
         isProducing = true;
         timeSinceLastClean += Time.deltaTime;
 
-        if (timeSinceLastClean >= cleanRate)
+        if (timeSinceLastClean >= cleanRate) //Timer for cleaning surrounding tiles every couple of seconds
         {
             foreach (var tile in surroundingTiles)
             {

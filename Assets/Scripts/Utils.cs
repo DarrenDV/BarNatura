@@ -35,6 +35,9 @@ namespace Assets.Scripts
             return results.Count > 0;
         }
 
+        /// <summary>
+        /// Closes the game. If in Unity editor it uses a diffrent quit code then in play mode.
+        /// </summary>
         public static void QuitGame()
         {
 #if UNITY_EDITOR

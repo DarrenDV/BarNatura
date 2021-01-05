@@ -19,6 +19,7 @@ public class CameraScript : MonoBehaviour
     [SerializeField] private float maxZoomFov = 100f;
     [SerializeField] private float mainMenuRotationSpeed = 5f;
 
+    private float MAX_SINGWAVE = 1.57f;
     private float currentCameraSlowDown;
     private float mouseX, mouseY;
     private float transitionAmount;
@@ -86,7 +87,9 @@ public class CameraScript : MonoBehaviour
         Rotate();
         Zoom();
     }
-
+    /// <summary>
+    /// Handles the drag of the camera
+    /// </summary>
     private void HandleDrag()
     {
         currentCameraSlowDown *= cameraSlowDownFactor;
@@ -101,31 +104,35 @@ public class CameraScript : MonoBehaviour
     {
         doingTransition = true;
     }
-
+    /// <summary>
+    /// Transitions the position of the camera from the main menu into the actual game
+    /// </summary>
     private void DoTransitionFromMainMenuToInGamePos()
     {
         transitionAmount += Time.deltaTime;
 
-        if (transitionAmount > 1.57f)
+        if (transitionAmount > MAX_SINGWAVE)
         {
-            transitionAmount = 1.57f;
+            transitionAmount = MAX_SINGWAVE;
         }
 
         Camera.main.fieldOfView = Mathf.Lerp(maxZoomFov, defaultZoomFov, Mathf.Sin(transitionAmount));
 
-        if (transitionAmount == 1.57f)
+        if (transitionAmount == MAX_SINGWAVE)
         {
             OnTransitionFinished.Invoke();
         }
     }
 
-    // This moves the camera around at all times so that the camera can continue sliding.
+    // This moves the camera around at all times so that the camera can continue sliding after the player lets go of the right mouse button.
     private void Rotate()
     {
         transform.RotateAround(target.transform.position, transform.up, mouseX * dragSpeed * currentCameraSlowDown);
         transform.RotateAround(target.transform.position, transform.right, mouseY * -dragSpeed * currentCameraSlowDown);
     }
-
+    /// <summary>
+    /// Handels the basic zoom function
+    /// </summary>
     private void Zoom()
     {
         float fov = Camera.main.fieldOfView;

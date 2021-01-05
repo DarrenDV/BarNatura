@@ -116,33 +116,17 @@ public class IcoSphere : MonoBehaviour
             hexagon.transform.LookAt(Vector3.zero);
             hexagon.transform.Rotate(new Vector3(180f, 0f, 0f));
         }
-
-        //mesh.vertices = vertList.ToArray();
-
-        //var triList = new List<int>();
-        //for (var i = 0; i < faces.Count; i++)
-        //{
-        //    triList.Add(faces[i].V1);
-        //    triList.Add(faces[i].V2);
-        //    triList.Add(faces[i].V3);
-        //}
-        //mesh.triangles = triList.ToArray();
-        ////mesh.uv = new Vector2[vertices.Length];
-        //mesh.uv = new Vector2[mesh.vertices.Length];
-
-        //var normales = new Vector3[vertList.Count];
-        //for (var i = 0; i < normales.Length; i++)
-        //{
-        //    normales[i] = vertList[i].normalized;
-        //}
-
-        //mesh.normals = normales;
-
-        //mesh.RecalculateBounds();
-        //mesh.Optimize();
     }
 
-    // return index of point in the middle of p1 and p2
+    /// <summary>
+    /// return index of point in the middle of p1 and p2
+    /// </summary>
+    /// <param name="p1"></param>
+    /// <param name="p2"></param>
+    /// <param name="vertices"></param>
+    /// <param name="cache"></param>
+    /// <param name="radius"></param>
+    /// <returns></returns>
     private static int GetMiddlePoint(int p1, int p2, ref List<Vector3> vertices, ref Dictionary<long, int> cache, float radius)
     {
         // first check if we have it already

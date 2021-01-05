@@ -26,6 +26,8 @@ public class BaseTileScript : Tile
     private bool canAddParticles = true;
     private GameObject toxicParticles;
 
+    private float MAX_NATURE_LEVEL = 10;
+
     #endregion
 
     //[Tooltip("If true, the starting spaceship will be spawned on this tile.")]
@@ -371,7 +373,8 @@ public class BaseTileScript : Tile
     public override void OnMouseEnter()
     {
         var gameManager = GameManager.Instance;
-
+        
+        // if in build mode then show the build previeuw prefab of the building the player is currently holding
         if (gameManager.inBuildMode && !Utils.IsPointerOverUIElement())
         {
             var plannedBuildObject = gameManager.buildObject.gameObject.GetComponent<BuildObject>();
@@ -380,7 +383,8 @@ public class BaseTileScript : Tile
             gameManager.buildObjectPreview.gameObject.GetComponent<BuildingModeObject>().ChangeMaterial(isOccupied || plannedBuildObject.MinimumNaturePollutedDegree > naturePollutedDegree);
             gameManager.MovePreview(transform.position, transform.rotation);
         }
-
+        
+        // if in select starting location then place the starting space ship where possible
         if (gameManager.CurrentGameState == Enums.GameState.SelectLocation)
         {
             if (!isOccupied)
@@ -398,6 +402,7 @@ public class BaseTileScript : Tile
         }
     }
 
+    // 
     protected override void OnMouseDown()
     {
         base.OnMouseDown();
@@ -419,6 +424,7 @@ public class BaseTileScript : Tile
             return;
         }
 
+        // this takes care of the building simulation in the game. whether they can build and where they can build
         if (gameManager.inBuildMode)
         {
             if (Utils.IsPointerOverUIElement())
@@ -479,7 +485,7 @@ public class BaseTileScript : Tile
         if (canAddToWinLose) {   
 
             //Checks for nature tile
-            if (naturePollutedDegree == 10)
+            if (naturePollutedDegree == MAX_NATURE_LEVEL)
             {
                 winLose.AddTile(0);
                 isNature = true;
@@ -488,7 +494,7 @@ public class BaseTileScript : Tile
             }
 
             //Checks toxic tile.
-            else if(naturePollutedDegree == -10)
+            else if(naturePollutedDegree == -MAX_NATURE_LEVEL)
             {
                 winLose.AddTile(1);
                 isToxic = true;
@@ -500,7 +506,7 @@ public class BaseTileScript : Tile
         //Checks when the tile isn't toxic anymore and removes it if nessecary
         else
         {
-            if (naturePollutedDegree != 10 && naturePollutedDegree != -10)
+            if (naturePollutedDegree != MAX_NATURE_LEVEL && naturePollutedDegree != -MAX_NATURE_LEVEL)
             {
                 if (isNature)
                 {

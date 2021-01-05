@@ -14,16 +14,16 @@ public class WinLose : MonoBehaviour
 
     //Tile required variables
     //Nature
-    public int requiredNatureTiles; //public can be removed, currently for testing purposes here
+    private int requiredNatureTiles;
     [Range(0, 1)]
     [SerializeField] private float requiredNatureTilePercent = 0.05f;
-    public int currentNatureTiles; //public can be removed, currently for testing purposes here
+    private int currentNatureTiles; 
 
     //Toxic
-    public int requiredToxicTiles; //public can be removed, currently for testing purposes here
+    private int requiredToxicTiles; 
     [Range(0, 1)]
     [SerializeField] private float requiredToxicTilePercent = 0.3f;
-    public int currentToxicTiles; //public can be removed, currently for testing purposes here
+    private int currentToxicTiles; 
 
     //Timer Variables
     [Tooltip("The time in seconds")]
@@ -176,6 +176,11 @@ public class WinLose : MonoBehaviour
 
     #region PopUps
 
+    /// <summary>
+    /// Activated the end popup depending if you won or lost.
+    /// </summary>
+    /// <param name="title"></param>
+    /// <param name="message"></param>
     private void ShowEndPopup(string title, string message)
     {
         endPopUpTitle.text = title;
@@ -218,7 +223,7 @@ public class WinLose : MonoBehaviour
 
     void DisplayTime(float timeToDisplay)
     {
-        timeToDisplay += 1;
+        timeToDisplay ++;
 
         //Rounds and calculates the remaining time to minutes and seconds
         float minutes = Mathf.FloorToInt(timeToDisplay / 60);
