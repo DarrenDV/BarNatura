@@ -233,6 +233,7 @@ MonoBehaviour:
   maxChance: 100
   natureChance: 25
   toxicChance: 17
+  ToxicTilesToSpawn: 6
   tileDecals:
   - {fileID: 7627049994104345723, guid: 1c16bca94a38f6649a8725d0a08a9b89, type: 3}
   - {fileID: 5749680141189955985, guid: d15c5e5ca8221074282e4d32fbf0454e, type: 3}
