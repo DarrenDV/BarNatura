@@ -336,8 +336,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a5076cc9921d514d84a23f22fe8badd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  atmosphereLevel1Threshhold: 300
-  atmosphereLevel2Threshhold: 1300
+  atmosphereLevel1Threshhold: 600
+  atmosphereLevel2Threshhold: 1400
   atmosphereLevel3Threshhold: 2600
   atmosphereLevel4Threshhold: 3900
   maxAtmopshereTimer: 5
