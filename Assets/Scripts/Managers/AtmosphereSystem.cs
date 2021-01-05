@@ -12,6 +12,7 @@ public class AtmosphereSystem : MonoBehaviour
     [SerializeField] private Text currentOxygenCounter;
     [SerializeField] private Sprite level1, level2, level3, level4;
     [SerializeField] private Image atmosphereLevelImage;
+
     private int currentOxygen, currentAtmosphereLevel;
     private float atmosphereTimer;
 
@@ -32,25 +33,25 @@ public class AtmosphereSystem : MonoBehaviour
     private void LevelCheck()
     {
         //level check, this could be a switch case but i cant fill in atmosphereLevel1Threshhold as a case, with no magic numbers this is all i could think of.
-        if (currentOxygen > atmosphereLevel4Threshhold && currentAtmosphereLevel != 4)
+        if (currentOxygen >= atmosphereLevel4Threshhold && currentAtmosphereLevel != 4) 
         {
             currentAtmosphereLevel = 4;
             atmosphereLevelImage.sprite = level4;
             UpdateTreeNatureRadius();
         }
-        else if (currentOxygen > atmosphereLevel3Threshhold && currentAtmosphereLevel != 3)
+        else if (currentOxygen >= atmosphereLevel3Threshhold && currentOxygen < atmosphereLevel4Threshhold && currentAtmosphereLevel != 3)
         {
             currentAtmosphereLevel = 3;
             atmosphereLevelImage.sprite = level3;
             UpdateTreeNatureRadius();
         }
-        else if (currentOxygen > atmosphereLevel2Threshhold && currentAtmosphereLevel != 2)
+        else if (currentOxygen >= atmosphereLevel2Threshhold && currentOxygen < atmosphereLevel3Threshhold && currentAtmosphereLevel != 2)
         {
             currentAtmosphereLevel = 2;
             atmosphereLevelImage.sprite = level2;
             UpdateTreeNatureRadius();
         }
-        else if (currentOxygen > atmosphereLevel1Threshhold && currentAtmosphereLevel != 1)
+        else if (currentOxygen >= atmosphereLevel1Threshhold && currentOxygen < atmosphereLevel2Threshhold && currentAtmosphereLevel != 1)
         {
             currentAtmosphereLevel = 1;
             atmosphereLevelImage.sprite = level1;
