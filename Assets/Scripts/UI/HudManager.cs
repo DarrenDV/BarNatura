@@ -85,6 +85,12 @@ public class HudManager : MonoBehaviour
         capacityCounter.text = GameManager.Instance.GetCapacityAmount().ToString();
     }
 
+    public void CapacityDanger (bool inDanger)
+    {
+        if (inDanger) capacityCounter.color = Color.red;
+        else capacityCounter.color = Color.white;
+    }
+
     /// <summary>
     /// Update the surplus counter, adjust to red when oxygensurplus is negative. If it's positive, makes it green.
     /// </summary>
