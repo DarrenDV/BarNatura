@@ -44,34 +44,21 @@ public class BuildingScript : BuildObject
     {
         if (isProducing)
         {
-            return GetProgressBar();
+            SetProgressBar();
+
+            return string.Empty;
         }
         else
         {
             Popup.Instance.HideProgressBar();
+
             return GetNoProducingString();
         }
     }
 
-    protected virtual string GetProgressBar()
+    protected virtual void SetProgressBar()
     {
         Popup.Instance.SetProgressBar(GetMaxTime(), GetTimer(), GetResourceDrained(), GetResourceGain());
-        return "";
-
-        var maxArrows = Mathf.RoundToInt(GetMaxTime());
-        var arrows = string.Empty;
-
-        for (var i = 0; i < Mathf.RoundToInt(GetTimer()); i++)
-        {
-            arrows += ">";
-        }
-
-        while (arrows.Length < maxArrows)
-        {
-            arrows += "_";
-        }
-
-        return $"[{GetResourceDrained()} {arrows} {GetResourceGain()}]";
     }
 
     protected virtual string GetNoProducingString()

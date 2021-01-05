@@ -21,6 +21,9 @@ public class SelectStartingLocationUiManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Hide this ui when the game starts.
+    /// </summary>
     private void Start()
     {
         gameObject.SetActive(false);
@@ -41,6 +44,9 @@ public class SelectStartingLocationUiManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// If the player selects a spot that is not free, show a help message.
+    /// </summary>
     public void ShowBuildOnFreeSpaceMessage()
     {
         removeTimer = 0f;

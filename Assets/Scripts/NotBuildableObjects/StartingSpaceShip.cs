@@ -36,7 +36,10 @@ public class StartingSpaceShip : BuildingScript
         GameManager.Instance.AddCapacity(maxCapacity);
         GameManager.Instance.AddPopulation(maxCapacity);
 
-        if (!GameManager.Instance.tutorialEnded) FindObjectOfType<TutorialManager>().OnSpaceShipBuilt();
+        if (!GameManager.Instance.tutorialEnded)
+        {
+            FindObjectOfType<TutorialManager>().OnSpaceShipBuilt();
+        }
     }
 
     protected override void Update()
@@ -48,6 +51,7 @@ public class StartingSpaceShip : BuildingScript
             SupplyOxygen();
         }
 
+        // update fire particles so they stop when we land
         if (checkParticles)
         {
             if (particleTimer > particleEndTime)
@@ -60,6 +64,7 @@ public class StartingSpaceShip : BuildingScript
         }
     }
 
+    // keep track how long the oxygen supply will last
     private void SupplyOxygen()
     {
         lifeTime += Time.deltaTime;

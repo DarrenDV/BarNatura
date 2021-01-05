@@ -86,6 +86,7 @@ public class GameManager : MonoBehaviour
         ResetHumanTimer();
         audioManager = AudioManager.Instance;
 
+        // faster development by skipping main menu
         if (DevMode)
         {
             OnStartingLocationSelected(GetRandomFreeTile());
@@ -97,8 +98,6 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        oxygenSurplus = oxygenGeneration - (oxygenUsage + pollution);
-
         if (inBuildMode)
         { 
             if (Input.GetMouseButtonDown(1))
@@ -116,6 +115,8 @@ public class GameManager : MonoBehaviour
 
         HandleAnalytics();
 
+        oxygenSurplus = GetOxygenSurplus();
+
         //Start the human spawn timer when we have enough oxygen and living space to do so
         if (oxygenSurplus > 2 && capacity > population)
         {
@@ -123,8 +124,7 @@ public class GameManager : MonoBehaviour
 
             if (timeSinceLastHumanSpawn >= humanSpawnTimer)
             {
-                int minHumanSpawn = 1;
-                int maxHumanSpawn = maxHumansThatCanSpawn;
+                var maxHumanSpawn = maxHumansThatCanSpawn;
 
                 //Spawn the max amount of humans possible
                 if (capacity - population >= maxHumansThatCanSpawn && oxygenSurplus >= maxHumansThatCanSpawn)
@@ -142,6 +142,8 @@ public class GameManager : MonoBehaviour
                     maxHumanSpawn = oxygenSurplus - 1;
                 }
 
+                const int minHumanSpawn = 1;
+
                 AddPopulation(Random.Range(minHumanSpawn, maxHumanSpawn + 1));
                 ResetHumanTimer();
             }
@@ -149,7 +151,9 @@ public class GameManager : MonoBehaviour
         else
         {
             if (timeSinceLastHumanSpawn != 0)
+            {
                 ResetHumanTimer();
+            }
         }
 
         //Start the countdown timer when the player doesn't have enoug oxygen or housing
@@ -189,7 +193,7 @@ public class GameManager : MonoBehaviour
         analyticsTimer += Time.deltaTime;
 
         // send analytics every minute
-        if (analyticsTimer > 60)
+        if (analyticsTimer >= 60)
         {
             analyticsTimer = 0;
 
@@ -322,7 +326,7 @@ public class GameManager : MonoBehaviour
     public void AddPopulation(int populationToAdd)
     {
         //if (population + populationToAdd > capacity) populationToAdd = capacity - population;
-        for (int i = 0; i < populationToAdd; i++)
+        for (var i = 0; i < populationToAdd; i++)
         {
             AddOxygenUsage(humanOxygenUsage);
         }
@@ -344,7 +348,7 @@ public class GameManager : MonoBehaviour
     /// <param name="populationToRemove">The amount of humans that died.</param>
     public void RemovePopulation(int populationToRemove)
     {
-        for (int i = 0; i < populationToRemove; i++)
+        for (var i = 0; i < populationToRemove; i++)
         {
             RemoveOxygenUsage(humanOxygenUsage);
         }
@@ -458,7 +462,7 @@ public class GameManager : MonoBehaviour
     #region Pollution
 
     /// <summary>
-    /// Use this when gets added to the world, like when a geyser gets spawned or when a factory gets build.
+    /// Use this when gets added to the world, like when a factory gets build.
     /// </summary>
     /// <param name="pollutionToAdd"></param>
     public void AddPollution(int pollutionToAdd)
@@ -558,6 +562,9 @@ public class GameManager : MonoBehaviour
 
     #region Building
 
+    /// <summary>
+    /// Update the build preview.
+    /// </summary>
     public void ChangeBuildObject(GameObject newObject, Mesh previewMesh, int numberOfMeshes, float size)
     {
         inBuildMode = true;
@@ -565,9 +572,11 @@ public class GameManager : MonoBehaviour
         buildObjectPreview.GetComponent<MeshFilter>().sharedMesh = previewMesh;
         buildObjectPreview.GetComponent<BuildingModeObject>().NewMaterialsArray(numberOfMeshes);
         buildObjectPreview.transform.localScale = new Vector3(size, size, size);
-
     }
 
+    /// <summary>
+    /// Move the build preview.
+    /// </summary>
     public void MovePreview(Vector3 position, Quaternion rotation)
     {
         buildObjectPreview.transform.position = position ;
@@ -592,11 +601,14 @@ public class GameManager : MonoBehaviour
     /// <summary>
     /// This function is used to enable the placement of the starting spaceship.
     /// </summary>
-    public void TutorialAllowsStart() //Fuck unity en dat ze geen bool toestaan om direct aangepast te worden.
+    public void TutorialAllowsStart()
     {
         tutorialAllowsStart = true;
     }
 
+    /// <summary>
+    /// Used when the player selected a place to land the spaceship.
+    /// </summary>
     public void OnStartingLocationSelected(BaseTileScript selectedTile)
     {
         if (tutorialAllowsStart)
@@ -618,6 +630,9 @@ public class GameManager : MonoBehaviour
 
     #region Utils
 
+    /// <summary>
+    /// Get a random tile that is not occupied.
+    /// </summary>
     public BaseTileScript GetRandomFreeTile()
     {
         var allTiles = FindObjectsOfType<BaseTileScript>();
