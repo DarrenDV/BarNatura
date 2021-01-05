@@ -58,11 +58,17 @@ public class TutorialManager : MonoBehaviour
     #region Checks
     //All these functions are to check when a certain milestone has been passed and progress the tutorial.
 
+    /// <summary>
+    /// When the spaceship is built, go to next tutorial mission
+    /// </summary>
     public void OnSpaceShipBuilt()
     {
         TutorialPopupScript.Instance.Next();
     }
 
+    /// <summary>
+    /// When enought trees are built, go to next mission
+    /// </summary>
     public void OnTreeBuilt()
     {
         if (currentTrees + 1 == neededTrees && !enoughTreesBuilt) 
@@ -74,6 +80,9 @@ public class TutorialManager : MonoBehaviour
         if (!enoughTreesBuilt) currentTrees++;
     }
 
+    /// <summary>
+    /// When first house is built, go to next mission. 
+    /// </summary>
     public void OnFirstHouseBuilt()
     {
         if (!firstHouseBuilt)
@@ -83,6 +92,9 @@ public class TutorialManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// When first factory is built, go to next mission
+    /// </summary>
     public void OnFirstFactoryBuilt()
     {
         if (!firstFactoryBuilt)
@@ -92,6 +104,9 @@ public class TutorialManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// When first rubble is removed, go to next mission. 
+    /// </summary>
     public void OnFirstRubbleRemoved()
     {
         if (!firstRubbleRemoved && TutorialIndex == 4)
@@ -101,6 +116,10 @@ public class TutorialManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Check when the factory is boosting and unboosting
+    /// </summary>
+    /// <param name="boosting"></param>
     public void FactoryBoosted(bool boosting)
     {
         if (!hasBoosted && boosting)
@@ -134,7 +153,7 @@ public class TutorialManager : MonoBehaviour
     {
         var placedToxic = 0;
 
-        while (placedToxic < FindObjectOfType<TileVariables>().ToxicTilesToSpawn)
+        while (placedToxic < FindObjectOfType<TileVariables>().ToxicTilesToSpawn) //Check if enough tiles are spawned, else spawn more
         {
             var randomFreeTile = GameManager.Instance.GetRandomFreeTile();
 
@@ -219,12 +238,18 @@ public class TutorialManager : MonoBehaviour
 
     #region OnClick and OnPanel
 
+    /// <summary>
+    /// Ends the tutorial
+    /// </summary>
     public void EndTutorial()
     {
         gameObject.SetActive(false);
         GameManager.Instance.tutorialEnded = true;
     }
 
+    /// <summary>
+    /// Function to stop automatic camera movement, needs to be a solo function because unity doesn't allow direct boolean editing.
+    /// </summary>
     public void StopCamMovement()
     {
         camIsMoving = false;
