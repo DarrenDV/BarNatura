@@ -62,7 +62,7 @@ MonoBehaviour:
   BuildCost: 10
   HumansRequiredToBuild: 5
   buildTime: 5
-  MinimumNaturePollutedDegree: 0
+  MinimumNaturePollutedDegree: 1
   buildCostReturnDivider: 2
   buildParticleEffect: {fileID: 8562426732929654071}
   OnFinishedBuildingEvent:

@@ -48,8 +48,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CanBeRemovedByPlayer: 1
-  HumansRequiredToRemove: 5
-  removeTime: 10
+  HumansRequiredToRemove: 20
+  removeTime: 20
   OnFinishedRemovingEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -59,9 +59,9 @@ MonoBehaviour:
   oxygenUsage: 10
   pollutionProduction: 0
   BuildCost: 40
-  HumansRequiredToBuild: 1
+  HumansRequiredToBuild: 20
   buildTime: 20
-  MinimumNaturePollutedDegree: 0
+  MinimumNaturePollutedDegree: 1
   buildCostReturnDivider: 2
   buildParticleEffect: {fileID: 7529518521162294785}
   OnFinishedBuildingEvent:

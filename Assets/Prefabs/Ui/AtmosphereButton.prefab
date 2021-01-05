@@ -221,8 +221,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0f1d8f417050bd458953a5b930bae0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  extendedPosition: {x: 865, y: 200, z: 0}
-  extentionSpeed: 3
+  basePosition: {fileID: 0}
+  extendedPosition: {fileID: 0}
+  expandSpeed: 3
 --- !u!1 &2286997915003959342
 GameObject:
   m_ObjectHideFlags: 0
@@ -300,7 +301,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Grass Grows Further\t\tOxygen Required: 300"
+  m_Text: "\t\t  Range & Oxygen+\t\tOxygen Required: 300"
 --- !u!1 &2286997915188300727
 GameObject:
   m_ObjectHideFlags: 0
@@ -378,7 +379,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "+Oxygen Production\t\t\tOxygen Required: 1300"
+  m_Text: "\t\t  Range & Oxygen+\t\tOxygen Required: 1300"
 --- !u!1 &2286997915228947191
 GameObject:
   m_ObjectHideFlags: 0
@@ -523,7 +524,10 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Current Oxygen in \tAtmosphere\n\n"
+  m_Text: 'Current Oxygen in Atmosphere
+
+
+'
 --- !u!1 &2286997916381434321
 GameObject:
   m_ObjectHideFlags: 0
@@ -601,7 +605,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "++Oxygen Production\t\tOxygen Required: 2600"
+  m_Text: "\t\t  Range & Oxygen+\t\tOxygen Required: 2600"
 --- !u!1 &2286997916466614686
 GameObject:
   m_ObjectHideFlags: 0
@@ -679,4 +683,4 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "+++Oxygen Production\t\tOxygen Required: 3900"
+  m_Text: "\t\t  Range & Oxygen+\t\tOxygen Required: 3900"

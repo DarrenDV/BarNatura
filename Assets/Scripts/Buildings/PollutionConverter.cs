@@ -15,7 +15,7 @@ public class PollutionConverter : BuildingScript
     [Tooltip("Time in seconds for every conversion")]
     [SerializeField] private float conversionRate;
 
-    private float conversionTimer;
+    private float timeSinceLastConversion;
 
     #endregion
 
@@ -33,7 +33,7 @@ public class PollutionConverter : BuildingScript
 
     public override string GetDescription()
     {
-        return $"This {GetName()} converts {pollutionToRemove} {HudManager.GetIcon("Pollution")} into {oxygenToAdd} {HudManager.GetIcon("OxygenPlus")} every {conversionRate} seconds.";
+        return $"This {GetName()} converts {pollutionToRemove} {HudManager.GetIcon("Pollution")} into {oxygenToAdd} {HudManager.GetIcon("OxygenPlus")} every {conversionRate} seconds.\n\n{ShowProgress()}";
     }
 
     #endregion
@@ -54,19 +54,55 @@ public class PollutionConverter : BuildingScript
     {
         if (!IsBeingBuild && !IsBeingRemoved)
         {
+            
             if(GameManager.Instance.GetPollution() > 0)
             {
-                conversionTimer += Time.deltaTime;
+                isProducing = true;
+                timeSinceLastConversion += Time.deltaTime;
 
-                if (conversionTimer >= conversionRate)
+                if (timeSinceLastConversion >= conversionRate)
                 {
                     GameManager.Instance.RemovePollution(pollutionToRemove);
                     GameManager.Instance.AddOxygenGeneration(oxygenToAdd);
 
-                    conversionTimer = 0;
+                    timeSinceLastConversion = 0;
                 }
             }
+
+            else
+            {
+                isProducing = false;
+            }
         }
+    }
+
+    #endregion
+
+    #region Production
+
+    protected override float GetMaxTime()
+    {
+        return conversionRate;
+    }
+
+    protected override float GetTimer()
+    {
+        return timeSinceLastConversion;
+    }
+
+    protected override string GetResourceDrained()
+    {
+        return $"{HudManager.GetIcon("Pollution")}";
+    }
+
+    protected override string GetResourceGain()
+    {
+        return $"{HudManager.GetIcon("OxygenPlus")}";
+    }
+
+    protected override string GetNoProducingString()
+    {
+        return "There is no longer any pollution in the air!";
     }
 
     #endregion

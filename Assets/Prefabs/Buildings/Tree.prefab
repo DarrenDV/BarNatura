@@ -105,7 +105,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CanBeRemovedByPlayer: 1
-  HumansRequiredToRemove: 5
+  HumansRequiredToRemove: 3
   removeTime: 5
   OnFinishedRemovingEvent:
     m_PersistentCalls:
@@ -116,7 +116,7 @@ MonoBehaviour:
   oxygenUsage: 0
   pollutionProduction: 0
   BuildCost: 10
-  HumansRequiredToBuild: 5
+  HumansRequiredToBuild: 3
   buildTime: 5
   MinimumNaturePollutedDegree: 0
   buildCostReturnDivider: 2

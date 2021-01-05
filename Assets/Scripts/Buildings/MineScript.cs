@@ -11,6 +11,7 @@ public class MineScript : BuildingScript
     {
         base.Update();
 
+        isProducing = true;
         if (mineTimer > maxMineTimer && !IsBeingBuild && !IsBeingRemoved)
         {
             GameManager.Instance.AddRawMaterial(rawMaterialsOverTime);
@@ -19,6 +20,8 @@ public class MineScript : BuildingScript
 
         mineTimer += Time.deltaTime;
     }
+
+    #region Strings
 
     public override string GetName()
     {
@@ -32,7 +35,33 @@ public class MineScript : BuildingScript
 
     public override string GetDescription()
     {
-        return $"This {GetName()} slowly produces {HudManager.GetIcon("Raw")}  over time.";
+        return $"This {GetName()} slowly produces {HudManager.GetIcon("Raw")}  over time.\n\n{ShowProgress()}";
     }
+
+    #endregion
+
+    #region Production
+
+    protected override float GetMaxTime()
+    {
+        return maxMineTimer;
+    }
+
+    protected override float GetTimer()
+    {
+        return mineTimer;
+    }
+
+    protected override string GetResourceDrained()
+    {
+        return $"{HudManager.GetIcon("None")}";
+    }
+
+    protected override string GetResourceGain()
+    {
+        return $"{HudManager.GetIcon("Raw")}";
+    }
+
+    #endregion
 
 }

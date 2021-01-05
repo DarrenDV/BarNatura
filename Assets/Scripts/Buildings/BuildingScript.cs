@@ -48,6 +48,7 @@ public class BuildingScript : BuildObject
         }
         else
         {
+            Popup.Instance.HideProgressBar();
             return GetNoProducingString();
         }
     }

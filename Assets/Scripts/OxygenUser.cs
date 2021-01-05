@@ -26,6 +26,6 @@ public class OxygenUser : BaseObject
 
         GameManager.Instance.RemoveOxygenGeneration(oxygenProduction);
         GameManager.Instance.RemoveOxygenUsage(oxygenUsage);
-        GameManager.Instance.RemovePollution(pollutionProduction);
+        //GameManager.Instance.RemovePollution(pollutionProduction);
     }
 }

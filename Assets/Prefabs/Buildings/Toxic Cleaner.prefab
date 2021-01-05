@@ -56,7 +56,7 @@ MonoBehaviour:
   parentTile: {fileID: 0}
   IsBeingRemoved: 0
   oxygenProduction: 0
-  oxygenUsage: 0
+  oxygenUsage: 10
   pollutionProduction: 0
   BuildCost: 20
   HumansRequiredToBuild: 5
