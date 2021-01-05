@@ -336,7 +336,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &5273139177793979969
 RectTransform:
   m_ObjectHideFlags: 0
@@ -349,7 +349,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5273139178026742693}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
@@ -443,6 +443,7 @@ RectTransform:
   m_Children:
   - {fileID: 5273139176582908900}
   - {fileID: 5273139176446920428}
+  - {fileID: 3275284495461219748}
   - {fileID: 5273139177793979969}
   - {fileID: 7321596459645664174}
   - {fileID: 3659760429934621991}
@@ -527,7 +528,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -210, y: 0}
+  m_AnchoredPosition: {x: -300, y: 0}
   m_SizeDelta: {x: 430, y: 500}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!82 &7155519932938608
@@ -732,14 +733,15 @@ MonoBehaviour:
       Message: "Commander, to start the new colony we require local oxygen production.
         Select the \u201CTree\u201D icon at the bottom of your screen and place two
         trees somewhere near our dropship. Notice that placing a tree (or any other
-        structure) temporarily costs 5 humans to place."
+        structure) temporarily costs 5 humans <sprite=3 color= 03BCC0> to place."
       TutorialEvent:
         m_PersistentCalls:
           m_Calls: []
     - Title: 'Setting foot: Oxygen'
       Message: Good job Commander. These trees together now produces 16 units of
-        Oxygen. This can be seen on the left side in the oxygen bar. Our dropship
-        also temporarily produces 25 units of oxygen, but this will run out soon.
+        Oxygen <sprite=5 color= 00A0FF>. This can be seen on the left side in the
+        oxygen bar. Our dropship also temporarily produces 25 units of oxygen, but
+        that will run out soon.
       TutorialEvent:
         m_PersistentCalls:
           m_Calls:
@@ -756,15 +758,16 @@ MonoBehaviour:
             m_CallState: 2
     - Title: 'Setting foot: Tile health'
       Message: As you can see, the trees are making the surrounding land liveable
-        by growing grass.
+        by growing grass. <sprite=7 color= 00ff00>
       TutorialEvent:
         m_PersistentCalls:
           m_Calls: []
   - Id: Residency
     Messages:
     - Title: Residency
-      Message: Now we need more people and thus the colony requires more places for
-        our people to sleep and live. Construct a house on top of a liveable tile.
+      Message: Now we need more people and thus the colony requires more places <sprite=0
+        color= CE6A17> for our people to sleep and live. Construct a house on top
+        of a liveable tile.
       TutorialEvent:
         m_PersistentCalls:
           m_Calls:
@@ -791,9 +794,9 @@ MonoBehaviour:
               m_BoolArgument: 0
             m_CallState: 2
     - Title: 'Residency: Oxygen'
-      Message: Commander, the construction of the house is complete. As more and
-        more people enter our colony aswell as you building more buildings, the oxygen
-        upkeep will also increase.
+      Message: The construction of the house is complete commander. As more and more
+        people enter our colony aswell as you building more buildings, the oxygen
+        upkeep <sprite=5 color= ff0000> will also increase.
       TutorialEvent:
         m_PersistentCalls:
           m_Calls:
@@ -818,7 +821,7 @@ MonoBehaviour:
   - Id: Materials
     Messages:
     - Title: 'Materials: Expanding'
-      Message: "Great job so far Commander. We now need more space for our colony.
+      Message: "Great job so far commander. We now need more space for our colony.
         Clear some rubble off the planet by selecting rubble and pressing the \u201CRemove\u201D
         button."
       TutorialEvent:
@@ -836,9 +839,9 @@ MonoBehaviour:
               m_BoolArgument: 0
             m_CallState: 2
     - Title: 'Materials: Obtaining'
-      Message: It seems like you obtained some Raw Materials from that rubble. These
-        can be converted to Building Materials which are required for the construction
-        of more buildings
+      Message: It seems like you obtained some Raw Materials <sprite=1 color= 63330B>
+        from that rubble. These can be converted to Building Materials <sprite=4
+        color= BE1351> which are required for the construction of more buildings
       TutorialEvent:
         m_PersistentCalls:
           m_Calls:
@@ -929,11 +932,12 @@ MonoBehaviour:
   - Id: Ah Oh Pollution
     Messages:
     - Title: 'Ah Oh Pollution: What?'
-      Message: "It seems that the factory is emitting pollution. For now it\u2019s
-        no big deal but this is certainly something we have to consider while expanding
-        our colony. Why, you ask? Well in order to thrive as a colony we want an
-        atmosphere. Having a strong and thick atmosphere will no longer require us
-        to keep our helmets on to breathe outside, it also helps in spreading nature."
+      Message: "It seems that the factory is emitting pollution <sprite=6 color=
+        ffff00>. For now it\u2019s no big deal but this is certainly something we
+        have to consider while expanding our colony. Why, you ask? Well in order
+        to thrive as a colony we want an atmosphere. Having a strong and thick atmosphere
+        will no longer require us to keep our helmets on to breathe outside, it also
+        helps in spreading nature."
       TutorialEvent:
         m_PersistentCalls:
           m_Calls:
@@ -1001,7 +1005,8 @@ MonoBehaviour:
     Messages:
     - Title: 'Toxicity arrives: Toxicity'
       Message: "Commander, I\u2019ve got some troubling news! We\u2019ve gotten reports
-        that a new form of toxicity is starting to spread around our planet!"
+        that a new form of toxicity <sprite=2 color= 5A1960> is starting to spread
+        around our planet!"
       TutorialEvent:
         m_PersistentCalls:
           m_Calls:
@@ -1111,10 +1116,144 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   titleText: {fileID: 5273139176582908898}
-  descriptionText: {fileID: 5273139177793979983}
+  descriptionText: {fileID: 8805753317341245763}
   volume: 1
   appearSound: {fileID: 8300000, guid: 2f597a0126e6a4b419c445cfd8ef7e29, type: 3}
   disappearSound: {fileID: 8300000, guid: f70b2cbcd0ee06a4b997b7dface099ff, type: 3}
+--- !u!1 &7680893359740015224
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3275284495461219748}
+  - component: {fileID: 1180927985455405528}
+  - component: {fileID: 8805753317341245763}
+  m_Layer: 5
+  m_Name: DescriptionText
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &3275284495461219748
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7680893359740015224}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 5273139178026742693}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 1, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 1.27}
+  m_SizeDelta: {x: -20, y: 333.45203}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &1180927985455405528
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7680893359740015224}
+  m_CullTransparentMesh: 0
+--- !u!114 &8805753317341245763
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7680893359740015224}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: Description
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: cf424cdcbb6204548905ec371c27e557, type: 2}
+  m_sharedMaterial: {fileID: -4408638380928748352, guid: cf424cdcbb6204548905ec371c27e557,
+    type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 11400000, guid: 0fe20a2074fafe14c9ca4e08a78362f3, type: 2}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 30
+  m_fontSizeBase: 30
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 0
+  m_HorizontalAlignment: 1
+  m_VerticalAlignment: 256
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_enableWordWrapping: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 1
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 1
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1001 &2947605971473266265
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1160,7 +1299,7 @@ PrefabInstance:
     - target: {fileID: 1883090387958186878, guid: e86f98e4597dfa14e9032aaac6f297e1,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1883090387958186878, guid: e86f98e4597dfa14e9032aaac6f297e1,
         type: 3}
@@ -1331,7 +1470,7 @@ PrefabInstance:
     - target: {fileID: 1883090387958186878, guid: e86f98e4597dfa14e9032aaac6f297e1,
         type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1883090387958186878, guid: e86f98e4597dfa14e9032aaac6f297e1,
         type: 3}

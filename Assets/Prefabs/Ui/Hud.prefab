@@ -2830,6 +2830,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Oxygen Bar
       objectReference: {fileID: 0}
+    - target: {fileID: 3356945721008133669, guid: 1cbc20df2bf0ea044a34cc0d379b1fab,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -167.5
+      objectReference: {fileID: 0}
     - target: {fileID: 4326213777787555160, guid: 1cbc20df2bf0ea044a34cc0d379b1fab,
         type: 3}
       propertyPath: m_AnchorMax.x

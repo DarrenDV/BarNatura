@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Linq;
+using TMPro;
 
 public class TutorialPopupScript : MonoBehaviour
 {
@@ -12,7 +13,7 @@ public class TutorialPopupScript : MonoBehaviour
     private TutorialManager tutorialManager;
     private int tutorialIndex = 0;
     [SerializeField] private Text titleText;
-    [SerializeField] private Text descriptionText;
+    [SerializeField] private TextMeshProUGUI descriptionText;
 
     [Header("Sound")]
     [SerializeField] private int volume;
