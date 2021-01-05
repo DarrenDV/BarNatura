@@ -12,6 +12,8 @@ public class MineScript : BuildingScript
         base.Update();
 
         isProducing = true;
+
+        // Checks if the timer has passed and if so adds more raw mats to the stockpile.
         if (mineTimer > maxMineTimer && !IsBeingBuild && !IsBeingRemoved)
         {
             GameManager.Instance.AddRawMaterial(rawMaterialsOverTime);

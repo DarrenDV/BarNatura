@@ -9,7 +9,8 @@ public class HouseScript : BuildingScript
     protected override void Start()
     {
         base.Start();
-
+        
+        // if the tutorial hasnt ended then check for the first house that was build.
         if (!GameManager.Instance.tutorialEnded) FindObjectOfType<TutorialManager>().OnFirstHouseBuilt();
     }
 
@@ -29,6 +30,9 @@ public class HouseScript : BuildingScript
     }
 
     #region Building
+    /// <summary>
+    /// This adds humans after finnishing building the house
+    /// </summary>
     public override void OnFinishedBuilding()
     {
         base.OnFinishedBuilding();

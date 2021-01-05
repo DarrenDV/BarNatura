@@ -45,6 +45,7 @@ public class BaseObject : MonoBehaviour
             
             buildProgress -= Time.deltaTime / removeTime; // 5 sec remove time
 
+            // this plays the "getting destroyed animation" and removes the building when complete.
             if (buildProgress <= 0)
             {
                 buildProgress = 0f;
@@ -65,7 +66,9 @@ public class BaseObject : MonoBehaviour
             }
         }
     }
-
+    /// <summary>
+    /// Updates the size depending on how much it has been build/destroyed.
+    /// </summary>
     protected void UpdateScale()
     {
         transform.localScale = Vector3.Lerp(Vector3.zero, originalScale, buildProgress);
