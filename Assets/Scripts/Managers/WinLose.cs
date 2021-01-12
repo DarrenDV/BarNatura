@@ -7,27 +7,33 @@ public class WinLose : MonoBehaviour
 {
     #region Variables
 
-    public int tileCount;
+    [HideInInspector] public int tileCount;
 
     private bool canWin = true;
     private bool canLose = true;
 
     //Tile required variables
+    [Header("Tile variables")]
     //Nature
-    private int requiredNatureTiles;
     [Range(0, 1)]
+    [Tooltip("Percentage of nature tiles the player needs to have to win")]
     [SerializeField] private float requiredNatureTilePercent = 0.05f;
-    private int currentNatureTiles; 
+    private int currentNatureTiles;
+    private int requiredNatureTiles;
 
     //Toxic
     private int requiredToxicTiles; 
     [Range(0, 1)]
+    [Tooltip("Percentage of toxic tiles the player needs to have to lose")]
     [SerializeField] private float requiredToxicTilePercent = 0.3f;
     private int currentToxicTiles; 
 
     //Timer Variables
+    [Header("Time Variables")]
     [Tooltip("The time in seconds")]
     public float timeRemaining = 10;
+    [SerializeField] private bool timeLossEnabled; //Enables or disables time loss
+    [SerializeField] private GameObject LoseTimer; 
     private bool timerIsRunning;
     private Text timeText = null;
 
@@ -35,7 +41,7 @@ public class WinLose : MonoBehaviour
     private Text endPopUpTitle;
     private Text endPopUpDescription;
 
-    [Header("Messages")]
+    [Header("Popup messages")]
     [SerializeField] private string winTitleText;
     [SerializeField] [TextArea] private string winDescriptionText;
     [SerializeField] private string loseTitleText;
@@ -50,21 +56,34 @@ public class WinLose : MonoBehaviour
         TileAmountCalculation();
 
         endPopUpBack = GameObject.Find("EndPopUp");
-        timeText = GameObject.Find("Timer").GetComponent<Text>();
+        LoseTimer = GameObject.Find("LoseTimer");
+        timeText = GameObject.Find("LoseTimer").GetComponent<Text>();
         endPopUpTitle = GameObject.Find("EndPopUp/Border/Background/Panel/Title").GetComponent<Text>();
         endPopUpDescription = GameObject.Find("EndPopUp/Border/Background/Panel/DescriptionText").GetComponent<Text>();
     }
 
     void Start()
     {
-        timerIsRunning = true;
+        if(timeLossEnabled) timerIsRunning = true;
         endPopUpBack.SetActive(false);
     }
 
     void Update()
     {
-        CalcTime();
-        CheckTime();
+        CheckTimeLoss();
+    }
+
+    void CheckTimeLoss()
+    {
+        if (timeLossEnabled)
+        {
+            CalcTime();
+            CheckTime();
+        }
+        else
+        {
+            LoseTimer.gameObject.SetActive(false);
+        }
     }
     #endregion
 

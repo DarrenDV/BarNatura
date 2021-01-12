@@ -5,31 +5,36 @@ public class TutorialManager : MonoBehaviour
 {
     #region Variables
 
+    [Header("Tutorial")]
+    [Tooltip("Current tutorial mission index")]
     public int TutorialIndex;
+    [Tooltip("List of tutorials")]
+    public List<TutorialSequence> Tutorials;
 
     //bools for general missions
     private bool enoughTreesBuilt, firstHouseBuilt, firstFactoryBuilt, firstRubbleRemoved;
 
-    //Tree mission variables`
-    private int currentTrees;
-    [Tooltip("How many trees are needed for the tree mission to progress?")]
+    [Header("Various mission variables")]
+    //Tree mission variables
+    [Tooltip("Trees needed to progress tree mission")]
     [SerializeField] private int neededTrees = 2;
+    private int currentTrees;
 
     //Factory mission variables
     private bool hasBoosted = false, hasUnboosted = false;
 
     //Toxic mission variables
+    [Header("Toxic mission variables")]
     [SerializeField] private GameObject mainCam;
-    [SerializeField] private GameObject toxicTile;
+    private GameObject toxicTile;
     private bool canAssignToxic = true;
     private float cameraPanTimer;
-    [Tooltip("After how many seconds does the camera start to pan?")]
+    [Tooltip("After how many seconds the camera starts to pan")]
     [SerializeField] private float whenCameraPans;
     public bool camIsMoving;
     Vector3 savedNormal;
 
-    //List of all the tutorials
-    public List<TutorialSequence> Tutorials;
+
 
     #endregion
 

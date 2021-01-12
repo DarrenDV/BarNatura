@@ -3856,6 +3856,14 @@ PrefabInstance:
       propertyPath: Tutorials.Array.data[7].Messages.Array.data[0].TutorialEvent.m_PersistentCalls.m_Calls.Array.data[4].m_CallState
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 7344187465744813017, guid: b89effcb55ce99b40ae20d9b41826553,
+        type: 3}
+      propertyPath: Tutorials.Array.data[5].Messages.Array.data[0].Message
+      value: It seems that the factory is emitting pollution <sprite=6 color= ffff00>.
+        Keep this in mind while expanding the colony. We need an strong and thick
+        atmosphere so that we no longer require to keep our helmets on and breathe
+        outside, it also helps in spreading nature.
+      objectReference: {fileID: 0}
     - target: {fileID: 7639558175413818054, guid: b89effcb55ce99b40ae20d9b41826553,
         type: 3}
       propertyPath: m_Name
