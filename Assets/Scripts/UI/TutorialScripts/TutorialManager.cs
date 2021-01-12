@@ -34,8 +34,6 @@ public class TutorialManager : MonoBehaviour
     public bool camIsMoving;
     Vector3 savedNormal;
 
-
-
     #endregion
 
     #region Default
@@ -61,63 +59,55 @@ public class TutorialManager : MonoBehaviour
     #endregion
 
     #region Checks
-    //All these functions are to check when a certain milestone has been passed and progress the tutorial.
 
     /// <summary>
-    /// When the spaceship is built, go to next tutorial mission
+    /// Runs an switch check ("action") on which mission is completed. 
     /// </summary>
-    public void OnSpaceShipBuilt()
+    /// <param name="action"></param>
+    public void ProgressTutorial(string action)
     {
-        TutorialPopupScript.Instance.Next();
-    }
-
-    /// <summary>
-    /// When enought trees are built, go to next mission
-    /// </summary>
-    public void OnTreeBuilt()
-    {
-        if (currentTrees + 1 == neededTrees && !enoughTreesBuilt) 
+        if (!GameManager.Instance.tutorialEnded) //Checks if the tutorial has ended
         {
-            enoughTreesBuilt = true;
-            TutorialPopupScript.Instance.Next();
-        }
+            switch (action)
+            {
+                case "SpaceShipBuilt":
+                    TutorialPopupScript.Instance.Next();
+                    break;
 
-        if (!enoughTreesBuilt) currentTrees++;
-    }
+                case "TreeBuilt":
+                    if (currentTrees + 1 == neededTrees && !enoughTreesBuilt)
+                    {
+                        enoughTreesBuilt = true;
+                        TutorialPopupScript.Instance.Next();
+                    }
 
-    /// <summary>
-    /// When first house is built, go to next mission. 
-    /// </summary>
-    public void OnFirstHouseBuilt()
-    {
-        if (!firstHouseBuilt)
-        {
-            TutorialPopupScript.Instance.Next();
-            firstHouseBuilt = true;
-        }
-    }
+                    if (!enoughTreesBuilt) currentTrees++;
+                    break;
 
-    /// <summary>
-    /// When first factory is built, go to next mission
-    /// </summary>
-    public void OnFirstFactoryBuilt()
-    {
-        if (!firstFactoryBuilt)
-        {
-            TutorialPopupScript.Instance.Next();
-            firstFactoryBuilt = true;
-        }
-    }
+                case "HouseBuilt":
+                    if (!firstHouseBuilt)
+                    {
+                        TutorialPopupScript.Instance.Next();
+                        firstHouseBuilt = true;
+                    }
+                    break;
 
-    /// <summary>
-    /// When first rubble is removed, go to next mission. 
-    /// </summary>
-    public void OnFirstRubbleRemoved()
-    {
-        if (!firstRubbleRemoved && TutorialIndex == 4)
-        {
-            TutorialPopupScript.Instance.Next();
-            firstRubbleRemoved = true;
+                case "RubbleRemoved":
+                    if (!firstRubbleRemoved && TutorialIndex == 4) //Needs to be tutorialIndex 4, player can just remove rubble at any time.
+                    {
+                        TutorialPopupScript.Instance.Next();
+                        firstRubbleRemoved = true;
+                    }
+                    break;
+
+                case "FactoryBuilt":
+                    if (!firstFactoryBuilt)
+                    {
+                        TutorialPopupScript.Instance.Next();
+                        firstFactoryBuilt = true;
+                    }
+                    break;
+            }
         }
     }
 

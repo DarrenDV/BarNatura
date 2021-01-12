@@ -9,9 +9,9 @@ public class HouseScript : BuildingScript
     protected override void Start()
     {
         base.Start();
-        
+
         // if the tutorial hasnt ended then check for the first house that was build.
-        if (!GameManager.Instance.tutorialEnded) FindObjectOfType<TutorialManager>().OnFirstHouseBuilt();
+        FindObjectOfType<TutorialManager>().ProgressTutorial("HouseBuilt");
     }
 
     public override string GetName()

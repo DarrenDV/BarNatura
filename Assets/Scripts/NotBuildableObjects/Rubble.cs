@@ -22,9 +22,6 @@ public class Rubble : BaseObject
 
         GameManager.Instance.AddRawMaterial(Random.Range(rawMaterialMin, rawMaterialMax));
 
-        if (!GameManager.Instance.tutorialEnded)
-        {
-            FindObjectOfType<TutorialManager>().OnFirstRubbleRemoved();
-        }
+        FindObjectOfType<TutorialManager>().ProgressTutorial("RubbleRemoved");
     }
 }

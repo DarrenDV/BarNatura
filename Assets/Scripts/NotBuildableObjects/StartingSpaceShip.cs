@@ -36,10 +36,7 @@ public class StartingSpaceShip : BuildingScript
         GameManager.Instance.AddCapacity(maxCapacity);
         GameManager.Instance.AddPopulation(maxCapacity);
 
-        if (!GameManager.Instance.tutorialEnded)
-        {
-            FindObjectOfType<TutorialManager>().OnSpaceShipBuilt();
-        }
+        FindObjectOfType<TutorialManager>().ProgressTutorial("SpaceShipBuilt");
     }
 
     protected override void Update()

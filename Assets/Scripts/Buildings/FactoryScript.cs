@@ -45,7 +45,7 @@ public class FactoryScript : BuildingScript
     {
         base.Start();
 
-        if (!GameManager.Instance.tutorialEnded) FindObjectOfType<TutorialManager>().OnFirstFactoryBuilt();
+        FindObjectOfType<TutorialManager>().ProgressTutorial("FactoryBuilt");
     }
 
     protected override void Update()
